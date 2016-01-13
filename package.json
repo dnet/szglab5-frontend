@@ -1,0 +1,26 @@
+{
+  "name": "szglab5-frontend",
+  "version": "0.0.0",
+  "description": "Szglab5 Frontend",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bme-db-lab/szglab5-frontend.git"
+  },
+  "keywords": [
+    "szglab5"
+  ],
+  "author": {
+    "name": "Bence Golda",
+    "email": "gbence@db.bme.hu"
+  },
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bme-db-lab/szglab5-frontend/issues"
+  },
+  "homepage": "https://github.com/bme-db-lab/szglab5-frontend#readme",
+  "engines": {
+    "node": "~>4.0",
+    "npm": "~>2.0"
+  }
+}
