@@ -9,10 +9,6 @@ $red: 			#FF0000;
 $lightred:		#FF4444;
 $blue: 			#0492D0;
 $brown:			#BDA355;
-$chart_blue:	#048CC8;
-$chart_green:	#42BA1D;
-$chart_red:		#CE4233;
-$chart_yellow:	#E6D501;
 
 .ember-power-select-dropdown {
 	border-right: 1px solid #EEE;
@@ -22,6 +18,7 @@ $chart_yellow:	#E6D501;
 }
 
 .ember-power-select-status-icon {
+  //todo power select button
 }
 
 .ember-power-select-dropdown.ember-basic-dropdown--above,

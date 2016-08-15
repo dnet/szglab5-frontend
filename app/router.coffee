@@ -9,5 +9,6 @@ Router.map ->
 
   @route 'student', ->
     @route 'lab'
+  @route 'settings'
 
 `export default Router`

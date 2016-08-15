@@ -1,13 +1,11 @@
 <nav class="menu navbar navbar-default navbar-static-top">
-    {{!-- <div class="navbar-header"> --}}
-        <div class="navbar-brand logo menu-text">laboradmin</div>
-    {{!-- </div> --}}
-
+    <div class="navbar-brand logo menu-text">laboradmin</div>
     <div class="pull-xs-right ">
         <ul class="nav navbar-nav">
-            {{#each menuItems as |item |}}
-                <button type="button" class="btn btn-default navbar-btn">{{item}}</button>
-            {{/each}}
+            {{#each-in menuItems as |menuitemkey menuitemvalue|}}
+                {{#link-to menuitemkey tagName="button" class="btn btn-default navbar-btn" }}{{menuitemvalue}}{{/link-to}}
+            {{/each-in}}
+            <button type="button" class="btn btn-default navbar-btn">Kijelentkezés</button>
         </ul>
     </div>
 </nav>
