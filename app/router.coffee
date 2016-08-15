@@ -7,6 +7,7 @@ Router = Ember.Router.extend
 
 Router.map ->
 
-  @route 'student'
+  @route 'student', ->
+    @route 'lab'
 
 `export default Router`

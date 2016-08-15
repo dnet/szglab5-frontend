@@ -1,1 +1,12 @@
-{{outlet}}
+<div class="left">
+    {{navigation-menu menu=menu user=student.name neptun=student.neptun goToLab=(action "goToLab")}}
+</div>
+<div class="right">
+    <div class="output">
+        {{#if labKey}}
+            {{student-laboratory result=(get student.results labKey)}}
+        {{else}}
+            Valassz egy labort!
+        {{/if}}
+    </div>
+</div>
