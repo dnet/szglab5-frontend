@@ -19,7 +19,7 @@ StudentController = Ember.Controller.extend
                 description: "1. Labor",
                 statusCode: "after",
                 location: "IL105",
-                time: "2015.11.21. 16:15",
+                time: "2016.07.16. 16:15",
                 demonstrator: "Teszt Oktató 1",
                 entrytest: "5",
                 report: {
@@ -36,9 +36,10 @@ StudentController = Ember.Controller.extend
                 description: "2. Labor",
                 statusCode: "during",
                 location: "IL105",
-                time: "2015.11.21. 16:15",
+                time: "2016.08.15. 16:15",
                 demonstrator: "Teszt Oktató 1",
-                deadline: "2015.12.11. 12:00",
+                deadline: "2016.08.15. 21:15",
+                # deadline: "2016.09.01. 16:15",
                 repository: "git@gitlab.db.bme.hu:pelda/pelda.git",
                 entrytest: "5",
                 finalcommit: "3",
@@ -48,7 +49,7 @@ StudentController = Ember.Controller.extend
                 description: "3. Labor",
                 statusCode: "before",
                 location: "IL105",
-                time: "2015.11.21. 16:15",
+                time: "2016.09.16. 16:15",
                 demonstrator: "Teszt Oktató 1",
             }
 
