@@ -42,7 +42,7 @@ StudentController = Ember.Controller.extend
                 # deadline: "2016.09.01. 16:15",
                 repository: "git@gitlab.db.bme.hu:pelda/pelda.git",
                 entrytest: "5",
-                finalcommit: "3",
+                finalcommit: "Branch2/3",
                 commits: ["Branch1/1","Branch1/2","Branch2/3","Branch2/4"]
             },
             lab3: {
@@ -60,6 +60,9 @@ StudentController = Ember.Controller.extend
     actions:
       goToLab: (key) ->
         @set 'labKey', key
+        false
+      selectCommit: (newcommit) ->
+        console.log "Todo save new commit"
         false
 
 `export default StudentController`

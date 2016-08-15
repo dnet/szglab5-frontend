@@ -1,0 +1,54 @@
+$slytherin-green: #2a623d;
+$lightgray: 	#D3D3D3;
+$gray:			#A4A4A4;
+$darkgray:		#808080;
+$green: 		#008000;
+$lightgreen:	#39D339;
+$orange:		#F5C53C;
+$red: 			#FF0000;
+$lightred:		#FF4444;
+$blue: 			#0492D0;
+$brown:			#BDA355;
+$chart_blue:	#048CC8;
+$chart_green:	#42BA1D;
+$chart_red:		#CE4233;
+$chart_yellow:	#E6D501;
+
+.ember-power-select-dropdown {
+	border-right: 1px solid #EEE;
+	border-left: 1px solid #EEE;
+	width: auto !important;
+	@include box-shadow(0 0 25px -5px #999);
+}
+
+.ember-power-select-status-icon {
+}
+
+.ember-power-select-dropdown.ember-basic-dropdown--above,
+.ember-power-select-dropdown.ember-basic-dropdown--below,
+.ember-basic-dropdown--in-place .ember-power-select-dropdown {
+	border: none;
+	min-width: 130px !important;
+}
+
+.ember-power-select-search {
+	input {
+		padding: 5px;
+		outline: none;
+		border: 1px solid #DDD;
+		@include border-radius(3px);
+	}
+}
+
+.ember-power-select-option {
+	padding: 5px 8px;
+
+	&.ember-power-select-option--no-matches-message {
+		color: $darkgray;
+		font-style: italic;
+	}
+}
+
+.ember-power-select-options[role="listbox"] {
+	background-color: #FFF;
+}

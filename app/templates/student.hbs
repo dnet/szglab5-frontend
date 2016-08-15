@@ -4,7 +4,7 @@
 <div class="right">
     <div class="output">
         {{#if labKey}}
-            {{student-laboratory result=(get student.results labKey)}}
+            {{student-laboratory result=(get student.results labKey)  selectCommit=(action "selectCommit")}}
         {{else}}
             <div class="student-laboratory-chooser">Valassz egy labort!</div>
         {{/if}}

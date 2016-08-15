@@ -1,5 +1,8 @@
 @import 'bootstrap';
-$slytherin-green: #2a623d;
+@import "ember-power-select";
+@import 'app/styles/mixins.scss';
+@import 'app/styles/default.scss';
+
 .left {
     position: relative;
     width: 22%;
@@ -43,6 +46,11 @@ $slytherin-green: #2a623d;
                         text-align: center;
                         td {
                             padding: 2px 5px;
+                            .ember-power-select-trigger {
+                                border: 1px solid #FFF;
+                                color: $slytherin-green;
+                                @include border-radius(3px);
+                            }
                         }
                         .td-left {
                             width: 50%;
@@ -109,9 +117,8 @@ $slytherin-green: #2a623d;
         border-color: $slytherin-green;
     }
 }
-
 body {
-  font-family: serif;
+    font-family: serif;
 }
 html {
     min-width: 768px;

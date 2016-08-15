@@ -32,7 +32,11 @@
 
                     <tr>
                         <td class="td-right td-bold">Vegleges Commit</td>
-                        <td class="td-left">commit valaszto ide</td>
+                        <td class="td-left">
+                            {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
+                                {{commit}}
+                            {{/power-select}}
+                        </td>
                     </tr>
                 {{/if}}
 

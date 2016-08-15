@@ -28,5 +28,9 @@ StudentLaboratoryComponent = Ember.Component.extend
             return diff + " perc"
         return diff + " óra"
 
+    actions:
+      selectCommit: (newcommit) ->
+        @sendAction('selectCommit', newcommit)
+
 
 `export default StudentLaboratoryComponent`
