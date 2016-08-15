@@ -1,1 +1,56 @@
-{{outlet}}
+<div class='middle'>
+    <div class='settings'>
+        <div class='settings-title'>{{result.description}}</div>
+        <div class='settings-table'>
+            <table>
+                <tr>
+                    <td class="td-right td-bold">e-mail</td>
+                    <td class="td-left">
+                        {{input type="type" value=user.email placeholder='e-mail'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">regi jelszo</td>
+                    <td class="td-left">
+                        {{input type="type" value=user.oldpwd placeholder='regi jelszo'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">uj jelszo ujra</td>
+                    <td class="td-left">
+                        {{input type="type" value=user.newpwd placeholder='uj jelszo ujra'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">uj jelszo</td>
+                    <td class="td-left">
+                        {{input type="type" value=user.newpwdagain placeholder='uj jelszo'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">levelezesi lista</td>
+                    <td class="td-left">
+                        <button type="button" id="mailListButton" class="btn btn-outline-success btn--toggle {{if mailList 'btn--checked'}}" {{action "toggleMailList"}}>Levlistára való feliratkozás</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">levelezesi lista</td>
+                    <td class="td-left">
+                        <button type="button" id="notificationButton" class="btn btn-outline-success btn--toggle {{if notification 'btn--checked'}}" {{action "toggleNotifications"}}>E-mail értesítéskre való feliratkozás</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">ssh publikus kulcs</td>
+                    <td class="td-left">
+                        {{textarea value=user.ssh class="form-control ssh" cols="cols" rows="9" placeholder="ssh publikus kulcs"}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-middle" colspan="2">
+                        <button type="button" class="btn btn-default">Mentes</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

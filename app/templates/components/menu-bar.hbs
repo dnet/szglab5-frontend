@@ -3,7 +3,7 @@
     <div class="pull-xs-right ">
         <ul class="nav navbar-nav">
             {{#each-in menuItems as |menuitemkey menuitemvalue|}}
-                {{#link-to menuitemkey tagName="button" class="btn btn-default navbar-btn" }}{{menuitemvalue}}{{/link-to}}
+                {{#link-to menuitemkey tagName="button" class="btn navbar-btn" }}{{menuitemvalue}}{{/link-to}}
             {{/each-in}}
             <button type="button" class="btn btn-default navbar-btn">Kijelentkezés</button>
         </ul>

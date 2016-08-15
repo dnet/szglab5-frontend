@@ -4,7 +4,7 @@
             {{user}} ({{neptun}})
         </div>
         {{#each-in menu as |menuitemkey menuitemvalue|}}
-            <button type="button" class="navigation-menu-button btn btn-success-outline" {{action 'goToLab' menuitemkey}}>{{menuitemvalue}}</button>
+            <button type="button" class="navigation-menu-button btn btn-outline-success laboradmin-menu" {{action 'goToLab' menuitemkey}}>{{menuitemvalue}}</button>
         {{/each-in}}
     </div>
 </div>

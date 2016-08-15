@@ -1,8 +1,7 @@
-@import 'bootstrap';
+@import "ember-cli-bootstrap-4/bootstrap"; // @import 'bootstrap';
 @import "ember-power-select";
 @import 'app/styles/mixins.scss';
 @import 'app/styles/default.scss';
-
 .left {
     position: relative;
     width: 22%;
@@ -10,6 +9,65 @@
     padding: 20px 10px 15px 25px;
     float: left;
     // margin-left: 30px;
+}
+.middle {
+    margin: 0 auto;
+    width: 75%;
+    .settings-title {
+        font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+        color: #333;
+        line-height: 90%;
+        margin: 0.2em 0 1em;
+        letter-spacing: -2px;
+        text-align: center;
+    }
+    .settings-table {
+        table {
+            width: 100%;
+            tr {
+                width: 100%;
+                text-align: center;
+                td {
+                    padding: 2px 5px;
+                    .btn--toggle {
+                        background: white;
+                        color: $slytherin-green;
+                        border-color: $slytherin-green;
+                    }
+                    .btn--checked {
+                        background: $slytherin-green;
+                        border-color:$slytherin-green;
+                        color: white;
+                    }
+                }
+                .td-left {
+                    width: 50%;
+                    max-width: 50%;
+                    text-align: left;
+                }
+                .td-middle {
+                    text-align: center;
+                }
+                .td-right {
+                    width: 50%;
+                    max-width: 50%;
+                    text-align: right;
+                }
+                .td-bold {
+                    font-weight: bold;
+                }
+                .td-review {
+                    margin: 0 auto;
+                    width: 400px;
+                    max-width: 400px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                }
+            }
+        }
+    }
 }
 .right {
     position: relative;
@@ -89,6 +147,20 @@
     border-radius: 0;
     button {
         background: white;
+        color: $slytherin-green;
+    }
+    button:hover {
+      color: white;
+      background: $darkgray;
+    }
+    button.active {
+      background: $lightgray;
+      pointer-events: none;
+    }
+    button.active:hover {
+      color: $slytherin-green;
+      background: $lightgray;
+      pointer-events: none;
     }
     .menu-text {
         color: white;
@@ -119,6 +191,7 @@
 }
 body {
     font-family: serif;
+    background-color: #f9f9fa;
 }
 html {
     min-width: 768px;
