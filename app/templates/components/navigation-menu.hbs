@@ -1,0 +1,10 @@
+<div class="col-md-4">
+    <div class="navigation-menu btn-group-vertical" role="group">
+        <div class="navigation-menu-label btn">
+            {{user}} ({{neptun}})
+        </div>
+        {{#each-in menu as |menuitemkey menuitemvalue|}}
+            <button type="button" class="navigation-menu-button btn btn-success-outline" {{action 'goToLab' menuitemkey}}>{{menuitemvalue}}</button>
+        {{/each-in}}
+    </div>
+</div>

@@ -1,0 +1,66 @@
+@import 'bootstrap';
+$slytherin-green: #2a623d;
+.left {
+    position: relative;
+    width: 22%;
+    display: inline-block;
+    padding: 20px 10px 15px 25px;
+    float: left;
+    // margin-left: 30px;
+}
+.right {
+    position: relative;
+    width: 78%;
+    padding: 50px 15px 50px;
+    float: right;
+    .output {
+        position: relative;
+        background-color: #FFF;
+        overflow: hidden;
+        padding: 25px;
+        // -webkit-box-shadow: 0 0 75px 10px #CCC;
+        // -khtml-box-shadow: 0 0 75px 10px #CCC;
+        // -moz-box-shadow: 0 0 75px 10px #CCC;
+        // -ms-box-shadow: 0 0 75px 10px #CCC;
+        // -o-box-shadow: 0 0 75px 10px #CCC;
+        // box-shadow: 0 0 75px 10px #CCC;
+    }
+}
+/*menu-bar*/
+.menu {
+    background: $slytherin-green;
+    border-radius: 0;
+    button {
+        background: white;
+    }
+    .menu-text {
+        color: white;
+    }
+    .pull-xs-right {
+        display: flex;
+    }
+}
+/*navigation-menu*/
+.navigation-menu {
+    // margin-top: 30px;
+    .navigation-menu-label {
+        color: #fff;
+        background-color: $slytherin-green;
+        border-color: $slytherin-green;
+        pointer-events: none;
+    }
+    .navigation-menu-button {
+        color: $slytherin-green;
+        background-color: white;
+        border-color: $slytherin-green;
+    }
+    .navigation-menu-button:hover {
+        color: #fff;
+        background-color: $slytherin-green;
+        border-color: $slytherin-green;
+    }
+}
+html {
+    min-width: 768px;
+    background-color: #f9f9fa;
+}

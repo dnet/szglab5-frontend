@@ -1,0 +1,42 @@
+<h2>{{result.description}}</h2>
+<table>
+    <tr>
+        <td class="td-right td-bold">Helyszin</td>
+        <td class="td-left">{{result.location}}</td>
+    </tr>
+    <tr>
+        <td class="td-right td-bold">Idopont</td>
+        <td class="td-left">{{result.time}}</td>
+    </tr>
+    <tr>
+        <td class="td-right td-bold">Laborvezeto</td>
+        <td class="td-left">{{result.demonstrator}}</td>
+    </tr>
+
+    {{#if (eq result.statusCode 'during')}}
+        <tr>
+            <td class="td-right td-bold">Hatralevo ido</td>
+            <td class="td-left">({{result.deadline}})</td>
+        </tr>
+        <tr>
+            <td class="td-right td-bold">Git repository URL</td>
+            <td class="td-left">{{result.repository}}</td>
+        </tr>
+        <tr>
+            <td class="td-right td-bold">Beugro</td>
+            <td class="td-left">{{result.entrytest}} ({{result.demonstrator}})</td>
+        </tr>
+        <tr>
+            <td class="td-right td-bold">Vegleges Commit</td>
+            <td class="td-left">commit valaszto ide</td>
+        </tr>
+    {{/if}}
+
+    {{#if (eq result.statusCode 'after')}}
+    <tr>
+        <td class="td-right td-bold">Beugro</td>
+        <td class="td-left">{{result.entrytest}} ({{result.demonstrator}})</td>
+    </tr>
+    {{/if}}
+
+</table>
