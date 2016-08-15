@@ -11,19 +11,60 @@ $slytherin-green: #2a623d;
 .right {
     position: relative;
     width: 78%;
-    padding: 50px 15px 50px;
+    padding: 50px 15px;
     float: right;
     .output {
         position: relative;
         background-color: #FFF;
         overflow: hidden;
         padding: 25px;
-        // -webkit-box-shadow: 0 0 75px 10px #CCC;
-        // -khtml-box-shadow: 0 0 75px 10px #CCC;
-        // -moz-box-shadow: 0 0 75px 10px #CCC;
-        // -ms-box-shadow: 0 0 75px 10px #CCC;
-        // -o-box-shadow: 0 0 75px 10px #CCC;
-        // box-shadow: 0 0 75px 10px #CCC;
+        .student-laboratory {
+            .student-laboratory-title {
+                font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+                color: #333;
+                line-height: 90%;
+                margin: 0.2em 0 1em;
+                letter-spacing: -2px;
+                text-align: center;
+            }
+            .student-laboratory-table {
+                table {
+                    width: 100%;
+                    tr {
+                        width: 100%;
+                        text-align: center;
+                        td {
+                            padding: 2px 5px;
+                        }
+                        .td-left {
+                            width: 50%;
+                            max-width: 50%;
+                            text-align: left;
+                        }
+                        .td-middle {
+                            text-align: center;
+                        }
+                        .td-right {
+                            width: 50%;
+                            max-width: 50%;
+                            text-align: right;
+                        }
+                        .td-bold {
+                            font-weight: bold;
+                        }
+                        .td-review {
+                            margin: 0 auto;
+                            width: 400px;
+                            max-width: 400px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 /*menu-bar*/
@@ -59,6 +100,10 @@ $slytherin-green: #2a623d;
         background-color: $slytherin-green;
         border-color: $slytherin-green;
     }
+}
+
+body {
+  font-family: serif;
 }
 html {
     min-width: 768px;
