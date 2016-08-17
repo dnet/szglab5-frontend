@@ -179,22 +179,24 @@
 .menu {
     background: $slytherin-green;
     border-radius: 0;
+    .admin--group {
+        margin-left: 0;
+    }
     button {
         background: white;
+        margin-left: 0;
         color: $slytherin-green;
-    }
-    button:hover {
-        color: white;
-        background: $darkgray;
-    }
-    button.active {
-        background: $lightgray;
-        pointer-events: none;
-    }
-    button.active:hover {
-        color: $slytherin-green;
-        background: $lightgray;
-        pointer-events: none;
+        &:hover {
+            color: white;
+            background: $darkgray;
+        }
+        &.active {
+            background: $lightgray;
+            pointer-events: none;
+            color: $slytherin-green;
+            // &:hover {
+            // }
+        }
     }
     .menu-text {
         color: white;
