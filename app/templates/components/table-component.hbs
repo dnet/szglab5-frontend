@@ -1,0 +1,21 @@
+<div class= {{addClass}}>
+    <table class='table table-striped table-sm table-bordered table-hover'>
+        <thead class="thead-inverse">
+            <th>#</th>
+            {{#each header as |head|}}
+                <th>{{head}}</th>
+            {{/each}}
+        </thead>
+        <tbody>
+            {{#each body as |row number|}}
+                <tr {{action 'onRowClick' (get-array-element body number)}}>
+                    <th scope='row'>{{add number}}</th>
+                    {{#each row as |cell|}}
+                        <td>{{cell}}</td>
+                    {{/each}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>

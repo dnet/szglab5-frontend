@@ -24,6 +24,8 @@
             text-align: center;
         }
         .directory-search-fields {
+            margin: 0 auto;
+            width: 75%;
             .directory-search-label {
                 font: 20px "Century Schoolbook", Georgia, Times, serif;
                 color: #333;
@@ -52,6 +54,20 @@
                 &:hover {
                     color: white;
                     background: $slytherin-green;
+                }
+            }
+        }
+        .user-table {
+            padding-top: 25px;
+            table {
+                tr {
+                    // cursor: pointer;
+                    td {
+                        text-align: center;
+                    }
+                }
+                th {
+                    text-align: center;
                 }
             }
         }
