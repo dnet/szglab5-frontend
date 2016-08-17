@@ -8,7 +8,8 @@ MenuBarComponent = Ember.Component.extend
     }
 
     adminMenu: {
-      statistics: "Statisztikák"
+      statistics: "Statisztikák",
+      directory: "Felhasznalok"
     }
 
 `export default MenuBarComponent`

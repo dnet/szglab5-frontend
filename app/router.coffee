@@ -10,5 +10,6 @@ Router.map ->
   @route 'student'
   @route 'settings'
   @route 'statistics'
+  @route 'directory'
 
 `export default Router`
