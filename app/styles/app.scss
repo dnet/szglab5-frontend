@@ -84,9 +84,8 @@
                                 color: white;
                                 background: $slytherin-green;
                             }
-
                             &:disabled {
-                              pointer-events: none;
+                                pointer-events: none;
                             }
                         }
                         .directory-popup-label {
@@ -94,6 +93,29 @@
                             color: #333;
                             // letter-spacing: -1px;
                             // margin: 0.2em 0.2em 1em;
+                        }
+                        .form-check {
+                            margin: 0 auto;
+                            max-width: 600px;
+                            .btn--toggle {
+                                background: white;
+                                margin: 0.2em 0 1em;
+                                color: $slytherin-green;
+                                border-color: $slytherin-green;
+                                &.active{
+                                  color: white;
+                                  background: $slytherin-green;
+                                  border-color: $slytherin-green;
+                                }
+                                &:disabled {
+                                    pointer-events: none;
+                                }
+                            }
+                            .directory-popup-label {
+                                font: 16px "Century Schoolbook", Georgia, Times, serif;
+                                color: #333;
+                                // letter-spacing: -1px;
+                            }
                         }
                     }
                 }

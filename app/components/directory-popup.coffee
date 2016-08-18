@@ -9,13 +9,13 @@ DirectoryPopupComponent = Ember.Component.extend KeyboardShortcuts,
         [@get('userDetails')]
 
     isEvaluator: Ember.computed ->
-        if (@get('userDetails')[0] % 2) == 0
+        if (@get('userDetails')[0] % 3) == 0
           true
         else
           false
 
     isStudent: Ember.computed ->
-        if (@get('userDetails')[0] % 2) == 1
+        if (@get('userDetails')[0] % 3) == 1
           true
         else
           false
