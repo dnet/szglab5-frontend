@@ -12,10 +12,20 @@ DirectoryController = Ember.Controller.extend
         ['14564', 'Nev6', 'Login6', 'Neptun11', 'teszt@teszt.hu']
     ]
 
-    showTable: false
+    userDetails: {}
+
+    # showTable: false
+    showTable: true
+    showPopUp: false
     actions:
         showUserDetails: (user) ->
-            alert('Erre a sorra kattintottal: ' + user)
+            @set 'userDetails', user
+            @toggleProperty('showPopUp')
+            false
+
+        destroyUserDetails: ->
+            @set 'userDetails', {}
+            @toggleProperty('showPopUp')
             false
 
         showTable: ->

@@ -20,7 +20,11 @@
         </div>
 
         {{#if showTable}}
-            {{table-component header=header body=body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails")}}
+            {{table-component header=header body=body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails" withoutnumber=false)}}
+        {{/if}}
+
+        {{#if showPopUp}}
+          {{directory-popup header=header userDetails=userDetails onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
         {{/if}}
     </div>
 </div>

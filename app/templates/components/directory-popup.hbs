@@ -1,0 +1,20 @@
+<div class='directory-popup'>
+    {{#tether-dialog close='closeDialog' hasOverlay=false clickOutsideToClose=true}}
+        {{table-component header=header body=body clickable=false withoutNumber=true addClass='directory-popup-table'}}
+        <div class="directory-popup-fields">
+            <div class="form-inline">
+                <div class="form-group">
+                    {{input class="form-control" type="text" value=newPwd placeholder='uj jelszo'}}
+                    <button class="btn btn-success" {{action 'setNewPwd'}}>Uj jelszo beallitasa</button>
+                </div>
+            </div>
+            <div class="form-inline">
+                <div class="form-group">
+                    {{input class="form-control"type="text" value=newEmail placeholder='uj e-mail'}}
+                    <button class="btn btn-success" {{action 'setNewEmail'}}>Uj e-mail beallitasa</button>
+                </div>
+            </div>
+            <button class="btn btn-success directory-popup-form-button" {{action 'impersonateUser'}}>Felhasznalo megszemelyesitese</button>
+        </div>
+    {{/tether-dialog}}
+</div>

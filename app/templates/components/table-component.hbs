@@ -1,7 +1,9 @@
 <div class= {{addClass}}>
-    <table class='table table-striped table-sm table-bordered table-hover'>
+    <table class='table table-striped table-bordered table-hover'>
         <thead class="thead-inverse">
-            <th>#</th>
+            {{#unless withoutNumber}}
+                <th>#</th>
+            {{/unless}}
             {{#each header as |head|}}
                 <th>{{head}}</th>
             {{/each}}
@@ -9,7 +11,9 @@
         <tbody>
             {{#each body as |row number|}}
                 <tr {{action 'onRowClick' (get-array-element body number)}}>
-                    <th scope='row'>{{add number}}</th>
+                    {{#unless withoutNumber}}
+                        <th scope='row'>{{add number}}</th>
+                    {{/unless}}
                     {{#each row as |cell|}}
                         <td>{{cell}}</td>
                     {{/each}}

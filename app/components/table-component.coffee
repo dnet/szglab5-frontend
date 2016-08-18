@@ -4,7 +4,6 @@ TableComponentComponent = Ember.Component.extend
     actions:
         onRowClick: (rowData) ->
             if @get 'clickable'
-                console.log @get 'onClickRowAction'
                 @sendAction(@get('onClickRowAction'), rowData)
             else
                 false
