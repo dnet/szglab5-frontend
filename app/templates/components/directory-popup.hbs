@@ -15,6 +15,18 @@
                 </div>
             </div>
             <button class="btn btn-success directory-popup-form-button" {{action 'impersonateUser'}}>Felhasznalo megszemelyesitese</button>
+
+            {{#if isEvaluator}}
+                evaluator
+            {{/if}}
+
+            {{#if isStudent}}
+                <div class="form-inline">
+                    {{#each-in studentLabs as |labkey labvalue|}}
+                        {{directory-popup-student lab=labvalue key=labkey}}
+                    {{/each-in}}
+                </div>
+            {{/if}}
         </div>
     {{/tether-dialog}}
 </div>
