@@ -3,13 +3,13 @@
 MenuBarComponent = Ember.Component.extend
     menuItems : {
         settings: "Beállítások",
-        student: "Student"
+        student: "Hallgató"
         # logout: "Kijelentkezés"
     }
 
     adminMenu: {
       statistics: "Statisztikák",
-      directory: "Felhasznalok"
+      directory: "Felhasználók"
     }
 
 `export default MenuBarComponent`
