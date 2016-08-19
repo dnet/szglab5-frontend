@@ -1,53 +1,69 @@
 <div class='middle'>
     <div class='settings'>
-        <div class='settings-title'>{{result.description}}</div>
+        <div class='title'>Beállítások</div>
         <div class='settings-table'>
             <table>
                 <tr>
                     <td class="td-right td-bold">e-mail</td>
                     <td class="td-left">
-                        {{input class="form-control" type="email" value=user.email placeholder='e-mail'}}
+                        {{input class="" type="email" value=user.email placeholder='e-mail'}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-right td-bold">regi jelszo</td>
+                    <td class="td-right td-bold">régi jelszó</td>
                     <td class="td-left">
-                        {{input class="form-control" type="password" value=user.oldpwd placeholder='regi jelszo'}}
+                        {{input class="" type="password" value=user.oldpwd placeholder='régi jelszó'}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-right td-bold">uj jelszo ujra</td>
+                    <td class="td-right td-bold">új jelszó újra</td>
                     <td class="td-left">
-                        {{input class="form-control" type="password" value=user.newpwd placeholder='uj jelszo ujra'}}
+                        {{input class="" type="password" value=user.newpwd placeholder='új jelszó újra'}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-right td-bold">uj jelszo</td>
+                    <td class="td-right td-bold">új jelszó</td>
                     <td class="td-left">
-                        {{input class="form-control" type="password" value=user.newpwdagain placeholder='uj jelszo'}}
-                    </td>
-                </tr>
-                 <tr>
-                    <td class="td-right td-bold">levelezesi lista</td>
-                    <td class="td-left">
-                        <button type="button" id="mailListButton" class="btn btn-outline-success btn--toggle {{if mailList 'btn--checked'}}" {{action "toggleMailList"}}>Levlistára való feliratkozás</button>
+                        {{input class="" type="password" value=user.newpwdagain placeholder='új jelszó'}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-right td-bold">levelezesi lista</td>
+                    <td class="td-right td-bold">levlista</td>
                     <td class="td-left">
-                        <button type="button" id="notificationButton" class="btn btn-outline-success btn--toggle {{if notification 'btn--checked'}}" {{action "toggleNotifications"}}>E-mail értesítéskre való feliratkozás</button>
+                        <div class='btn-group' {{action 'toggleMailList'}} data-toggle="buttons">
+                            <label class="btn--toggle {{if mailList 'active'}}">
+                                <span class="checkmark">
+                                    <div class="checkmark_stem"></div>
+                                    <div class="checkmark_kick"></div>
+                                </span>
+                                {{input type="checkbox"}} <span class='label'>levlistára való feliratkozás</span>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-right td-bold">e-mail értesítések</td>
+                    <td class="td-left">
+                        <div class='btn-group' {{action 'toggleNotifications'}} data-toggle="buttons">
+                            <label class="btn--toggle {{if notification 'active'}}">
+                                <span class="checkmark">
+                                    <div class="checkmark_stem"></div>
+                                    <div class="checkmark_kick"></div>
+                                </span>
+                                {{input type="checkbox"}} <span class=''>e-mail értesítéskre való feliratkozás</span>
+                            </label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="td-right td-bold">ssh publikus kulcs</td>
                     <td class="td-left">
-                        {{textarea value=user.ssh class="form-control ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
+                        {{textarea value=user.ssh class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
                     </td>
                 </tr>
                 <tr>
                     <td class="td-middle" colspan="2">
-                        <button type="button" class="btn btn-default">Mentes</button>
+                        <button type="button" class="">Mentés</button>
                     </td>
                 </tr>
             </table>

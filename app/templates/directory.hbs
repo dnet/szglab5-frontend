@@ -1,30 +1,30 @@
 <div class="middle">
     <div class="directory">
-        <div class="directory-title">Felhasznalok</div>
+        <div class="title">Felhasználók</div>
         <div class="directory-search-fields">
-            <div class="form-inline">
-                <div class="form-group">
-                    <label class="directory-search-label">Nev</label>
-                    {{input class="form-control" type="text" value=value1 }}
-                </div>
-                <div class="form-group">
-                    <label class="directory-search-label">Login</label>
-                    {{input class="form-control"type="text" value=value2 }}
-                </div>
-                <div class="form-group">
-                    <label class="directory-search-label">Azonosito</label>
-                    {{input class="form-control" type="text" value=value3 }}
-                </div>
-                <button class="btn btn-success" {{action 'showTable'}}>Kereses</button>
+            <div class="directory-search-field">
+                <label class="label">Név</label>
+                {{input class="" type="text" value=searchName }}
+            </div>
+            <div class="directory-search-field">
+                <label class="label">Login</label>
+                {{input class="" type="text" value=searchLogin }}
+            </div>
+            <div class="directory-search-field">
+                <label class="label">Azonosító</label>
+                {{input class="" type="text" value=searchId }}
+            </div>
+            <div class="directory-search-field-button">
+                <button class="" {{action 'showTable'}}>Keresés</button>
             </div>
         </div>
-
-        {{#if showTable}}
-            {{table-component header=model.header body=model.body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails" withoutnumber=false)}}
-        {{/if}}
-
+        <div class="directory-table">
+            {{#if showTable}}
+                {{table-component header=model.header body=model.body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails" withoutnumber=false)}}
+            {{/if}}
+        </div>
         {{#if showPopUp}}
-            {{directory-popup header=model.header userDetails=model.userDetails onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
+            {{directory-popup header=model.header userDetails=model.userDetails homeworkTypes=model.homeworkTypes onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
         {{/if}}
     </div>
 </div>

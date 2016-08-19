@@ -1,33 +1,234 @@
 $slytherin-green: #2a623d;
-$lightgray: 	#D0D0D0;
-$gray:			#A4A4A4;
-$darkgray:		#A0A0A0;
-$green: 		#008000;
-$lightgreen:	#39D339;
-$orange:		#F5C53C;
-$red: 			#FF0000;
-$lightred:		#FF4444;
-$blue: 			#0492D0;
-$brown:			#BDA355;
-
+$lightgray: #D0D0D0;
+$gray: #A4A4A4;
+$darkgray: #A0A0A0;
+$green: #008000;
+$lightgreen: #39D339;
+$orange: #F5C53C;
+$red: #FF0000;
+$lightred: #FF4444;
+$blue: #0492D0;
+$brown: #BDA355;
+input {
+	display: block;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	color: #000;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
+	outline: none;
+	&:focus {
+		border-color: $slytherin-green;
+	}
+}
+textarea {
+	display: block;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	color: #000;
+	background-color: #fff;
+	background-image: none;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
+	width: 75%;
+	outline: none;
+	&:focus {
+		border-color: $slytherin-green;
+	}
+}
+div {
+	&.normal-label {
+		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+		color: #333;
+	}
+	&.popup-label {
+		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+		color: #333;
+	}
+	&.title {
+		font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+		color: #333;
+		line-height: 90%;
+		margin: 0.2em 0 1em;
+		text-align: center;
+	}
+	&.text {
+		font: 22px "Century Schoolbook", Georgia, Times, serif;
+		color: #333;
+		line-height: 90%;
+		margin: 0 1em;
+		text-align: center;
+	}
+}
+button {
+	display: inline-block;
+	font-weight: 400;
+	line-height: 1.25;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	border-color: $slytherin-green;
+	color: white;
+	background: $slytherin-green;
+	margin-top: 15px;
+	&.active,
+	&:active {
+		box-shadow: inset 0 0 0 1px $darkgray,inset 0 5px 30px $lightgray;
+	}
+	&:hover {
+		background: white;
+		color: $slytherin-green;
+	}
+	&:disabled {
+		background: $darkgray;
+		border-color: $darkgray;
+		pointer-events: none;
+	}
+}
+label {
+	&.label {
+		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+		color: #333;
+	}
+	&.btn--toggle {
+		margin-bottom: 0;
+		margin-top: 0;
+		display: inline-block;
+		font-weight: 400;
+		line-height: 1.25;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		cursor: pointer;
+		border: 1px solid transparent;
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+		border-radius: 0.25rem;
+		background: white;
+		color: $slytherin-green;
+		border-color: $slytherin-green;
+		.checkmark {
+			display: inline-block;
+			width: 12px;
+			height: 14px;
+			-ms-transform: rotate(45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(45deg);
+			/* Chrome, Safari, Opera */
+			transform: rotate(45deg);
+		}
+		.checkmark_stem {
+			position: absolute;
+			width: 3px;
+			height: 9px;
+			background-color: white;
+			left: 5px;
+			top: 6px;
+		}
+		.checkmark_kick {
+			position: absolute;
+			width: 3px;
+			height: 3px;
+			background-color: white;
+			left: 2px;
+			top: 12px;
+		}
+		.text-padding{
+			padding-right: 12px;
+		}
+		&.active,
+		&:active {
+			color: white;
+			background: $slytherin-green;
+		}
+		&:disabled {
+			pointer-events: none;
+		}
+		input {
+			position: absolute;
+			clip: rect(0,0,0,0);
+			pointer-events: none;
+		}
+	}
+}
+table {
+	margin-top: 25px;
+	width: 100%;
+	tr {
+		width: 100%;
+		text-align: center;
+		td {
+			text-align: center;
+			padding: 5px;
+		}
+		.td-left {
+			width: 50%;
+			max-width: 50%;
+			text-align: left;
+		}
+		.td-middle {
+			text-align: center;
+		}
+		.td-right {
+			width: 50%;
+			max-width: 50%;
+			text-align: right;
+		}
+		.td-bold {
+			font-weight: bold;
+		}
+		.td-review {
+			margin: 0 auto;
+			width: 500px;
+			max-width: 500px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: block;
+		}
+	}
+	th {
+		text-align: center;
+	}
+}
+body {
+	font-family: serif;
+	background-color: #f9f9fa;
+}
+html {
+	min-width: 1024px;
+	background-color: #f9f9fa;
+	// scrollbar jump trick
+	// TODO find better solution
+	// overflow-x: scroll;
+	overflow-y: scroll;
+}
 .ember-power-select-dropdown {
 	border-right: 1px solid #EEE;
 	border-left: 1px solid #EEE;
 	width: auto !important;
 	@include box-shadow(0 0 25px -5px #999);
 }
-
 .ember-power-select-status-icon {
-  //todo power select button
+	//todo power select button
 }
-
+.ember-basic-dropdown--in-place .ember-power-select-dropdown,
 .ember-power-select-dropdown.ember-basic-dropdown--above,
-.ember-power-select-dropdown.ember-basic-dropdown--below,
-.ember-basic-dropdown--in-place .ember-power-select-dropdown {
+.ember-power-select-dropdown.ember-basic-dropdown--below {
 	border: none;
 	min-width: 130px !important;
 }
-
 .ember-power-select-search {
 	input {
 		padding: 5px;
@@ -36,16 +237,18 @@ $brown:			#BDA355;
 		@include border-radius(3px);
 	}
 }
-
 .ember-power-select-option {
 	padding: 5px 8px;
-
 	&.ember-power-select-option--no-matches-message {
 		color: $darkgray;
 		font-style: italic;
 	}
 }
-
 .ember-power-select-options[role="listbox"] {
 	background-color: #FFF;
+}
+.ember-power-select-trigger {
+	border: 1px solid #FFF;
+	color: $slytherin-green;
+	@include border-radius(3px);
 }

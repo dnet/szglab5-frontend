@@ -1,28 +1,28 @@
 <div class='student-laboratory'>
-    <div class='student-laboratory-title'>{{result.description}}</div>
+    <div class='title'>{{result.description}}</div>
     <div class='student-laboratory-table'>
         <table class='table-striped table-sm table-bordered'>
             <tbody>
                 <tr>
-                    <td class="td-right td-bold">Helyszin</td>
+                    <td class="td-right td-bold">Helyszín</td>
                     <td class="td-left">{{result.location}}</td>
                 </tr>
                 <tr>
-                    <td class="td-right td-bold">Idopont</td>
+                    <td class="td-right td-bold">Időpont</td>
                     <td class="td-left">{{result.time}}</td>
                 </tr>
                 <tr>
-                    <td class="td-right td-bold">Laborvezeto</td>
+                    <td class="td-right td-bold">Laborvezető</td>
                     <td class="td-left">{{result.demonstrator}}</td>
                 </tr>
 
                 {{#if (eq result.statusCode 'during')}}
                     <tr>
-                        <td class="td-right td-bold">Beugro</td>
+                        <td class="td-right td-bold">Beugró</td>
                         <td class="td-left">{{result.entrytest}} ({{result.demonstrator}})</td>
                     </tr>
                     <tr>
-                        <td class="td-right td-bold">Hatralevo ido</td>
+                        <td class="td-right td-bold">Hátralévő idő</td>
                         <td class="td-left">{{timeLeft}} ({{result.deadline}})</td>
                     </tr>
                     <tr>
@@ -31,7 +31,7 @@
                     </tr>
 
                     <tr>
-                        <td class="td-right td-bold">Vegleges Commit</td>
+                        <td class="td-right td-bold">Végleges commit</td>
                         <td class="td-left">
                             {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
                                 {{commit}}
@@ -42,11 +42,11 @@
 
                 {{#if (eq result.statusCode 'after')}}
                     <tr>
-                        <td class="td-right td-bold">Beugro</td>
+                        <td class="td-right td-bold">Beugró</td>
                         <td class="td-left">{{result.entrytest}} ({{result.demonstrator}})</td>
                     </tr>
                     <tr>
-                        <td class="td-right td-bold">Jegyzokonyv</td>
+                        <td class="td-right td-bold">Jegyzőkönyv</td>
                         <td class="td-left" id="afterreportgrade">{{result.report.grade}} ({{result.report.evaluator}})</td>
                     </tr>
                     <tr>

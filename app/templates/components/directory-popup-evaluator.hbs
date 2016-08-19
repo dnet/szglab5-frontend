@@ -1,12 +1,15 @@
-<div class="form-group">
-    <div class="form-check">
+<div class="directory-popup-settings-evaluator">
+    <div class="checkbox-container">
         {{#each-in homeworkTypes as |key type|}}
             <div class='btn-group' {{action 'checkType' key}} data-toggle="buttons">
-                <label class="btn btn--toggle">
-                    {{input type="checkbox" checked=type.checked}} <span class='form-check-label'>{{type.name}}</span>
+                <label class="btn--toggle {{if type.checked 'active'}}">
+                  <span class="checkmark">
+                      <div class="checkmark_stem"></div>
+                      <div class="checkmark_kick"></div>
+                  </span> {{input type="checkbox"}}<span class='text-padding'>{{type.name}}</span>
                 </label>
             </div>
         {{/each-in}}
     </div>
-    <button type="button" class='btn' disabled= {{buttonDisabled}}>Feladattipus modositasa</button>
+    <button type="button" class='' disabled= {{buttonDisabled}}>Feladattipus modositasa</button>
 </div>

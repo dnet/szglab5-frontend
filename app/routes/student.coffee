@@ -3,7 +3,7 @@
 StudentRoute = Ember.Route.extend
     model: ->
         return {
-            name: "Teszt Hallgato",
+            name: "Teszt Hallgató",
             neptun: "Neptun",
             id: 1,
 

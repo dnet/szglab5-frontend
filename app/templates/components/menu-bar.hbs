@@ -3,19 +3,19 @@
     <div class="pull-xs-right ">
         <ul class="nav navbar-nav">
             {{#each-in menuItems as |menuitemkey menuitemvalue|}}
-                {{#link-to menuitemkey tagName="button" class="btn navbar-btn" }}{{menuitemvalue}}{{/link-to}}
+                {{#link-to menuitemkey tagName="button" class="navbar-btn menu-button" }}{{menuitemvalue}}{{/link-to}}
             {{/each-in}}
             <div class="btn-group admin--group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop1" type="button" class="navbar-btn dropdown-toggle menu-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     {{#each-in adminMenu as |menuitemkey menuitemvalue|}}
-                        {{#link-to menuitemkey tagName='button' class="navbar-btn dropdown-item" }}{{menuitemvalue}}{{/link-to}}
+                        {{#link-to menuitemkey tagName='button' class="navbar-btn dropdown-item menu-button" }}{{menuitemvalue}}{{/link-to}}
                     {{/each-in}}
                 </div>
             </div>
-            <button type="button" class="btn btn-default navbar-btn">Kijelentkezés</button>
+            <button type="button" class="menu-button navbar-btn">Kijelentkezés</button>
         </ul>
     </div>
 </nav>

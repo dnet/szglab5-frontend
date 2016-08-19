@@ -4,340 +4,110 @@
 @import 'app/styles/default.scss';
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
-.left {
-    position: relative;
-    width: 22%;
-    display: inline-block;
-    padding: 25px 10px 15px 25px;
-    float: left;
-    // margin-left: 30px;
-}
 .middle {
     margin: 0 auto;
     width: 75%;
     padding-top: 25px;
     .directory {
-        .directory-title {
-            font: bold 34px "Century Schoolbook", Georgia, Times, serif;
-            color: #333;
-            line-height: 90%;
-            margin: 0.2em 0 1em;
-            // letter-spacing: -1px;
-            text-align: center;
-        }
         .directory-search-fields {
             margin: 0 auto;
-            width: 75%;
-            .form-group {
-                .directory-search-label {
-                    font: bold 20px "Century Schoolbook", Georgia, Times, serif;
-                    color: #333;
-                    // letter-spacing: -1px;
-                    // margin: 0.2em 0.2em 1em;
-                }
-                input {
-                    outline: none;
-                    @include font-size(1);
-                    &:focus {
-                        border-color: $slytherin-green;
-                    }
-                }
+            width: 50%;
+            .directory-search-field {
+                display: inline-block;
+                text-align: center;
             }
-            button {
-                background: white;
-                color: $slytherin-green;
-                border-color: $slytherin-green;
-                &:hover {
-                    color: white;
-                    background: $slytherin-green;
-                }
+            .directory-search-field-button {
+                text-align: center;
             }
         }
         .directory-popup {
-            .directory-popup-table {
-                padding-top: 25px;
-                table {
-                    tr {
-                        td {
-                            text-align: center;
-                        }
-                    }
-                    th {
-                        text-align: center;
-                    }
-                }
-            }
+            width: 800px;
             .directory-popup-fields {
-                margin: 0 auto;
-                width: 100%;
-                .form-inline {
+                margin-bottom: 10px;
+                .directory-popup-field {
                     margin: 0 auto;
                     width: 100%;
-                    padding-top: 15px;
-                    .form-group {
-                        button {
-                            background: white;
-                            margin: 0.2em 0 1em;
-                            color: $slytherin-green;
-                            border-color: $slytherin-green;
-                            &:hover {
-                                color: white;
-                                background: $slytherin-green;
-                            }
-                            &:disabled {
-                                pointer-events: none;
-                            }
-                        }
-                        .directory-popup-label {
-                            font: 16px "Century Schoolbook", Georgia, Times, serif;
-                            color: #333;
-                            // letter-spacing: -1px;
-                            // margin: 0.2em 0.2em 1em;
-                        }
-                        .form-check {
-                            margin: 0 auto;
-                            max-width: 600px;
-                            .btn--toggle {
-                                background: white;
-                                margin: 0.2em 0 1em;
-                                color: $slytherin-green;
-                                border-color: $slytherin-green;
-                                &.active{
-                                  color: white;
-                                  background: $slytherin-green;
-                                  border-color: $slytherin-green;
-                                }
-                                &:disabled {
-                                    pointer-events: none;
-                                }
-                            }
-                            .directory-popup-label {
-                                font: 16px "Century Schoolbook", Georgia, Times, serif;
-                                color: #333;
-                                // letter-spacing: -1px;
-                            }
-                        }
+                    margin-bottom: 10px;
+                    input {
+                        display: inline-block;
+                        width: 75%;
+                    }
+                    button {
+                        margin-top: 0;
+                        margin-bottom: 2px;
+                        width: 190px;
+                        display: inline-block;
                     }
                 }
                 .directory-popup-form-button {
                     margin: 0 auto;
                     width: 100%;
-                    margin-top: 15px;
-                    background: white;
-                    margin: 0.2em 0 1em;
-                    color: $slytherin-green;
-                    border-color: $slytherin-green;
-                    &:hover {
-                        color: white;
-                        background: $slytherin-green;
-                    }
                 }
             }
-        }
-        .user-table {
-            padding-top: 25px;
-            table {
-                tr {
-                    td {
-                        text-align: center;
+            .directory-popup-settings {
+                border-top: thin solid black;
+                margin: 0 auto;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+                .directory-popup-settings-student {
+                    margin-top: 10px;
+                    width: 100%;
+                    button {
+                        margin-top: 0;
+                        margin-bottom: 2px;
+                        margin-left: 10px;
+                        display: inline-block;
                     }
                 }
-                th {
-                    text-align: center;
+                .directory-popup-settings-evaluator {
+                    margin-top: 10px;
+                    .checkbox-container {
+                      margin-bottom: 10px;
+                      .btn-group{
+                        text-align: center;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                        label {
+                          width: 130px;
+                          padding: 0;
+                          padding-top: 5px;
+                          padding-bottom: 5px;
+                        }
+                      }
+                    }
+                    button {
+                      margin: 0 auto;
+                      width: 100%;
+                    }
                 }
             }
         }
     }
     .statistics {
-        .statistics-title {
-            font: bold 34px "Century Schoolbook", Georgia, Times, serif;
-            color: #333;
-            line-height: 90%;
-            margin: 0.2em 0 1em;
-            // letter-spacing: -1px;
-            text-align: center;
-        }
-        .statistics-text {
-            font: 25px "Century Schoolbook", Georgia, Times, serif;
-            color: #333;
-            line-height: 90%;
-            margin: 1em 0;
-            // letter-spacing: -1px;
-            text-align: center;
-        }
-        .statistics-table {
-            margin: 0 auto;
-            width: 75%;
-            table {
-                td {
-                    text-align: center;
-                }
-                th {
-                    text-align: center;
+        .statistics-content {
+            margin-top: 25px;
+            .statistics-table {
+                margin: 0 auto;
+                width: 75%;
+                table {
+                    margin-top: 15px;
                 }
             }
         }
     }
     .settings {
-        .settings-title {
-            font: bold 34px "Century Schoolbook", Georgia, Times, serif;
-            color: #333;
-            line-height: 90%;
-            margin: 0.2em 0 1em;
-            // letter-spacing: -1px;
-            text-align: center;
-        }
         .settings-table {
             table {
-                width: 100%;
                 tr {
-                    width: 100%;
-                    text-align: center;
-                    td {
-                        padding: 2px 5px;
-                        .btn--toggle {
-                            background: white;
-                            color: $slytherin-green;
-                            border-color: $slytherin-green;
-                        }
-                        .btn--checked {
-                            background: $slytherin-green;
-                            border-color: $slytherin-green;
-                            color: white;
-                        }
-                    }
                     .td-left {
-                        width: 50%;
-                        max-width: 50%;
-                        text-align: left;
                         input {
-                            padding: 5px;
-                            outline: none;
-                            width: 50%;
-                            // border: 0.5px solid $slytherin-green;
-                            line-height: 25px;
-                            // @include box-shadow(inset 0 0 0 1000px #FFF);
-                            @include font-size(1);
-                            // @include border-radius(0);
-                            &:focus {
-                                border-color: $slytherin-green;
-                            }
-                        }
-                        textarea {
-                            padding: 5px;
-                            outline: none;
                             width: 75%;
-                            // border: 0.5px solid $slytherin-green;
-                            // line-height: 25px;
-                            // @include box-shadow(inset 0 0 0 1000px #FFF);
-                            @include font-size(1);
-                            // @include border-radius(0);
-                            &:focus {
-                                border-color: $slytherin-green;
+                        }
+                        label {
+                            &.btn--toggle {
+                                width: 300px;
                             }
-                        }
-                    }
-                    .td-middle {
-                        text-align: center;
-                        button {
-                            background: white;
-                            margin: 0.2em 0 1em;
-                            color: $slytherin-green;
-                            border-color: $slytherin-green;
-                            &:hover {
-                                color: white;
-                                background: $slytherin-green;
-                            }
-                        }
-                    }
-                    .td-right {
-                        width: 50%;
-                        max-width: 50%;
-                        text-align: right;
-                    }
-                    .td-bold {
-                        font-weight: bold;
-                    }
-                    .td-review {
-                        margin: 0 auto;
-                        width: 400px;
-                        max-width: 400px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        display: block;
-                    }
-                }
-            }
-        }
-    }
-}
-.right {
-    padding-top: 25px;
-    position: relative;
-    width: 78%;
-    padding: 50px 15px;
-    float: right;
-    .output {
-        position: relative;
-        background-color: #FFF;
-        overflow: hidden;
-        padding: 25px;
-        .student-laboratory-chooser {
-            font: bold 34px "Century Schoolbook", Georgia, Times, serif;
-            color: #333;
-            line-height: 90%;
-            margin: 0.2em 0 1em;
-            // letter-spacing: -1px;
-            text-align: center;
-        }
-        .student-laboratory {
-            .student-laboratory-title {
-                font: bold 34px "Century Schoolbook", Georgia, Times, serif;
-                color: #333;
-                line-height: 90%;
-                margin: 0.2em 0 1em;
-                // letter-spacing: -1px;
-                text-align: center;
-            }
-            .student-laboratory-table {
-                table {
-                    width: 100%;
-                    tr {
-                        width: 100%;
-                        text-align: center;
-                        td {
-                            padding: 2px 5px;
-                            .ember-power-select-trigger {
-                                border: 1px solid #FFF;
-                                color: $slytherin-green;
-                                @include border-radius(3px);
-                            }
-                        }
-                        .td-left {
-                            width: 50%;
-                            max-width: 50%;
-                            text-align: left;
-                        }
-                        .td-middle {
-                            text-align: center;
-                        }
-                        .td-right {
-                            width: 50%;
-                            max-width: 50%;
-                            text-align: right;
-                        }
-                        .td-bold {
-                            font-weight: bold;
-                        }
-                        .td-review {
-                            margin: 0 auto;
-                            width: 400px;
-                            max-width: 400px;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            display: block;
                         }
                     }
                 }
@@ -349,57 +119,47 @@
 .menu {
     background: $slytherin-green;
     border-radius: 0;
-    .admin--group {
-        margin-left: 0;
-    }
-    button {
-        background: white;
-        margin-left: 0;
-        color: $slytherin-green;
-        &:hover {
-            color: white;
-            background: $darkgray;
-        }
-        &.active {
-            background: $lightgray;
-            pointer-events: none;
-            color: $slytherin-green;
-            // &:hover {
-            // }
-        }
-    }
+    padding-right: 20px;
     .menu-text {
         color: white;
     }
     .pull-xs-right {
         display: flex;
+        .menu-button {
+            margin-top: 0;
+            background-color: white;
+            color: $slytherin-green;
+            &:hover {
+                background-color: $darkgray;
+                color: white;
+            }
+            &.active {
+                background-color: $lightgray;
+                pointer-events: none;
+            }
+        }
+        .admin--group {
+            margin-left: 0;
+        }
     }
 }
 /*navigation-menu*/
 .navigation-menu {
-    // margin-top: 30px;
     .navigation-menu-label {
         color: #fff;
         background-color: $slytherin-green;
         border-color: $slytherin-green;
         pointer-events: none;
     }
-    .navigation-menu-button {
-        color: $slytherin-green;
-        background-color: white;
-        border-color: $slytherin-green;
+    button {
+        &.navigation-menu-button {
+            border-color: $slytherin-green;
+            color: #white;
+            background-color: $slytherin-green;
+            &:hover {
+                color: $slytherin-green;
+                background-color: white;
+            }
+        }
     }
-    .navigation-menu-button:hover {
-        color: #fff;
-        background-color: $slytherin-green;
-        border-color: $slytherin-green;
-    }
-}
-body {
-    font-family: serif;
-    background-color: #f9f9fa;
-}
-html {
-    min-width: 1024px;
-    background-color: #f9f9fa;
 }

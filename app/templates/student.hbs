@@ -1,12 +1,8 @@
-<div class="left">
+<div class="middle">
     {{navigation-menu menu=menu user=model.name neptun=model.neptun goToLab=(action "goToLab")}}
-</div>
-<div class="right">
-    <div class="output">
-        {{#if labKey}}
-            {{student-laboratory result=(get model.results labKey)  selectCommit=(action "selectCommit")}}
-        {{else}}
-            <div class="student-laboratory-chooser">Valassz egy labort!</div>
-        {{/if}}
-    </div>
+    {{#if labKey}}
+        {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
+    {{else}}
+        <div class="title">Válassz egy labort!</div>
+    {{/if}}
 </div>
