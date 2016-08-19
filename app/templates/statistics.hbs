@@ -2,13 +2,13 @@
     <div class='statistics'>
         <div class='statistics-title'>Statisztikak</div>
         <div class='statistics-text'>azok az ertekelok, akiknel vannak lezaratlan jegyzokonyvek</div>
-        {{table-component header=header1 body=body1 addClass='statistics-table'  withoutnumber=false}}
+        {{table-component header=model.header1 body=model.body1 addClass='statistics-table'  withoutnumber=false}}
 
         <div class='statistics-text'>azok az ertekelok, akiknel vannak lefoglalt, de nem vegleges jegyzokonyvek</div>
-        {{table-component header=header1 body=body1 addClass='statistics-table'  withoutnumber=false}}
+        {{table-component header=model.header1 body=model.body1 addClass='statistics-table'  withoutnumber=false}}
 
         <div class='statistics-text'>azok a meresvezetok, akiknel mar van kijavitott jegyzokonyv, de meg nem veglegesitettek a jegyeket (tehat a diak nem latja)</div>
-        {{table-component header=header2 body=body2 addClass='statistics-table'  withoutnumber=false}}
+        {{table-component header=model.header2 body=model.body2 addClass='statistics-table'  withoutnumber=false}}
 
     </div>
 </div>
