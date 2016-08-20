@@ -133,6 +133,11 @@
     padding-right: 20px;
     .menu-text {
         color: white;
+        float: left;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
     }
     .pull-xs-right {
         display: flex;
@@ -149,7 +154,23 @@
                 pointer-events: none;
             }
         }
-        .admin--group {
+    }
+    .pull-xs-left {
+        display: flex;
+        .menu-button {
+            margin-top: 0;
+            background-color: white;
+            color: $menucolor;
+            &:hover {
+                background-color: $darkgray;
+                color: white;
+            }
+            &.active {
+                background-color: $lightgray;
+                pointer-events: none;
+            }
+        }
+        .menu-btn-group {
             margin-left: 0;
         }
     }

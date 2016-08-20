@@ -1,10 +1,14 @@
 `import Ember from 'ember'`
 
 IndexRoute = Ember.Route.extend
-  beforeModel: ->
+  model: ->
+    return {
+      
+    }
+  afterModel: ->
     # TODO get model first!
     # page 127 in book
-    @transitionTo('student')
+    @transitionTo('settings')
 
 
 `export default IndexRoute`
