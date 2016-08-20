@@ -18,11 +18,11 @@
                 <button {{action 'showTable'}}>Keresés</button>
             </div>
         </div>
-        <div class="directory-table">
-            {{#if showTable}}
+        {{#if showTable}}
+            <div class="directory-table">
                 {{table-component header=model.header body=model.body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails" withoutnumber=false)}}
-            {{/if}}
-        </div>
+            </div>
+        {{/if}}
         {{#if showPopUp}}
             {{directory-popup header=model.header userDetails=model.userDetails homeworkTypes=model.homeworkTypes onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
         {{/if}}

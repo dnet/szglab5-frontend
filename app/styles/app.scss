@@ -12,12 +12,19 @@
         .directory-search-fields {
             margin: 0 auto;
             width: 50%;
+            min-width: 700px;
+            text-align: center;
             .directory-search-field {
                 display: inline-block;
                 text-align: center;
             }
             .directory-search-field-button {
                 text-align: center;
+            }
+        }
+        .directory-table {
+            table {
+                background: white;
             }
         }
         .directory-popup {
@@ -43,6 +50,11 @@
                     margin: 0 auto;
                     width: 100%;
                 }
+                .directory-popup-table {
+                    table {
+                        background: white;
+                    }
+                }
             }
             .directory-popup-settings {
                 border-top: thin solid black;
@@ -63,22 +75,20 @@
                 .directory-popup-settings-evaluator {
                     margin-top: 10px;
                     .checkbox-container {
-                      margin-bottom: 10px;
-                      .btn-group{
-                        text-align: center;
                         margin-bottom: 10px;
-                        margin-left: 5px;
-                        label {
-                          width: 150px;
-                          padding: 0;
-                          padding-top: 5px;
-                          padding-bottom: 5px;
+                        .btn-group {
+                            text-align: center;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                            label {
+                                width: 150px;
+                                padding: 5px 0;
+                            }
                         }
-                      }
                     }
                     button {
-                      margin: 0 auto;
-                      width: 100%;
+                        margin: 0 auto;
+                        width: 100%;
                     }
                 }
             }
@@ -90,6 +100,7 @@
             .statistics-table {
                 margin: 0 auto;
                 width: 75%;
+                background: white;
                 table {
                     margin-top: 15px;
                 }
@@ -117,7 +128,7 @@
 }
 /*menu-bar*/
 .menu {
-    background: $slytherin-green;
+    background: $menucolor;
     border-radius: 0;
     padding-right: 20px;
     .menu-text {
@@ -128,7 +139,7 @@
         .menu-button {
             margin-top: 0;
             background-color: white;
-            color: $slytherin-green;
+            color: $menucolor;
             &:hover {
                 background-color: $darkgray;
                 color: white;
@@ -147,17 +158,17 @@
 .navigation-menu {
     .navigation-menu-label {
         color: #fff;
-        background-color: $slytherin-green;
-        border-color: $slytherin-green;
+        background-color: $maincolor;
+        border-color: $maincolor;
         pointer-events: none;
     }
     button {
         &.navigation-menu-button {
-            border-color: $slytherin-green;
+            border-color: $maincolor;
             color: #white;
-            background-color: $slytherin-green;
+            background-color: $maincolor;
             &:hover {
-                color: $slytherin-green;
+                color: $maincolor;
                 background-color: white;
             }
         }

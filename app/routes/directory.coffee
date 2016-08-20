@@ -18,7 +18,7 @@ DirectoryRoute = Ember.Route.extend
 
       homeworkTypes: {
           type21: { name: '21-KONYV', checked: false},
-          type22: { name: '22-AUTO', checked: false},
+          type22: { name: '22-AUTO', checked: true},
           type23: { name: '23-SZORAK', checked: false},
           type24: { name: '24-GYART', checked: false},
           type25: { name: '25-KONF', checked: false},

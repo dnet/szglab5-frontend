@@ -1,4 +1,8 @@
-$slytherin-green: #2a623d;
+$maincolor: #2A623D;
+$menucolor: #2A623D;
+$slytheringreen: #2A623D;
+$background: #F9F9FA;
+$oldbackground: #F9F9FA;
 $lightgray: #D0D0D0;
 $gray: #A4A4A4;
 $darkgray: #A0A0A0;
@@ -9,39 +13,7 @@ $red: #FF0000;
 $lightred: #FF4444;
 $blue: #0492D0;
 $brown: #BDA355;
-input {
-	display: block;
-	width: 100%;
-	padding: 0.5rem 0.75rem;
-	font-size: 1rem;
-	line-height: 1.25;
-	color: #000;
-	background-color: #fff;
-	background-image: none;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	border-radius: 0.25rem;
-	outline: none;
-	&:focus {
-		border-color: $slytherin-green;
-	}
-}
-textarea {
-	display: block;
-	padding: 0.5rem 0.75rem;
-	font-size: 1rem;
-	line-height: 1.25;
-	color: #000;
-	background-color: #fff;
-	background-image: none;
-	background-clip: padding-box;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	border-radius: 0.25rem;
-	width: 75%;
-	outline: none;
-	&:focus {
-		border-color: $slytherin-green;
-	}
-}
+
 div {
 	&.normal-label {
 		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
@@ -78,9 +50,9 @@ button {
 	padding: 0.5rem 1rem;
 	font-size: 1rem;
 	border-radius: 0.25rem;
-	border-color: $slytherin-green;
+	border-color: $maincolor;
 	color: white;
-	background: $slytherin-green;
+	background: $maincolor;
 	margin-top: 15px;
 	&.active,
 	&:active {
@@ -88,7 +60,7 @@ button {
 	}
 	&:hover {
 		background: white;
-		color: $slytherin-green;
+		color: $maincolor;
 	}
 	&:disabled {
 		background: $darkgray;
@@ -116,8 +88,8 @@ label {
 		font-size: 1rem;
 		border-radius: 0.25rem;
 		background: white;
-		color: $slytherin-green;
-		border-color: $slytherin-green;
+		color: $maincolor;
+		border-color: $maincolor;
 		.checkmark {
 			display: inline-block;
 			width: 12px;
@@ -144,13 +116,19 @@ label {
 			left: 2px;
 			top: 12px;
 		}
-		.text-padding{
+		.text-padding {
 			padding-right: 12px;
 		}
 		&.active,
 		&:active {
-			color: white;
-			background: $slytherin-green;
+			// color: white;
+			// background: $maincolor;
+			.checkmark_kick {
+				background-color: $maincolor;
+			}
+			.checkmark_stem {
+				background-color: $maincolor;
+			}
 		}
 		&:disabled {
 			pointer-events: none;
@@ -202,13 +180,46 @@ table {
 		text-align: center;
 	}
 }
+input {
+	display: block;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	color: #000;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
+	outline: none;
+	&:focus {
+		border-color: $maincolor;
+	}
+}
+textarea {
+	display: block;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	color: #000;
+	background-color: #fff;
+	background-image: none;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
+	width: 75%;
+	outline: none;
+	&:focus {
+		border-color: $maincolor;
+	}
+}
 body {
 	font-family: serif;
-	background-color: #f9f9fa;
+	background-color: $background;
 }
 html {
 	min-width: 1024px;
-	background-color: #f9f9fa;
+	background-color: $background;
 	// scrollbar jump trick
 	// TODO find better solution
 	// overflow-x: scroll;
@@ -249,6 +260,6 @@ html {
 }
 .ember-power-select-trigger {
 	border: 1px solid #FFF;
-	color: $slytherin-green;
+	color: $maincolor;
 	@include border-radius(3px);
 }
