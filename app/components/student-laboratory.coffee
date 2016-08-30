@@ -2,7 +2,7 @@
 
 StudentLaboratoryComponent = Ember.Component.extend
     init: ->
-        @_super();
+        @_super()
         @tick()
 
     tick: ->

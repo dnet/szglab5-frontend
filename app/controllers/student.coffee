@@ -1,14 +1,8 @@
 `import Ember from 'ember'`
 
 StudentController = Ember.Controller.extend
-    menu: Ember.computed ->
-      menuArray = {}
-      for lab of @get('model.results')
-          keystring = 'model.results.' + lab + '.description'
-          menuArray[lab] = @get(keystring)
-      menuArray
 
-    labKey: ""
+    labKey: Ember.computed.alias 'model.currentLab'
 
     actions:
       goToLab: (key) ->

@@ -1,24 +1,12 @@
 `import Ember from 'ember'`
+`import MenuHelper from '../mixins/menu-helper'`
 
-MenuBarComponent = Ember.Component.extend
-    studentMenu: {
-        student: "Hallgató"
-        # logout: "Kijelentkezés"
-    }
-
-    adminMenu: {
-        statistics: "Statisztikák",
-        directory: "Felhasználók"
-    }
-    demonstratorMenu: {
-    }
-    evaluatorMenu: {
-    }
+MenuBarComponent = Ember.Component.extend MenuHelper,
 
     # userRightLabels: ['student', 'evaluator', 'demonstrator', 'admin']
     userRightLabels: ['student', 'admin']
 
-    userRights: ['admin']
+    userRights: ['student']
 
     actions:
         changeUserRight: (right) ->
