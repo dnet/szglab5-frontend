@@ -21,9 +21,9 @@ StudentLaboratoryComponent = Ember.Component.extend
         # moment = @get('moment')
         # now = new Date()
         diff = moment(deadline).diff(moment(), 'hours')
-        if diff <= 0
+        unless diff > 0
             diff = moment(deadline).diff(moment(), 'minutes')
-            if diff <= 0
+            unless diff > 0
                 diff = 0;
             return diff + " perc"
         return diff + " óra"
