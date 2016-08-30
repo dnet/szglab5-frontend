@@ -1,5 +1,4 @@
 <div class="middle">
-    {{navigation-menu menu=menu user=model.name neptun=model.neptun goToLab=(action "goToLab")}}
     {{#if labKey}}
         {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
     {{else}}

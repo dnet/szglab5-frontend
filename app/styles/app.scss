@@ -175,23 +175,3 @@
         }
     }
 }
-/*navigation-menu*/
-.navigation-menu {
-    .navigation-menu-label {
-        color: #fff;
-        background-color: $maincolor;
-        border-color: $maincolor;
-        pointer-events: none;
-    }
-    button {
-        &.navigation-menu-button {
-            border-color: $maincolor;
-            color: #white;
-            background-color: $maincolor;
-            &:hover {
-                color: $maincolor;
-                background-color: white;
-            }
-        }
-    }
-}
