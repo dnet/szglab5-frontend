@@ -3,7 +3,7 @@
 
 StudentRoute = Ember.Route.extend MenuHelper,
   model: ->
-    model= {
+    model = {
       name: "Teszt Hallgató",
       neptun: "Neptun",
       id: 1,
@@ -48,14 +48,13 @@ StudentRoute = Ember.Route.extend MenuHelper,
           demonstrator: "Teszt Oktató 1",
         }
 
-        }
-
       }
+
+    }
 
     # set student menu items
     @get('studentMenu').clear()
     for lab of model['results']
-      # keystring = "model['results['" + lab + "'][description]"
       menuItem = model['results'][lab]['description']
       item = {
         key: lab,

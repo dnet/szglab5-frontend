@@ -8,7 +8,7 @@ Router = Ember.Router.extend
 
 Router.map ->
 
-  @route 'student', {path: '/:labkey'}
+  @route 'student'
   @route 'settings'
   @route 'statistics'
   @route 'directory'

@@ -21,10 +21,11 @@
         {{/if}}
         {{#if (eq right 'student')}}
           {{#each studentMenu as |menuitem|}}
-            {{#link-to 'student' menuitem.key tagName='button' class="navbar-btn menu-button" }}{{menuitem.value}}{{/link-to}}
+            {{#link-to 'student' tagName='button' class="navbar-btn menu-button" }}{{menuitem.value}}{{/link-to}}
           {{/each}}
         {{/if}}
       {{/each}}
+      {{#link-to 'student' tagName='button' class="navbar-btn menu-button" }}teszt{{/link-to}}
     </ul>
   </div>
   <!-- RIGHT MENU ITEMS-->
