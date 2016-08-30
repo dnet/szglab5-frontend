@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'szglab5-frontend',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -41,7 +41,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
       ENV.location = 'hash';
-      ENV.baseURL = '/~szepes/dist'
+      ENV.rootURL = '/~szepes/dist'
   }
 
   return ENV;
