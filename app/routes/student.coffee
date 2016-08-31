@@ -3,7 +3,7 @@
 
 StudentRoute = Ember.Route.extend MenuHelper,
   model: ->
-    model = {
+    return {
       name: "Teszt Hallgató",
       neptun: "Neptun",
       id: 1,
@@ -51,17 +51,5 @@ StudentRoute = Ember.Route.extend MenuHelper,
       }
 
     }
-
-    # set student menu items
-    @get('studentMenu').clear()
-    for lab of model['results']
-      menuItem = model['results'][lab]['description']
-      item = {
-        key: lab,
-        value: menuItem
-      }
-      @get('studentMenu').pushObject(item)
-
-    return model
 
 `export default StudentRoute`

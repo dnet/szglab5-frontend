@@ -1,7 +1,12 @@
 `import Ember from 'ember'`
 
 MenuHelperMixin = Ember.Mixin.create
-  studentMenu: []
+  studentMenu: [
+    {
+      key: 'student'
+      value: 'Hallgató'
+    }
+  ]
 
   adminMenu: [
     {

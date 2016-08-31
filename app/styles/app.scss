@@ -4,174 +4,222 @@
 @import 'app/styles/default.scss';
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+
 .middle {
-    margin: 0 auto;
-    width: 75%;
-    padding-top: 25px;
-    .directory {
-        .directory-search-fields {
+  margin: 0 auto;
+  width: 75%;
+  padding-top: 25px;
+
+  .directory {
+    .directory-search-fields {
+      margin: 0 auto;
+      width: 50%;
+      min-width: 700px;
+      text-align: center;
+
+      .directory-search-field {
+        display: inline-block;
+        text-align: center;
+      }
+
+      .directory-search-field-button {
+        text-align: center;
+      }
+    }
+
+    .directory-table {
+      table {
+        background: white;
+      }
+    }
+
+    .directory-popup {
+      width: 800px;
+
+      .directory-popup-fields {
+        margin-bottom: 10px;
+
+        .directory-popup-field {
+          margin: 0 auto;
+          width: 100%;
+          margin-bottom: 10px;
+
+          input {
+            display: inline-block;
+            width: 75%;
+          }
+
+          button {
+            margin-top: 0;
+            margin-bottom: 2px;
+            width: 190px;
+            display: inline-block;
+          }
+        }
+
+        .directory-popup-form-button {
+          margin: 0 auto;
+          width: 100%;
+        }
+
+        .directory-popup-table {
+          table {
+            background: white;
+          }
+        }
+      }
+
+      .directory-popup-settings {
+        border-top: thin solid black;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+
+        .directory-popup-settings-student {
+          margin-top: 10px;
+          width: 100%;
+
+          button {
+            margin-top: 0;
+            margin-bottom: 2px;
+            margin-left: 10px;
+            display: inline-block;
+          }
+        }
+
+        .directory-popup-settings-evaluator {
+          margin-top: 10px;
+
+          .checkbox-container {
+            margin-bottom: 10px;
+
+            .btn-group {
+              text-align: center;
+              margin-bottom: 10px;
+              margin-left: 5px;
+
+              label {
+                width: 150px;
+                padding: 5px 0;
+              }
+            }
+          }
+
+          button {
             margin: 0 auto;
-            width: 50%;
-            min-width: 700px;
-            text-align: center;
-            .directory-search-field {
-                display: inline-block;
-                text-align: center;
-            }
-            .directory-search-field-button {
-                text-align: center;
-            }
+            width: 100%;
+          }
         }
-        .directory-table {
-            table {
-                background: white;
-            }
-        }
-        .directory-popup {
-            width: 800px;
-            .directory-popup-fields {
-                margin-bottom: 10px;
-                .directory-popup-field {
-                    margin: 0 auto;
-                    width: 100%;
-                    margin-bottom: 10px;
-                    input {
-                        display: inline-block;
-                        width: 75%;
-                    }
-                    button {
-                        margin-top: 0;
-                        margin-bottom: 2px;
-                        width: 190px;
-                        display: inline-block;
-                    }
-                }
-                .directory-popup-form-button {
-                    margin: 0 auto;
-                    width: 100%;
-                }
-                .directory-popup-table {
-                    table {
-                        background: white;
-                    }
-                }
-            }
-            .directory-popup-settings {
-                border-top: thin solid black;
-                margin: 0 auto;
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
-                .directory-popup-settings-student {
-                    margin-top: 10px;
-                    width: 100%;
-                    button {
-                        margin-top: 0;
-                        margin-bottom: 2px;
-                        margin-left: 10px;
-                        display: inline-block;
-                    }
-                }
-                .directory-popup-settings-evaluator {
-                    margin-top: 10px;
-                    .checkbox-container {
-                        margin-bottom: 10px;
-                        .btn-group {
-                            text-align: center;
-                            margin-bottom: 10px;
-                            margin-left: 5px;
-                            label {
-                                width: 150px;
-                                padding: 5px 0;
-                            }
-                        }
-                    }
-                    button {
-                        margin: 0 auto;
-                        width: 100%;
-                    }
-                }
-            }
-        }
+      }
     }
-    .statistics {
-        .statistics-content {
-            margin-top: 25px;
-            .statistics-table {
-                margin: 0 auto;
-                width: 75%;
-                background: white;
-                table {
-                    margin-top: 15px;
-                }
-            }
+  }
+
+  .statistics {
+    .statistics-content {
+      margin-top: 25px;
+
+      .statistics-table {
+        margin: 0 auto;
+        width: 75%;
+        background: white;
+
+        table {
+          margin-top: 15px;
         }
+      }
     }
-    .settings {
-        .settings-table {
-            table {
-                tr {
-                    .td-left {
-                        input {
-                            width: 75%;
-                        }
-                        label {
-                            &.btn--toggle {
-                                width: 300px;
-                            }
-                        }
-                    }
-                }
+  }
+
+  .student {
+    .student-lab-buttons {
+      margin: 0 auto;
+      width: 50%;
+      min-width: 700px;
+      text-align: center;
+    }
+
+    .student-lab-content {
+      margin-top: 25px;
+    }
+  }
+
+  .settings {
+    .settings-table {
+      table {
+        tr {
+          .td-left {
+            input {
+              width: 75%;
             }
+
+            label {
+              &.btn--toggle {
+                width: 300px;
+              }
+            }
+          }
         }
+      }
     }
+  }
 }
 /*menu-bar*/
 .menu {
-    background: $menucolor;
-    border-radius: 0;
-    padding-right: 20px;
-    .menu-text {
+  background: $menucolor;
+  border-radius: 0;
+  padding-right: 20px;
+
+  .menu-text {
+    color: white;
+    float: left;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .pull-xs-right {
+    display: flex;
+
+    .menu-button {
+      margin-top: 0;
+      background-color: white;
+      color: $menucolor;
+
+      &:hover {
+        background-color: $darkgray;
         color: white;
-        float: left;
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-        margin-right: 1rem;
-        font-size: 1.25rem;
+      }
+
+      &.active {
+        background-color: $lightgray;
+        pointer-events: none;
+      }
     }
-    .pull-xs-right {
-        display: flex;
-        .menu-button {
-            margin-top: 0;
-            background-color: white;
-            color: $menucolor;
-            &:hover {
-                background-color: $darkgray;
-                color: white;
-            }
-            &.active {
-                background-color: $lightgray;
-                pointer-events: none;
-            }
-        }
+  }
+
+  .pull-xs-left {
+    display: flex;
+
+    .menu-button {
+      margin-top: 0;
+      background-color: white;
+      color: $menucolor;
+
+      &:hover {
+        background-color: $darkgray;
+        color: white;
+      }
+
+      &.active {
+        background-color: $lightgray;
+        pointer-events: none;
+      }
     }
-    .pull-xs-left {
-        display: flex;
-        .menu-button {
-            margin-top: 0;
-            background-color: white;
-            color: $menucolor;
-            &:hover {
-                background-color: $darkgray;
-                color: white;
-            }
-            &.active {
-                background-color: $lightgray;
-                pointer-events: none;
-            }
-        }
-        .menu-btn-group {
-            margin-left: 0;
-        }
+
+    .menu-btn-group {
+      margin-left: 0;
     }
+  }
 }

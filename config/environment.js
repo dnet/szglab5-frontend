@@ -40,7 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-      ENV.location = 'hash';
+      // ENV.location = 'hash';
       ENV.rootURL = '/~szepes/dist'
   }
 

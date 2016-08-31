@@ -1,7 +1,15 @@
 <div class="middle">
-    {{#if labKey}}
-        {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
-    {{else}}
+  <div class="student">
+    <div class="student-lab-buttons">
+      {{#each labKeys as |lab|}}
+        <button type="button" {{action 'goToLab' lab.key}}>{{lab.description}}</button>
+      {{/each}}
+    </div>
+    <div class="student-lab-content">
+      {{#if labKey}} {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
+      {{else}}
         <div class="title">Válassz egy labort!</div>
-    {{/if}}
+      {{/if}}
+    </div>
+  </div>
 </div>
