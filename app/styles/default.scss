@@ -19,10 +19,12 @@ div {
 		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
 		color: #333;
 	}
+
 	&.popup-label {
 		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
 		color: #333;
 	}
+
 	&.title {
 		font: bold 34px "Century Schoolbook", Georgia, Times, serif;
 		color: #333;
@@ -30,6 +32,7 @@ div {
 		margin: 0.2em 0 1em;
 		text-align: center;
 	}
+
 	&.text {
 		font: 22px "Century Schoolbook", Georgia, Times, serif;
 		color: #333;
@@ -38,6 +41,7 @@ div {
 		text-align: center;
 	}
 }
+
 button {
 	display: inline-block;
 	font-weight: 400;
@@ -48,31 +52,36 @@ button {
 	cursor: pointer;
 	border: 1px solid transparent;
 	padding: 0.5rem 1rem;
-	font-size: 1rem;
+	font-size: 18px;
 	border-radius: 0.25rem;
 	border-color: $maincolor;
 	color: white;
 	background: $maincolor;
 	margin-top: 15px;
+
 	&.active,
 	&:active {
 		box-shadow: inset 0 0 0 1px $darkgray,inset 0 5px 30px $lightgray;
 	}
+
 	&:hover {
 		background: white;
 		color: $maincolor;
 	}
+
 	&:disabled {
 		background: $darkgray;
 		border-color: $darkgray;
 		pointer-events: none;
 	}
 }
+
 label {
 	&.label {
-		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+		font: bold 22px "Century Schoolbook", Georgia, Times, serif;
 		color: #333;
 	}
+
 	&.btn--toggle {
 		margin-bottom: 0;
 		margin-top: 0;
@@ -85,11 +94,12 @@ label {
 		cursor: pointer;
 		border: 1px solid transparent;
 		padding: 0.5rem 1rem;
-		font-size: 1rem;
+		font-size: 18px;
 		border-radius: 0.25rem;
 		background: white;
 		color: $maincolor;
 		border-color: $maincolor;
+
 		.checkmark {
 			display: inline-block;
 			width: 12px;
@@ -100,6 +110,7 @@ label {
 			/* Chrome, Safari, Opera */
 			transform: rotate(45deg);
 		}
+
 		.checkmark_stem {
 			position: absolute;
 			width: 3px;
@@ -108,6 +119,7 @@ label {
 			left: 5px;
 			top: 6px;
 		}
+
 		.checkmark_kick {
 			position: absolute;
 			width: 3px;
@@ -116,9 +128,11 @@ label {
 			left: 2px;
 			top: 12px;
 		}
+
 		.text-padding {
 			padding-right: 12px;
 		}
+
 		&.active,
 		&:active {
 			// color: white;
@@ -126,13 +140,16 @@ label {
 			.checkmark_kick {
 				background-color: $maincolor;
 			}
+
 			.checkmark_stem {
 				background-color: $maincolor;
 			}
 		}
+
 		&:disabled {
 			pointer-events: none;
 		}
+
 		input {
 			position: absolute;
 			clip: rect(0,0,0,0);
@@ -140,46 +157,64 @@ label {
 		}
 	}
 }
+
 table {
 	margin-top: 25px;
 	width: 100%;
+	font-size: 18px;
+
 	tr {
 		width: 100%;
 		text-align: center;
+
 		td {
 			text-align: center;
 			padding: 5px;
+
+			&.td-left {
+				width: 50%;
+				max-width: 50%;
+				text-align: left;
+			}
+
+			&.td-middle {
+				text-align: center;
+			}
+
+			&.td-right {
+				width: 50%;
+				max-width: 50%;
+				text-align: right;
+			}
+
+			&.td-bold {
+				font-weight: bold;
+			}
+
+			&.td-review {
+				margin: 0 auto;
+				width: 500px;
+				max-width: 500px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: block;
+			}
 		}
-		.td-left {
-			width: 50%;
-			max-width: 50%;
-			text-align: left;
-		}
-		.td-middle {
+
+		th {
 			text-align: center;
 		}
-		.td-right {
-			width: 50%;
-			max-width: 50%;
-			text-align: right;
-		}
-		.td-bold {
-			font-weight: bold;
-		}
-		.td-review {
-			margin: 0 auto;
-			width: 500px;
-			max-width: 500px;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			display: block;
-		}
 	}
-	th {
-		text-align: center;
+
+	thead {
+		th {
+			font-size: 20px;
+			text-align: center;
+		}
 	}
 }
+
 input {
 	display: block;
 	width: 100%;
@@ -192,10 +227,12 @@ input {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 0.25rem;
 	outline: none;
+
 	&:focus {
 		border-color: $maincolor;
 	}
 }
+
 textarea {
 	display: block;
 	padding: 0.5rem 0.75rem;
@@ -209,14 +246,17 @@ textarea {
 	border-radius: 0.25rem;
 	width: 75%;
 	outline: none;
+
 	&:focus {
 		border-color: $maincolor;
 	}
 }
+
 body {
 	font-family: serif;
 	background-color: $background;
 }
+
 html {
 	min-width: 1024px;
 	background-color: $background;
@@ -225,21 +265,25 @@ html {
 	// overflow-x: scroll;
 	overflow-y: scroll;
 }
+
 .ember-power-select-dropdown {
 	border-right: 1px solid #EEE;
 	border-left: 1px solid #EEE;
 	width: auto !important;
 	@include box-shadow(0 0 25px -5px #999);
 }
+
 .ember-power-select-status-icon {
 	//todo power select button
 }
+
 .ember-basic-dropdown--in-place .ember-power-select-dropdown,
 .ember-power-select-dropdown.ember-basic-dropdown--above,
 .ember-power-select-dropdown.ember-basic-dropdown--below {
 	border: none;
 	min-width: 130px !important;
 }
+
 .ember-power-select-search {
 	input {
 		padding: 5px;
@@ -248,16 +292,20 @@ html {
 		@include border-radius(3px);
 	}
 }
+
 .ember-power-select-option {
 	padding: 5px 8px;
+
 	&.ember-power-select-option--no-matches-message {
 		color: $darkgray;
 		font-style: italic;
 	}
 }
+
 .ember-power-select-options[role="listbox"] {
 	background-color: #FFF;
 }
+
 .ember-power-select-trigger {
 	border: 1px solid #FFF;
 	color: $maincolor;
