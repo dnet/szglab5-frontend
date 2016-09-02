@@ -150,13 +150,17 @@
         tr {
           .td-left {
             input {
-              width: 75%;
+              width: 510px;
             }
 
             label {
               &.btn--toggle {
-                width: 300px;
+                width: 510px;;
               }
+            }
+
+            textarea {
+              width: 510px;
             }
           }
         }
