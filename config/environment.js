@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'szglab5-frontend',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -41,7 +41,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
       // ENV.location = 'hash';
-      ENV.rootURL = '/~szepes/dist'
+      ENV.rootURL = '/~szepes'
   }
 
   return ENV;
