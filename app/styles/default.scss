@@ -253,12 +253,17 @@ textarea {
 }
 
 body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	font-family: serif;
+	zoom: 100%;
+	min-width: 1200px;
 	background-color: $background;
 }
 
 html {
-	min-width: 1024px;
+	// font-size: 62.5%;
 	background-color: $background;
 	// scrollbar jump trick
 	// TODO find better solution
