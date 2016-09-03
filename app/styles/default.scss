@@ -4,29 +4,24 @@ $slytheringreen: #2A623D;
 $background: #F9F9FA;
 $oldbackground: #F9F9FA;
 $lightgray: #D0D0D0;
-$gray: #A4A4A4;
 $darkgray: #A0A0A0;
-$green: #008000;
-$lightgreen: #39D339;
-$orange: #F5C53C;
-$red: #FF0000;
-$lightred: #FF4444;
-$blue: #0492D0;
-$brown: #BDA355;
 
 div {
 	&.normal-label {
-		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+		font-weight: bold;
+		font-size: 20px;
 		color: #333;
 	}
 
 	&.popup-label {
-		font: bold 20px "Century Schoolbook", Georgia, Times, serif;
+		font-weight: bold;
+		font-size: 20px;
 		color: #333;
 	}
 
 	&.title {
-		font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+		font-weight: bold;
+		font-size: 34px;
 		color: #333;
 		line-height: 90%;
 		margin: 0.2em 0 1em;
@@ -34,7 +29,7 @@ div {
 	}
 
 	&.text {
-		font: 22px "Century Schoolbook", Georgia, Times, serif;
+		font-size: 22px;
 		color: #333;
 		line-height: 90%;
 		margin: 0 1em;
@@ -78,7 +73,8 @@ button {
 
 label {
 	&.label {
-		font: bold 22px "Century Schoolbook", Georgia, Times, serif;
+		font-weight: bold;
+		font-size: 22px;
 		color: #333;
 	}
 
@@ -252,11 +248,12 @@ textarea {
 	}
 }
 
+
 body {
+	font-family: 'Open Sans', sans-serif;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-family: serif;
 	zoom: 100%;
 	min-width: 1200px;
 	background-color: $background;

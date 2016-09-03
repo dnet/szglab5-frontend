@@ -1,27 +1,27 @@
 @mixin font-size($sizeValue: 1.6) {
-    font-size: ($sizeValue * 10) + px;
-    font-size: $sizeValue + rem;
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
 }
 @mixin border-radius($radius: 5px) {
-     @include css3-prefix( 'border-radius', $radius);
+   @include css3-prefix( 'border-radius', $radius);
 }
 @mixin css3-prefix($property, $value) {
-    -webkit-#{$property}: #{$value};
-    -khtml-#{$property}: #{$value};
-    -moz-#{$property}: #{$value};
-    -ms-#{$property}: #{$value};
-    -o-#{$property}: #{$value};
-    #{$property}: #{$value};
+  -webkit-#{$property}: #{$value};
+  -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
 }
 @mixin box-shadow($shadow...) {
-    @include css3-prefix('box-shadow', $shadow);
+   @include css3-prefix( 'box-shadow', $shadow);
 }
 @mixin opacity($opacity: 0.5) {
-    $opacityMultiplied: ($opacity * 100);
-    filter: alpha(opacity=$opacityMultiplied);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacityMultiplied + ")";
-    @include css3-prefix('opacity', $opacity);
+  $opacityMultiplied: ($opacity * 100);
+  filter: alpha(opacity=$opacityMultiplied);
+  -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacityMultiplied + ")";
+  @include css3-prefix( 'opacity', $opacity);
 }
 @mixin transform($params) {
-    @include css3-prefix('transform', $params);
+   @include css3-prefix( 'transform', $params);
 }
