@@ -6,163 +6,187 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 
-.middle {
-  margin: 0 auto;
-  width: 75%;
+.content {
   padding-top: 25px;
+  margin: 0 auto;
+  width: 85%;
+  display: flex;
 
-  .directory {
-    .directory-search-fields {
-      margin: 0 auto;
-      width: 50%;
-      min-width: 800px;
-      text-align: center;
+  .left {
+    float: left;
+    width: 32%;
+    height: inherit;
+    background: $leftBackground;
 
-      .directory-search-field {
-        display: inline-block;
-        text-align: center;
-      }
+    .directory {
+      color: $leftIcon;
 
-      .directory-search-field-button {
-        text-align: center;
-      }
-    }
-
-    .directory-table {
-      table {
-        background: white;
+      &:before {
+        content: '\f0c0';
+        margin: 5px;
       }
     }
+  }
 
-    .directory-popup {
-      width: 800px;
+  .right {
+    float: right;
+    width: 68%;
+    padding: 25px;
+    background: white;
 
-      .directory-popup-fields {
-        margin-bottom: 10px;
+    .directory {
+      .directory-search-fields {
+        margin: 0 auto;
+        width: 50%;
+        min-width: 800px;
+        text-align: center;
 
-        .directory-popup-field {
-          margin: 0 auto;
-          width: 100%;
+        .directory-search-field {
+          display: inline-block;
+          text-align: center;
+        }
+
+        .directory-search-field-button {
+          text-align: center;
+        }
+      }
+
+      .directory-table {
+        table {
+          background: white;
+        }
+      }
+
+      .directory-popup {
+        width: 800px;
+
+        .directory-popup-fields {
           margin-bottom: 10px;
 
-          input {
-            display: inline-block;
-            width: 70%;
-          }
-
-          button {
-            margin-top: 0;
-            margin-bottom: 2px;
-            // width: 215px;
-            width: 29%;
-            display: inline-block;
-          }
-        }
-
-        .directory-popup-form-button {
-          margin: 0 auto;
-          width: 99.6%;
-        }
-
-        .directory-popup-table {
-          table {
-            background: white;
-          }
-        }
-      }
-
-      .directory-popup-settings {
-        border-top: thin solid black;
-        margin: 0 auto;
-        // width: 75%;
-        text-align: center;
-        margin-bottom: 10px;
-
-        .directory-popup-settings-student {
-          margin-top: 10px;
-          width: 100%;
-
-          button {
-            margin-top: 0;
-            margin-bottom: 2px;
-            // margin-left: 10px;
-            display: inline-block;
-          }
-        }
-
-        .directory-popup-settings-evaluator {
-          margin-top: 10px;
-
-          .checkbox-container {
-            margin-bottom: 10px;
-
-            .btn-group {
-              text-align: center;
-              margin-bottom: 10px;
-              margin-left: 5px;
-
-              label {
-                width: 200px;
-                padding: 5px 0;
-              }
-            }
-          }
-
-          button {
+          .directory-popup-field {
             margin: 0 auto;
             width: 100%;
+            margin-bottom: 10px;
+
+            input {
+              display: inline-block;
+              width: 70%;
+            }
+
+            button {
+              margin-top: 0;
+              margin-bottom: 2px;
+              // width: 215px;
+              width: 29%;
+              display: inline-block;
+            }
+          }
+
+          .directory-popup-form-button {
+            margin: 0 auto;
+            width: 99.6%;
+          }
+
+          .directory-popup-table {
+            table {
+              background: white;
+            }
+          }
+        }
+
+        .directory-popup-settings {
+          border-top: thin solid black;
+          margin: 0 auto;
+          // width: 75%;
+          text-align: center;
+          margin-bottom: 10px;
+
+          .directory-popup-settings-student {
+            margin-top: 10px;
+            width: 100%;
+
+            button {
+              margin-top: 0;
+              margin-bottom: 2px;
+              // margin-left: 10px;
+              display: inline-block;
+            }
+          }
+
+          .directory-popup-settings-evaluator {
+            margin-top: 10px;
+
+            .checkbox-container {
+              margin-bottom: 10px;
+
+              .btn-group {
+                text-align: center;
+                margin-bottom: 10px;
+                margin-left: 5px;
+
+                label {
+                  width: 200px;
+                  padding: 5px 0;
+                }
+              }
+            }
+
+            button {
+              margin: 0 auto;
+              width: 100%;
+            }
           }
         }
       }
     }
-  }
 
-  .statistics {
-    .statistics-content {
-      margin-top: 25px;
+    .statistics {
+      .statistics-content {
+        margin-top: 25px;
 
-      .statistics-table {
-        margin: 0 auto;
-        width: 75%;
-        background: white;
+        .statistics-table {
+          margin: 0 auto;
+          width: 75%;
+          background: white;
 
-        table {
-          margin-top: 15px;
+          table {
+            margin-top: 15px;
+          }
         }
       }
     }
-  }
 
-  .student {
-    .student-lab-buttons {
-      margin: 0 auto;
-      width: 50%;
-      min-width: 700px;
-      text-align: center;
+    .student {
+      .student-lab-buttons {
+        margin: 0 auto;
+        width: 50%;
+        min-width: 700px;
+        text-align: center;
+      }
+
+      .student-lab-content {
+        margin-top: 25px;
+      }
     }
 
-    .student-lab-content {
-      margin-top: 25px;
-    }
-  }
-
-  .settings {
-    .settings-table {
-      table {
-        tr {
-          .td-left {
-            input {
-              width: 510px;
-            }
-
-            label {
-              &.btn--toggle {
+    .settings {
+      .settings-table {
+        table {
+          tr {
+            .td-left {
+              input {
                 width: 510px;
               }
-            }
 
-            textarea {
-              width: 510px;
+              label {
+                &.btn--toggle {
+                  width: 510px;
+                }
+              }
+
+              textarea {
+                width: 510px;
+              }
             }
           }
         }
@@ -193,6 +217,7 @@
 
   .pull-xs-right {
     display: flex;
+
     .user {
       padding-top: 17px;
       margin-right: 5px;

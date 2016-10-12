@@ -7,6 +7,8 @@ $darkgray: #A0A0A0;
 
 $backgroundBlue: #12C8E3;
 $backgroundGreen: #8DBB00;
+$leftBackground: #7d8e90;
+$leftIcon: #748486;
 
 i {
 	color: white;
@@ -25,7 +27,7 @@ div {
 	}
 
 	&.title {
-		font-weight: bold;
+		font-weight: 100;
 		font-size: 54px;
 		color: #FFF;
 		text-align: center;
