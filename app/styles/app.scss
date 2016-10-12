@@ -11,14 +11,60 @@
   margin: 0 auto;
   width: 85%;
   display: flex;
+  margin-bottom: 101px;
+  min-width: 1500px;
 
   .left {
+
     float: left;
-    width: 32%;
+    width: 22%;
     height: inherit;
     background: $leftBackground;
+    text-align: center;
+    min-width: 350px;
+    .title {
+      color: white;
+    }
+
+    .submenu {
+      ul {
+        li {
+          list-style-type: none;
+
+          a {
+            &.submenu-text {
+              font-weight: 300;
+              font-size: 32px;
+              color: #FFF;
+              text-align: center;
+            }
+
+            &:hover {
+              color: white;
+            }
+          }
+        }
+      }
+    }
 
     .directory {
+      color: $leftIcon;
+
+      &:before {
+        content: '\f080';
+        margin: 5px;
+      }
+    }
+    .settings {
+      color: $leftIcon;
+
+      &:before {
+        content: '\f085';
+        margin: 5px;
+      }
+    }
+
+    .statistics {
       color: $leftIcon;
 
       &:before {
@@ -26,11 +72,20 @@
         margin: 5px;
       }
     }
+
+    .student {
+      color: $leftIcon;
+
+      &:before {
+        content: '\f15b';
+        margin: 5px;
+      }
+    }
   }
 
   .right {
     float: right;
-    width: 68%;
+    width: 78%;
     padding: 25px;
     background: white;
 
@@ -157,15 +212,14 @@
     }
 
     .student {
-      .student-lab-buttons {
-        margin: 0 auto;
-        width: 50%;
-        min-width: 700px;
-        text-align: center;
-      }
-
       .student-lab-content {
         margin-top: 25px;
+      }
+
+      .student-laboratory {
+        .title {
+          color: black;
+        }
       }
     }
 
@@ -229,11 +283,6 @@
       a {
         margin-right: 5px;
         color: white;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: none;
-        }
 
         &.menu-text {
           font-weight: 400;

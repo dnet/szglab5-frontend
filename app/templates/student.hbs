@@ -1,13 +1,19 @@
 <div class="left">
-
+  <div class="student">
+    <div class="title">Hallgató</div>
+    <div class="submenu">
+      <ul class="student-lab-buttons">
+        {{#each labKeys as |lab|}}
+          <li>
+            <a class="submenu-text" {{action 'goToLab' lab.key}}>{{lab.description}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="right">
   <div class="student">
-    <div class="student-lab-buttons">
-      {{#each labKeys as |lab|}}
-        <button type="button" {{action 'goToLab' lab.key}}>{{lab.description}}</button>
-      {{/each}}
-    </div>
     <div class="student-lab-content">
       {{#if labKey}} {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
       {{else}}
