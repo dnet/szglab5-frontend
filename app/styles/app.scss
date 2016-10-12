@@ -1,6 +1,6 @@
 @import "ember-cli-bootstrap-4/bootstrap"; // @import 'bootstrap';
 @import "ember-power-select";
-
+@import 'bower_components/font-awesome/scss/font-awesome';
 @import 'app/styles/mixins.scss';
 @import 'app/styles/default.scss';
 @import "ember-modal-dialog/ember-modal-structure";
@@ -157,7 +157,7 @@
 
             label {
               &.btn--toggle {
-                width: 510px;;
+                width: 510px;
               }
             }
 
@@ -172,38 +172,43 @@
 }
 /*menu-bar*/
 .menu {
-  background: $menucolor;
   border-radius: 0;
   padding-right: 20px;
 
+  .logo {
+    padding-right: 20px;
+    padding-left: 20px;
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
   .menu-text {
     color: white;
-    float: left;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    margin-right: 1rem;
-    font-size: 1.15rem;
-    &.menu-logo {
-      font-weight: bold;
-    }
+    font-size: 16px;
+    font-weight: 300;
   }
 
   .pull-xs-right {
     display: flex;
 
-    .menu-button {
-      margin-top: 0;
-      background-color: white;
-      color: $menucolor;
+    .nav {
+      padding-top: 17px;
 
-      &:hover {
-        background-color: $darkgray;
+      a {
+        margin-right: 5px;
         color: white;
-      }
+        text-decoration: none;
 
-      &.active {
-        background-color: $lightgray;
-        pointer-events: none;
+        &:hover {
+          text-decoration: none;
+        }
+
+        &.menu-text {
+          font-weight: 400;
+        }
       }
     }
   }
@@ -211,24 +216,41 @@
   .pull-xs-left {
     display: flex;
 
-    .menu-button {
-      margin-top: 0;
-      background-color: white;
-      color: $menucolor;
+    .nav {
+      padding-top: 17px;
 
-      &:hover {
-        background-color: $darkgray;
+      a {
+        margin-left: 5px;
         color: white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &.menu-text {
+          font-weight: 400;
+        }
       }
 
-      &.active {
-        background-color: $lightgray;
-        pointer-events: none;
-      }
-    }
+      select {
+        background: transparent;
 
-    .menu-btn-group {
-      margin-left: 0;
+        &.role-selector {
+          background-repeat: no-repeat;
+          border: 1px solid white;
+          cursor: pointer;
+          overflow: hidden;
+          outline: none;
+          color: white;
+          font-size: 16px;
+          font-weight: 400;
+        }
+
+        option {
+          color: black;
+        }
+      }
     }
   }
 }

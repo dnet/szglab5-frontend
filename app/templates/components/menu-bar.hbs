@@ -1,55 +1,55 @@
 <nav class="menu navbar navbar-default navbar-static-top">
-  <div class="menu-text menu-logo">laboradmin</div>
   <!-- LEFT MENU ITEMS-->
   <!-- THESE THESE SHOULD BE REMOVED-->
   <div class="pull-xs-left">
-    <ul class="nav navbar-nav">
+    <div class="logo"><img src="assets/images/logo.png"></div>
+    <div class="nav navbar-nav">
       <!-- USER ROLE CHOOSER-->
       <div class="btn-group menu-btn-group" role="group">
-        <button id="btnGroupDrop2" type="button" class="navbar-btn dropdown-toggle menu-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Choose a user
-                </button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <select class="role-selector" aria-labelledby="btnGroupDrop1" {{action 'changeUserRight' value="target.value" on='change'}}>
           {{#each userRightLabels as |userright|}}
-            <button type="button" class="navbar-btn dropdown-item menu-button" {{action 'changeUserRight' userright}}>{{userright}}</button>
+          <option value={{userright}}>
+              {{!-- <a class="navbar-btn dropdown-item menu-button" {{action 'changeUserRight' userright}}>{{userright}}</a> --}}
+              {{userright}}
+          </option>
           {{/each}}
+        </select>
         </div>
-      </div>
-    </ul>
+        {{#each userRights as |right|}}
+          {{#if (eq right 'admin')}}
+            {{#each adminMenu as |menuitem|}}
+              {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+            {{/each}}
+          {{/if}}
+          {{#if (eq right 'evaluator')}}
+            {{#each evaluatorMenu as |menuitem|}}
+              {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+            {{/each}}
+          {{/if}}
+          {{#if (eq right 'demonstrator')}}
+            {{#each demonstratorMenu as |menuitem|}}
+              {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+            {{/each}}
+          {{/if}}
+          {{#if (eq right 'student')}}
+            {{#each studentMenu as |menuitem|}}
+              {{#link-to 'student' tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+            {{/each}}
+          {{/if}}
+        {{/each}}
+    </div>
   </div>
 
 
 
   <!-- RIGHT MENU ITEMS-->
   <div class="pull-xs-right ">
-    <div class="menu-text">{{username}}</div>
-    <ul class="nav navbar-nav">
+    <div class="nav navbar-nav">
+      <div class="menu-text">{{username}}</div>
       <!-- BUTTONS BASED ON USER ROLE-->
-      {{#each userRights as |right|}}
-        {{#if (eq right 'admin')}}
-          {{#each adminMenu as |menuitem|}}
-            {{#link-to menuitem.key tagName='button' class="navbar-btn menu-button" }}{{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-        {{#if (eq right 'evaluator')}}
-          {{#each evaluatorMenu as |menuitem|}}
-            {{#link-to menuitem.key tagName='button' class="navbar-btn menu-button" }}{{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-        {{#if (eq right 'demonstrator')}}
-          {{#each demonstratorMenu as |menuitem|}}
-            {{#link-to menuitem.key tagName='button' class="navbar-btn menu-button" }}{{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-        {{#if (eq right 'student')}}
-          {{#each studentMenu as |menuitem|}}
-            {{#link-to 'student' tagName='button' class="navbar-btn menu-button" }}{{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-      {{/each}}
       <!-- BUTTONS EVERYONE SHOULD SEE-->
-      {{#link-to 'settings' tagName='button' class="navbar-btn menu-button" }}Beállítások{{/link-to}}
-      <button type="button" class="menu-button navbar-btn">Kijelentkezés</button>
-    </ul>
+      {{#link-to 'settings' tagName='a' }} <i class="fa fa-cogs" aria-hidden="true"></i>{{/link-to}}
+      <a> <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+    </div>
   </div>
 </nav>

@@ -4,18 +4,21 @@ MenuHelperMixin = Ember.Mixin.create
   studentMenu: [
     {
       key: 'student'
-      value: 'Hallgató'
+      value: 'Hallgató',
+      icon: 'file'
     }
   ]
 
   adminMenu: [
     {
       key: 'statistics',
-      value:"Statisztikák"
+      value:"Statisztikák",
+      icon: 'bar-chart'
     },
     {
       key: 'directory',
       value:"Felhasználók"
+      icon: 'users'
     }
   ]
 
