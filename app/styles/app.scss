@@ -5,8 +5,6 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 
-
-
 .content {
   padding-top: 20px;
   margin: 0 auto;
@@ -16,15 +14,17 @@
   min-width: 1500px;
 
   .left {
-
     float: left;
     width: 25%;
     height: inherit;
-    background: $leftBackground;
+    background-color: $leftBackground;
+    background-repeat: repeat;
+    background-size: 50px 50px;
     text-align: center;
     min-width: 350px;
     padding-left: 15px;
     padding-right: 15px;
+
     .title {
       color: white;
     }
@@ -50,47 +50,20 @@
       }
     }
 
-    .directory {
-      color: $leftIcon;
-
-      &:before {
-        content: '\f080';
-        margin: 5px;
-      }
+    &.directory {
+      background-image: url("images/users.png");
     }
-    .settings {
-      color: $leftIcon;
 
-      &:before {
-        content: '\f085';
-        margin: 5px;
-      }
+    &.settings {
+      background-image: url("images/cogs.png");
     }
 
     &.statistics {
-      color: $leftIcon;
-
-      &:before {
-        content: '\f080';
-        margin: 5px;
-      }
-      &:after {
-        content: '\f080';
-        margin: 5px;
-      }
+      background-image: url("images/bar-chart.png");
     }
 
-    .student {
-      color: $leftIcon;
-
-      &:before {
-        content: "\f15b";
-        margin: 5px;
-      }
-      &:after {
-        content: "\f15b";
-        margin: 5px;
-      }
+    &.student {
+      background-image: url("images/file.png");
     }
   }
 
