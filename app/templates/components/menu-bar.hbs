@@ -14,29 +14,29 @@
           </option>
           {{/each}}
         </select>
-        </div>
-        {{#each userRights as |right|}}
-          {{#if (eq right 'admin')}}
-            {{#each adminMenu as |menuitem|}}
-              {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-            {{/each}}
-          {{/if}}
-          {{#if (eq right 'evaluator')}}
-            {{#each evaluatorMenu as |menuitem|}}
-              {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-            {{/each}}
-          {{/if}}
-          {{#if (eq right 'demonstrator')}}
-            {{#each demonstratorMenu as |menuitem|}}
-              {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-            {{/each}}
-          {{/if}}
-          {{#if (eq right 'student')}}
-            {{#each studentMenu as |menuitem|}}
-              {{#link-to 'student' tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-            {{/each}}
-          {{/if}}
-        {{/each}}
+      </div>
+      {{#each userRights as |right|}}
+        {{#if (eq right 'admin')}}
+          {{#each adminMenu as |menuitem|}}
+            {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+          {{/each}}
+        {{/if}}
+        {{#if (eq right 'evaluator')}}
+          {{#each evaluatorMenu as |menuitem|}}
+            {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+          {{/each}}
+        {{/if}}
+        {{#if (eq right 'demonstrator')}}
+          {{#each demonstratorMenu as |menuitem|}}
+            {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+          {{/each}}
+        {{/if}}
+        {{#if (eq right 'student')}}
+          {{#each studentMenu as |menuitem|}}
+            {{#link-to 'student' tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
+          {{/each}}
+        {{/if}}
+      {{/each}}
     </div>
   </div>
 

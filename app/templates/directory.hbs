@@ -1,29 +1,31 @@
-<div class="left directory">
+<div class="content directory">
+  <div class="left directory">
     <div class="title">Felhasználók</div>
-</div>
-<div class="right">
-  <div class="directory">
-    <div class="directory-search-fields">
-      <div class="directory-search-field">
-        <label class="label">Név</label> {{input type="text" value=searchName }}
+  </div>
+  <div class="right">
+    <div class="directory">
+      <div class="directory-search-fields">
+        <div class="directory-search-field">
+          <label class="label">Név</label> {{input type="text" value=searchName }}
+        </div>
+        <div class="directory-search-field">
+          <label class="label">Login</label> {{input type="text" value=searchLogin }}
+        </div>
+        <div class="directory-search-field">
+          <label class="label">Azonosító</label> {{input type="text" value=searchId }}
+        </div>
+        <div class="directory-search-field-button">
+          <button {{action 'showTable'}}>Keresés</button>
+        </div>
       </div>
-      <div class="directory-search-field">
-        <label class="label">Login</label> {{input type="text" value=searchLogin }}
-      </div>
-      <div class="directory-search-field">
-        <label class="label">Azonosító</label> {{input type="text" value=searchId }}
-      </div>
-      <div class="directory-search-field-button">
-        <button {{action 'showTable'}}>Keresés</button>
-      </div>
+      {{#if showTable}}
+        <div class="directory-table">
+          {{table-component header=model.header body=model.body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails" withoutnumber=false)}}
+        </div>
+      {{/if}}
+      {{#if showPopUp}}
+        {{directory-popup header=model.header userDetails=model.userDetails homeworkTypes=model.homeworkTypes onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
+      {{/if}}
     </div>
-    {{#if showTable}}
-      <div class="directory-table">
-        {{table-component header=model.header body=model.body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails" withoutnumber=false)}}
-      </div>
-    {{/if}}
-    {{#if showPopUp}}
-      {{directory-popup header=model.header userDetails=model.userDetails homeworkTypes=model.homeworkTypes onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
-    {{/if}}
   </div>
 </div>

@@ -1,4 +1,5 @@
-<div class="left student">
+<div class="content student">
+  <div class="left">
     <div class="title">Hallgató</div>
     <div class="submenu">
       <ul class="student-lab-buttons">
@@ -9,14 +10,15 @@
         {{/each}}
       </ul>
     </div>
-</div>
-<div class="right">
-  <div class="student">
-    <div class="student-lab-content">
-      {{#if labKey}} {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
-      {{else}}
-        <div class="title">Válassz egy labort!</div>
-      {{/if}}
+  </div>
+  <div class="right">
+    <div class="student">
+      <div class="student-lab-content">
+        {{#if labKey}} {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
+        {{else}}
+          <div class="title">Válassz egy labort!</div>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>

@@ -5,50 +5,14 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 
-.content {
-  padding-top: 20px;
-  margin: 0 auto;
-  width: 85%;
-  display: flex;
-  margin-bottom: 96px;
-  min-width: 1500px;
-
-  .left {
-    float: left;
-    width: 25%;
-    height: inherit;
+.main-content {
+  .content {
+    clear: both;
+    min-width: 1500px;
+    margin: 50px;
     background-color: $leftBackground;
     background-repeat: repeat;
     background-size: 50px 50px;
-    text-align: center;
-    min-width: 350px;
-    padding-left: 15px;
-    padding-right: 15px;
-
-    .title {
-      color: white;
-    }
-
-    .submenu {
-      ul {
-        li {
-          list-style-type: none;
-
-          a {
-            &.submenu-text {
-              font-weight: 300;
-              font-size: 32px;
-              color: #FFF;
-              text-align: center;
-            }
-
-            &:hover {
-              color: white;
-            }
-          }
-        }
-      }
-    }
 
     &.directory {
       background-image: url("images/users.png");
@@ -65,165 +29,200 @@
     &.student {
       background-image: url("images/file.png");
     }
-  }
 
-  .right {
-    float: right;
-    width: 78%;
-    padding: 15px;
-    background: white;
+    .left {
+      width: 32%;
+      float: left;
+      clear: none;
+      padding: 0 15px;
+      text-align: center;
+      min-width: 350px;
 
-    .directory {
-      .directory-search-fields {
-        margin: 0 auto;
-        width: 50%;
-        min-width: 800px;
-        text-align: center;
-
-        .directory-search-field {
-          display: inline-block;
-          text-align: center;
-        }
-
-        .directory-search-field-button {
-          text-align: center;
-        }
+      .title {
+        color: white;
       }
 
-      .directory-table {
-        table {
-          background: white;
+      .submenu {
+        ul {
+          li {
+            list-style-type: none;
+
+            a {
+              &.submenu-text {
+                font-weight: 300;
+                font-size: 32px;
+                color: #FFF;
+                text-align: center;
+              }
+
+              &:hover {
+                color: white;
+              }
+            }
+          }
         }
       }
+    }
 
-      .directory-popup {
-        width: 800px;
+    .right {
+      position: relative;
+      margin: 0 0 0 32%;
+      width: 68%;
+      padding: 15px;
+      background-color: white;
 
-        .directory-popup-fields {
-          margin-bottom: 10px;
+      .directory {
+        .directory-search-fields {
+          margin: 0 auto;
+          width: 50%;
+          min-width: 800px;
+          text-align: center;
 
-          .directory-popup-field {
-            margin: 0 auto;
-            width: 100%;
+          .directory-search-field {
+            display: inline-block;
+            text-align: center;
+          }
+
+          .directory-search-field-button {
+            text-align: center;
+          }
+        }
+
+        .directory-table {
+          table {
+            background: white;
+          }
+        }
+
+        .directory-popup {
+          width: 800px;
+
+          .directory-popup-fields {
             margin-bottom: 10px;
 
-            input {
-              display: inline-block;
-              width: 70%;
-            }
-
-            button {
-              margin-top: 0;
-              margin-bottom: 2px;
-              // width: 215px;
-              width: 29%;
-              display: inline-block;
-            }
-          }
-
-          .directory-popup-form-button {
-            margin: 0 auto;
-            width: 99.6%;
-          }
-
-          .directory-popup-table {
-            table {
-              background: white;
-            }
-          }
-        }
-
-        .directory-popup-settings {
-          border-top: thin solid black;
-          margin: 0 auto;
-          // width: 75%;
-          text-align: center;
-          margin-bottom: 10px;
-
-          .directory-popup-settings-student {
-            margin-top: 10px;
-            width: 100%;
-
-            button {
-              margin-top: 0;
-              margin-bottom: 2px;
-              // margin-left: 10px;
-              display: inline-block;
-            }
-          }
-
-          .directory-popup-settings-evaluator {
-            margin-top: 10px;
-
-            .checkbox-container {
-              margin-bottom: 10px;
-
-              .btn-group {
-                text-align: center;
-                margin-bottom: 10px;
-                margin-left: 5px;
-
-                label {
-                  width: 200px;
-                  padding: 5px 0;
-                }
-              }
-            }
-
-            button {
+            .directory-popup-field {
               margin: 0 auto;
               width: 100%;
+              margin-bottom: 10px;
+
+              input {
+                display: inline-block;
+                width: 70%;
+              }
+
+              button {
+                margin-top: 0;
+                margin-bottom: 2px;
+                // width: 215px;
+                width: 29%;
+                display: inline-block;
+              }
+            }
+
+            .directory-popup-form-button {
+              margin: 0 auto;
+              width: 99.6%;
+            }
+
+            .directory-popup-table {
+              table {
+                background: white;
+              }
+            }
+          }
+
+          .directory-popup-settings {
+            border-top: thin solid black;
+            margin: 0 auto;
+            // width: 75%;
+            text-align: center;
+            margin-bottom: 10px;
+
+            .directory-popup-settings-student {
+              margin-top: 10px;
+              width: 100%;
+
+              button {
+                margin-top: 0;
+                margin-bottom: 2px;
+                // margin-left: 10px;
+                display: inline-block;
+              }
+            }
+
+            .directory-popup-settings-evaluator {
+              margin-top: 10px;
+
+              .checkbox-container {
+                margin-bottom: 10px;
+
+                .btn-group {
+                  text-align: center;
+                  margin-bottom: 10px;
+                  margin-left: 5px;
+
+                  label {
+                    width: 200px;
+                    padding: 5px 0;
+                  }
+                }
+              }
+
+              button {
+                margin: 0 auto;
+                width: 100%;
+              }
             }
           }
         }
       }
-    }
 
-    .statistics {
-      .statistics-content {
-        margin-top: 25px;
+      .statistics {
+        .statistics-content {
+          margin-top: 25px;
 
-        .statistics-table {
-          margin: 0 auto;
-          width: 75%;
-          background: white;
+          .statistics-table {
+            margin: 0 auto;
+            width: 75%;
+            background: white;
 
-          table {
-            margin-top: 15px;
+            table {
+              margin-top: 15px;
+            }
           }
         }
       }
-    }
 
-    .student {
-      .student-lab-content {
-        margin-top: 25px;
-      }
+      .student {
+        .student-lab-content {
+          margin-top: 25px;
+        }
 
-      .student-laboratory {
-        .title {
-          color: black;
+        .student-laboratory {
+          .title {
+            color: black;
+          }
         }
       }
-    }
 
-    .settings {
-      .settings-table {
-        table {
-          tr {
-            .td-left {
-              input {
-                width: 510px;
-              }
-
-              label {
-                &.btn--toggle {
+      .settings {
+        .settings-table {
+          table {
+            tr {
+              .td-left {
+                input {
                   width: 510px;
                 }
-              }
 
-              textarea {
-                width: 510px;
+                label {
+                  &.btn--toggle {
+                    width: 510px;
+                  }
+                }
+
+                textarea {
+                  width: 510px;
+                }
               }
             }
           }
@@ -233,84 +232,86 @@
   }
 }
 /*menu-bar*/
-.menu {
-  border-radius: 0;
-  padding-right: 20px;
-
-  .logo {
+.main-menu {
+  .menu {
+    border-radius: 0;
     padding-right: 20px;
-    padding-left: 20px;
 
-    img {
-      width: 60px;
-      height: 60px;
-    }
-  }
+    .logo {
+      padding-right: 20px;
+      padding-left: 20px;
 
-  .menu-text {
-    color: white;
-    font-size: 16px;
-    font-weight: 300;
-  }
-
-  .pull-xs-right {
-    display: flex;
-
-    .user {
-      padding-top: 17px;
-      margin-right: 5px;
+      img {
+        width: 60px;
+        height: 60px;
+      }
     }
 
-    .nav {
-      padding-top: 17px;
+    .menu-text {
+      color: white;
+      font-size: 16px;
+      font-weight: 300;
+    }
 
-      a {
+    .pull-xs-right {
+      display: flex;
+
+      .user {
+        padding-top: 17px;
         margin-right: 5px;
-        color: white;
+      }
 
-        &.menu-text {
-          font-weight: 400;
+      .nav {
+        padding-top: 17px;
+
+        a {
+          margin-right: 5px;
+          color: white;
+
+          &.menu-text {
+            font-weight: 400;
+          }
         }
       }
     }
-  }
 
-  .pull-xs-left {
-    display: flex;
+    .pull-xs-left {
+      display: flex;
 
-    .nav {
-      padding-top: 17px;
+      .nav {
+        padding-top: 17px;
 
-      a {
-        margin-left: 5px;
-        color: white;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: none;
-        }
-
-        &.menu-text {
-          font-weight: 400;
-        }
-      }
-
-      select {
-        background: transparent;
-
-        &.role-selector {
-          background-repeat: no-repeat;
-          border: 1px solid white;
-          cursor: pointer;
-          overflow: hidden;
-          outline: none;
+        a {
+          margin-left: 5px;
           color: white;
-          font-size: 16px;
-          font-weight: 400;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          &.menu-text {
+            font-weight: 400;
+          }
         }
 
-        option {
-          color: black;
+        select {
+          background: transparent;
+
+          &.role-selector {
+            background-repeat: no-repeat;
+            border: 1px solid white;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+          }
+
+          option {
+            color: black;
+          }
         }
       }
     }
