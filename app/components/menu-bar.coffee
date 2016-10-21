@@ -3,14 +3,17 @@
 
 MenuBarComponent = Ember.Component.extend MenuHelper,
 
-    userRightLabels: ['student', 'evaluator', 'demonstrator', 'admin']
+    userRightLabels: ['Hallgató', 'Javító', 'Demonstrátor', 'Admin']
     # userRightLabels: ['student', 'admin']
+
+    currentRight: 'Demonstrátor'
 
     userRights: ['admin', 'student']
 
     actions:
         changeUserRight: (right) ->
-            @set 'userRights', [right]
+            @set 'currentRight', right
+            # @set 'userRights', [right]
 
 
 `export default MenuBarComponent`

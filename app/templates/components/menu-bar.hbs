@@ -1,20 +1,13 @@
-<nav class="menu navbar navbar-default navbar-static-top">
+<div class="menu ">
   <!-- LEFT MENU ITEMS-->
-  <!-- THESE THESE SHOULD BE REMOVED-->
-  <div class="pull-xs-left">
+  <div class="menu-left">
     <div class="logo"><img src="assets/images/logo.png"></div>
-    <div class="nav navbar-nav">
+    <div class="menu-nav">
       <!-- USER ROLE CHOOSER-->
-      <div class="btn-group menu-btn-group" role="group">
-        <select class="role-selector" aria-labelledby="btnGroupDrop1" {{action 'changeUserRight' value="target.value" on='change'}}>
-          {{#each userRightLabels as |userright|}}
-          <option value={{userright}}>
-              {{!-- <a class="navbar-btn dropdown-item menu-button" {{action 'changeUserRight' userright}}>{{userright}}</a> --}}
-              {{userright}}
-          </option>
-          {{/each}}
-        </select>
-      </div>
+      {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
+        {{userright}}
+      {{/power-select}}
+
       {{#each userRights as |right|}}
         {{#if (eq right 'admin')}}
           {{#each adminMenu as |menuitem|}}
@@ -43,13 +36,13 @@
 
 
   <!-- RIGHT MENU ITEMS-->
-  <div class="pull-xs-right ">
+  <div class="menu-right ">
     <div class="menu-text user">{{username}}</div>
-    <div class="nav navbar-nav">
+    <div class="menu-nav">
       <!-- BUTTONS BASED ON USER ROLE-->
       <!-- BUTTONS EVERYONE SHOULD SEE-->
       {{#link-to 'settings' tagName='a' }} <i class="fa fa-cogs" aria-hidden="true"></i>{{/link-to}}
       <a> <i class="fa fa-sign-out" aria-hidden="true"></i></a>
     </div>
   </div>
-</nav>
+</div>

@@ -7,27 +7,25 @@
 
 .main-content {
   .content {
+    margin: 5% 2% 2%;
     clear: both;
-    min-width: 1500px;
-    margin: 50px;
     background-color: $leftBackground;
-    background-repeat: repeat;
-    background-size: 50px 50px;
-
+    // background-repeat: repeat;
+    // background-size: 50px 50px;
     &.directory {
-      background-image: url("images/users.png");
+      // background-image: url("images/users.png");
     }
 
     &.settings {
-      background-image: url("images/cogs.png");
+      // background-image: url("images/cogs.png");
     }
 
     &.statistics {
-      background-image: url("images/bar-chart.png");
+      // background-image: url("images/bar-chart.png");
     }
 
     &.student {
-      background-image: url("images/file.png");
+      // background-image: url("images/file.png");
     }
 
     .left {
@@ -35,8 +33,7 @@
       float: left;
       clear: none;
       padding: 0 15px;
-      text-align: center;
-      min-width: 350px;
+      text-align: left;
 
       .title {
         color: white;
@@ -233,17 +230,15 @@
 }
 /*menu-bar*/
 .main-menu {
-  .menu {
-    border-radius: 0;
-    padding-right: 20px;
+  margin: 1% 2% 1% 2%;
 
+  .menu {
     .logo {
-      padding-right: 20px;
-      padding-left: 20px;
+      margin-right: 3%;
 
       img {
-        width: 60px;
-        height: 60px;
+        max-width: 100%;
+        max-height: 100%;
       }
     }
 
@@ -251,38 +246,22 @@
       color: white;
       font-size: 16px;
       font-weight: 300;
+      margin-top: 1%;
+      line-height: 20px;
     }
 
-    .pull-xs-right {
+    .menu-left {
+      float: left;
       display: flex;
 
-      .user {
-        padding-top: 17px;
-        margin-right: 5px;
-      }
-
-      .nav {
-        padding-top: 17px;
+      .menu-nav {
+        display: flex;
+        margin-top: 4%;
+        margin-bottom: 5%;
 
         a {
-          margin-right: 5px;
-          color: white;
-
-          &.menu-text {
-            font-weight: 400;
-          }
-        }
-      }
-    }
-
-    .pull-xs-left {
-      display: flex;
-
-      .nav {
-        padding-top: 17px;
-
-        a {
-          margin-left: 5px;
+          display: flex;
+          margin-left: 9%;
           color: white;
           text-decoration: none;
 
@@ -293,25 +272,41 @@
           &.menu-text {
             font-weight: 400;
           }
+
+          i {
+            margin-top: 1%;
+            margin-right: 10%;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-right {
+    float: right;
+    display: flex;
+
+    .menu-nav {
+      margin-top: 3%;
+      display: flex;
+
+      a {
+        display: flex;
+        margin-right: 50%;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
         }
 
-        select {
-          background: transparent;
+        &.menu-text {
+          font-weight: 400;
+        }
 
-          &.role-selector {
-            background-repeat: no-repeat;
-            border: 1px solid white;
-            cursor: pointer;
-            overflow: hidden;
-            outline: none;
-            color: white;
-            font-size: 16px;
-            font-weight: 400;
-          }
-
-          option {
-            color: black;
-          }
+        i {
+          margin-right: 3%;
+          margin-top: 3%;
         }
       }
     }
