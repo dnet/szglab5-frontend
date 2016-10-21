@@ -286,15 +286,23 @@
     float: right;
     display: flex;
 
+    .menu-text {
+      display: block;
+      padding-top: 7%;
+      padding-right: 5%;
+      line-height: 20px;
+    }
+
     .menu-nav {
-      margin-top: 3%;
       display: flex;
+      padding-top: 8%;
 
       a {
         display: flex;
-        margin-right: 50%;
+        padding-right: 30%;
         color: white;
         text-decoration: none;
+        line-height: 20px;
 
         &:hover {
           text-decoration: none;
@@ -305,8 +313,8 @@
         }
 
         i {
-          margin-right: 3%;
-          margin-top: 3%;
+          margin-top: 10%;
+          margin-right: 1%;
         }
       }
     }
