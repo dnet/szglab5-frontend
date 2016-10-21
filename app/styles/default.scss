@@ -341,6 +341,7 @@ span.ember-power-select-selected-item {
 	position: static;
 
 	&:after {
+		font-family: 'FontAwesome';
 		content: "\f078";
 		color: #FFF;
 		position: absolute;
@@ -354,6 +355,7 @@ span.ember-power-select-selected-item {
 		@include transform(none);
 
 		&:after {
+			font-family: 'FontAwesome';
 			content: "\f077";
 		}
 	}

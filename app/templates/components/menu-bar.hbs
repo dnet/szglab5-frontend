@@ -1,43 +1,45 @@
-<div class="menu ">
+<div class="main-menu">
+  <div class="logo"><img src="assets/images/logo.png"></div>
+
   <!-- LEFT MENU ITEMS-->
   <div class="menu-left">
-    <div class="logo"><img src="assets/images/logo.png"></div>
     <div class="menu-nav">
       <!-- USER ROLE CHOOSER-->
       {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
-        {{userright}}
+        {{userright.value}}
       {{/power-select}}
 
-      {{#each userRights as |right|}}
-        {{#if (eq right 'admin')}}
+      {{!-- {{#each userRights as |right|}} --}}
+        {{#if (eq currentRight.key 'admin')}}
           {{#each adminMenu as |menuitem|}}
             {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
           {{/each}}
         {{/if}}
-        {{#if (eq right 'evaluator')}}
+        {{#if (eq currentRight.key 'evaluator')}}
           {{#each evaluatorMenu as |menuitem|}}
             {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
           {{/each}}
         {{/if}}
-        {{#if (eq right 'demonstrator')}}
+        {{#if (eq currentRight.key 'demonstrator')}}
           {{#each demonstratorMenu as |menuitem|}}
             {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
           {{/each}}
         {{/if}}
-        {{#if (eq right 'student')}}
+        {{#if (eq currentRight.key 'student')}}
           {{#each studentMenu as |menuitem|}}
             {{#link-to 'student' tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
           {{/each}}
         {{/if}}
-      {{/each}}
+      {{!-- {{/each}} --}}
     </div>
   </div>
+</div>
 
 
-
+<div class="secondary-menu">
   <!-- RIGHT MENU ITEMS-->
   <div class="menu-right ">
-    <div class="menu-text user">{{username}}</div>
+    <div class="menu-text">{{username}}</div>
     <div class="menu-nav">
       <!-- BUTTONS BASED ON USER ROLE-->
       <!-- BUTTONS EVERYONE SHOULD SEE-->
