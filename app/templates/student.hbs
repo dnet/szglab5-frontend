@@ -3,12 +3,12 @@
     <div class="title">Hallgató</div>
     <div class="submenu">
       <ul class="student-lab-buttons">
-        {{#each labKeys as |lab|}}
+        {{#each subMenu as |menu|}}
           <li>
-            <a class="submenu-text {{if (eq lab.key labKey) 'active'}}" {{action 'goToLab' lab.key}}>
-              {{lab.description}}
+            <a class="submenu-text {{if (eq menu.key currentView) 'active'}}" {{action 'goToView' menu.key}}>
+              {{menu.description}}
             </a>
-            {{#if (eq lab.key labKey)}}
+            {{#if (eq menu.key currentView)}}
               <div class="line" />
             {{/if}}
           </li>
@@ -19,7 +19,7 @@
   <div class="right">
     <div class="student">
       <div class="student-lab-content">
-        {{#if labKey}} {{student-laboratory result=(get model.results labKey) selectCommit=(action "selectCommit")}}
+        {{#if currentView}} {{student-laboratory result=(get model.results currentView) selectCommit=(action "selectCommit")}}
         {{else}}
           <div class="title">Válassz egy labort!</div>
         {{/if}}
