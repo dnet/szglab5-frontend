@@ -2,6 +2,7 @@
 @import "ember-power-select";
 @import 'app/styles/mixins.scss';
 @import 'app/styles/default.scss';
+@import 'app/styles/menu.scss';
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 
@@ -229,132 +230,6 @@
               }
             }
           }
-        }
-      }
-    }
-  }
-}
-/*menu-bar*/
-.menu-content {
-  margin: 1% 2%;
-  // width: 100%;
-  height: 100px;
-  clear: both;
-
-  .logo {
-    float: left;
-    width: 5%;
-
-    img {
-      max-height: 100px;
-      height: 100px;
-    }
-  }
-
-  .menu-text {
-    color: white;
-    font-size: 16px;
-    font-weight: 400;
-    white-space: nowrap;
-
-    &.user {
-      font-weight: 300;
-    }
-  }
-
-  ul {
-    width: 95%;
-    list-style-type: none;
-    height: 100px;
-    margin: 0;
-    padding-top: 2%;
-    overflow: hidden;
-    display: inline-block;
-    clear: both;
-
-    li {
-      float: left;
-      padding-left: 2%;
-      display: block;
-      white-space: nowrap;
-
-      &.right {
-        float: right;
-        padding-left: 0;
-        padding-right: 1%;
-      }
-
-      button {
-        // display: inline-block;
-        border: none;
-        background: transparent;
-        outline: none;
-        cursor: pointer;
-        box-shadow: none;
-        padding-top: 1%;
-        padding-left: 5%;
-        padding-right: 10%;
-        margin: 0;
-        color: white;
-        text-decoration: none;
-
-        &.menu-text {
-          font-weight: 400;
-        }
-
-        &.bar-chart {
-          &:before {
-            content: '\f080';
-            font-family: 'FontAwesome';
-            color: #FFF;
-            padding-right: 5%;
-          }
-        }
-
-          &.users {
-            &:before {
-              content: '\f0c0';
-              font-family: 'FontAwesome';
-              color: #FFF;
-              padding-right: 5%;
-            }
-          }
-
-          &.file {
-            &:before {
-              content: '\f15b';
-              font-family: 'FontAwesome';
-              color: #FFF;
-              padding-right: 5%;
-            }
-          }
-
-        &.sign-out {
-          &:before {
-            content: '\f08b';
-            font-family: 'FontAwesome';
-            color: #FFF;
-          }
-        }
-
-        &.cogs {
-          &:before {
-            content: '\f085';
-            font-family: 'FontAwesome';
-            color: #FFF;
-          }
-        }
-      }
-
-      a {
-        // align-content: center;
-        padding-left: 5%;
-        padding-right: 10%;
-        color: white;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: none;
         }
       }
     }
