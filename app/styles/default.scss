@@ -241,7 +241,7 @@ input {
 	font-size: 1rem;
 	line-height: 1.25;
 	color: #000;
-	background-color: #fff;
+	background-color: white;
 	background-image: none;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 0.25rem;
@@ -258,7 +258,7 @@ textarea {
 	font-size: 1rem;
 	line-height: 1.25;
 	color: #000;
-	background-color: #fff;
+	background-color: white;
 	background-image: none;
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, 0.15);
@@ -333,30 +333,40 @@ span.ember-power-select-selected-item {
 .ember-power-select-trigger[aria-disabled=true] {
 	cursor: default;
 	background-color: transparent;
-	color: #FFF;
+	color: white;
 	@include opacity(.5);
 
 	.ember-power-select-status-icon {
 		&:after {
-			color: #FFF !important;
+			color: white !important;
 		}
 	}
 }
 
 .ember-power-select-status-icon {
+	position: relative;
 	border: none;
-	padding-right: 20px;
-	padding-bottom: 30px;
 	float: right;
 
 	&:after {
+
 		font-family: 'FontAwesome';
 		content: "\f078";
-		color: #FFF;
+		color: white;
 	}
 }
 
 .ember-basic-dropdown--below {
+	.ember-power-select-status-icon {
+		@include transform(none);
+
+		&:after {
+			font-family: 'FontAwesome';
+			content: "\f077";
+		}
+	}
+}
+.ember-basic-dropdown--above {
 	.ember-power-select-status-icon {
 		@include transform(none);
 
@@ -398,8 +408,8 @@ span.ember-power-select-selected-item {
 }
 
 .ember-power-select-trigger {
-	border: 1px solid #FFF;
-	color: #FFF;
+	border: 1px solid white;
+	color: white;
 	background-color: transparent;
 	border-radius: 0;
 }
