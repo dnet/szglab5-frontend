@@ -7,18 +7,31 @@
       {{#each header as |head|}}
         <th>{{head}}</th>
       {{/each}}
+      {{#if withSettings}}
+        <th>
+
+        </th>
+      {{/if}}
     </thead>
     <tbody>
       {{#each body as |row number|}}
-        <tr {{action 'onRowClick' (get-array-element body number)}}>
+        <tr class='normal' {{action 'onRowClick' (get-array-element body number)}}>
           {{#unless withoutNumber}}
             <th scope='row'>{{add number}}</th>
           {{/unless}}
           {{#each row as |cell|}}
             <td>{{cell}}</td>
           {{/each}}
+          {{#if withSettings}}
+            <td>
+              <button type="button" class='cog' {{action 'openSettings' row}}></button>
+            </td>
+          {{/if}}
         </tr>
       {{/each}}
     </tbody>
   </table>
+  {{#if settingsOpen}}
+    {{directory-popup userDetails=userDetails homeworkTypes=homeworkTypes onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
+  {{/if}}
 </div>

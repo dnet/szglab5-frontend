@@ -17,10 +17,10 @@
     // background-size: 50px 50px;
     // .left {
     &.directory:before {
-      font-family: 'FontAwesome';
-      content: '\f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 ';
-      color: #748486;
-      letter-spacing: 5px;
+      // font-family: 'FontAwesome';
+      // content: '\f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 ';
+      // color: #748486;
+      // letter-spacing: 5px;
     }
     // }
     &.settings {
@@ -105,27 +105,6 @@
       margin-bottom: -99999px;
 
       .directory {
-        .directory-search-fields {
-          margin: 0 auto;
-          width: 50%;
-          text-align: left;
-
-          .directory-search-field {
-            display: inline-block;
-            text-align: left;
-          }
-
-          .directory-search-field-button {
-            text-align: left;
-          }
-        }
-
-        .directory-table {
-          table {
-            background: white;
-          }
-        }
-
         .directory-popup {
           width: 800px;
 

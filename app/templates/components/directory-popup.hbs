@@ -1,27 +1,30 @@
 {{#tether-dialog close='closeDialog' hasOverlay=false clickOutsideToClose=true containerClassNames='directory-popup' }}
-    {{table-component header=header body=body clickable=false withoutNumber=true addClass='directory-popup-table'}}
-    <div class="directory-popup-fields">
-        <div class="directory-popup-field">
-            {{input type="text" value=newPwd placeholder='új jelszó'}}
-            <button {{action 'setNewPwd'}}>Új jelszó beállítása</button>
-        </div>
-        <div class="directory-popup-field">
-            {{input type="text" value=newEmail placeholder='új e-mail'}}
-            <button {{action 'setNewEmail'}}>Új e-mail beállítása</button>
-        </div>
-        <button class="directory-popup-form-button" {{action 'impersonateUser'}}>Felhasználó megszemélyesítése</button>
+  <div class='directory-popup'>
+    {{!-- {{table-component header=header body=body clickable=false withoutNumber=true addClass='directory-popup-table'}}
+    --}} <div class="directory-popup-fields">
+      <div class="directory-popup-field">
+        {{input type="text" value=newPwd placeholder='új jelszó'}}
+        <button {{action 'setNewPwd'}}>Új jelszó beállítása</button>
+      </div>
+      <div class="directory-popup-field">
+        {{input type="text" value=newEmail placeholder='új e-mail'}}
+        <button {{action 'setNewEmail'}}>Új e-mail beállítása</button>
+      </div>
+      <button class="directory-popup-form-button" {{action 'impersonateUser'}}>Felhasználó megszemélyesítése</button>
 
+  </div>
+  {{#if isEvaluator}}
+    <div class="directory-popup-settings">
+      {{directory-popup-evaluator homeworkTypes=homeworkTypes}}
     </div>
-    {{#if isEvaluator}}
-        <div class="directory-popup-settings">
-            {{directory-popup-evaluator homeworkTypes=homeworkTypes}}
-        </div>
-    {{/if}}
-    {{#if isStudent}}
-        <div class="directory-popup-settings">
-            {{#each-in studentLabs as |labkey labvalue|}}
-                {{directory-popup-student lab=labvalue key=labkey}}
-            {{/each-in}}
-        </div>
-    {{/if}}
+  {{/if}}
+  {{#if isStudent}}
+    <div class="directory-popup-settings">
+      {{#each-in studentLabs as |labkey labvalue|}}
+        {{directory-popup-student lab=labvalue key=labkey}}
+      {{/each-in}}
+    </div>
+  {{/if}}
+  </div>
+
 {{/tether-dialog}}
