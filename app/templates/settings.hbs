@@ -16,25 +16,19 @@
       <div class="text label">új jelszó</div>
       {{input type="password" value=user.newpwdagain placeholder='új jelszó'}}
 
-      <div class="text label">levlista</div>
+      <div class="text label">mailing list</div>
       <div class='btn-group' {{action 'toggleMailList'}} data-toggle="buttons">
         <label class="btn--toggle {{if mailList 'active'}}">
-              <span class="checkmark">
-                  <div class="checkmark_stem"></div>
-                  <div class="checkmark_kick"></div>
-              </span>
-              {{input type="checkbox"}} <span class='label'>levlistára való feliratkozás</span>
+              {{input type="checkbox"}}
+              <span class='label'>subscribe</span>
           </label>
       </div>
 
-      <div class="text label">e-mail értesítések</div>
+      <div class="text label">e-mail notifications</div>
       <div class='btn-group' {{action 'toggleNotifications'}} data-toggle="buttons">
         <label class="btn--toggle {{if notification 'active'}}">
-              <span class="checkmark">
-                <div class="checkmark_stem"></div>
-                <div class="checkmark_kick"></div>
-              </span>
-              {{input type="checkbox"}} <span>e-mail értesítéskre való feliratkozás</span>
+              {{input type="checkbox"}}
+              <span>subscribe</span>
           </label>
       </div>
 
