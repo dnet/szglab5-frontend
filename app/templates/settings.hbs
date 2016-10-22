@@ -4,73 +4,44 @@
   </div>
   <div class='right'>
     <div class='settings'>
-      <div class='settings-table'>
-        <table>
-          <tr>
-            <td class="td-right td-bold">e-mail</td>
-            <td class="td-left">
-              {{input type="email" value=user.email placeholder='e-mail'}}
-            </td>
-          </tr>
-          <tr>
-            <td class="td-right td-bold">régi jelszó</td>
-            <td class="td-left">
-              {{input type="password" value=user.oldpwd placeholder='régi jelszó'}}
-            </td>
-          </tr>
-          <tr>
-            <td class="td-right td-bold">új jelszó újra</td>
-            <td class="td-left">
-              {{input type="password" value=user.newpwd placeholder='új jelszó újra'}}
-            </td>
-          </tr>
-          <tr>
-            <td class="td-right td-bold">új jelszó</td>
-            <td class="td-left">
-              {{input type="password" value=user.newpwdagain placeholder='új jelszó'}}
-            </td>
-          </tr>
-          <tr>
-            <td class="td-right td-bold">levlista</td>
-            <td class="td-left">
-              <div class='btn-group' {{action 'toggleMailList'}} data-toggle="buttons">
-                <label class="btn--toggle {{if mailList 'active'}}">
-                                <span class="checkmark">
-                                    <div class="checkmark_stem"></div>
-                                    <div class="checkmark_kick"></div>
-                                </span>
-                                {{input type="checkbox"}} <span class='label'>levlistára való feliratkozás</span>
-                            </label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="td-right td-bold">e-mail értesítések</td>
-            <td class="td-left">
-              <div class='btn-group' {{action 'toggleNotifications'}} data-toggle="buttons">
-                <label class="btn--toggle {{if notification 'active'}}">
-                                <span class="checkmark">
-                                    <div class="checkmark_stem"></div>
-                                    <div class="checkmark_kick"></div>
-                                </span>
-                                {{input type="checkbox"}} <span >e-mail értesítéskre való feliratkozás</span>
-                            </label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="td-right td-bold">ssh publikus kulcs</td>
-            <td class="td-left">
-              {{textarea value=user.ssh class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
-            </td>
-          </tr>
-          <tr>
-            <td class="td-middle" colspan="2">
-              <button type="button">Mentés</button>
-            </td>
-          </tr>
-        </table>
+      <div class="text label">e-mail</div>
+      {{input type="email" value=user.email placeholder='e-mail'}}
+
+      <div class="text label">régi jelszó</div>
+      {{input type="password" value=user.oldpwd placeholder='régi jelszó'}}
+
+      <div class="text label">új jelszó újra</div>
+      {{input type="password" value=user.newpwd placeholder='új jelszó újra'}}
+
+      <div class="text label">új jelszó</div>
+      {{input type="password" value=user.newpwdagain placeholder='új jelszó'}}
+
+      <div class="text label">levlista</div>
+      <div class='btn-group' {{action 'toggleMailList'}} data-toggle="buttons">
+        <label class="btn--toggle {{if mailList 'active'}}">
+              <span class="checkmark">
+                  <div class="checkmark_stem"></div>
+                  <div class="checkmark_kick"></div>
+              </span>
+              {{input type="checkbox"}} <span class='label'>levlistára való feliratkozás</span>
+          </label>
       </div>
+
+      <div class="text label">e-mail értesítések</div>
+      <div class='btn-group' {{action 'toggleNotifications'}} data-toggle="buttons">
+        <label class="btn--toggle {{if notification 'active'}}">
+              <span class="checkmark">
+                <div class="checkmark_stem"></div>
+                <div class="checkmark_kick"></div>
+              </span>
+              {{input type="checkbox"}} <span>e-mail értesítéskre való feliratkozás</span>
+          </label>
+      </div>
+
+      <div class="text label">ssh publikus kulcs</div>
+      {{textarea value=user.ssh class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
+
+      <button type="button">Mentés</button>
     </div>
   </div>
 </div>
