@@ -19,6 +19,16 @@ MenuHelperMixin = Ember.Mixin.create
       key: 'directory',
       value:"Felhasználók"
       icon: 'users'
+    },
+    {
+      key: 'notification',
+      value:"Hirdetmények"
+      icon: 'bell-o'
+    },
+    {
+      key: 'sql',
+      value:"SQL"
+      icon: 'terminal'
     }
   ]
 

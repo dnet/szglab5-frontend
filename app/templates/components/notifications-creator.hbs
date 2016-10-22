@@ -1,0 +1,45 @@
+<div class="notification-creator">
+  <div class="text label">Sender</div>
+  <div class="text">Teszt felhasználó</div>
+
+  <div class="text label">Title</div>
+  {{input type="type"}}
+
+  <div class="text label">Dátum</div>
+  <div class="text">2016. okt. 22.</div>
+
+  <div class="text label">Deadline</div>
+  {{pikaday-input format="YYYY/MM/DD" placeholder="Select a date" minDate=minDate }}
+
+  <div class="text label">Who can see it</div>
+  <div class='btn-group' {{action 'toggleAdmins'}} data-toggle="buttons">
+    <label class="btn--toggle {{if admins 'active'}}">
+          {{input type="checkbox"}}
+          <span class='label'>Admins</span>
+      </label>
+  </div>
+  <div class='btn-group' {{action 'toggleStudents'}} data-toggle="buttons">
+    <label class="btn--toggle {{if students 'active'}}">
+          {{input type="checkbox"}}
+          <span class='label'>Students</span>
+      </label>
+  </div>
+  <div class='btn-group' {{action 'toggleDemonstrators'}} data-toggle="buttons">
+    <label class="btn--toggle {{if demonstators 'active'}}">
+          {{input type="checkbox"}}
+          <span class='label'>Demonstrators</span>
+      </label>
+  </div>
+  <div class='btn-group' {{action 'toggleEvaluators'}} data-toggle="buttons">
+    <label class="btn--toggle {{if evaluators 'active'}}">
+          {{input type="checkbox"}}
+          <span class='label'>Evaluators</span>
+      </label>
+  </div>
+
+
+  <div class="text label">Message</div>
+  {{textarea value=value cols="9" rows="9" }}
+
+  <button type="button">Mentés</button>
+</div>

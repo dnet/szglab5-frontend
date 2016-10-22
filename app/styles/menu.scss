@@ -38,7 +38,7 @@
 
     li {
       float: left;
-      padding-left: 2%;
+      padding-left: 1%;
       display: block;
       white-space: nowrap;
 
@@ -56,7 +56,7 @@
         cursor: pointer;
         box-shadow: none;
         padding-top: 1%;
-        padding-left: 5%;
+        padding-left: 10%;
         padding-right: 10%;
         margin: 0;
         color: white;
@@ -93,11 +93,30 @@
             }
           }
 
+          &.terminal {
+            &:before {
+              content: '\f120';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5%;
+            }
+          }
+
         &.sign-out {
           &:before {
             content: '\f08b';
             font-family: 'FontAwesome';
             color: white;
+            padding-right: 5%;
+          }
+        }
+
+        &.bell-o {
+          &:before {
+            content: '\f0a2';
+            font-family: 'FontAwesome';
+            color: white;
+            padding-right: 5%;
           }
         }
 
