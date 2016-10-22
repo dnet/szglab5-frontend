@@ -1,70 +1,66 @@
 <div class='student-laboratory'>
-    <div class='title'>{{result.description}}</div>
-    <div class='student-laboratory-table'>
-        <table class='table-striped table-sm table-bordered'>
-            <tbody>
-                <tr>
-                    <td class="td-right td-bold">Helyszín</td>
-                    <td class="td-left">{{result.location}}</td>
-                </tr>
-                <tr>
-                    <td class="td-right td-bold">Időpont</td>
-                    <td class="td-left">{{result.time}}</td>
-                </tr>
-                <tr>
-                    <td class="td-right td-bold">Laborvezető</td>
-                    <td class="td-left">{{result.demonstrator}}</td>
-                </tr>
+  <div class="text label">Helyszín</div>
+  <div class="text">{{result.location}}</div>
+  <div class="text label">Időpont</div>
+  <div class="text">{{result.time}}</div>
+  <div class="text label">Laborvezető</div>
+  <div class="text">{{result.demonstrator}}</div>
 
-                {{#if (eq result.statusCode 'during')}}
-                    <tr>
-                        <td class="td-right td-bold">Beugró</td>
-                        <td class="td-left">{{result.entrytest}} ({{result.demonstrator}})</td>
-                    </tr>
-                    <tr>
-                        <td class="td-right td-bold">Hátralévő idő</td>
-                        <td class="td-left">{{timeLeft}} ({{result.deadline}})</td>
-                    </tr>
-                    <tr>
-                        <td class="td-right td-bold">Git repository URL</td>
-                        <td class="td-left">{{result.repository}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="td-right td-bold">Végleges commit</td>
-                        <td class="td-left">
-                            {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
-                                {{commit}}
-                            {{/power-select}}
-                        </td>
-                    </tr>
-                {{/if}}
-
-                {{#if (eq result.statusCode 'after')}}
-                    <tr>
-                        <td class="td-right td-bold">Beugró</td>
-                        <td class="td-left">{{result.entrytest}} ({{result.demonstrator}})</td>
-                    </tr>
-                    <tr>
-                        <td class="td-right td-bold">Jegyzőkönyv</td>
-                        <td class="td-left" id="afterreportgrade">{{result.report.grade}} ({{result.report.evaluator}})</td>
-                    </tr>
-                    <tr>
-                        <td class="td-middle" colspan="2">
-                            {{result.report.review}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="td-right td-bold">Laborjegy</td>
-                        <td class="td-left" id="afterlaboratorygrade">{{result.laboratory.grade}} ({{result.demonstrator}})</td>
-                    </tr>
-                    <tr>
-                        <td class="td-middle" colspan="2">
-                            {{result.laboratory.review}}
-                        </td>
-                    </tr>
-                {{/if}}
-            </tbody>
-        </table>
+  {{#if (eq result.statusCode 'during')}}
+    <div class="text label">Beugró</div>
+    <div class="text">
+      {{result.entrytest}} ({{result.demonstrator}})</div>
+    <div class="text label">
+      Hátralévő idő
     </div>
+    <div class="text">
+      {{timeLeft}} ({{result.deadline}})
+    </div>
+    <div class="text label">
+      Git repository URL
+    </div>
+    <div class="text">
+      {{result.repository}}
+    </div>
+    <div class="text label">
+      Végleges commit
+    </div>
+    {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
+      {{commit}}
+    {{/power-select}}
+  {{/if}}
+
+  {{#if (eq result.statusCode 'after')}}
+    <div class="text label">
+      Beugró érdemjegye
+    </div>
+    <div class="text">
+      {{result.entrytest}} ({{result.demonstrator}})
+    </div>
+    <div class="text label">
+      Jegyzőkönyv érdemjegye
+    </div>
+    <div class="text" id="afterreportgrade">
+      {{result.report.grade}} ({{result.report.evaluator}})
+    </div>
+    <div class="text label">
+      Jegyzőkönyv megjegyzés
+    </div>
+    <div class="text long">
+      {{result.report.review}}
+    </div>
+    <div class="text label">
+      Labor érdemjegye
+    </div>
+    <div class="text" id="afterlaboratorygrade">
+      {{result.laboratory.grade}} ({{result.demonstrator}})
+    </div>
+    <div class="text label">
+      Labor megjegyzés
+    </div>
+    <div class="text long">
+      {{result.laboratory.review}}
+    </div>
+  {{/if}}
+
 </div>

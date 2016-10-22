@@ -36,19 +36,27 @@ div {
 	}
 
 	&.title {
-		padding: 3% 3%;
-		font-weight: 100;
+		font-weight: 200;
 		font-size: 54px;
 		color: #000;
 		text-align: left;
 	}
 
 	&.text {
-		font-size: 20px;
-		color: #333;
-		line-height: 90%;
-		margin: 0 1em;
+		font-size: 16px;
+		color: black;
 		text-align: left;
+		font-weight: 300;
+
+		&.label {
+			padding-top: 1%;
+			color: #a7a7a7;
+			font-weight: 100;
+		}
+
+		&.long {
+			text-align: justify;
+		}
 	}
 }
 

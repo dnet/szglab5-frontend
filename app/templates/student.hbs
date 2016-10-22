@@ -5,7 +5,12 @@
       <ul class="student-lab-buttons">
         {{#each labKeys as |lab|}}
           <li>
-            <a class="submenu-text" {{action 'goToLab' lab.key}}>{{lab.description}}</a>
+            <a class="submenu-text {{if (eq lab.key labKey) 'active'}}" {{action 'goToLab' lab.key}}>
+              {{lab.description}}
+            </a>
+            {{#if (eq lab.key labKey)}}
+              <div class="line" />
+            {{/if}}
           </li>
         {{/each}}
       </ul>
