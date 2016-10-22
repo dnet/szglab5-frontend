@@ -1,50 +1,55 @@
-<div class="main-menu">
-  <div class="logo"><img src="assets/images/logo.png"></div>
+<div class="logo"><img src="assets/images/logo.png"></div>
+<ul>
+  <!-- USER ROLE CHOOSER-->
+  <li>
+    {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
+      {{userright.value}}
+    {{/power-select}}
+  </li>
 
   <!-- LEFT MENU ITEMS-->
-  <div class="menu-left">
-    <div class="menu-nav">
-      <!-- USER ROLE CHOOSER-->
-      {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
-        {{userright.value}}
-      {{/power-select}}
+  {{!-- {{#each userRights as |right|}}
+  --}} {{#if (eq currentRight.key 'admin')}}
+    {{#each adminMenu as |menuitem|}}
+      <li>
+        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+      </li>
+    {{/each}}
+    {{/if}}
+    {{#if (eq currentRight.key 'evaluator')}}
+      {{#each evaluatorMenu as |menuitem|}}
+        <li>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+    {{#if (eq currentRight.key 'demonstrator')}}
+      {{#each demonstratorMenu as |menuitem|}}
+        <li>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+    {{#if (eq currentRight.key 'student')}}
+      {{#each studentMenu as |menuitem|}}
+        <li>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+    {{!-- {{/each}}
+    --}} <!-- RIGHT MENU ITEMS-->
 
-      {{!-- {{#each userRights as |right|}} --}}
-        {{#if (eq currentRight.key 'admin')}}
-          {{#each adminMenu as |menuitem|}}
-            {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-        {{#if (eq currentRight.key 'evaluator')}}
-          {{#each evaluatorMenu as |menuitem|}}
-            {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-        {{#if (eq currentRight.key 'demonstrator')}}
-          {{#each demonstratorMenu as |menuitem|}}
-            {{#link-to menuitem.key tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-        {{#if (eq currentRight.key 'student')}}
-          {{#each studentMenu as |menuitem|}}
-            {{#link-to 'student' tagName='a' class="menu-text" }}<i class="fa fa-{{menuitem.icon}}" aria-hidden="true"></i> {{menuitem.value}}{{/link-to}}
-          {{/each}}
-        {{/if}}
-      {{!-- {{/each}} --}}
-    </div>
-  </div>
-</div>
-
-
-<div class="secondary-menu">
-  <!-- RIGHT MENU ITEMS-->
-  <div class="menu-right ">
-    <div class="menu-text">{{username}}</div>
-    <div class="menu-nav">
       <!-- BUTTONS BASED ON USER ROLE-->
       <!-- BUTTONS EVERYONE SHOULD SEE-->
-      {{#link-to 'settings' tagName='a' }} <i class="fa fa-cogs" aria-hidden="true"></i>{{/link-to}}
-      <a> <i class="fa fa-sign-out" aria-hidden="true"></i></a>
-    </div>
-  </div>
-</div>
+
+      <li class='right'>
+        <button  class='sign-out'></button>
+      </li>
+      <li class='right cogs'>
+        {{#link-to 'settings' class='cogs' tagName='button' }}{{/link-to}}
+      </li>
+      <li class='right'>
+        <div class="menu-text user">{{username}}</div>
+      </li>
+</ul>

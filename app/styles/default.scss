@@ -36,10 +36,11 @@ div {
 	}
 
 	&.title {
+		padding: 3% 3%;
 		font-weight: 100;
 		font-size: 54px;
 		color: #000;
-		text-align: center;
+		text-align: left;
 	}
 
 	&.text {
@@ -47,7 +48,7 @@ div {
 		color: #333;
 		line-height: 90%;
 		margin: 0 1em;
-		text-align: center;
+		text-align: left;
 	}
 }
 
@@ -175,10 +176,10 @@ table {
 
 	tr {
 		width: 100%;
-		text-align: center;
+		text-align: left;
 
 		td {
-			text-align: center;
+			text-align: left;
 			padding: 5px;
 
 			&.td-left {
@@ -188,7 +189,7 @@ table {
 			}
 
 			&.td-middle {
-				text-align: center;
+				text-align: left;
 			}
 
 			&.td-right {
@@ -213,14 +214,14 @@ table {
 		}
 
 		th {
-			text-align: center;
+			text-align: left;
 		}
 	}
 
 	thead {
 		th {
 			font-size: 18px;
-			text-align: center;
+			text-align: left;
 		}
 	}
 }
@@ -336,17 +337,14 @@ span.ember-power-select-selected-item {
 
 .ember-power-select-status-icon {
 	border: none;
-	margin: 1%;
-	padding: 1%;
-	position: static;
+	padding-right: 20px;
+	padding-bottom: 30px;
+	float: right;
 
 	&:after {
 		font-family: 'FontAwesome';
 		content: "\f078";
 		color: #FFF;
-		position: absolute;
-		top: 0px;
-		right: 10px;
 	}
 }
 
