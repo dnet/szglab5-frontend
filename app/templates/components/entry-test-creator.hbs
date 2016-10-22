@@ -1,0 +1,12 @@
+<div class="entry-test-creator">
+  <div class="text label">Lab</div>
+  {{#power-select options=labs onchange=(action "selectLab") selected=selectedLab as |lab|}}
+    {{lab.description}}
+  {{/power-select}}
+
+  <div class="text label">Text</div>
+  {{input type="type" value=value }}
+
+
+  <button type="button">Mentés</button>
+</div>

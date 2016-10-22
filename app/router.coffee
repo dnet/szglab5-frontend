@@ -17,5 +17,6 @@ Router.map ->
   @route 'demonstrator'
   @route 'notification'
   @route 'sql'
+  @route 'entry-test'
 
 `export default Router`

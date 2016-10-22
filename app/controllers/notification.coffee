@@ -18,8 +18,5 @@ NotificationController = Ember.Controller.extend
     goToView: (key) ->
       @set 'currentView', key
       false
-    selectCommit: (newcommit) ->
-      console.log "Todo save new commit"
-      false
 
 `export default NotificationController`

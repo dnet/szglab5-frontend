@@ -49,6 +49,15 @@
       // background-image: url("images/bar-chart.png");
     }
 
+    &.entry-test {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/pencil.png");
+      }
+      // background-image: url("images/bar-chart.png");
+    }
+
     &.student {
       .left {
         background-repeat: repeat;
@@ -263,6 +272,38 @@
       }
 
       .settings {}
+
+      .entry-test {
+        .entry-test-creator {
+          .ember-power-select:not(.multiple) .ember-power-select-trigger {
+            overflow: hidden;
+            width: 300px;
+          }
+
+          .ember-power-select-status-icon {
+            &:after {
+              color: black;
+            }
+          }
+
+          .ember-power-select-dropdown {
+            width: 300px;
+          }
+
+          .ember-power-select-trigger {
+            border: 1px solid black;
+            color: black;
+          }
+
+          span.ember-power-select-selected-item {
+            font-weight: 300;
+          }
+
+          .ember-power-select-option {
+            font-weight: 100;
+          }
+        }
+      }
     }
   }
 }

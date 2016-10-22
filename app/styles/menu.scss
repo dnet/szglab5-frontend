@@ -120,6 +120,15 @@
           }
         }
 
+        &.pencil {
+          &:before {
+            content: '\f040';
+            font-family: 'FontAwesome';
+            color: white;
+            padding-right: 5%;
+          }
+        }
+
         &.cogs {
           &:before {
             content: '\f085';
