@@ -1,0 +1,29 @@
+<div class="content demonstrator">
+  <div class="left">
+    <div class="title">Demonstrátor</div>
+    <div class="submenu">
+      <ul>
+        {{#each subMenu as |menu|}}
+          <li>
+            <a class="submenu-text {{if (eq menu.key currentView) 'active'}}" {{action 'goToView' menu.key}}>
+              {{menu.description}}
+            </a>
+            {{#if (eq menu.key currentView)}}
+              <div class="line" />
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <div class="demonstrator">
+      {{#if currentView}}
+        {{demonstrator-group currentLab=lab1 evaluateStudent=(action 'evaluateStudent')}}
+      {{/if}}
+      {{#if evaluate}}
+        {{evaluation-student student=evaluate mode='demonstrator'}}
+      {{/if}}
+    </div>
+  </div>
+</div>

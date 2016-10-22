@@ -74,6 +74,14 @@
       }
     }
 
+    &.demonstrator {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/graduation-cap.png");
+      }
+    }
+
     &.sql {
       .left {
         background-repeat: repeat;
