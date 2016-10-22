@@ -11,28 +11,28 @@
   {{!-- {{#each userRights as |right|}}
   --}} {{#if (eq currentRight.key 'admin')}}
     {{#each adminMenu as |menuitem|}}
-      <li>
+      <li class='min-width'>
         {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
       </li>
     {{/each}}
     {{/if}}
     {{#if (eq currentRight.key 'evaluator')}}
       {{#each evaluatorMenu as |menuitem|}}
-        <li>
+        <li class='min-width'>
           {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
         </li>
       {{/each}}
     {{/if}}
     {{#if (eq currentRight.key 'demonstrator')}}
       {{#each demonstratorMenu as |menuitem|}}
-        <li>
+        <li class='min-width'>
           {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
         </li>
       {{/each}}
     {{/if}}
     {{#if (eq currentRight.key 'student')}}
       {{#each studentMenu as |menuitem|}}
-        <li>
+        <li class='min-width'>
           {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
         </li>
       {{/each}}

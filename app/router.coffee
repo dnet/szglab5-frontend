@@ -12,7 +12,7 @@ Router.map ->
   @route 'settings'
   @route 'statistics'
   @route 'directory'
-  @route 'student-evaluation'
+
   @route 'evaluator'
   @route 'demonstrator'
   @route 'notification'

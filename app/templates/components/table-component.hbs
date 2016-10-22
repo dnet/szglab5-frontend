@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       {{#each body as |row number|}}
-        <tr class='normal' {{action 'onRowClick' (get-array-element body number)}}>
+        <tr class='normal{{if clickable " clickable"}}' {{action 'onRowClick' (get-array-element body number)}}>
           {{#unless withoutNumber}}
             <th scope='row'>{{add number}}</th>
           {{/unless}}

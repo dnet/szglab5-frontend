@@ -41,6 +41,11 @@
       padding-left: 1%;
       display: block;
       white-space: nowrap;
+      box-sizing: border-box;
+
+      &.min-width {
+        // min-width: 170px;
+      }
 
       &.right {
         float: right;
@@ -87,6 +92,24 @@
           &.file {
             &:before {
               content: '\f15b';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5%;
+            }
+          }
+
+          &.book {
+            &:before {
+              content: '\f02d';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5%;
+            }
+          }
+
+          &.graduation-cap {
+            &:before {
+              content: '\f19d';
               font-family: 'FontAwesome';
               color: white;
               padding-right: 5%;

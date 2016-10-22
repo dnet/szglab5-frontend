@@ -11,11 +11,6 @@ MenuHelperMixin = Ember.Mixin.create
 
   adminMenu: [
     {
-      key: 'entry-test',
-      value:"Beugrók",
-      icon: 'pencil'
-    },
-    {
       key: 'statistics',
       value:"Statisztikák",
       icon: 'bar-chart'
@@ -31,6 +26,11 @@ MenuHelperMixin = Ember.Mixin.create
       icon: 'bell-o'
     },
     {
+      key: 'entry-test',
+      value:"Beugrók",
+      icon: 'pencil'
+    },
+    {
       key: 'sql',
       value:"SQL"
       icon: 'terminal'
@@ -39,11 +39,22 @@ MenuHelperMixin = Ember.Mixin.create
 
   demonstratorMenu: [
     {
+      key: 'demonstrator',
+      value:"Demonstrátor",
+      icon: 'graduation-cap'
+    },
+    {
       key: 'entry-test',
       value:"Beugrók",
       icon: 'pencil'
     }
   ]
-  evaluatorMenu: []
+  evaluatorMenu: [
+    {
+      key: 'evaluator',
+      value:"Javító",
+      icon: 'book'
+    }
+  ]
 
 `export default MenuHelperMixin`
