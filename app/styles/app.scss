@@ -211,17 +211,7 @@
 
       .statistics {
         .statistics-content {
-          margin-top: 25px;
-
-          .statistics-table {
-            margin: 0 auto;
-            width: 75%;
-            background: white;
-
-            table {
-              margin-top: 15px;
-            }
-          }
+          margin-top: 1%;
         }
       }
 
@@ -255,29 +245,7 @@
         }
       }
 
-      .settings {
-        .settings-table {
-          table {
-            tr {
-              .td-left {
-                input {
-                  width: 510px;
-                }
-
-                label {
-                  &.btn--toggle {
-                    width: 510px;
-                  }
-                }
-
-                textarea {
-                  width: 510px;
-                }
-              }
-            }
-          }
-        }
-      }
+      .settings {}
     }
   }
 }

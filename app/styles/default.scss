@@ -143,27 +143,43 @@ label {
 }
 
 table {
-	margin-top: 25px;
 	width: 100%;
+	border: none;
+	font-weight: 300;
 	font-size: 16px;
 
 	tr {
-		width: 100%;
-		text-align: left;
+		&:nth-child(even) {
+			background: #ededed;
+		}
+
+		&:nth-child(odd) {
+			background: #f7f7f7;
+		}
+
+		&:hover {
+			background: #d7d7d7;
+		}
 
 		td {
-			text-align: left;
-			padding: 5px;
+			padding: 1%;
 		}
 
 		th {
+			padding: 1%;
+			font-weight: 300;
 			text-align: left;
 		}
 	}
 
 	thead {
+		background-color: #b3b3b3;
+
 		th {
-			font-size: 18px;
+			padding: 1%;
+			color: white;
+			font-weight: 100;
+			font-size: 14px;
 			text-align: left;
 		}
 	}
