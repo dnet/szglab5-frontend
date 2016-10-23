@@ -38,6 +38,9 @@ DashboardCreatorComponent = Ember.Component.extend
     selectLab: (lab) ->
       @set 'selectedLab', lab
       false
+    selectTime: (time) ->
+      console.log time
+      false
     closeSettings: ->
       @sendAction('closeSettings')
 
