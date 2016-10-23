@@ -26,6 +26,11 @@ MenuHelperMixin = Ember.Mixin.create
       icon: 'bell-o'
     },
     {
+      key: 'dashboard',
+      value:"Mérések"
+      icon: 'dashboard'
+    },
+    {
       key: 'entry-test',
       value:"Beugrók",
       icon: 'pencil'
