@@ -11,5 +11,7 @@ TableComponentComponent = Ember.Component.extend
       @sendAction('openSettings', rowData)
     impersonate: (rowData)->
       @sendAction('impersonate', rowData)
+    delete: (rowData)->
+      @sendAction('delete', rowData)
 
 `export default TableComponentComponent`

@@ -1,10 +1,32 @@
 `import Ember from 'ember'`
 
 NotificationsCreatorComponent = Ember.Component.extend
-  admins: false
-  students: true
-  demonstators: false
-  evaluators: false
+  startingDate: Ember.computed ->
+    if @get('notification')
+      return @get('notification.date')
+    @get('minDate').toISOString().slice(0, 10)
+
+  sender: Ember.computed ->
+    if @get('notification')
+      return @get('notification.user')
+    'Teszt Felhasznalo'
+
+  admins: Ember.computed ->
+    if @get('notification')
+      return @get('notification.where').indexOf('A') >= 0
+    false
+  students: Ember.computed ->
+    if @get('notification')
+      return @get('notification.where').indexOf('S') >= 0
+    false
+  demonstators: Ember.computed ->
+    if @get('notification')
+      return @get('notification.where').indexOf('D') >= 0
+    false
+  evaluators: Ember.computed ->
+    if @get('notification')
+      return @get('notification.where').indexOf('E') >= 0
+    false
 
   didReceiveAttrs: ->
     @set 'minDate', new Date(Date.now())
@@ -21,5 +43,8 @@ NotificationsCreatorComponent = Ember.Component.extend
     toggleEvaluators: ->
       @toggleProperty('evaluators')
       false
+
+    closeSettings: ->
+      @sendAction('closeSettings')
 
 `export default NotificationsCreatorComponent`

@@ -1,15 +1,15 @@
 <div class="notification-creator">
   <div class="text label">Sender</div>
-  <div class="text">Teszt felhasználó</div>
+  <div class="text">{{sender}}</div>
 
   <div class="text label">Title</div>
-  {{input type="type"}}
+  {{input type="type" value=notification.title}}
 
   <div class="text label">Dátum</div>
-  <div class="text">2016. okt. 22.</div>
+  <div class="text">{{startingDate}}</div>
 
   <div class="text label">Deadline</div>
-  {{pikaday-input format="YYYY/MM/DD" placeholder="Select a date" minDate=minDate }}
+  {{pikaday-input format="YYYY-MM-DD" placeholder="Select a date" minDate=minDate value=notification.deadline}}
 
   <div class="text label">Who can see it</div>
   <div class='btn-group' {{action 'toggleAdmins'}} data-toggle="buttons">
@@ -39,7 +39,10 @@
 
 
   <div class="text label">Message</div>
-  {{textarea value=value cols="9" rows="9" }}
+  {{textarea value=notification.message cols="9" rows="9" }}
 
   <button type="button">Mentés</button>
+  {{#if edit}}
+    <button type="button" {{action 'closeSettings'}}>Cancel</button>
+  {{/if}}
 </div>

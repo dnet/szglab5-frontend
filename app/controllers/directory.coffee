@@ -8,7 +8,6 @@ DirectoryController = Ember.Controller.extend
     showSettings: false
     actions:
         openSettings: (user) ->
-            console.log 'openSettings'
             @set 'model.userDetails', user
             @toggleProperty('showSettings')
             false

@@ -205,6 +205,14 @@ table {
 							font-family: 'FontAwesome';
 						}
 					}
+
+					&.trash-o {
+						&:before {
+							content: '\f014';
+							font-family: 'FontAwesome';
+							color: red;
+						}
+					}
 				}
 			}
 

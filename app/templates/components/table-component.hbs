@@ -15,6 +15,10 @@
         <th>
         </th>
       {{/if}}
+      {{#if withDelete}}
+        <th>
+        </th>
+      {{/if}}
     </thead>
     <tbody>
       {{#each body as |row number|}}
@@ -33,6 +37,11 @@
           {{#if withImpersonate}}
             <td>
               <button type="button" class='user-secret' {{action 'impersonate' row}} title="megszemélyesítés"></button>
+            </td>
+          {{/if}}
+          {{#if withDelete}}
+            <td>
+              <button type="button" class='trash-o' {{action 'delete' row}} title="törlés"></button>
             </td>
           {{/if}}
         </tr>
