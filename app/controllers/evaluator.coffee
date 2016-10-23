@@ -9,26 +9,26 @@ EvaluatorController = Ember.Controller.extend
     @set 'currentView', 'lab1'
 
   subMenu: [
-    {
-      key: 'lab1',
-      description: '1. Labor'
-    },
-    {
-      key: 'lab2',
-      description: '2. Labor'
-    },
-    {
-      key: 'lab3',
-      description: '3. Labor'
-    },
-    {
-      key: 'lab4',
-      description: '4. Labor'
-    },
-    {
-      key: 'lab5',
-      description: '5. Labor'
-    }
+      {
+        key: 'lab1',
+        description: 'Oracle labor'
+      },
+      {
+        key: 'lab2',
+        description: 'SQL labor'
+      },
+      {
+        key: 'lab3',
+        description: 'Java labor'
+      },
+      {
+        key: 'lab4',
+        description: 'XSQL labor'
+      },
+      {
+        key: 'lab5',
+        description: 'SOA labor'
+      }
     ]
 
   actions:
@@ -36,8 +36,10 @@ EvaluatorController = Ember.Controller.extend
       @set 'evaluate', ''
       @set 'currentView', key
       false
+    cancel: () ->
+      @set 'evaluate', ''
+      false
     evaluateStudent: (student) ->
-      @set 'currentView', ''
       @set 'evaluate', 'student'
       false
 

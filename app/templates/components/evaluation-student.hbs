@@ -12,29 +12,21 @@
   <div class="text">2016. okt. 8. 16:45</div>
 
   {{#if (eq mode 'evaluator')}}
-    <div class="text label">Jegyzőkönyv érdemjegye</div> {{input type="type" value=value }}
+    <div class="text label">Jegyzőkönyv érdemjegye</div>
+    {{input type=text value=homeworkGrade }}
 
     <div class="text label">Jegyzőkönyv megjegyzés</div>
-    {{textarea value=value cols="9" rows="9" }}
-
-    <button type="button" name="button">Mentés</button>
+    {{textarea value=homeworkComment cols="9" rows="9" }}
   {{/if}}
 
   {{#if (eq mode 'demonstrator')}}
-    <div class="text label">
-      Beugró érdemjegye
-    </div>
-    {{input type="type" value=value }}
+    <div class="text label">Beugró érdemjegye</div>
+    {{input type=text value=entryTestGrade }}
 
-    <div class="text label">
-      Jegyzőkönyv érdemjegye
-    </div>
-    <div class="text" id="afterreportgrade">
-      3 (Teacher1)
-    </div>
-    <div class="text label">
-      Jegyzőkönyv megjegyzés
-    </div>
+    <div class="text label">Jegyzőkönyv érdemjegye</div>
+    <div class="text" id="afterreportgrade">3 (Teacher1)</div>
+
+    <div class="text label">Jegyzőkönyv megjegyzés</div>
     <div class="text long">
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
       ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
@@ -43,11 +35,13 @@
       anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
     </div>
 
-    <div class="text label">Labor érdemjegye</div> {{input type="type" value=value }}
+    <div class="text label">Labor érdemjegye</div>
+    {{input type=text value=labGrade }}
 
     <div class="text label">Labor megjegyzés</div>
-    {{textarea value=value cols="9" rows="9" }}
+    {{textarea value=labComment cols="9" rows="9" }}
 
-    <button type="button" name="button">Mentés</button>
   {{/if}}
+  <button type="button">Save</button>
+  <button type="button" {{action 'cancel'}}>Cancel</button>
 </div>

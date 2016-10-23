@@ -1,45 +1,47 @@
 `import Ember from 'ember'`
 
 DemonstratorController = Ember.Controller.extend
+  currentView: 'lab1'
+  evaluate: ''
 
-    currentView: 'lab1'
-    evaluate: ''
+  didReceiveAttrs: ->
+    @set 'evaluate', ''
+    @set 'currentView', 'lab1'
 
-    didReceiveAttrs: ->
-      @set 'evaluate', ''
-      @set 'currentView', 'lab1'
-
-    subMenu: [
+  subMenu: [
       {
         key: 'lab1',
-        description: '1. Labor'
+        description: 'Oracle labor'
       },
       {
         key: 'lab2',
-        description: '2. Labor'
+        description: 'SQL labor'
       },
       {
         key: 'lab3',
-        description: '3. Labor'
+        description: 'Java labor'
       },
       {
         key: 'lab4',
-        description: '4. Labor'
+        description: 'XSQL labor'
       },
       {
         key: 'lab5',
-        description: '5. Labor'
+        description: 'SOA labor'
       }
-      ]
+    ]
 
-    actions:
-      goToView: (key) ->
-        @set 'evaluate', ''
-        @set 'currentView', key
-        false
-      evaluateStudent: (student) ->
-        @set 'currentView', ''
-        @set 'evaluate', 'student'
-        false
+  actions:
+    goToView: (key) ->
+      @set 'evaluate', ''
+      @set 'currentView', key
+      false
+    cancel: () ->
+      @set 'evaluate', ''
+      false
+    evaluateStudent: (student) ->
+      @set 'evaluate', 'student'
+      false
+
 
 `export default DemonstratorController`

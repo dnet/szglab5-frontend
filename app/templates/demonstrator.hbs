@@ -15,11 +15,11 @@
   </div>
   <div class="right">
     <div class="demonstrator">
-      {{#if currentView}}
-        {{demonstrator-group currentLab=lab1 evaluateStudent=(action 'evaluateStudent')}}
-      {{/if}}
+      {{#unless evaluate}}
+        {{demonstrator-group currentLab=currentView evaluateStudent=(action 'evaluateStudent')}}
+      {{/unless}}
       {{#if evaluate}}
-        {{evaluation-student student=evaluate mode='demonstrator'}}
+        {{evaluation-student student=evaluate mode='demonstrator' cancel=(action 'cancel')}}
       {{/if}}
     </div>
   </div>
