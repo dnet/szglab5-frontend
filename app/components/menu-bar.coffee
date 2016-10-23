@@ -5,6 +5,10 @@ MenuBarComponent = Ember.Component.extend MenuHelper,
 
   userRightLabels: [
     {
+      value: 'Admin',
+      key: 'admin'
+    },
+    {
       value: 'Hallgató',
       key: 'student'
     },
@@ -15,18 +19,10 @@ MenuBarComponent = Ember.Component.extend MenuHelper,
     {
       value: 'Demonstrátor',
       key: 'demonstrator'
-    },
-    {
-      value: 'Admin',
-      key: 'admin'
     }
   ]
-  # userRightLabels: ['student', 'admin']
 
-  currentRight: {
-    value: 'Admin',
-    key: 'admin'
-  }
+  currentRight: 'admin'
 
   userRights: ['admin', 'student']
 

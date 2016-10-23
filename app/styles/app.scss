@@ -1,10 +1,7 @@
-@import "ember-cli-bootstrap-4/bootstrap"; // @import 'bootstrap';
 @import "ember-power-select";
 @import 'app/styles/mixins.scss';
 @import 'app/styles/default.scss';
 @import 'app/styles/menu.scss';
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
 
 .main-content {
   margin-bottom: 2%;
@@ -100,7 +97,7 @@
 
     .left {
       float: left;
-      width: 25%;
+      width: 20%;
       clear: none;
       text-align: left;
       background-color: $leftBackground;
@@ -119,13 +116,11 @@
             list-style-type: none;
             padding-bottom: 5%;
             font-size: 0;
-            max-width: 380px;
-            text-overflow: clip;
+            width: 360px;
 
             a {
               display: inline-block;
               white-space: nowrap;
-              text-overflow: clip;
               padding-right: 5%;
 
               &.submenu-text {
@@ -142,14 +137,14 @@
 
                 &:after {
                   font-family: 'FontAwesome';
-                  content: '\f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111';
+                  content: '\f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111';
                   color: white;
                   letter-spacing: 7px;
                   font-size: 4px;
                   vertical-align: middle;
                   margin-left: 1%;
-                  margin-right: 1%;
-                  text-overflow: clip;
+                  // margin-right: 1%;
+                  // text-overflow: clip;
                 }
               }
 
