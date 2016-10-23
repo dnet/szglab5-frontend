@@ -5,8 +5,12 @@
   {{/power-select}}
 
   <div class="text label">Text</div>
-  {{input type="type" value=value }}
+  {{input type="type" value=entryTest.text }}
 
 
   <button type="button">Mentés</button>
+
+  {{#if edit}}
+    <button type="button" {{action 'closeSettings'}}>Cancel</button>
+  {{/if}}
 </div>

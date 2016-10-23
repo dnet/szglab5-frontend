@@ -1,10 +1,13 @@
 `import Ember from 'ember'`
 
 EntryTestCreatorComponent = Ember.Component.extend
-  selectedLab: {
-    key: 'A2',
-    description: 'SQL'
-  }
+  selectedLab: Ember.computed ->
+    if @get('entryTest')
+      lab = @get('entryTest.lab')
+      for labItem in @get('labs')
+        if labItem.description == lab
+          return labItem
+
   labs: [
     {
       key: 'A1',
@@ -32,5 +35,7 @@ EntryTestCreatorComponent = Ember.Component.extend
     selectLab: (lab) ->
       @set 'selectedLab', lab
       false
+    closeSettings: ->
+      @sendAction('closeSettings')
 
 `export default EntryTestCreatorComponent`
