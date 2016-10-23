@@ -1,0 +1,35 @@
+<div class="dashboard-creator">
+  <div class="text label">Lab</div>
+  <select class="">
+    {{#each labs as |lab|}}
+      <option value={{lab.key}}>{{lab.description}}</option>
+    {{/each}}
+  </select>
+
+  <div class="text label">Date</div>
+  {{pikaday-input format="YYYY-MM-DD" placeholder="Select a date" minDate=minDate value=notification.deadline}}
+  // todo time picker too
+
+  <div class="text label">Room</div>
+  <select class="">
+    <option value="L">L</option>
+    <option value="N">N</option>
+    <option value="P">P</option>
+    <option value="IL105">IL105</option>
+  </select>
+
+  <div class="text label">Teacher</div>
+  <select class="">
+    <option value="Teacher 1">Teacher 1</option>
+    <option value="Teacher 2">Teacher 2</option>
+    <option value="Teacher 3">Teacher 3</option>
+    <option value="Teacher 4">Teacher 4</option>
+  </select>
+
+
+  <button type="button">Mentés</button>
+
+  {{#if edit}}
+    <button type="button" {{action 'closeSettings'}}>Cancel</button>
+  {{/if}}
+</div>
