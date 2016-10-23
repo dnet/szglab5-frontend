@@ -198,6 +198,13 @@ table {
 							font-family: 'FontAwesome';
 						}
 					}
+
+					&.user-secret {
+						&:before {
+							content: '\f21b';
+							font-family: 'FontAwesome';
+						}
+					}
 				}
 			}
 

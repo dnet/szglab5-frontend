@@ -4,25 +4,28 @@
   </div>
   <div class="right">
     <div class="directory">
-      <div class="directory-search-fields">
-        <div class="text label">Név</div>
-        {{input type="text" value=searchName }}
+      {{#unless showSettings}}
+        <div class="directory-search-fields">
+          <div class="text label">Név</div>
+          {{input type="text" value=searchName }}
 
-        <div class="text label">Login</div>
-        {{input type="text" value=searchLogin }}
+          <div class="text label">Login</div>
+          {{input type="text" value=searchLogin }}
 
-        <div class="text label">Azonosító</div>
-        {{input type="text" value=searchId }}
+          <div class="text label">Azonosító</div>
+          {{input type="text" value=searchId }}
 
-        <button {{action 'showTable'}}>Keresés</button>
-      </div>
-
-      {{#if showTable}}
-        <div class="directory-table">
-          {{table-component header=model.header body=model.body addClass='user-table' onClickRowAction='showUserDetails' clickable=true showUserDetails=(action "showUserDetails") withoutnumber=false withSettings=true}}
+          <button {{action 'showTable'}}>Keresés</button>
         </div>
+        {{#if showTable}}
+          <div class="directory-table">
+            {{table-component header=model.header body=model.body addClass='user-table' openSettings=(action "openSettings")  withSettings=true withImpersonate=true}}
+          </div>
+        {{/if}}
+      {{/unless}}
+      {{#if showSettings}}
+        {{directory-settings header=model.header userDetails=model.userDetails homeworkTypes=model.homeworkTypes closeSettings=(action "closeSettings")}}
       {{/if}}
-
     </div>
   </div>
 </div>

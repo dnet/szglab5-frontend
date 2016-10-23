@@ -9,7 +9,10 @@
       {{/each}}
       {{#if withSettings}}
         <th>
-
+        </th>
+      {{/if}}
+      {{#if withImpersonate}}
+        <th>
         </th>
       {{/if}}
     </thead>
@@ -24,14 +27,16 @@
           {{/each}}
           {{#if withSettings}}
             <td>
-              <button type="button" class='cog' {{action 'openSettings' row}}></button>
+              <button type="button" class='cog' {{action 'openSettings' row}} title="szerkesztés"></button>
+            </td>
+          {{/if}}
+          {{#if withImpersonate}}
+            <td>
+              <button type="button" class='user-secret' {{action 'impersonate' row}} title="megszemélyesítés"></button>
             </td>
           {{/if}}
         </tr>
       {{/each}}
     </tbody>
   </table>
-  {{#if settingsOpen}}
-    {{directory-popup userDetails=userDetails homeworkTypes=homeworkTypes onCloseAction='destroyUserDetails' destroyUserDetails=(action "destroyUserDetails")}}
-  {{/if}}
 </div>

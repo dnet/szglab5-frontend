@@ -1,7 +1,7 @@
 `import { test, moduleForComponent } from 'ember-qunit'`
 `import hbs from 'htmlbars-inline-precompile'`
 
-moduleForComponent 'directory-popup-student', 'Integration | Component | directory popup student', {
+moduleForComponent 'directory-settings', 'Integration | Component | directory settings', {
   integration: true
 }
 
@@ -11,15 +11,15 @@ test 'it renders', (assert) ->
   # Set any properties with @set 'myProperty', 'value'
   # Handle any actions with @on 'myAction', (val) ->
 
-  @render hbs """{{directory-popup-student}}"""
+  @render hbs """{{directory-settings}}"""
 
   assert.equal @$().text().trim(), ''
 
   # Template block usage:
   @render hbs """
-    {{#directory-popup-student}}
+    {{#directory-settings}}
       template block text
-    {{/directory-popup-student}}
+    {{/directory-settings}}
   """
 
   assert.equal @$().text().trim(), 'template block text'

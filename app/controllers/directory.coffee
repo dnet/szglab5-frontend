@@ -5,20 +5,20 @@ DirectoryController = Ember.Controller.extend
 
     # showTable: false
     showTable: true
-    showPopUp: false
+    showSettings: false
     actions:
-        showUserDetails: (user) ->
+        openSettings: (user) ->
+            console.log 'openSettings'
             @set 'model.userDetails', user
-            @toggleProperty('showPopUp')
+            @toggleProperty('showSettings')
             false
 
-        destroyUserDetails: ->
+        closeSettings: ->
             @set 'model.userDetails', {}
-            @toggleProperty('showPopUp')
+            @toggleProperty('showSettings')
             false
 
         showTable: ->
-            # @set 'showTable', true
             @toggleProperty('showTable')
             false
 

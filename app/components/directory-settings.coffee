@@ -1,10 +1,6 @@
 `import Ember from 'ember'`
-`import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component'`
 
-DirectoryPopupComponent = Ember.Component.extend KeyboardShortcuts,
-  keyboardShortcuts:
-    'esc': 'closeDialog'
-
+DirectorySettingsComponent = Ember.Component.extend
   body: Ember.computed ->
     [@get('userDetails')]
 
@@ -42,9 +38,8 @@ DirectoryPopupComponent = Ember.Component.extend KeyboardShortcuts,
       isLaboratoryFinal: false
     }
   }
-
   actions:
-    closeDialog: ->
-      @sendAction @get 'onCloseAction'
+    closeSettings: ->
+      @sendAction('closeSettings')
 
-`export default DirectoryPopupComponent`
+`export default DirectorySettingsComponent`
