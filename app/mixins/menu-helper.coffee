@@ -5,7 +5,7 @@ MenuHelperMixin = Ember.Mixin.create
     {
       key: 'student'
       value: 'Hallgató',
-      icon: 'file'
+      icon: 'graduation-cap'
     }
   ]
 
@@ -41,7 +41,7 @@ MenuHelperMixin = Ember.Mixin.create
     {
       key: 'demonstrator',
       value:"Demonstrátor",
-      icon: 'graduation-cap'
+      icon: 'tasks'
     },
     {
       key: 'entry-test',

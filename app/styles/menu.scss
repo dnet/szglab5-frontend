@@ -94,6 +94,15 @@
           }
         }
 
+        &.tasks {
+          &:before {
+            content: '\f0ae';
+            font-family: 'FontAwesome';
+            color: white;
+            padding-right: 5px;
+          }
+        }
+
         &.file {
           &:before {
             content: '\f15b';
