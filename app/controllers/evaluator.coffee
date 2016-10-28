@@ -36,7 +36,7 @@ EvaluatorController = Ember.Controller.extend
       @set 'evaluate', ''
       @set 'currentView', key
       false
-    cancel: () ->
+    cancel:  ->
       @set 'evaluate', ''
       false
     evaluateStudent: (student) ->

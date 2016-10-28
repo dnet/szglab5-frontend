@@ -5,6 +5,9 @@ SettingsController = Ember.Controller.extend
     notification: false
 
     actions:
+        goToView: (key) ->
+          @set 'currentView', key
+          false
         toggleMailList: ->
             @toggleProperty('mailList')
             false
@@ -12,6 +15,7 @@ SettingsController = Ember.Controller.extend
         toggleNotifications: ->
             @toggleProperty('notification')
             false
+
 
 
 `export default SettingsController`

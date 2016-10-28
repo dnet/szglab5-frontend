@@ -36,9 +36,11 @@ DemonstratorController = Ember.Controller.extend
       @set 'evaluate', ''
       @set 'currentView', key
       false
+      
     cancel: () ->
       @set 'evaluate', ''
       false
+      
     evaluateStudent: (student) ->
       @set 'evaluate', 'student'
       false

@@ -1,18 +1,5 @@
 <div class="content evaluator">
-  <div class="left">
-    <div class="title">Javító</div>
-    <div class="submenu">
-      <ul>
-        {{#each subMenu as |menu|}}
-          <li>
-            <a class="submenu-text {{if (eq menu.key currentView) 'active'}}" {{action 'goToView' menu.key}}>
-              {{menu.description}}
-            </a>
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
+  {{left-menu title="Javító" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="evaluator">
       {{#unless evaluate}}

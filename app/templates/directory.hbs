@@ -1,7 +1,6 @@
 <div class="content directory">
-  <div class="left directory">
-    <div class="title">Felhasználók</div>
-  </div>
+  {{left-menu title="Felhasználók" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+
   <div class="right">
     <div class="directory">
       {{#unless showSettings}}
@@ -19,7 +18,7 @@
         </div>
         {{#if showTable}}
           <div class="directory-table">
-            {{table-component header=model.header body=model.body addClass='user-table' openSettings=(action "openSettings")  withSettings=true withImpersonate=true}}
+            {{table-component header=model.header body=model.body addClass='user-table' openSettings=(action "openSettings") withSettings=true withImpersonate=true}}
           </div>
         {{/if}}
       {{/unless}}

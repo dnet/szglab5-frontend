@@ -1,11 +1,8 @@
 <div class="content sql">
-  <div class="left">
-    <div class="title">SQL</div>
-  </div>
+  {{left-menu title="SQL" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="sql">
       {{textarea cols="9" rows="9" placeholder="SQL query"}}
-
       <button type="button">Run</button>
     </div>
   </div>
