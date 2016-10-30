@@ -4,9 +4,9 @@
     <ul>
       {{#each subMenu as |menu|}}
         <li>
-          <a class="submenu-text {{if (eq menu.key currentView) 'active'}}" {{action 'goToView' menu.key}}>
+          <button type="button" class="submenu-text {{if (eq menu.key currentView) 'active'}}" {{action 'goToView' menu.key}}>
             {{menu.description}}
-          </a>
+          </button>
         </li>
       {{/each}}
     </ul>
