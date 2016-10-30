@@ -38,7 +38,7 @@ StudentRoute = Ember.Route.extend MenuHelper,
           repository: "git@gitlab.db.bme.hu:pelda/pelda.git",
           entrytest: "5",
           finalcommit: "Branch2/3",
-          commits: ["Branch1/1","Branch1/2","Branch2/3","Branch2/4"]
+          commits: ["tag1","tag2","tag3v4.0.0","v4.0.0"]
         },
         lab3: {
           description: "3. Labor",
