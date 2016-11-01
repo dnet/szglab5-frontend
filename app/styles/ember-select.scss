@@ -1,7 +1,3 @@
-.ember-power-select:not(.multiple) .ember-power-select-trigger {
-  overflow: hidden;
-}
-
 .ember-basic-dropdown-trigger,
 .ember-power-select-trigger {
   max-width: 200px;
@@ -10,18 +6,14 @@
 span.ember-power-select-selected-item {
   padding: 5% 5% 5% 3%;
   margin-right: 1%;
+  font-family: 'Roboto Slab', sans-serif;
   font-size: 16px;
   line-height: 1.25;
 }
 
-.ember-power-select-dropdown {
-  border-right: 1px solid #999;
-  border-left: 1px solid #999;
-}
-
 .ember-power-select-trigger[aria-disabled=true] {
   cursor: default;
-  background-color: transparent;
+  // background-color: transparent;
   color: black;
   @include opacity(.5);
 
@@ -44,20 +36,20 @@ span.ember-power-select-selected-item {
   }
 }
 
-.ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-status-icon {
-  &:after {
-    font-family: 'FontAwesome';
-    content: "\f077";
-    color: black;
-  }
-}
-
-.ember-power-select-trigger:after {
+.ember-basic-dropdown--focus-inside .ember-power-select-trigger,
+.ember-power-select-trigger[aria-pressed=true] {
   .ember-power-select-status-icon {
     &:after {
       font-family: 'FontAwesome';
       content: "\f077";
+      color: black;
     }
+  }
+}
+
+.ember-power-select-status-icon {
+  .ember-basic-dropdown-trigger[aria-expanded="true"] & {
+    transform: none;
   }
 }
 
@@ -70,7 +62,8 @@ span.ember-power-select-selected-item {
 
 .ember-power-select-search {
   input {
-    padding: 10px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 16px;
     outline: none;
     border: 1px solid #999;
   }
@@ -81,18 +74,19 @@ span.ember-power-select-selected-item {
 
   &.ember-power-select-option--no-matches-message {
     color: $darkgray;
+    font-family: 'Roboto Slab', sans-serif;
     font-style: italic;
   }
 }
 
-.ember-power-select-options[role="listbox"] {
-  background-color: transparent;
-  padding: 3%;
+.ember-power-select-option {
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 16px;
 }
 
 .ember-power-select-trigger {
   border: 1px solid rgba(0, 0, 0, 0.15);
-	border-radius: 0.25rem;
+  border-radius: 0.25rem;
   color: black;
   background-color: transparent;
 }

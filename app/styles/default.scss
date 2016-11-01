@@ -23,6 +23,9 @@ a {
 
 div {
 	font-family: 'Roboto Slab', sans-serif;
+	&:focus {
+		outline: none;
+	}
 
 	&.normal-label {
 		font-weight: bold;

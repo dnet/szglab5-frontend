@@ -1,6 +1,5 @@
 .menu-content {
-  margin: 1% 2%;
-  margin-bottom: 0;
+  margin: 1% 2% 0;
   clear: both;
 
   .logo {
@@ -40,8 +39,17 @@
       display: block;
       white-space: nowrap;
       box-sizing: border-box;
+
       &.wide {
         min-width: 200px;
+        -webkit-user-select: none;
+        /* Chrome all / Safari all */
+        -moz-user-select: none;
+        /* Firefox all */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+
         .ember-power-select-status-icon {
           &:after {
             color: white;
@@ -61,22 +69,23 @@
         padding-right: 1%;
       }
 
+      .menu-text {
+        padding-top: 3%;
+        font-weight: 400;
+      }
+
       button {
         border: none;
         background: transparent;
         outline: none;
         cursor: pointer;
         box-shadow: none;
-        padding-top: 1%;
+        padding-top: 5%;
         padding-left: 10px;
         padding-right: 10px;
         margin: 0;
         color: white;
         text-decoration: none;
-
-        &.menu-text {
-          font-weight: 400;
-        }
 
         &.bar-chart {
           &:before {
