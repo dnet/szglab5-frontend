@@ -28,16 +28,10 @@ MenuBarComponent = Ember.Component.extend MenuHelper,
   }
 
   userRights: ['admin', 'student']
-  changeUser: (key) ->
-    for right in @get('userRightLabels')
-      if right.key == key
-        set 'currentRight', right
-        return
-
 
   actions:
     changeUserRight: (right) ->
-      @changeUser(right)
+      @set 'currentRight', right
       false
 
 
