@@ -19,5 +19,6 @@ Router.map ->
   @route 'sql'
   @route 'entry-test'
   @route 'dashboard'
+  @route 'login'
 
 `export default Router`

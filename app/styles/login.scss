@@ -1,0 +1,21 @@
+.login {
+  background: white;
+  margin: 0 auto;
+  width: 30%;
+  padding: 2%;
+  text-align: center;
+
+  .top {
+    margin: 0 auto;
+    input {
+      margin-left: 25%;
+      margin-top: 2%;
+    }
+  }
+
+  .bottom {
+    margin-top: 3%;
+    padding-top: 1%;
+    border-top: 1px solid black;
+  }
+}

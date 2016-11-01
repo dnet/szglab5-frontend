@@ -39,7 +39,7 @@
 
   <!-- RIGHT MENU ITEMS-->
   <li class='right'>
-    <button class='sign-out' title='kijelentkezés'></button>
+    {{#link-to 'login' class='sign-out' tagName='button' title='kijelentkezés' }}{{/link-to}}
   </li>
   <li class='right cogs'>
     {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }}{{/link-to}}
