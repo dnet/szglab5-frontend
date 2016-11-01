@@ -38,6 +38,14 @@
         }
       }
 
+      .settings {
+        button {
+          &.btn--toggle {
+            margin-left: -1%;
+          }
+        }
+      }
+
       .statistics {
         .statistics-content {
           margin-top: 1%;

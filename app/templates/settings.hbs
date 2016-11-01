@@ -16,20 +16,10 @@
       {{input type="password" value=user.newpwdagain placeholder='új jelszó'}}
 
       <div class="text label">mailing list</div>
-      <div class='btn-group' {{action 'toggleMailList'}} data-toggle="buttons">
-        <label class="btn--toggle {{if mailList 'active'}}">
-              {{input type="checkbox"}}
-              <span class='label'>subscribe</span>
-          </label>
-      </div>
+      <button type="button" class="btn--toggle {{if mailList 'active'}}" {{action 'toggleMailList'}}>subscribe</button>
 
       <div class="text label">e-mail notifications</div>
-      <div class='btn-group' {{action 'toggleNotifications'}} data-toggle="buttons">
-        <label class="btn--toggle {{if notification 'active'}}">
-              {{input type="checkbox"}}
-              <span>subscribe</span>
-          </label>
-      </div>
+      <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}}>subscribe</button>
 
       <div class="text label">ssh publikus kulcs</div>
       {{textarea value=user.ssh class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
