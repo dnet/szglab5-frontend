@@ -1,0 +1,151 @@
+.main-content {
+  .content {
+    &.settings {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/cogs.png");
+      }
+    }
+
+    &.directory {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/users.png");
+
+        &:before {
+          // font-family: 'FontAwesome';
+          // content: '\f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 \f0c0 ';
+          // color: #748486;
+          // letter-spacing: 5px;
+        }
+      }
+    }
+
+    &.statistics {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/bar-chart.png");
+      }
+    }
+
+    &.entry-test {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/pencil.png");
+      }
+    }
+
+    &.dashboard {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/tachometer.png");
+      }
+    }
+
+    &.student {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/graduation-cap.png");
+      }
+    }
+
+    &.notification {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/bell-o.png");
+      }
+    }
+
+    &.demonstrator {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/tasks.png");
+      }
+    }
+
+    &.sql {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/terminal.png");
+      }
+    }
+
+    &.evaluator {
+      .left {
+        background-repeat: repeat;
+        background-size: 50px 50px;
+        background-image: url("images/book.png");
+      }
+    }
+
+    .left {
+      float: left;
+      width: 29%;
+      clear: none;
+      text-align: left;
+      background-color: $leftBackground;
+      padding: 2% 2% 99999px;
+      margin-bottom: -99999px;
+
+      .title {
+        color: white;
+      }
+
+      .submenu {
+        ul {
+          padding: 0;
+
+          li {
+            list-style-type: none;
+            padding-bottom: 5%;
+
+            button {
+              background: transparent;
+              box-shadow: none;
+              display: inline-block;
+              white-space: nowrap;
+              padding-right: 5%;
+
+              &.submenu-text {
+                font-size: 18px;
+                color: white;
+                text-align: left;
+                padding: 0;
+                font-weight: 100;
+                text-transform: uppercase;
+              }
+
+              &.active {
+                font-weight: 400;
+                position: relative;
+
+                &:after {
+                  font-family: 'FontAwesome';
+                  content: '\f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111 \f111';
+                  color: white;
+                  letter-spacing: 7px;
+                  font-size: 4px;
+                  vertical-align: middle;
+                  margin-left: 1%;
+                }
+              }
+
+              &:hover {
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,169 @@
+.main-content {
+  margin-bottom: 2%;
+
+  .content {
+    margin: 0 2%;
+    padding-bottom: 2%;
+    clear: both;
+    overflow: hidden;
+    background-color: white;
+
+    .right {
+      position: relative;
+      margin: 0 0 0 33%;
+      width: 63%;
+      background-color: white;
+      padding: 2% 2% 99999px;
+      margin-bottom: -99999px;
+
+      .directory {
+        .directory-popup {
+          width: 800px;
+
+          .directory-popup-fields {
+            margin-bottom: 10px;
+
+            .directory-popup-field {
+              margin: 0 auto;
+              width: 100%;
+              margin-bottom: 10px;
+
+              input {
+                display: inline-block;
+                width: 70%;
+              }
+
+              button {
+                margin-top: 0;
+                margin-bottom: 2px;
+                width: 29%;
+                display: inline-block;
+              }
+            }
+
+            .directory-popup-form-button {
+              margin: 0 auto;
+              width: 99.6%;
+            }
+
+            .directory-popup-table {
+              table {
+                background: white;
+              }
+            }
+          }
+
+          .directory-popup-settings {
+            border-top: thin solid black;
+            margin: 0 auto;
+            text-align: left;
+            margin-bottom: 10px;
+
+            .directory-popup-settings-student {
+              margin-top: 10px;
+              width: 100%;
+
+              button {
+                margin-top: 0;
+                margin-bottom: 2px;
+                display: inline-block;
+              }
+            }
+
+            .directory-popup-settings-evaluator {
+              margin-top: 10px;
+
+              .checkbox-container {
+                margin-bottom: 10px;
+
+                .btn-group {
+                  text-align: left;
+                  margin-bottom: 10px;
+                  margin-left: 5px;
+
+                  label {
+                    width: 200px;
+                    padding: 5px 0;
+                  }
+                }
+              }
+
+              button {
+                margin: 0 auto;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .statistics {
+        .statistics-content {
+          margin-top: 1%;
+        }
+      }
+
+      .student {
+        .ember-power-select:not(.multiple) .ember-power-select-trigger {
+          overflow: hidden;
+          width: 300px;
+        }
+
+        .ember-power-select-status-icon {
+          &:after {
+            color: black;
+          }
+        }
+
+        .ember-power-select-dropdown {
+          width: 300px;
+        }
+
+        .ember-power-select-trigger {
+          border: 1px solid black;
+          color: black;
+        }
+
+        span.ember-power-select-selected-item {
+          font-weight: 300;
+        }
+
+        .ember-power-select-option {
+          font-weight: 100;
+        }
+      }
+
+      .entry-test {
+        .entry-test-creator {
+          .ember-power-select:not(.multiple) .ember-power-select-trigger {
+            overflow: hidden;
+            width: 300px;
+          }
+
+          .ember-power-select-status-icon {
+            &:after {
+              color: black;
+            }
+          }
+
+          .ember-power-select-dropdown {
+            width: 300px;
+          }
+
+          .ember-power-select-trigger {
+            border: 1px solid black;
+            color: black;
+          }
+
+          span.ember-power-select-selected-item {
+            font-weight: 300;
+          }
+
+          .ember-power-select-option {
+            font-weight: 100;
+          }
+        }
+      }
+    }
+  }
+}

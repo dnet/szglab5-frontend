@@ -1,0 +1,95 @@
+table {
+  margin-top: 1%;
+  width: 100%;
+  border: none;
+  font-weight: 300;
+  font-size: 16px;
+  border-collapse: collapse;
+
+  tr {
+    &.clickable {
+      cursor: pointer;
+    }
+
+    &.normal {
+      &:nth-child(even) {
+        background: #ededed;
+      }
+
+      &:nth-child(odd) {
+        background: #f7f7f7;
+      }
+
+      &:hover {
+        background: #d7d7d7;
+      }
+
+      td {
+        padding: 1%;
+
+        button {
+          border: none;
+          background: transparent;
+          outline: none;
+          cursor: pointer;
+          box-shadow: none;
+          margin: 0;
+          text-decoration: none;
+          color: black;
+
+          &:hover {
+            border: none;
+            background: transparent;
+            outline: none;
+            color: black;
+          }
+
+          &.active,
+          &:active {
+            box-shadow: none;
+          }
+
+          &.cog {
+            &:before {
+              content: '\f013';
+              font-family: 'FontAwesome';
+            }
+          }
+
+          &.user-secret {
+            &:before {
+              content: '\f21b';
+              font-family: 'FontAwesome';
+            }
+          }
+
+          &.trash-o {
+            &:before {
+              content: '\f014';
+              font-family: 'FontAwesome';
+              color: red;
+            }
+          }
+        }
+      }
+
+      th {
+        padding: 1%;
+        font-weight: 300;
+        text-align: left;
+      }
+    }
+  }
+
+  thead {
+    background-color: #b3b3b3;
+
+    th {
+      padding: 1%;
+      color: white;
+      font-weight: 300;
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+}
