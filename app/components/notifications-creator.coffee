@@ -48,8 +48,8 @@ NotificationsCreatorComponent = Ember.Component.extend
       @toggleProperty('evaluators')
       false
     toggleLogin: ->
-    @toggleProperty('onLogin')
-    false
+      @toggleProperty('onLogin')
+      false
 
     closeSettings: ->
       @sendAction('closeSettings')
