@@ -41,6 +41,16 @@
       box-sizing: border-box;
       &.wide {
         min-width: 200px;
+        .ember-power-select-status-icon {
+          &:after {
+            color: white;
+          }
+        }
+
+        .ember-power-select-trigger {
+          border: 1px solid white;
+          color: white;
+        }
       }
 
       &.right {

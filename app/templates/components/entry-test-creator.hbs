@@ -1,17 +1,12 @@
 <div class="entry-test-creator">
   <div class="text label">Lab</div>
-  {{!-- {{#power-select options=labs onchange=(action "selectLab") selected=selectedLab as |lab|}}
-    {{lab.description}}
-  {{/power-select}} --}}
-
-  <select class="">
-    {{#each labs as |lab|}}
-      <option value={{lab.key}}>{{lab.description}}</option>
-    {{/each}}
-  </select>
+  <div class="lab-chooser">
+    {{#power-select options=labs onchange=(action "selectLab") selected=selectedLab as |lab|}} {{lab.description}}
+    {{/power-select}}
+  </div>
 
   <div class="text label">Text</div>
-  {{input type="type" value=entryTest.text }}
+  {{input type="type" value=entryTest.text placeholder="example text"}}
 
 
   <button type="button">Mentés</button>

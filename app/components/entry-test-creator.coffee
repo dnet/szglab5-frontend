@@ -31,6 +31,11 @@ EntryTestCreatorComponent = Ember.Component.extend
     }
   ]
 
+  selectedLab: {
+    key: 'A1',
+    description: 'Oracle'
+  },
+
   actions:
     selectLab: (lab) ->
       @set 'selectedLab', lab

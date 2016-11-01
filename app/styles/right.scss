@@ -75,23 +75,16 @@
 
       .entry-test {
         .entry-test-creator {
-          .ember-power-select-status-icon {
-            &:after {
-              color: black;
+          .lab-chooser {
+            margin-left: -1%;
+
+            span.ember-power-select-selected-item {
+              font-weight: 300;
             }
-          }
 
-          .ember-power-select-trigger {
-            border: 1px solid black;
-            color: black;
-          }
-
-          span.ember-power-select-selected-item {
-            font-weight: 300;
-          }
-
-          .ember-power-select-option {
-            font-weight: 100;
+            .ember-power-select-option {
+              font-weight: 100;
+            }
           }
         }
       }
