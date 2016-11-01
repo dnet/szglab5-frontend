@@ -2,19 +2,16 @@
   overflow: hidden;
 }
 
-.ember-power-select {
-  border-radius: 0;
-}
-
 .ember-basic-dropdown-trigger,
 .ember-power-select-trigger {
   max-width: 200px;
 }
 
 span.ember-power-select-selected-item {
-  padding: 5% 5% 5% 2%;
+  padding: 5% 5% 5% 3%;
   margin-right: 1%;
-  line-height: 16px;
+  font-size: 16px;
+  line-height: 1.25;
 }
 
 .ember-power-select-dropdown {
@@ -94,10 +91,10 @@ span.ember-power-select-selected-item {
 }
 
 .ember-power-select-trigger {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
   color: black;
   background-color: transparent;
-  border-radius: 0;
 }
 
 .ember-basic-dropdown--focus-inside .ember-power-select-trigger,

@@ -77,14 +77,29 @@
         .entry-test-creator {
           .lab-chooser {
             margin-left: -1%;
-
-            span.ember-power-select-selected-item {
-              font-weight: 300;
-            }
-
-            .ember-power-select-option {
-              font-weight: 100;
-            }
+          }
+        }
+      }
+      .dashboard {
+        .dashboard-creator{
+          input{
+            width: 18%;
+          }
+          .labChooser{
+            margin-left: -1%;
+            margin-top: 1%;
+          }
+          .timeChooser{
+            margin-left: -1%;
+            margin-top: 1%;
+          }
+          .teacherChooser{
+            margin-left: -1%;
+            margin-top: 1%;
+          }
+          .roomChooser{
+            margin-left: -1%;
+            margin-top: 1%;
           }
         }
       }
