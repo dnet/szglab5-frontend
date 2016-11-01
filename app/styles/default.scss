@@ -81,6 +81,8 @@ button {
 	margin-top: 15px;
 	box-shadow: none;
 	background: $buttonActiveGreen;
+	outline-color: transparent;
+	outline: none;
 
 	&:active {
 		box-shadow: none;
