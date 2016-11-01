@@ -7,6 +7,10 @@ EntryTestCreatorComponent = Ember.Component.extend
       for labItem in @get('labs')
         if labItem.description == lab
           return labItem
+    return {
+      key: 'A1',
+      description: 'Oracle'
+    }
 
   labs: [
     {
@@ -30,11 +34,6 @@ EntryTestCreatorComponent = Ember.Component.extend
       description: 'XSQL'
     }
   ]
-
-  selectedLab: {
-    key: 'A1',
-    description: 'Oracle'
-  },
 
   actions:
     selectLab: (lab) ->
