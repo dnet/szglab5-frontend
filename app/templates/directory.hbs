@@ -6,13 +6,13 @@
       {{#unless showSettings}}
         <div class="directory-search-fields">
           <div class="text label">Név</div>
-          {{input type="text" value=searchName }}
+          {{input type="text" value=searchName placeholder="Kereses nevvel"}}
 
           <div class="text label">Login</div>
-          {{input type="text" value=searchLogin }}
+          {{input type="text" value=searchLogin placeholder="Kereses loginnal"}}
 
           <div class="text label">Azonosító</div>
-          {{input type="text" value=searchId }}
+          {{input type="text" value=searchId placeholder="Kereses azonositoval" }}
 
           <button {{action 'showTable'}}>Keresés</button>
         </div>
