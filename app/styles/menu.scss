@@ -1,6 +1,7 @@
 .menu-content {
   margin: 1% 2% 0;
   clear: both;
+  min-width: 1200px;
 
   .logo {
     float: left;
@@ -70,7 +71,7 @@
       }
 
       .menu-text {
-        padding-top: 3%;
+        padding-top: 1%;
         font-weight: 400;
       }
 
