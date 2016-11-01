@@ -3,7 +3,7 @@
   <div class="text">{{sender}}</div>
 
   <div class="text label">Title</div>
-  {{input type="type" value=notification.title}}
+  {{input type="type" value=notification.title placeholder='example title'}}
 
   <div class="text label">Dátum</div>
   <div class="text">{{startingDate}}</div>
@@ -15,13 +15,13 @@
   <div class="toggle-buttons">
     <button type="button" class="btn--toggle {{if admins 'active'}}" {{action 'toggleAdmins'}}>Admins</button>
     <button type="button" class="btn--toggle {{if students 'active'}}" {{action 'toggleStudents'}}>Students</button>
-    <button type="button" class="btn--toggle {{if demonstrators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrators</button>
+    <button type="button" class="btn--toggle {{if demonstators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrators</button>
     <button type="button" class="btn--toggle {{if evaluators 'active'}}" {{action 'toggleEvaluators'}}>Evaluators</button>
     <button type="button" class="btn--toggle {{if onLogin 'active'}}" {{action 'toggleLogin'}}>On Login</button>
   </div>
 
   <div class="text label">Message</div>
-  {{textarea value=notification.message cols="9" rows="9" }}
+  {{textarea value=notification.message cols="9" rows="9" placeholder='example message'}}
 
   <button type="button">Mentés</button>
   {{#if edit}}
