@@ -13,15 +13,15 @@
 
   {{#if (eq mode 'evaluator')}}
     <div class="text label">Jegyzőkönyv érdemjegye</div>
-    {{input type=text value=homeworkGrade }}
+    {{input type=text value=homeworkGrade placeholder="jegy"}}
 
     <div class="text label">Jegyzőkönyv megjegyzés</div>
-    {{textarea value=homeworkComment cols="9" rows="9" }}
+    {{textarea value=homeworkComment cols="9" rows="9" placeholder="comment" }}
   {{/if}}
 
   {{#if (eq mode 'demonstrator')}}
     <div class="text label">Beugró érdemjegye</div>
-    {{input type=text value=entryTestGrade }}
+    {{input type=text value=entryTestGrade placeholder="jegy" }}
 
     <div class="text label">Jegyzőkönyv érdemjegye</div>
     <div class="text" id="afterreportgrade">3 (Teacher1)</div>
@@ -36,10 +36,10 @@
     </div>
 
     <div class="text label">Labor érdemjegye</div>
-    {{input type=text value=labGrade }}
+    {{input type=text value=labGrade placeholder="jegy" }}
 
     <div class="text label">Labor megjegyzés</div>
-    {{textarea value=labComment cols="9" rows="9" }}
+    {{textarea value=labComment cols="9" rows="9" placeholder="comment" }}
 
   {{/if}}
   <button type="button">Save</button>
