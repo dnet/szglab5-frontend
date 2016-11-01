@@ -1,15 +1,9 @@
-<div class="directory-popup-settings-evaluator">
-    <div class="checkbox-container">
-        {{#each-in homeworkTypes as |key type|}}
-            <div class='btn-group' {{action 'checkType' key}} data-toggle="buttons">
-                <label class="btn--toggle {{if type.checked 'active'}}">
-                  <span class="checkmark">
-                      <div class="checkmark_stem"></div>
-                      <div class="checkmark_kick"></div>
-                  </span> {{input type="checkbox"}}<span class='text-padding'>{{type.name}}</span>
-                </label>
-            </div>
-        {{/each-in}}
-    </div>
-    <button type="button" disabled= {{buttonDisabled}}>Feladattípus módosítása</button>
+<div class="text label">Feladattípusok</div>
+<div class="button-toggles">
+  {{#each-in homeworkTypes as |key type|}}
+    <button type="button" class="btn--toggle {{if type.checked 'active'}}" {{action 'checkType' key}}>
+    {{type.name}}
+  </button>
+  {{/each-in}}
 </div>
+<button type="button" disabled= {{buttonDisabled}}>Feladattípus módosítása</button>

@@ -27,6 +27,10 @@ NotificationsCreatorComponent = Ember.Component.extend
     if @get('notification')
       return @get('notification.where').indexOf('E') >= 0
     false
+  onLogin: Ember.computed ->
+    if @get('notification')
+      return @get('notification.where').indexOf('L') >= 0
+    false
 
   didReceiveAttrs: ->
     @set 'minDate', new Date(Date.now())
@@ -43,6 +47,9 @@ NotificationsCreatorComponent = Ember.Component.extend
     toggleEvaluators: ->
       @toggleProperty('evaluators')
       false
+    toggleLogin: ->
+    @toggleProperty('onLogin')
+    false
 
     closeSettings: ->
       @sendAction('closeSettings')

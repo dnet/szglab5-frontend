@@ -1,41 +1,35 @@
 <div class="logo" title="laboradmin"><img src="assets/images/logo.png"></div>
 <ul>
   <!-- USER ROLE CHOOSER-->
-  <li title='felhasználó modul váltása'>
-    <select onchange={{action "changeUserRight" value="target.value"}} selected=current>
-      {{#each userRightLabels as |userright|}}
-        <option value={{userright.key}}>{{userright.value}}</option>
-      {{/each}}
-    </select>{{!-- {{#power-select options=userRightLabels onchange=(action "changeUserRight") as |userright|}}
-    {{userright.value}}
-      {{/power-select}} {{!-- {{#power-select options=userRights onchange=(action "changeUserRight") as |userright|}}
-      {{userright}}
-        {{/power-select}} --}}
+  <li title='felhasználó modul váltása' class="wide">
+    {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
+      {{userright.value}}
+    {{/power-select}}
   </li>
 
   <!-- LEFT MENU ITEMS-->
-  {{#if (eq currentRight 'admin')}}
+  {{#if (eq currentRight.key 'admin')}}
     {{#each adminMenu as |menuitem|}}
       <li class='min-width' title= {{menuitem.value}}>
         {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
       </li>
     {{/each}}
   {{/if}}
-  {{#if (eq currentRight 'evaluator')}}
+  {{#if (eq currentRight.key 'evaluator')}}
     {{#each evaluatorMenu as |menuitem|}}
       <li class='min-width' title= {{menuitem.value}}>
         {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
       </li>
     {{/each}}
   {{/if}}
-  {{#if (eq currentRight 'demonstrator')}}
+  {{#if (eq currentRight.key 'demonstrator')}}
     {{#each demonstratorMenu as |menuitem|}}
       <li class='min-width' title= {{menuitem.value}}>
         {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
       </li>
     {{/each}}
   {{/if}}
-  {{#if (eq currentRight 'student')}}
+  {{#if (eq currentRight.key 'student')}}
     {{#each studentMenu as |menuitem|}}
       <li class='min-width' title= {{menuitem.value}}>
         {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}

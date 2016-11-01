@@ -2,27 +2,33 @@
   {{table-component header=header body=body clickable=false withoutNumber=true addClass='directory-table'}}
   <div class="directory-fields">
     <div class="directory-field">
+      <div class="text label">Új jelszó</div>
       {{input type="text" value=newPwd placeholder='új jelszó'}}
       <button {{action 'setNewPwd'}}>Új jelszó beállítása</button>
     </div>
+
     <div class="directory-field">
+      <div class="text label">Új e-mail</div>
       {{input type="text" value=newEmail placeholder='új e-mail'}}
       <button {{action 'setNewEmail'}}>Új e-mail beállítása</button>
     </div>
-    <button class="directory-form-button" {{action 'impersonateUser'}}>Felhasználó megszemélyesítése</button>
-
+    <div class="directory-field">
+      <div class="text label">Megszemélyesítés</div>
+      <button class="directory-form-button" {{action 'impersonateUser'}}>Felhasználó megszemélyesítése</button>
+    </div>
   </div>
+
   {{#if isEvaluator}}
-    <div class="directory-settings">
+    <div class="directory-settings-evaluator">
       {{directory-settings-evaluator}}
     </div>
   {{/if}}
   {{#if isStudent}}
-    <div class="directory-settings">
+    <div class="directory-settings-student">
       {{#each-in studentLabs as |labkey labvalue|}}
         {{directory-settings-student lab=labvalue key=labkey}}
       {{/each-in}}
     </div>
   {{/if}}
-  <button type="button"{{action 'closeSettings'}}>Cancel</button>
-  </div>
+  <button type="button" class="cancel" {{action 'closeSettings'}}>Cancel</button>
+</div>

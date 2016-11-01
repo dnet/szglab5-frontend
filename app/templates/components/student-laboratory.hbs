@@ -25,14 +25,9 @@
     <div class="text label">
       Végleges tag
     </div>
-    <select class="">
-      {{#each result.commits as |commit|}}
-        <option value={{commit}}>{{commit}}</option>
-      {{/each}}
-    </select>
-    {{!-- {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
+    {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
       {{commit}}
-    {{/power-select}} --}}
+    {{/power-select}}
   {{/if}}
 
   {{#if (eq result.statusCode 'after')}}

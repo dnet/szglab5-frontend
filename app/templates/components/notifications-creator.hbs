@@ -12,37 +12,19 @@
   {{pikaday-input format="YYYY-MM-DD" placeholder="Select a date" minDate=minDate value=notification.deadline}}
 
   <div class="text label">Who can see it</div>
-  <div class='btn-group' {{action 'toggleAdmins'}} data-toggle="buttons">
-    <label class="btn--toggle {{if admins 'active'}}">
-          {{input type="checkbox"}}
-          <span class='label'>Admins</span>
-      </label>
+  <div class="toggle-buttons">
+    <button type="button" class="btn--toggle {{if admins 'active'}}" {{action 'toggleAdmins'}}>Admins</button>
+    <button type="button" class="btn--toggle {{if students 'active'}}" {{action 'toggleStudents'}}>Students</button>
+    <button type="button" class="btn--toggle {{if demonstrators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrators</button>
+    <button type="button" class="btn--toggle {{if evaluators 'active'}}" {{action 'toggleEvaluators'}}>Evaluators</button>
+    <button type="button" class="btn--toggle {{if onLogin 'active'}}" {{action 'toggleLogin'}}>On Login</button>
   </div>
-  <div class='btn-group' {{action 'toggleStudents'}} data-toggle="buttons">
-    <label class="btn--toggle {{if students 'active'}}">
-          {{input type="checkbox"}}
-          <span class='label'>Students</span>
-      </label>
-  </div>
-  <div class='btn-group' {{action 'toggleDemonstrators'}} data-toggle="buttons">
-    <label class="btn--toggle {{if demonstators 'active'}}">
-          {{input type="checkbox"}}
-          <span class='label'>Demonstrators</span>
-      </label>
-  </div>
-  <div class='btn-group' {{action 'toggleEvaluators'}} data-toggle="buttons">
-    <label class="btn--toggle {{if evaluators 'active'}}">
-          {{input type="checkbox"}}
-          <span class='label'>Evaluators</span>
-      </label>
-  </div>
-
 
   <div class="text label">Message</div>
   {{textarea value=notification.message cols="9" rows="9" }}
 
   <button type="button">Mentés</button>
   {{#if edit}}
-    <button type="button" {{action 'closeSettings'}}>Cancel</button>
+    <button type="button" class="cancel" {{action 'closeSettings'}}>Cancel</button>
   {{/if}}
 </div>

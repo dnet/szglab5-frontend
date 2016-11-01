@@ -1,15 +1,18 @@
 $maincolor: #2A623D;
 $menucolor: #2A623D;
-$slytheringreen: #2A623D;
-$oldbackground: #F9F9FA;
-$lightgray: #D0D0D0;
 $darkgray: #A0A0A0;
 $backgroundBlue: #12C8E3;
 $backgroundGreen: #8DBB00;
 $leftBackground: #7d8e90;
 $leftIcon: #748486;
+$buttonActiveGreen: #52c16d;
+$buttonHoverGreen: #229f3a;
+$buttonActiveGray: #808080;
+$buttonHoverGray: #585858;
+$buttonDisaled: #dddddd;
 
 a {
+	font-family: 'Roboto Slab', sans-serif;
 	text-decoration: none;
 
 	&:hover {
@@ -18,20 +21,9 @@ a {
 	}
 }
 
-select {
-	background-color: transparent;
-	font-size: 16px;
-	color: black;
-	border-color: black;
-	padding: 5px;
+div {
 	font-family: 'Roboto Slab', sans-serif;
 
-	option {
-		color: black;
-	}
-}
-
-div {
 	&.normal-label {
 		font-weight: bold;
 		font-size: 18px;
@@ -71,6 +63,8 @@ div {
 
 button {
 	display: inline-block;
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.25;
 	text-align: center;
@@ -79,62 +73,55 @@ button {
 	cursor: pointer;
 	border: 1px solid transparent;
 	padding: 0.5rem 1rem;
-	font-size: 16px;
-	border-radius: 0.25rem;
-	color: black;
+	border-radius: 0;
+	color: white;
 	margin-top: 15px;
-	font-family: 'Roboto Slab', sans-serif;
+	box-shadow: none;
+	background: $buttonActiveGreen;
 
-	&.active,
 	&:active {
+		box-shadow: none;
+	}
+
+	&.active {
 		box-shadow: none;
 	}
 
 	&:hover {
 		box-shadow: none;
-		background: white;
-		color: $maincolor;
+		background: $buttonHoverGreen;
+	}
+
+	&.cancel {
+		box-shadow: none;
+		background: $buttonActiveGray;
+
+		&:hover {
+			box-shadow: none;
+			background: $buttonHoverGray;
+		}
 	}
 
 	&:disabled {
-		background: $darkgray;
-		border-color: $darkgray;
-		pointer-events: none;
-	}
-}
-
-label {
-	&.label {
-		font-weight: bold;
-		font-size: 20px;
-		color: #666;
+		cursor: not-allowed;
+		background: $buttonDisaled;
 	}
 
 	&.btn--toggle {
-		margin-bottom: 0;
-		margin-top: 0;
-		display: inline-block;
-		font-weight: 400;
-		line-height: 1.25;
-		text-align: center;
-		white-space: nowrap;
-		vertical-align: middle;
-		cursor: pointer;
-		border: 1px solid transparent;
-		padding: 0.5rem 1rem;
-		font-size: 16px;
-		border-radius: 0.25rem;
-		background: white;
-		color: $maincolor;
+		background: transparent;
 		border-color: black;
-
-		.text-padding {
-			padding-right: 12px;
-		}
+		min-width: 165px;
+		margin: 1% 1% 0 0;
+		width: 20%;
+		text-align: left;
+		color: black;
+		box-shadow: none;
+		outline-color: transparent;
 
 		&:before {
 			font-family: 'FontAwesome';
 			color: black;
+			padding-right: 10%;
 			content: '\f204';
 		}
 
@@ -144,22 +131,21 @@ label {
 				content: '\f205';
 			}
 		}
-
-		&:disabled {
-			pointer-events: none;
-		}
-
-		input {
-			position: absolute;
-			clip: rect(0,0,0,0);
-			pointer-events: none;
-		}
 	}
 }
 
+label {
+	font-family: 'Roboto Slab', sans-serif;
 
+	&.label {
+		font-weight: bold;
+		font-size: 20px;
+		color: #666;
+	}
+}
 
 input {
+	font-family: 'Roboto Slab', sans-serif;
 	display: block;
 	width: 25%;
 	padding: 0.5rem 0.75rem;
@@ -172,13 +158,10 @@ input {
 	border-radius: 0.25rem;
 	outline: none;
 	resize: none;
-
-	&:focus {
-		border-color: $maincolor;
-	}
 }
 
 textarea {
+	font-family: 'Roboto Slab', sans-serif;
 	display: block;
 	padding: 0.5rem 0.75rem;
 	font-size: 1rem;
@@ -231,116 +214,4 @@ html {
 	// TODO find better solution
 	// overflow-x: scroll;
 	overflow-y: scroll;
-}
-// EMBER POWER SELECT
-
-.ember-power-select:not(.multiple) .ember-power-select-trigger {
-	overflow: hidden;
-	width: 150px;
-}
-
-.ember-power-select {
-	border-radius: 0;
-}
-
-span.ember-power-select-selected-item {
-	// padding: 16%;
-	margin-right: 1%;
-	line-height: 16px;
-}
-
-.ember-power-select-dropdown {
-	border-right: 1px solid #999;
-	border-left: 1px solid #999;
-	width: 150px;
-	@include box-shadow(0 0 25px -5px #999);
-}
-
-.ember-power-select-trigger[aria-disabled=true] {
-	cursor: default;
-	background-color: transparent;
-	color: white;
-	@include opacity(.5);
-
-	.ember-power-select-status-icon {
-		&:after {
-			color: white !important;
-		}
-	}
-}
-
-.ember-power-select-status-icon {
-	position: relative;
-	border: none;
-	float: right;
-
-	&:after {
-		font-family: 'FontAwesome';
-		content: "\f078";
-		color: white;
-	}
-}
-
-.ember-basic-dropdown--below {
-	.ember-power-select-status-icon {
-		@include transform(none);
-
-		&:after {
-			font-family: 'FontAwesome';
-			content: "\f077";
-		}
-	}
-}
-
-.ember-basic-dropdown--above {
-	.ember-power-select-status-icon {
-		@include transform(none);
-
-		&:after {
-			font-family: 'FontAwesome';
-			content: "\f077";
-		}
-	}
-}
-
-.ember-basic-dropdown--in-place .ember-power-select-dropdown,
-.ember-power-select-dropdown.ember-basic-dropdown--above,
-.ember-power-select-dropdown.ember-basic-dropdown--below {
-	border: none;
-	min-width: 130px !important;
-}
-
-.ember-power-select-search {
-	input {
-		padding: 10px;
-		outline: none;
-		border: 1px solid #999;
-		@include border-radius(3px);
-	}
-}
-
-.ember-power-select-option {
-	padding: 5px 8px;
-
-	&.ember-power-select-option--no-matches-message {
-		color: $darkgray;
-		font-style: italic;
-	}
-}
-
-.ember-power-select-options[role="listbox"] {
-	background-color: transparent;
-	padding: 3%;
-}
-
-.ember-power-select-trigger {
-	border: 1px solid white;
-	color: white;
-	background-color: transparent;
-	border-radius: 0;
-}
-
-.ember-basic-dropdown--focus-inside .ember-power-select-trigger,
-.ember-power-select-trigger:focus {
-	border-color: white;
 }
