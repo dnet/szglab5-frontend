@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import moment from 'ember-moment';
 
 export default Ember.Component.extend({
   init: function() {
