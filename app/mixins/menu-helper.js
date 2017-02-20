@@ -1,65 +1,56 @@
-`import Ember from 'ember'`
+import Ember from 'ember';
 
-MenuHelperMixin = Ember.Mixin.create
+export default Ember.Mixin.create({
   studentMenu: [
     {
-      key: 'student'
+      key: 'student',
       value: 'Hallgató',
       icon: 'graduation-cap'
     }
-  ]
-
+  ],
   adminMenu: [
     {
       key: 'statistics',
-      value:"Statisztikák",
+      value: "Statisztikák",
       icon: 'bar-chart'
-    },
-    {
+    }, {
       key: 'directory',
-      value:"Felhasználók"
+      value: "Felhasználók",
       icon: 'users'
-    },
-    {
+    }, {
       key: 'notification',
-      value:"Hirdetmények"
+      value: "Hirdetmények",
       icon: 'bell-o'
-    },
-    {
+    }, {
       key: 'dashboard',
-      value:"Mérések"
+      value: "Mérések",
       icon: 'dashboard'
-    },
-    {
+    }, {
       key: 'entry-test',
-      value:"Beugrók",
+      value: "Beugrók",
       icon: 'pencil'
-    },
-    {
+    }, {
       key: 'sql',
-      value:"SQL"
+      value: "SQL",
       icon: 'terminal'
     }
-  ]
-
+  ],
   demonstratorMenu: [
     {
       key: 'demonstrator',
-      value:"Demonstrátor",
+      value: "Demonstrátor",
       icon: 'tasks'
-    },
-    {
+    }, {
       key: 'entry-test',
-      value:"Beugrók",
+      value: "Beugrók",
       icon: 'pencil'
     }
-  ]
+  ],
   evaluatorMenu: [
     {
       key: 'evaluator',
-      value:"Javító",
+      value: "Javító",
       icon: 'book'
     }
   ]
-
-`export default MenuHelperMixin`
+});
