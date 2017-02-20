@@ -24,7 +24,7 @@
       {{#each body as |row number|}}
         <tr class='normal{{if clickable " clickable"}}' {{action 'onRowClick' (get-array-element body number)}}>
           {{#unless withoutNumber}}
-            <th scope='row'>{{add number}}</th>
+            <th scope='row'>{{add number 1}}</th>
           {{/unless}}
           {{#each row as |cell|}}
             <td>{{cell}}</td>
