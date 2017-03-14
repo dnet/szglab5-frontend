@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  store: Ember.inject.service(),
   init() {
     this._super(...arguments);
     if (!(this.get('entryTest'))) {
@@ -10,46 +11,22 @@ export default Ember.Component.extend({
     }
     // TODO: Set isNotEditing (How to iterate thru hasmany array?)
     var questions = this.get('entryTest.questions');
-    for (var i = 0; i < questions.length; i++) {
+    this.set('entryTest.question', questions.filter((question, index)=>{
+      questions.set('isNotEditing', true);
+      return true;
+    }))
+    /*for (var i = 0; i < questions.length; i++) {
       questions.get(i).set('isNotEditing', true);
-    }
+    }*/
   },
   selectedLab: Ember.computed(function () {
-    var i, lab, labItem, len, ref;
-    if (this.get('entryTest')) {
-      lab = this.get('entryTest.lab');
-      ref = this.get('labs');
-      for (i = 0, len = ref.length; i < len; i++) {
-        labItem = ref[i];
-        if (labItem.description === lab) {
-          return labItem;
-        }
-      }
+    if (this.get('entryTest.language')) {
+      return this.get('entryTest.language');
     }
-    return {
-      key: 'A1',
-      description: 'Oracle'
-    };
   }),
-  labs: [{
-    key: 'A1',
-    description: 'Oracle'
-  }, {
-    key: 'A2',
-    description: 'SQL'
-  }, {
-    key: 'A3',
-    description: 'Java'
-  }, {
-    key: 'A4',
-    description: 'SOA'
-  }, {
-    key: 'A5',
-    description: 'XSQL'
-  }],
   actions: {
-    selectLab(lab) {
-      this.set('selectedLab', lab);
+    selectLab(language) {
+      this.set('entryTest.language', language);
       return false;
     },
     addQuestion() {
@@ -64,7 +41,7 @@ export default Ember.Component.extend({
       return false;
     },
     saveQuestion(question) {
-      // TODO: save question
+      console.log(question.get('text'));
       question.save().then(
         () =>
         { question.set('isNotEditing', true); }
@@ -72,12 +49,11 @@ export default Ember.Component.extend({
       return false;
     },
     removeQuestion(question) {
-      // TODO: remove question
+      question.destroyRecord();
       return false;
     },
     saveSettings() {
-      // TODO: save model
-      this.get('entryTest').save().then(function () {
+      this.get('entryTest').save().then(() => {
         if (this.get('goToView')) {
           return this.sendAction('goToView', 'list');
         }
@@ -88,14 +64,11 @@ export default Ember.Component.extend({
       return false;
     },
     closeSettings() {
-      if (this.get('entryTest').get('hasDirtyAttributes')) {
-        this.get('entryTest').rollbackAttributes();
-      }
-      if (!this.get('edit')) {
-        // TODO: How to rollback creation of entrytest
-        this.get('entryTest').remove();
-      }
       return this.sendAction('closeSettings');
     }
+  },
+  willDestroyElement(){
+    this._super(...arguments);
+    this.get('entryTest').rollbackAttributes();
   }
 });

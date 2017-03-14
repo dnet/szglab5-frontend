@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     model() {
         return RSVP.hash({
             tests: this.get('store').findAll('test'),
-            //languages: this.get('store').findAll('language')
+            languages: this.get('store').findAll('language')
         });
     }
 });
