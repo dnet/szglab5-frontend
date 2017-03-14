@@ -11,8 +11,14 @@
   {{#if edit}}
   <div class="text label">Kérdések</div>
   {{#each entryTest.questions as |question number|}}
-    {{textarea value=question.text placeholder="kerdés szövege"}}
-    <button type="button" {{action 'removeQuestion'}}>-</button>
+    <textarea value={{question.text}} placeholder="kerdés szövege" disabled={{question.isNotEditing}}>
+    </textarea>
+    {{#if question.isNotEditing}}
+      <button type="button" {{action 'editQuestion' question}}>edit</button>
+      <button type="button" {{action 'removeQuestion' question}}>-</button>
+    {{else}}
+      <button type="button" {{action 'saveQuestion' question}}>save</button>
+    {{/if}}
     <div class="clear"></div>
   {{/each}}
   <button type="button" {{action 'addQuestion'}}>+</button>

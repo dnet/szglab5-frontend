@@ -15,6 +15,7 @@ export default Ember.Component.extend({
   actions: {
     openSettings: function(entry) {
       var entryTest;
+      // TODO: better search, maybe with new object-table-component
       this.get('model.tests').map(
         x=> {
           if (x.get('id') === entry[0]) {

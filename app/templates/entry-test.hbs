@@ -3,9 +3,9 @@
   <div class="right">
     <div class="entry-test">
       {{#if (eq currentView 'creator')}}
-        {{entry-test-creator model=model}}
+        {{entry-test-creator model=model store=store goToView=(action 'goToView')}}
       {{else}}
-        {{entry-test-view model=model}}
+        {{entry-test-view model=model store=store}}
       {{/if}}
     </div>
   </div>

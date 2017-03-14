@@ -3,14 +3,15 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   init() {
     this._super(...arguments);
-    this.get('store')
     if (!(this.get('entryTest'))) {
-      this.set('entryTest', {
-        questions:[]
-      });
+      this.set('entryTest', this.get('store').createRecord('test', {
+        title: ''
+      }));
     }
-    if (!(this.get('entryTest').questions)) {
-      this.set('entryTest.questions',[]);
+    // TODO: Set isNotEditing (How to iterate thru hasmany array?)
+    var questions = this.get('entryTest.questions');
+    for (var i = 0; i < questions.length; i++) {
+      questions.get(i).set('isNotEditing', true);
     }
   },
   selectedLab: Ember.computed(function () {
@@ -47,19 +48,53 @@ export default Ember.Component.extend({
     description: 'XSQL'
   }],
   actions: {
-    selectLab: function (lab) {
+    selectLab(lab) {
       this.set('selectedLab', lab);
       return false;
     },
-    addQuestion: function () {
-      console.log(this.get('entryTest'));
-      this.get('entryTest.questions').pushObject({text:""});
+    addQuestion() {
+      this.get('entryTest.questions').pushObject(this.get('store').createRecord('question', {
+        test: this.get('entryTest'),
+        text: ''
+      }));
       return false;
     },
-    saveSettings: function () {
+    editQuestion(question) {
+      question.set('isNotEditing', false);
       return false;
     },
-    closeSettings: function () {
+    saveQuestion(question) {
+      // TODO: save question
+      question.save().then(
+        () =>
+        { question.set('isNotEditing', true); }
+      );
+      return false;
+    },
+    removeQuestion(question) {
+      // TODO: remove question
+      return false;
+    },
+    saveSettings() {
+      // TODO: save model
+      this.get('entryTest').save().then(function () {
+        if (this.get('goToView')) {
+          return this.sendAction('goToView', 'list');
+        }
+        else {
+          return this.sendAction('closeSettings');
+        }
+      });
+      return false;
+    },
+    closeSettings() {
+      if (this.get('entryTest').get('hasDirtyAttributes')) {
+        this.get('entryTest').rollbackAttributes();
+      }
+      if (!this.get('edit')) {
+        // TODO: How to rollback creation of entrytest
+        this.get('entryTest').remove();
+      }
       return this.sendAction('closeSettings');
     }
   }
