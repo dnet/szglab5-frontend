@@ -7,23 +7,20 @@ export default Ember.Component.extend({
     this.set('body',[]);
     this.get('model.tests').map(
       x=> {
-        this.get('body').push([x.get('id'),x.get('title'),x.get('questions').length]);
+        this.get('body').push({
+          title:x.get('title'),
+          questionsNumber:x.get('questions').length,
+          test: x
+        });
       }
     );
   },
-  header: ['id','Cím', 'Kérdések száma'],
+  header: ['Cím', 'Kérdések száma'],
+  rowIndecies: ['title','questionsNumber'],
   showSettings: false,
   actions: {
     openSettings: function(entry) {
-      var entryTest;
-      // TODO: better search, maybe with new object-table-component
-      this.get('model.tests').map(
-        x=> {
-          if (x.get('id') === entry[0]) {
-            entryTest = x;
-          }
-        }
-      );
+      var entryTest = entry.test;
       if (entryTest) {
         this.set('entryTest', entryTest);
         this.toggleProperty('showSettings');
