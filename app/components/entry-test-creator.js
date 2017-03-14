@@ -11,7 +11,7 @@ export default Ember.Component.extend({
     }
     // TODO: Set isNotEditing (How to iterate thru hasmany array?)
     var questions = this.get('entryTest.questions');
-    this.set('entryTest.question', questions.filter((question, index)=>{
+    this.set('entryTest.question', questions.filter((question, index) => {
       questions.set('isNotEditing', true);
       return true;
     }))
@@ -67,7 +67,7 @@ export default Ember.Component.extend({
       return this.sendAction('closeSettings');
     }
   },
-  willDestroyElement(){
+  willDestroyElement() {
     this._super(...arguments);
     this.get('entryTest').rollbackAttributes();
   }
