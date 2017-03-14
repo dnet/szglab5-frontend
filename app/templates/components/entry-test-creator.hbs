@@ -5,11 +5,21 @@
     {{/power-select}}
   </div>
 
-  <div class="text label">Text</div>
-  {{input type="type" value=entryTest.text placeholder="example text"}}
+  <div class="text label">Név</div>
+  {{input type="text" value=entryTest.title placeholder="beugró neve"}}
 
+  {{#if edit}}
+  <div class="text label">Kérdések</div>
+  {{#each entryTest.questions as |question number|}}
+    {{textarea value=question.text placeholder="kerdés szövege"}}
+    <button type="button" {{action 'removeQuestion'}}>-</button>
+    <div class="clear"></div>
+  {{/each}}
+  <button type="button" {{action 'addQuestion'}}>+</button>
+  <div class="clear"></div>
+  {{/if}}
 
-  <button type="button">Mentés</button>
+  <button type="button" {{action 'saveSettings'}}>Mentés</button>
 
   {{#if edit}}
     <button type="button" class="cancel" {{action 'closeSettings'}}>Cancel</button>

@@ -1,7 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  selectedLab: Ember.computed(function() {
+  init() {
+    this._super(...arguments);
+    this.get('store')
+    if (!(this.get('entryTest'))) {
+      this.set('entryTest', {
+        questions:[]
+      });
+    }
+    if (!(this.get('entryTest').questions)) {
+      this.set('entryTest.questions',[]);
+    }
+  },
+  selectedLab: Ember.computed(function () {
     var i, lab, labItem, len, ref;
     if (this.get('entryTest')) {
       lab = this.get('entryTest.lab');
@@ -35,11 +47,19 @@ export default Ember.Component.extend({
     description: 'XSQL'
   }],
   actions: {
-    selectLab: function(lab) {
+    selectLab: function (lab) {
       this.set('selectedLab', lab);
       return false;
     },
-    closeSettings: function() {
+    addQuestion: function () {
+      console.log(this.get('entryTest'));
+      this.get('entryTest.questions').pushObject({text:""});
+      return false;
+    },
+    saveSettings: function () {
+      return false;
+    },
+    closeSettings: function () {
       return this.sendAction('closeSettings');
     }
   }

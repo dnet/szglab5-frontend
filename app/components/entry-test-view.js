@@ -1,20 +1,31 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  header: ['Lab', 'Text'],
-  body: [
-    ['Oracle', 'Text2asdasd'],
-    ['Java', 'asdfjaosdhflakjsdfa']
-  ],
+  init(){
+    this._super(...arguments);
+    this.set('body',[]);
+    this.get('model.tests').map(
+      x=> {
+        this.get('body').push([x.get('id'),x.get('title'),x.get('questions').length]);
+      }
+    );
+  },
+  header: ['id','Cím', 'Kérdések száma'],
   showSettings: false,
   actions: {
     openSettings: function(entry) {
       var entryTest;
-      entryTest = {};
-      entryTest.lab = entry[0];
-      entryTest.text = entry[1];
-      this.set('entryTest', entryTest);
-      this.toggleProperty('showSettings');
+      this.get('model.tests').map(
+        x=> {
+          if (x.get('id') === entry[0]) {
+            entryTest = x;
+          }
+        }
+      );
+      if (entryTest) {
+        this.set('entryTest', entryTest);
+        this.toggleProperty('showSettings');
+      }
       return false;
     },
     closeSettings: function() {
