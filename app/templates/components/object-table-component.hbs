@@ -1,0 +1,51 @@
+<div class= {{addClass}}>
+  <table>
+    <thead>
+      {{#unless withoutNumber}}
+        <th>#</th>
+      {{/unless}}
+      {{#each header as |head|}}
+        <th>{{head}}</th>
+      {{/each}}
+      {{#if withSettings}}
+        <th>
+        </th>
+      {{/if}}
+      {{#if withImpersonate}}
+        <th>
+        </th>
+      {{/if}}
+      {{#if withDelete}}
+        <th>
+        </th>
+      {{/if}}
+    </thead>
+    <tbody>
+      {{#each body as |row number|}}
+        <tr class='normal{{if clickable " clickable"}}' {{action 'onRowClick' (get-array-element body number)}}>
+          {{#unless withoutNumber}}
+            <th scope='row'>{{add number 1}}</th>
+          {{/unless}}
+          {{#each rowIndecies as |cellIndex|}}
+            <td>{{get-array-element row cellIndex}}</td>
+          {{/each}}
+          {{#if withSettings}}
+            <td>
+              <button type="button" class='cog' {{action 'openSettings' row}} title="szerkesztés"></button>
+            </td>
+          {{/if}}
+          {{#if withImpersonate}}
+            <td>
+              <button type="button" class='user-secret' {{action 'impersonate' row}} title="megszemélyesítés"></button>
+            </td>
+          {{/if}}
+          {{#if withDelete}}
+            <td>
+              <button type="button" class='trash-o' {{action 'delete' row}} title="törlés"></button>
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
