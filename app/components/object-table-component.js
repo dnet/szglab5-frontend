@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     impersonate: function(rowData) {
       return this.sendAction('impersonate', rowData);
     },
-    "delete": function(rowData) {
+    delete: function(rowData) {
       return this.sendAction('delete', rowData);
     }
   }
