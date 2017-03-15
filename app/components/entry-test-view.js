@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   header: ['Cím', 'Kérdések száma'],
   rowIndecies: ['title', 'questionsNumber'],
   showSettings: false,
-  getBody: Ember.computed('model.tests.[]','model.tests.@each.title', function () {
+  getBody: Ember.computed('model.tests.[]','model.tests.@each.title','model.tests.@each.questions.[]', function () {
     var body = [];
     this.get('model.tests').map(
       x => {
