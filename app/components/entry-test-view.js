@@ -5,19 +5,23 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     this.set('body', []);
+  },
+  header: ['Cím', 'Kérdések száma'],
+  rowIndecies: ['title', 'questionsNumber'],
+  showSettings: false,
+  getBody: Ember.computed('model.tests.[]','model.tests.@each.title', function () {
+    var body = [];
     this.get('model.tests').map(
       x => {
-        this.get('body').push({
+        body.push({
           title: x.get('title'),
           questionsNumber: x.get('questions').length,
           test: x
         });
       }
     );
-  },
-  header: ['Cím', 'Kérdések száma'],
-  rowIndecies: ['title', 'questionsNumber'],
-  showSettings: false,
+    return body;
+  }),
   actions: {
     openSettings: function (entry) {
       var entryTest = entry.test;

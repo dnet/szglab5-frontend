@@ -1,7 +1,7 @@
 <div class="entry-test-creator">
   <div class="text label">Lab</div>
   <div class="lab-chooser">
-    {{#power-select options=model.languages onchange=(action "selectLab") selected=selectedLab as |lab|}} {{lab.name}}
+    {{#power-select options=model.languages onchange=(action "selectLab") selected=entryTest.language as |lab|}} {{lab.name}}
     {{/power-select}}
   </div>
 
