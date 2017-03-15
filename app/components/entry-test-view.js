@@ -37,10 +37,8 @@ export default Ember.Component.extend({
       this.toggleProperty('showSettings');
       return false;
     },
-    delete: function(test) {
-      var testsArray = this.get('model.tests').filterBy('id', test.id);
-      // this array should contain only one element, because we're filtering on ID
-      testsArray[0].destroyRecord();
+    delete: function(entry) {
+      entry.test.destroyRecord();
       return false;
     }
   }
