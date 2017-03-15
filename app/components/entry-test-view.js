@@ -15,7 +15,7 @@ export default Ember.Component.extend({
       x => {
         body.push({
           title: x.get('title'),
-          questionsNumber: x.get('questions').length,
+          questionsNumber: x.get('questions.length'),
           test: x
         });
       }
