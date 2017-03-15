@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     // TODO: Set isNotEditing (How to iterate thru hasmany array?)
     var questions = this.get('entryTest.questions');
     this.set('entryTest.question', questions.filter((question, index) => {
-      questions.set('isNotEditing', true);
+      question.set('isNotEditing', true);
       return true;
     }))
     /*for (var i = 0; i < questions.length; i++) {
@@ -53,14 +53,28 @@ export default Ember.Component.extend({
       return false;
     },
     saveSettings() {
-      this.get('entryTest').save().then(() => {
-        if (this.get('goToView')) {
-          return this.sendAction('goToView', 'list');
-        }
-        else {
-          return this.sendAction('closeSettings');
-        }
-      });
+      var canexit = true;
+      // TODO:
+      // console.log(this.get('entryTest.questions').length);
+      // this.get('entryTest.questions').filter((question, index) => {
+      //   if (!Ember.isEmptyObject(question.changedAttributes())) {
+      //     console.log(question.changedAttributes());
+      //     canexit = false;
+      //   }
+      // });
+      // if (canexit) {
+        this.get('entryTest').save().then(() => {
+          if (this.get('goToView')) {
+            return this.sendAction('goToView', 'list');
+          }
+          else {
+            return this.sendAction('closeSettings');
+          }
+        });
+      // }
+      // else {
+      //   alert("Nincs minden kerdes meg elmentve. (mentes implementalva lesz)");
+      // }
       return false;
     },
     closeSettings() {
