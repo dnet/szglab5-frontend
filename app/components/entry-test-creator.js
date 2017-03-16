@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Promise from 'RSVP.Promise';
+import Promise from 'rsvp';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
