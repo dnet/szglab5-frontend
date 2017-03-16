@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Promise from 'RSVP.Promise';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
@@ -9,15 +10,11 @@ export default Ember.Component.extend({
         title: ''
       }));
     }
-    // TODO: Set isNotEditing (How to iterate thru hasmany array?)
     var questions = this.get('entryTest.questions');
-    this.set('entryTest.question', questions.filter((question, index) => {
+    this.set('entryTest.question', questions.filter((question) => {
       question.set('isNotEditing', true);
       return true;
-    }))
-    /*for (var i = 0; i < questions.length; i++) {
-      questions.get(i).set('isNotEditing', true);
-    }*/
+    }));
   },
   selectedLab: Ember.computed(function () {
     if (this.get('entryTest.language')) {
@@ -53,16 +50,11 @@ export default Ember.Component.extend({
       return false;
     },
     saveSettings() {
-      var canexit = true;
-      // TODO:
-      // console.log(this.get('entryTest.questions').length);
-      // this.get('entryTest.questions').filter((question, index) => {
-      //   if (!Ember.isEmptyObject(question.changedAttributes())) {
-      //     console.log(question.changedAttributes());
-      //     canexit = false;
-      //   }
-      // });
-      // if (canexit) {
+      var savePromises = [];
+      this.get('entryTest.questions').filter((question) => {
+        savePromises.push(question.save().then(() => { question.set('isNotEditing', true); }));
+      });
+      Promise.all(savePromises).then(() => {
         this.get('entryTest').save().then(() => {
           if (this.get('goToView')) {
             return this.sendAction('goToView', 'list');
@@ -71,10 +63,7 @@ export default Ember.Component.extend({
             return this.sendAction('closeSettings');
           }
         });
-      // }
-      // else {
-      //   alert("Nincs minden kerdes meg elmentve. (mentes implementalva lesz)");
-      // }
+      });
       return false;
     },
     closeSettings() {
