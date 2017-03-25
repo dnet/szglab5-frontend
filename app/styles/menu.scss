@@ -2,8 +2,6 @@
   padding: 1em 2em 0;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
   @media (max-width: $mobile-width) {
@@ -53,7 +51,7 @@
     @media (max-width: $mobile-width) {
       justify-content: center;
       width: 100%;
-      flex: 1;
+      flex: 1 1;
       &.hidden {
         display: none;
       }
