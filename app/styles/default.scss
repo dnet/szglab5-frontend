@@ -11,6 +11,11 @@ $buttonActiveGray: #808080;
 $buttonHoverGray: #585858;
 $buttonDisaled: #dddddd;
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 a {
 	font-family: 'Roboto Slab', sans-serif;
 	text-decoration: none;
