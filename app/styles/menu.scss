@@ -1,15 +1,20 @@
-.menu-content {
-  margin: 1% 2% 0;
-  clear: both;
-  min-width: 1200px;
+.menu-content > * { /* > * because of ember view */
+  padding: 1em 2em 0;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 
   .logo {
-    float: left;
-    width: 5%;
+    max-width: 100px;
 
     img {
-      max-width: 100px;
-      width: 100px;
+      width: 100%;
+    }
+    @media (max-width: $mobile-width) {
+      display: none;
     }
   }
 
@@ -23,175 +28,194 @@
       font-weight: 300;
     }
   }
-
-  ul {
-    width: 90%;
-    list-style-type: none;
-    height: 100px;
-    margin: 0;
-    padding-top: 2%;
-    overflow: hidden;
-    display: inline-block;
-    clear: both;
-
-    li {
-      float: left;
-      padding-left: 10px;
-      display: block;
-      white-space: nowrap;
-      box-sizing: border-box;
-
-      &.wide {
-        min-width: 200px;
-        -webkit-user-select: none;
-        /* Chrome all / Safari all */
-        -moz-user-select: none;
-        /* Firefox all */
-        -ms-user-select: none;
-        /* IE 10+ */
-        user-select: none;
-
-        .ember-power-select-status-icon {
-          &:after {
-            color: white;
-          }
-        }
-
-        .ember-power-select-trigger {
-          border: 1px solid white;
-          border-radius: 0;
-          color: white;
-        }
+  nav {
+    flex: 1 1 0;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: -webkit-flex;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      @media (max-width: $mobile-width) {
+        -ms-flex-direction: column;
+        flex-direction: column;
+        flex-wrap: nowrap;
       }
 
       &.right {
-        float: right;
+        margin-left: auto;
         padding-left: 0;
-        padding-right: 1%;
+        @media (max-width: $small-desktop-width) {
+          margin-left:0;
+          padding-left: 5px
+        }
       }
 
-      .menu-text {
-        padding-top: 1%;
-        font-weight: 400;
-      }
+      li {
+        padding: 0 5px;
+        display: block;
+        white-space: nowrap;
+        box-sizing: border-box;
 
-      button {
-        border: none;
-        background: transparent;
-        outline: none;
-        cursor: pointer;
-        box-shadow: none;
-        padding-top: 5%;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin: 0;
-        color: white;
-        text-decoration: none;
+        &.wide {
+          min-width: 200px;
+          -webkit-user-select: none;
+          /* Chrome all / Safari all */
+          -moz-user-select: none;
+          /* Firefox all */
+          -ms-user-select: none;
+          /* IE 10+ */
+          user-select: none;
 
-        &.bar-chart {
-          &:before {
-            content: '\f080';
-            font-family: 'FontAwesome';
+          .ember-power-select-status-icon {
+            &:after {
+              color: white;
+            }
+          }
+
+          .ember-power-select-trigger {
+            border: 1px solid white;
+            border-radius: 0;
             color: white;
-            padding-right: 5px;
           }
         }
 
-        &.users {
-          &:before {
-            content: '\f0c0';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+        .menu-text {
+          padding-top: 1%;
+          font-weight: 400;
+        }
+        
+        .mobile-only {
+          display:none;
+          @media (max-width: $mobile-width) {
+            display: inline;
           }
         }
 
-        &.tasks {
-          &:before {
-            content: '\f0ae';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
-          }
-        }
+        button {
+          border: none;
+          background: transparent;
+          outline: none;
+          cursor: pointer;
+          box-shadow: none;
+          padding-top: 5%;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin: 0;
+          color: white;
+          text-decoration: none;
 
-        &.dashboard {
-          &:before {
-            content: '\f0e4';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.bar-chart {
+            &:before {
+              content: '\f080';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.file {
-          &:before {
-            content: '\f15b';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.users {
+            &:before {
+              content: '\f0c0';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.book {
-          &:before {
-            content: '\f02d';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.tasks {
+            &:before {
+              content: '\f0ae';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.graduation-cap {
-          &:before {
-            content: '\f19d';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.dashboard {
+            &:before {
+              content: '\f0e4';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.terminal {
-          &:before {
-            content: '\f120';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.file {
+            &:before {
+              content: '\f15b';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.sign-out {
-          &:before {
-            content: '\f08b';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.book {
+            &:before {
+              content: '\f02d';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.bell-o {
-          &:before {
-            content: '\f0a2';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.graduation-cap {
+            &:before {
+              content: '\f19d';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.pencil {
-          &:before {
-            content: '\f040';
-            font-family: 'FontAwesome';
-            color: white;
-            padding-right: 5px;
+          &.terminal {
+            &:before {
+              content: '\f120';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
           }
-        }
 
-        &.cogs {
-          &:before {
-            content: '\f085';
-            font-family: 'FontAwesome';
-            color: white;
+          &.sign-out {
+            &:before {
+              content: '\f08b';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
+          }
+
+          &.bell-o {
+            &:before {
+              content: '\f0a2';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
+          }
+
+          &.pencil {
+            &:before {
+              content: '\f040';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
+          }
+
+          &.cogs {
+            &:before {
+              content: '\f085';
+              font-family: 'FontAwesome';
+              color: white;
+            }
           }
         }
       }

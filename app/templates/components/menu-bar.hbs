@@ -1,50 +1,52 @@
 <div class="logo" title="laboradmin"><img src="assets/images/logo.png"></div>
-<ul>
-  <!-- USER ROLE CHOOSER-->
-  <li title='felhasználó modul váltása' class="wide">
-    {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
-      {{userright.value}}
-    {{/power-select}}
-  </li>
+<nav>
+  <ul class="left">
+    <!-- USER ROLE CHOOSER-->
+    <li title='felhasználó modul váltása' class="wide">
+      {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
+        {{userright.value}}
+      {{/power-select}}
+    </li>
 
-  <!-- LEFT MENU ITEMS-->
-  {{#if (eq currentRight.key 'admin')}}
-    {{#each adminMenu as |menuitem|}}
-      <li class='min-width' title= {{menuitem.value}}>
-        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-      </li>
-    {{/each}}
-  {{/if}}
-  {{#if (eq currentRight.key 'evaluator')}}
-    {{#each evaluatorMenu as |menuitem|}}
-      <li class='min-width' title= {{menuitem.value}}>
-        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-      </li>
-    {{/each}}
-  {{/if}}
-  {{#if (eq currentRight.key 'demonstrator')}}
-    {{#each demonstratorMenu as |menuitem|}}
-      <li class='min-width' title= {{menuitem.value}}>
-        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-      </li>
-    {{/each}}
-  {{/if}}
-  {{#if (eq currentRight.key 'student')}}
-    {{#each studentMenu as |menuitem|}}
-      <li class='min-width' title= {{menuitem.value}}>
-        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-      </li>
-    {{/each}}
-  {{/if}}
-
-  <!-- RIGHT MENU ITEMS-->
-  <li class='right'>
-    {{#link-to 'login' class='sign-out' tagName='button' title='kijelentkezés' }}{{/link-to}}
-  </li>
-  <li class='right cogs'>
-    {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }}{{/link-to}}
-  </li>
-  <li class='right'>
-    <div class="menu-text user">{{username}}</div>
-  </li>
-</ul>
+    <!-- LEFT MENU ITEMS-->
+    {{#if (eq currentRight.key 'admin')}}
+      {{#each adminMenu as |menuitem|}}
+        <li class='min-width' title= {{menuitem.value}}>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+    {{#if (eq currentRight.key 'evaluator')}}
+      {{#each evaluatorMenu as |menuitem|}}
+        <li class='min-width' title= {{menuitem.value}}>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+    {{#if (eq currentRight.key 'demonstrator')}}
+      {{#each demonstratorMenu as |menuitem|}}
+        <li class='min-width' title= {{menuitem.value}}>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+    {{#if (eq currentRight.key 'student')}}
+      {{#each studentMenu as |menuitem|}}
+        <li class='min-width' title= {{menuitem.value}}>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
+    {{/if}}
+  </ul>
+  <ul class="right">
+    <li>
+      {{#link-to 'login' class='sign-out' tagName='button' title='kijelentkezés' }} <span class="mobile-only">kijelentkezés</span> {{/link-to}}
+    </li>
+    <li class='cogs'>
+      {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }} <span class="mobile-only">beállítások</span> {{/link-to}}
+    </li>
+    <li>
+      <div class="menu-text user">{{username}}</div>
+    </li>
+  </ul>
+</nav>
