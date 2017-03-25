@@ -6,8 +6,8 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.set('body', []);
   },
-  header: ['Cím', 'Kérdések száma'],
-  rowIndecies: ['title', 'questionsNumber'],
+  header: ['Cím', 'Típus', 'Kérdések száma'],
+  rowIndecies: ['title', 'languagename', 'questionsNumber'],
   showSettings: false,
   getBody: Ember.computed('model.tests.[]', 'model.tests.@each.title', 'model.tests.@each.questions.[]', function() {
     var body = [];
@@ -17,6 +17,7 @@ export default Ember.Component.extend({
           id: x.get('id'),
           title: x.get('title'),
           questionsNumber: x.get('questions.length'),
+          languagename: x.get('language.name'),
           test: x
         });
       }
