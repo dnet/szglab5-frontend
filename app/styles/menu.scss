@@ -24,6 +24,10 @@
     }
   }
   .menu-button {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 0.5em;
     display: none;
     @media (max-width: $mobile-width) {
       display: block;
