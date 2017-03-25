@@ -6,6 +6,12 @@
   flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
+  @media (max-width: $mobile-width) {
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
 
   .logo {
     max-width: 100px;
@@ -15,6 +21,12 @@
     }
     @media (max-width: $mobile-width) {
       display: none;
+    }
+  }
+  .menu-button {
+    display: none;
+    @media (max-width: $mobile-width) {
+      display: block;
     }
   }
 
@@ -37,6 +49,10 @@
     @media (max-width: $mobile-width) {
       justify-content: center;
       width: 100%;
+      flex: 1;
+      &.hidden {
+        display: none;
+      }
     }
     ul {
       list-style-type: none;
@@ -49,6 +65,7 @@
       @media (max-width: $mobile-width) {
         -ms-flex-direction: column;
         flex-direction: column;
+        -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
       }
 

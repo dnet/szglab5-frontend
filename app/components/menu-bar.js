@@ -20,9 +20,17 @@ export default Ember.Component.extend(MenuHelper, {
     key: 'admin'
   },
   userRights: ['admin', 'student'],
+  init (){
+    this._super(...arguments);
+    this.set('isMenuNotOpen', true);
+  },
   actions: {
     changeUserRight: function(right) {
       this.set('currentRight', right);
+      return false;
+    },
+    toggleMenu() {
+      this.set('isMenuNotOpen', !this.get('isMenuNotOpen'));
       return false;
     }
   }
