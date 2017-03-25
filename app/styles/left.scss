@@ -27,9 +27,13 @@
       padding: 2em 0 2em 2em;
       width: 100%;
       box-sizing: border-box;
+      overflow: hidden; // on mobile the text can be longer than the screen
 
       .title {
         color: white;
+        @media (max-width: $mobile-width) {
+          font-size: 35px;
+        }
       }
 
       .submenu {
