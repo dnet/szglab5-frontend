@@ -1,7 +1,7 @@
 <div class="entry-test-list">
   {{#unless showSettings}}
     {{#if model.tests}}
-      {{object-table-component header=header body=getBody rowIndecies=rowIndecies withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
+      {{table-component header=header body=getBody rowIndecies=rowIndecies withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
     {{else}}
       Jelenleg nincs kerdescsoport az adatbazisban. Hozzon letre egyet!
     {{/if}}

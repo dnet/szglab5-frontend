@@ -26,9 +26,15 @@
           {{#unless withoutNumber}}
             <th scope='row'>{{add number 1}}</th>
           {{/unless}}
-          {{#each row as |cell|}}
-            <td>{{cell}}</td>
-          {{/each}}
+          {{#if rowIndecies}}
+            {{#each rowIndecies as |cellIndex|}}
+              <td>{{get-array-element row cellIndex}}</td>
+            {{/each}}
+          {{else}}
+            {{#each row as |cell|}}
+              <td>{{cell}}</td>
+            {{/each}}
+          {{/if}}
           {{#if withSettings}}
             <td>
               <button type="button" class='cog' {{action 'openSettings' row}} title="szerkesztés"></button>
