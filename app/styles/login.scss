@@ -2,14 +2,19 @@
   background: white;
   margin: 0 auto;
   width: 30%;
-  padding: 2%;
+  min-width: 290px;
+  padding: 2em;
+  box-sizing: border-box;
+  @media (max-width: $mobile-width) {
+    width: 100%;
+  }
   text-align: center;
 
   .top {
-    margin: 0 auto;
     input {
-      margin-left: 25%;
-      margin-top: 2%;
+      margin: 0 auto;
+      margin-top: 1em;
+      min-width: 200px;
     }
   }
 
