@@ -215,6 +215,15 @@
             }
           }
 
+          &.sign-in {
+            &:before {
+              content: '\f090';
+              font-family: 'FontAwesome';
+              color: white;
+              padding-right: 5px;
+            }
+          }
+
           &.bell-o {
             &:before {
               content: '\f0a2';
