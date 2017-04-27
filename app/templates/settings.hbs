@@ -2,9 +2,17 @@
   {{left-menu title="Beállítások" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
 
   <div class='right'>
-    <div class='settings'>
+    <form class='settings'>
+      {{#if (eq currentView 'email')}}
       <div class="text label">e-mail</div>
-      {{input type="email" value=user.email placeholder='e-mail'}}
+      {{input type="email" value=model.email placeholder='e-mail'}}
+
+      <div class="text label">mailing list</div>
+      <button type="button" class="btn--toggle {{if mailList 'active'}}" {{action 'toggleMailList'}}>subscribe</button>
+
+      <div class="text label">e-mail notifications</div>
+      <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}}>subscribe</button>
+      {{else}}
 
       <div class="text label">régi jelszó</div>
       {{input type="password" value=user.oldpwd placeholder='régi jelszó'}}
@@ -15,16 +23,11 @@
       <div class="text label">új jelszó</div>
       {{input type="password" value=user.newpwdagain placeholder='új jelszó'}}
 
-      <div class="text label">mailing list</div>
-      <button type="button" class="btn--toggle {{if mailList 'active'}}" {{action 'toggleMailList'}}>subscribe</button>
-
-      <div class="text label">e-mail notifications</div>
-      <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}}>subscribe</button>
-
       <div class="text label">ssh publikus kulcs</div>
-      {{textarea value=user.ssh class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
+      {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
+      {{/if}}
 
-      <button type="button">Mentés</button>
-    </div>
+      <button type="submit" {{action 'save'}}>Mentés</button>
+    </form>
   </div>
 </div>
