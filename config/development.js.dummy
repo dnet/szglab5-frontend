@@ -1,0 +1,5 @@
+module.exports = function(ENV) {
+  // Set variables like:
+  // ENV.backendUrl = 'http://localhost:7000';
+  return ENV;
+};

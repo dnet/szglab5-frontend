@@ -19,6 +19,11 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  try {
+    ENV = (require('./' + environment))(ENV);
+  }
+  catch(err){
+  }
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:token',
     authenticator: 'authenticator:jwt',
