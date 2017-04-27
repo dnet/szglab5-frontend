@@ -22,8 +22,7 @@ export default Ember.Component.extend({
       credentials.username = undefined;
       this.get('session').authenticate(authenticator, credentials).then(
         () => {
-          this.sendAction('goToView', 'settings'); // TODO: redirect
-          this.transitionTo('login');
+          this.sendAction('goToSettings');
         }
       ).catch((t) => {
         if (t.errors && t.errors.length > 0 && t.errors[0].title) {

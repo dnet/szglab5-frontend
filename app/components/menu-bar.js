@@ -28,7 +28,7 @@ export default Ember.Component.extend(MenuHelper, {
     this._super(...arguments);
     this.set('isMenuNotOpen', true);
     this.loadUserData();
-    this.get('session').on('authenticationSucceeded', function() { //TODO: not working
+    this.get('session').on('authenticationSucceeded', () => {
       this.loadUserData();
     });
   },
