@@ -2,6 +2,7 @@ import Ember from 'ember';
 import MenuHelper from '../mixins/menu-helper';
 import jwt_decode from 'npm:jwt-decode';
 
+
 export default Ember.Component.extend(MenuHelper, {
   session: Ember.inject.service('session'),
   userRightLabels: [{
@@ -26,10 +27,15 @@ export default Ember.Component.extend(MenuHelper, {
   init() {
     this._super(...arguments);
     this.set('isMenuNotOpen', true);
+    this.loadUserData();
+    this.get('session').on('authenticationSucceeded', function() { //TODO: not working
+      this.loadUserData();
+    });
+  },
+  loadUserData() {
     var token = this.get('session.data.authenticated.token');
     if (!Ember.isEmpty(token)) {
       this.set('userData', jwt_decode(token));
-      console.log(this.get('userData'));
     }
   },
   actions: {
