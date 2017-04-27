@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import MenuHelper from '../mixins/menu-helper';
+import jwt_decode from 'npm:jwt-decode';
 
 export default Ember.Component.extend(MenuHelper, {
+  session: Ember.inject.service('session'),
   userRightLabels: [{
     value: 'Admin',
     key: 'admin'
@@ -20,12 +22,18 @@ export default Ember.Component.extend(MenuHelper, {
     key: 'admin'
   },
   userRights: ['admin', 'student'],
-  init (){
+  userData: [],
+  init() {
     this._super(...arguments);
     this.set('isMenuNotOpen', true);
+    var token = this.get('session.data.authenticated.token');
+    if (!Ember.isEmpty(token)) {
+      this.set('userData', jwt_decode(token));
+      console.log(this.get('userData'));
+    }
   },
   actions: {
-    changeUserRight: function(right) {
+    changeUserRight: function (right) {
       this.set('currentRight', right);
       return false;
     },

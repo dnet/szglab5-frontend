@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('sql');
   this.route('statistics');
   this.route('student');
+  this.route('logout');
 });
 
 export default Router;

@@ -7,9 +7,7 @@ export default Ember.Component.extend({
   error: '',
   hasError: false,
   session: Ember.inject.service('session'),
-  init() {
-    this._super(...arguments);
-  },
+  currentUser: Ember.inject.service('session'),
   actions: {
     login() {
       var credentials = this.getProperties('username', 'password'), authenticator = config['ember-simple-auth'].authenticator;
@@ -24,7 +22,7 @@ export default Ember.Component.extend({
       credentials.username = undefined;
       this.get('session').authenticate(authenticator, credentials).then(
         () => {
-          this.sendAction('goToView', 'main');
+          this.sendAction('goToView', 'settings'); // TODO: redirect
         }
       ).catch((t) => {
         if (t.errors && t.errors.length > 0 && t.errors[0].title) {

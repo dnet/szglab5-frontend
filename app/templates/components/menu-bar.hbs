@@ -1,6 +1,7 @@
 <div class="logo" title="laboradmin"><img src="assets/images/logo.png"></div>
 <button type="button" class="menu-button" {{action 'toggleMenu'}}>Menü</button>
 <nav class="{{if isMenuNotOpen 'hidden'}}">
+  {{#if session.isAuthenticated}}
   <ul class="left">
     <!-- USER ROLE CHOOSER-->
     <li title='felhasználó modul váltása' class="wide">
@@ -44,10 +45,17 @@
       {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }} <span class="mobile-only">beállítások</span> {{/link-to}}
     </li>
     <li>
-      {{#link-to 'login' class='sign-out' tagName='button' title='kijelentkezés' }} <span class="mobile-only">kijelentkezés</span> {{/link-to}}
+      {{#link-to 'logout' class='sign-out' tagName='button' title='kijelentkezés' }} <span class="mobile-only">kijelentkezés</span> {{/link-to}}
     </li>
     <li>
-      <div class="menu-text user">{{username}}</div>
+      <div class="menu-text user">{{userData.displayName}} {{#if userData.neptun}}({{userData.neptun}}){{/if}}</div>
     </li>
   </ul>
+  {{else}}
+  <ul class="right">
+    <li>
+      {{#link-to 'login' class='sign-out' tagName='button' title='bejelentkezés' }} <span class="mobile-only">bejelentkezés</span> {{/link-to}}
+    </li>
+  </ul>
+  {{/if}}
 </nav>
