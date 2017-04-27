@@ -27,8 +27,8 @@ export default Ember.Component.extend({
       ).catch((t) => {
         if (t.errors && t.errors.length > 0 && t.errors[0].title) {
           this.set('error', t.errors[0].title);
+          this.set('hasError', true);
         }
-        this.set('error', "Sikertelen bejelentkezés!"); //TODO: better solution
       });
       return false;
     },
