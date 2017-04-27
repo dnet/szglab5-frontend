@@ -19,6 +19,24 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  ENV['ember-simple-auth'] = {
+    authorizer: 'authorizer:jwt',
+    authenticator: 'authenticator:jwt'
+  };
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.backendUrl + '/auth/login',
+    identificationField: 'loginName',
+    passwordField: 'password',
+    tokenPropertyName: 'token',
+    refreshTokenPropertyName: 'refresh_token',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    headers: {},
+    refreshAccessTokens: true,
+    serverTokenRefreshEndpoint: ENV.backendUrl + '/auth/login', //TODO: refresh Url
+    tokenExpireName: 'exp',
+    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
