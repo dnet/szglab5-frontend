@@ -36,13 +36,13 @@
         }
         span {
           background-color: $leftBackground;
-          padding: 0.2em;
+          padding: 0.1em;
         }
       }
 
       .submenu {
         ul {
-          padding: 0;
+          padding: 1em 0 0;
 
           li {
             position: relative;
@@ -74,8 +74,6 @@
               &.active {
                 font-weight: 400;
                 position: relative;
-                // because of dots after:
-                overflow: hidden;
                 width: 100%;
 
                 &:after {

@@ -1,5 +1,9 @@
 .main-content {
   .content {
+    .left {
+      background-position: top center;
+      background-position-y: 38px;
+    }
     &.settings {
       .left {
         background-repeat: repeat;
