@@ -3,24 +3,46 @@
   margin: 0 auto;
   width: 30%;
   min-width: 290px;
-  padding: 2em;
+  padding: 1.5em 1.5em 0;
   box-sizing: border-box;
   @media (max-width: $mobile-width) {
     width: 100%;
   }
   text-align: center;
-
+  & > * {
+    padding: 0.5em;
+  }
   .top {
+    margin: 0.5em 0 1em;
+    button {
+      margin: 0;
+    }
+  }
+  .bottom {
     input {
       margin: 0 auto;
       margin-top: 1em;
       min-width: 200px;
     }
-  }
-
-  .bottom {
-    margin-top: 3%;
-    padding-top: 1%;
     border-top: 1px solid black;
+    .error-box {
+      min-height: 1em;
+      padding: 0.25em;
+      margin: 0.5em;
+    }
+    $error-color: red;
+    $error-background: lighten($error-color, 40);
+    &.error {
+      input {
+        border-color: $error-color;
+        color: $error-color;
+        background-color: $error-background;
+      }
+      .error-box {
+        color: $error-color;
+        background-color: $error-background;
+        border: $error-color solid 1px;
+      }
+    }
   }
 }

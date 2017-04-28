@@ -1,16 +1,16 @@
 <div class="login">
-  <form class="top">
+  <div class="top">
+    <button type="button" name="button" {{action 'loginBMERedirect'}}>Login with BME account</button>
+  </div>
+  <form class="bottom {{if hasError 'error'}}">
     {{input type="text" value=username placeholder="username" }}
     {{input type="password" value=password placeholder="password" }}
     <button type="submit" name="button" {{action 'login'}}>Login</button>
-    {{#if hasError }}
-      <div class="error">
-          {{error}}
-      </div>
-    {{/if}}
+    <div class="error-box">
+      {{#if hasError }}
+        {{error}}
+      {{/if}}
+    </div>
   </form>
-  <div class="bottom">
-    <button type="button" name="button" {{action 'loginBMERedirect'}}>Login with BME account</button>
-  </div>
 
 </div>
