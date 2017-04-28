@@ -34,6 +34,10 @@
         @media (max-width: $mobile-width) {
           font-size: 35px;
         }
+        span {
+          background-color: $leftBackground;
+          padding: 0.2em;
+        }
       }
 
       .submenu {
@@ -52,6 +56,11 @@
               display: inline-block;
               white-space: nowrap;
               padding-right: 1em;
+
+              span {
+                background: $leftBackground;
+                padding: 0.5em;
+              }
 
               &.submenu-text {
                 font-size: 18px;
@@ -76,9 +85,8 @@
                   letter-spacing: 7px;
                   font-size: 4px;
                   vertical-align: middle;
-                  margin-left: 1%;
+                  margin-left: 1em;
                   position: relative;
-                  z-index: -1;
                 }
               }
 

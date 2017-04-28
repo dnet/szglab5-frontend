@@ -3,13 +3,11 @@
     <button type="button" name="button" {{action 'loginBMERedirect'}}>Login with BME account</button>
   </div>
   <form class="bottom {{if hasError 'error'}}">
-    {{input type="text" value=username placeholder="username" }}
+    {{input type="text" value=username placeholder="username" enter='removeError' }}
     {{input type="password" value=password placeholder="password" }}
     <button type="submit" name="button" {{action 'login'}}>Login</button>
     <div class="error-box">
-      {{#if hasError }}
-        {{error}}
-      {{/if}}
+      {{error}}
     </div>
   </form>
 

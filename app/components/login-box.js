@@ -9,6 +9,9 @@ export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   currentUser: Ember.inject.service('session'),
   actions: {
+    removeError() {
+      this.set('hasError', false);
+    },
     login() {
       var credentials = this.getProperties('username', 'password'), authenticator = config['ember-simple-auth'].authenticator;
 

@@ -30,8 +30,6 @@
       padding: 0.25em;
       margin: 0.5em;
     }
-    $error-color: red;
-    $error-background: lighten($error-color, 40);
     &.error {
       input {
         border-color: $error-color;
