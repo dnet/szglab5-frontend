@@ -1,0 +1,40 @@
+.main-content {
+  .content {
+    .left {
+      background-color: $leftBackground;
+      .title span {
+        background-color: $leftBackground;
+      }
+      .submenu ul li button span {
+        background: $leftBackground;
+      }
+    }
+  }
+}
+
+body, html, & {
+  background: $background-color;
+}
+
+.login .bottom.error {
+  input {
+    border-color: $error-color;
+    color: $error-color;
+    background-color: $error-background;
+  }
+  .error-box {
+    color: $error-color;
+    background-color: $error-background;
+    border: $error-color solid 1px;
+  }
+}
+
+button {
+  background: $buttonOkActive;
+  &:hover {
+    background: $buttonOkHover;
+  }
+}
+textarea:focus {
+  border-color: $buttonOkActive;
+}
