@@ -2,13 +2,13 @@
   .content {
     .left {
       background-position: top center;
-      background-position-y: 38px;
+      background-position-y: 46px;
     }
     &.settings {
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/cogs.png");
+        background-image: url("images/cogs.svg");
       }
     }
 
@@ -16,7 +16,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/users.png");
+        background-image: url("images/users.svg");
 
         &:before {
           // font-family: 'FontAwesome';
@@ -31,7 +31,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/bar-chart.png");
+        background-image: url("images/bar-chart.svg");
       }
     }
 
@@ -39,7 +39,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/pencil.png");
+        background-image: url("images/pencil.svg");
       }
     }
 
@@ -47,7 +47,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/tachometer.png");
+        background-image: url("images/tachometer.svg");
       }
     }
 
@@ -55,7 +55,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/graduation-cap.png");
+        background-image: url("images/graduation-cap.svg");
       }
     }
 
@@ -63,7 +63,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/bell-o.png");
+        background-image: url("images/bell-o.svg");
       }
     }
 
@@ -71,7 +71,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/tasks.png");
+        background-image: url("images/tasks.svg");
       }
     }
 
@@ -79,7 +79,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/terminal.png");
+        background-image: url("images/terminal.svg");
       }
     }
 
@@ -87,7 +87,7 @@
       .left {
         background-repeat: repeat;
         background-size: 50px 50px;
-        background-image: url("images/book.png");
+        background-image: url("images/book.svg");
       }
     }
   }
