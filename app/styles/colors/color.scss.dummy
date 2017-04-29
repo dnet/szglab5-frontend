@@ -1,0 +1,19 @@
+// change background color:
+$leftBackground: #052a4b;
+// then adjust all lighten:
+$background-color: lighten($leftBackground, 60);
+$error-color: red;
+$error-background: lighten($error-color, 40);
+
+$darkgray: #A0A0A0;
+$buttonOkActive: lighten($leftBackground, 30);
+$buttonOkHover: lighten($buttonOkActive, 10);
+$buttonCancelActive: #808080;
+$buttonCancelHover: #585858;
+$buttonDisaled: #dddddd;
+
+// change the name of the theme
+#wholeapp.blue {
+  @import 'app/styles/colors/forall.scss';
+}
+// Add it to the app.scss
