@@ -12,7 +12,8 @@
 
       <div class="text label">e-mail notifications</div>
       <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}}>subscribe</button>
-      {{else}}
+      {{/if}}
+      {{#if (eq currentView 'password')}}
 
       <div class="text label">régi jelszó</div>
       {{input type="password" value=user.oldpwd placeholder='régi jelszó'}}
@@ -25,6 +26,13 @@
 
       <div class="text label">ssh publikus kulcs</div>
       {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
+      {{/if}}
+      {{#if (eq currentView 'style')}}
+
+      <div class="text label">Stílus</div>
+      {{#power-select options=styles selected=selectedStyle onchange=(action "changeStyle") as |style|}}
+        {{style.value}}
+      {{/power-select}}
       {{/if}}
 
       <button type="submit" {{action 'save'}}>Mentés</button>
