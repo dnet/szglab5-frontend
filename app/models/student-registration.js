@@ -6,5 +6,5 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   Events: DS.hasMany('event', {inverse: 'StudentRegistrations'}),
-  Users: DS.belongsTo('deliverable', {inverse: 'Users'})
+  User: DS.belongsTo('user', {inverse: 'StudentRegistrations'})
 });
