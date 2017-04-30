@@ -28,7 +28,7 @@
       {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
       {{/if}}
       {{#if (eq currentView 'style')}}
-
+      <p>Changes now are just local.</p>
       <div class="text label">Stílus</div>
       {{#power-select options=styles selected=selectedStyle onchange=(action "changeStyle") as |style|}}
         {{style.value}}

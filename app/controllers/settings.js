@@ -48,7 +48,6 @@ export default Ember.Controller.extend({
       else if (cw === 'style') {
         //TODO: save style
         this.get('style').changeStyle(this.get('selectedStyle.key'));
-        alert('changes now are just local');
       }
       return false;
     },
