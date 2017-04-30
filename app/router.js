@@ -19,6 +19,7 @@ Router.map(function() {
   this.route('statistics');
   this.route('student');
   this.route('logout');
+  this.route('error');
 });
 
 export default Router;
