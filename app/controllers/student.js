@@ -3,23 +3,19 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   currentView: '',
   subMenu: Ember.computed('model.results', function() {
-    this.get('model.StudentRegistrations').then((srs) => {
-      this.set('StudentRegistrations', srs);
-      var sr;
-      this.get('model.StudentRegistrations').forEach(function(element) {
-        console.log(element);
-      }, this);
-    });
-    var description, descriptionString, keys, lab;
-    keys = [];
-    for (lab in this.get('model.results')) {
-      descriptionString = 'model.results.' + lab + '.description';
-      description = this.get(descriptionString);
-      keys.push({
-        key: lab,
-        description: description
+    var keys = [];
+    this.get('model.StudentRegistrations').then(() => {
+      this.get('model.StudentRegistrations').forEach((element, key) => {
+        this.get('model.StudentReistrations['+key+'].Events').then((events) => {
+          events.forEach((event, eventkey) => {
+            keys.push({
+              key: this.get('model.StudentReistrations['+key+'].Events['+eventkey+'].id'),
+              description: eventkey + '. labor'
+            });
+          });
+        });
       });
-    }
+    });
     return keys;
   }),
   actions: {
