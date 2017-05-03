@@ -1,8 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  currentView: Ember.computed.alias('model.currentLab'),
+  currentView: '',
   subMenu: Ember.computed('model.results', function() {
+    this.get('model.StudentRegistrations').then((srs) => {
+      this.set('StudentRegistrations', srs);
+      var sr;
+      this.get('model.StudentRegistrations').forEach(function(element) {
+        console.log(element);
+      }, this);
+    });
     var description, descriptionString, keys, lab;
     keys = [];
     for (lab in this.get('model.results')) {

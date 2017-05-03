@@ -10,6 +10,6 @@ export default DS.Model.extend({
   university: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'User'}),
+  StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'UserId'}),
   Deliverables: DS.hasMany('deliverable', {inverse: 'Users'})
 });
