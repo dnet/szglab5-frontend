@@ -4,7 +4,7 @@ export default Ember.Mixin.create({
   studentMenu: [
     {
       key: 'student',
-      value: 'Hallgató',
+      value: 'Laborok',
       icon: 'graduation-cap'
     }
   ],
