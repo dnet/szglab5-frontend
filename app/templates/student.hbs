@@ -3,7 +3,7 @@
   <div class="right">
     <div class="student">
       <div class="student-lab-content">
-        {{#if currentView}} {{student-laboratory result=(get model.results currentView) selectCommit=(action "selectCommit")}}
+        {{#if currentView}} {{student-laboratory result=currentView.event selectCommit=(action "selectCommit")}}
         {{else}}
           <div class="title">Válassz egy labort!</div>
         {{/if}}

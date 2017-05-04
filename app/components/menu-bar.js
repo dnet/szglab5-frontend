@@ -19,8 +19,8 @@ export default Ember.Component.extend(MenuHelper, {
     key: 'demonstrator'
   }],
   currentRight: {
-    value: 'Admin',
-    key: 'admin'
+    value: 'Hallgató',
+    key: 'student'
   },
   userRights: ['admin', 'student'],
   userData: [],
