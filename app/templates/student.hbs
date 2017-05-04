@@ -1,5 +1,5 @@
 <div class="content student">
-  {{left-menu title="Laborok" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Laborok" currentView=currentView goToView=(action 'goToView') subMenu=(await subMenu)}}
   <div class="right">
     <div class="student">
       <div class="student-lab-content">
