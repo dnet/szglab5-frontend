@@ -10,6 +10,6 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   Events: DS.hasMany('event', {inverse: 'Deliverables'}),
-  DeliverableTemplates: DS.hasMany('deliverableTemplate', {inverse: 'Deliverables'}),
+  DeliverableTemplate: DS.belongsTo('deliverableTemplate', {inverse: 'Deliverables'}),
   Users: DS.hasMany('deliverableTemplate', {inverse: 'Deliverables'})
 });

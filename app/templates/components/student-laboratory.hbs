@@ -5,11 +5,14 @@
   <div class="text">{{result.date}}</div>
   <div class="text label">Laborvezető</div>
   <div class="text">{{await result.Demonstrator.displayName}}</div>
-
+  {{#each (await result.Deliverables) as |Deliverable number|}}
+    <div class="text label"></div>
+    <div class="text"></div>
+  {{/each}}
   {{#if (eq result.statusCode 'during')}}
     <div class="text label">Beugró</div>
     <div class="text">
-      {{result.entrytest}} ({{result.demonstrator}})</div>
+      {{await result.Deliverables}} ({{result.demonstrator}})</div>
     <div class="text label">
       Hátralévő idő
     </div>
