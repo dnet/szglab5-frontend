@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 import ErrorRouteMixin from '../mixins/error-route';
 import jwt_decode from 'npm:jwt-decode';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, {
   model() {
     var token = this.get('session.data.authenticated.token');
     var userData = jwt_decode(token);

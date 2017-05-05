@@ -4,8 +4,8 @@ import ErrorRouteMixin from '../mixins/error-route';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin,  {
   session: Ember.inject.service('session'),
-  beforeModel(model, transition) {
-    this._super(...arguments)
+  beforeModel() {
+    this._super(...arguments);
     var session = this.get('session');
     if (session.isAuthenticated) {
       session.invalidate().then(() => this.transitionTo('login'));

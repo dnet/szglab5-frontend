@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import RSVP from 'rsvp';
 
 export default Ember.Controller.extend({
   currentView: '',
@@ -13,7 +12,7 @@ export default Ember.Controller.extend({
             description: (index + 1) + '. labor',
             event: studentEvent
           });
-        })
+        });
       }
       return subMenuKeys;
     });
@@ -22,7 +21,7 @@ export default Ember.Controller.extend({
     goToView: function (key) {
       this.get('subMenu').then((subMenu) => {
         subMenu.forEach((se) => {
-          if (key == se.key) {
+          if (key === se.key) {
             this.set('currentView', se);
             return false;
           }
@@ -31,7 +30,7 @@ export default Ember.Controller.extend({
       return false;
     },
     selectCommit: function (newcommit) {
-      console.log("Todo save new commit");
+      console.log("Todo save new commit: " + newcommit);
       return false;
     }
   }

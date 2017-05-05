@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
       return false;
     },
     evaluateStudent: function(student) {
-      this.set('evaluate', 'student');
+      this.set('evaluate', student);
       return false;
     }
   }
