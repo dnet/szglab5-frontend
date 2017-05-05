@@ -11,10 +11,5 @@ export default DS.Model.extend({
   updatedAt: DS.attr('date'),
   Deliverables: DS.hasMany('deliverable', {inverse: 'Events'}),
   StudentRegistrations: DS.belongsTo('studentRegistration', {inverse: 'Events'}),
-  Demonstrator: Ember.computed(function() {
-    return $.getJSON(`${config.backendUrl}/events/${this.get('id')}/demonstrator`).then(data=>{
-      this.get('store').pushPayload(data);
-      return 
-    });
-  })
+  Demonstrator: DS.belongsTo('user')
 });
