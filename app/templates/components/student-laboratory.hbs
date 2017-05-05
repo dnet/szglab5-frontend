@@ -4,7 +4,7 @@
   <div class="text label">Időpont</div>
   <div class="text">{{result.date}}</div>
   <div class="text label">Laborvezető</div>
-  <div class="text">{{result.demonstrator}}</div>
+  <div class="text">{{await result.Demonstrator.displayName}}</div>
 
   {{#if (eq result.statusCode 'during')}}
     <div class="text label">Beugró</div>

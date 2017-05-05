@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
             description: (index + 1) + '. labor',
             event: studentEvent
           });
+          studentEvent.get('Demonstrator');
         });
       }
       return subMenuKeys;
