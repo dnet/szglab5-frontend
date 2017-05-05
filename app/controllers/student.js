@@ -3,8 +3,8 @@ import RSVP from 'rsvp';
 
 export default Ember.Controller.extend({
   currentView: '',
-  subMenu: Ember.computed('model.studentEvents', function() {
-    return this.get('model.studentEvents').then(function(studentEvents) {
+  subMenu: Ember.computed('model.studentEvents', function () {
+    return this.get('model.studentEvents').then((studentEvents) => {
       var subMenuKeys = [];
       for (var i = 0; i < studentEvents.length; i++) {
         studentEvents[i].forEach((studentEvent, index) => {
@@ -19,11 +19,18 @@ export default Ember.Controller.extend({
     });
   }),
   actions: {
-    goToView: function(key) {
-      this.set('currentView', key);
+    goToView: function (key) {
+      this.get('subMenu').then((subMenu) => {
+        subMenu.forEach((se) => {
+          if (key == se.key) {
+            this.set('currentView', se);
+            return false;
+          }
+        });
+      });
       return false;
     },
-    selectCommit: function(newcommit) {
+    selectCommit: function (newcommit) {
       console.log("Todo save new commit");
       return false;
     }
