@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import jwt_decode from 'npm:jwt-decode';
 
 export default Ember.Service.extend({
   session: Ember.inject.service('session'),
@@ -25,10 +26,23 @@ export default Ember.Service.extend({
     else {
       this.restoreDefault();
     }
+    this.loadUserData();
+    this.get('session').on('authenticationSucceeded', () => {
+      this.loadUserData();
+    });
+  },
+  loadUserData() {
+    var token = this.get('session.data.authenticated.token');
+    if (!Ember.isEmpty(token)) {
+      var decoded = jwt_decode(token);
+      if (decoded.colorTheme) {
+        this.changeStyle(decoded.colorTheme);
+      }
+    }
   },
   changeStyle(style) {
     this.set('selected', style);
-    this.get('session').set('data.selectedStyle',this.get('selected'));
+    this.get('session').set('data.selectedStyle', this.get('selected'));
   },
   restoreDefault() {
     this.changeStyle(this.get('selectable')[0]);
