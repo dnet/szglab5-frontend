@@ -4,32 +4,32 @@
   <div class='right'>
     <form class='settings'>
       {{#if (eq currentView 'email')}}
-      <div class="text label">e-mail</div>
-      {{input type="email" value=model.email placeholder='e-mail'}}
+      <h4><label for="email">e-mail</label></h4>
+      {{input type="email" value=model.email placeholder='e-mail' id='email'}}
 
-      <div class="text label">mailing list</div>
-      <button type="button" class="btn--toggle {{if mailList 'active'}}" {{action 'toggleMailList'}}>subscribe</button>
+      <h4><label for="mailinglist">mailing list</label></h4>
+      <button type="button" class="btn--toggle {{if mailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">subscribe</button>
 
-      <div class="text label">e-mail notifications</div>
-      <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}}>subscribe</button>
+      <h4><label for="emailnotifications">e-mail notifications</label></h4>
+      <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">subscribe</button>
       {{/if}}
       {{#if (eq currentView 'password')}}
 
-      <div class="text label">régi jelszó</div>
-      {{input type="password" value=user.oldpwd placeholder='régi jelszó'}}
+      <h4><label for="oldpassword">régi jelszó</label></h4>
+      {{input type="password" value=user.oldpwd placeholder='régi jelszó' id='oldpassword'}}
 
-      <div class="text label">új jelszó újra</div>
-      {{input type="password" value=user.newpwd placeholder='új jelszó újra'}}
+      <h4><label for="newpassword">új jelszó</label></h4>
+      {{input type="password" value=user.newpwd placeholder='új jelszó újra' id='newpassword'}}
 
-      <div class="text label">új jelszó</div>
-      {{input type="password" value=user.newpwdagain placeholder='új jelszó'}}
+      <h4><label for="newpassword2">új jelszó újra</label></h4>
+      {{input type="password" value=user.newpwdagain placeholder='új jelszó' id="newpassword2"}}
 
-      <div class="text label">ssh publikus kulcs</div>
-      {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs"}}
+      <h4><label for="sshkey">ssh publikus kulcs</label></h4>
+      {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs" id='sshkey'}}
       {{/if}}
       {{#if (eq currentView 'style')}}
       <p>Changes now are just local.</p>
-      <div class="text label">Stílus</div>
+      <h4>Stílus</h4>
       {{#power-select options=styles selected=selectedStyle onchange=(action "changeStyle") as |style|}}
         {{style.value}}
       {{/power-select}}
