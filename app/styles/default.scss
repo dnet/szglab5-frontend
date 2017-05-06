@@ -100,8 +100,6 @@ button {
 	margin-top: 15px;
 	box-shadow: none;
 	background: $buttonOkActive;
-	outline-color: transparent;
-	outline: none;
 
 	&:active {
 		box-shadow: none;
@@ -140,7 +138,6 @@ button {
 		text-align: left;
 		color: black;
 		box-shadow: none;
-		outline-color: transparent;
 
 		&:before {
 			font-family: 'FontAwesome';
@@ -177,7 +174,6 @@ input {
 	background-image: none;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 0.25rem;
-	outline: none;
 	resize: none;
 }
 
@@ -196,7 +192,6 @@ textarea {
 	border-radius: 0.25rem;
 	width: 90%;
 	resize: vertical;
-	outline: none;
 
 	&:focus {
 		border-color: $buttonOkActive;
