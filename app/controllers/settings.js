@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
   actions: {
     goToView: function (key) {
       this.set('currentView', key);
+      this.get("model").rollbackAttributes();
       return false;
     },
     toggleMailList: function () {
@@ -41,6 +42,7 @@ export default Ember.Controller.extend({
       var cw = this.get('currentView');
       if (cw === 'email') {
         //TODO: save email
+        this.get('model').save();
       }
       else if (cw === 'password') {
         //TODO: save password and ssh
