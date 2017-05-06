@@ -26,6 +26,12 @@ export default Ember.Controller.extend({
   },
   actions: {
     goToView: function (key) {
+      var cw = this.get('currentView');
+      if (cw === 'password') {
+        this.set('model.oldpwd', undefined);
+        this.set('model.newpwd', undefined);
+        this.set('model.newpwdagain', undefined);
+      }
       this.set('currentView', key);
       this.get("model").rollbackAttributes();
       return false;
@@ -41,15 +47,22 @@ export default Ember.Controller.extend({
     save: function () {
       var cw = this.get('currentView');
       if (cw === 'email') {
-        //TODO: save email
         this.get('model').save();
+        //TODO: save subscription
       }
       else if (cw === 'password') {
-        //TODO: save password and ssh
+        if (this.get('model.newpwd') === this.get('model.newpwdagain')) {
+          this.get('model').save();
+        }
+        else {
+          //TODO: error handling
+        }
       }
       else if (cw === 'style') {
-        //TODO: save style
-        this.get('style').changeStyle(this.get('selectedStyle.key'));
+        var newStyle = this.get('selectedStyle.key');
+        this.set('model.style', newStyle);
+        this.get('model').save();
+        this.get('style').changeStyle(newStyle);
       }
       return false;
     },

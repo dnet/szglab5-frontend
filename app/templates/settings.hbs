@@ -16,13 +16,13 @@
       {{#if (eq currentView 'password')}}
 
       <h4><label for="oldpassword">régi jelszó</label></h4>
-      {{input type="password" value=user.oldpwd placeholder='régi jelszó' id='oldpassword'}}
+      {{input type="password" value=model.oldpwd placeholder='régi jelszó' id='oldpassword'}}
 
       <h4><label for="newpassword">új jelszó</label></h4>
-      {{input type="password" value=user.newpwd placeholder='új jelszó újra' id='newpassword'}}
+      {{input type="password" value=model.newpwd placeholder='új jelszó újra' id='newpassword'}}
 
       <h4><label for="newpassword2">új jelszó újra</label></h4>
-      {{input type="password" value=user.newpwdagain placeholder='új jelszó' id="newpassword2"}}
+      {{input type="password" value=model.newpwdagain placeholder='új jelszó' id="newpassword2"}}
 
       <h4><label for="sshkey">ssh publikus kulcs</label></h4>
       {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs" id='sshkey'}}
