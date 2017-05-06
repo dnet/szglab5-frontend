@@ -1,39 +1,23 @@
 <div class='student-laboratory'>
-  <div class="text label">Helyszín</div>
-  <div class="text">{{result.location}}</div>
-  <div class="text label">Időpont</div>
-  <div class="text">{{result.date}}</div>
-  <div class="text label">Laborvezető</div>
-  <div class="text">{{await result.Demonstrator.displayName}}</div>
-  {{#each (await result.Deliverables) as |Deliverable number|}}
-    <div class="text label"></div>
-    <div class="text"></div>
-  {{/each}}
-  {{#if (eq result.statusCode 'during')}}
-    <div class="text label">Beugró</div>
-    <div class="text">
-      {{await result.Deliverables}} ({{result.demonstrator}})</div>
-    <div class="text label">
-      Hátralévő idő
-    </div>
-    <div class="text">
-      {{timeLeft}} ({{result.deadline}})
-    </div>
-    <div class="text label">
-      Git repository URL
-    </div>
-    <div class="text">
-      {{result.repository}}
-    </div>
-    <div class="text label">
-      Végleges tag
-    </div>
+  <h4>Helyszín</h4>
+  <p>{{result.location}}</p>
+  <h4>Időpont</h4>
+  <p>{{result.date}}</p>
+  <h4>Laborvezető</h4>
+  <p>{{await result.Demonstrator.displayName}}</p>
+  {{#each result.Deliverables as |Deliverable number|}}
+    <h3 class="text label">{{Deliverable.DeliverableTemplate.description}}</h3>
+    <p><strong>Határidő:</strong> {{Deliverable.deadline}}</p>
+    <p><strong>Feltöltve:</strong> {{Deliverable.submitteddate}}</p>
+    <p><strong>Jegy:</strong> {{Deliverable.grade}}</p>
+    <p><strong>Megjegyzés:</strong> {{Deliverable.comment}}</p>
+    <p><strong>Git:</strong> {{Deliverable.url}} {{Deliverable.commit}}</p>
     <div class="tagSelector">
       {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
       {{commit}}
       {{/power-select}}
     </div>
-  {{/if}}
+  {{/each}}
 
   {{#if (eq result.statusCode 'after')}}
     <div class="text label">
@@ -67,5 +51,4 @@
       {{result.laboratory.review}}
     </div>
   {{/if}}
-
 </div>

@@ -3,7 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   deadline: DS.attr('date'),
   submitteddate: DS.attr('date'),
-  grade: DS.attr('integer'),
+  grade: DS.attr('number'),
   comment: DS.attr('string'),
   url: DS.attr('string'),
   commit: DS.attr('string'),
