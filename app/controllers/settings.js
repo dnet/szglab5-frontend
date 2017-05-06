@@ -60,7 +60,7 @@ export default Ember.Controller.extend({
       }
       else if (cw === 'style') {
         var newStyle = this.get('selectedStyle.key');
-        this.set('model.style', newStyle);
+        this.set('model.colorTheme', newStyle);
         this.get('model').save();
         this.get('style').changeStyle(newStyle);
       }
