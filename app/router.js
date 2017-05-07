@@ -20,6 +20,7 @@ Router.map(function() {
   this.route('student');
   this.route('logout');
   this.route('error');
+  this.route('permission-denied');
 });
 
 export default Router;
