@@ -3,7 +3,6 @@
 <nav class="{{if isMenuNotOpen 'hidden'}}">
   {{#if session.isAuthenticated}}
   <ul class="left">
-    <!-- LEFT MENU ITEMS-->
     {{#each (get-array-element menu userData.role) as |menuitem|}}
       <li class='min-width' title= {{menuitem.value}}>
         {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
@@ -12,19 +11,24 @@
   </ul>
   <ul class="right">
     <li class='cogs'>
-      {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }} <span class="mobile-only">beállítások</span> {{/link-to}}
+      {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }} <span class="mobile-only">Beállítások</span> {{/link-to}}
     </li>
     <li>
-      {{#link-to 'logout' class='sign-out' tagName='button' title='kijelentkezés' }} <span class="mobile-only">kijelentkezés</span> {{/link-to}}
+      {{#link-to 'logout' class='sign-out' tagName='button' title='kijelentkezés' }} <span class="mobile-only">Kijelentkezés</span> {{/link-to}}
     </li>
     <li class="username">
       <div class="menu-text user">{{userData.displayName}} {{#if userData.neptun}}({{userData.neptun}}){{/if}}</div>
     </li>
   </ul>
   {{else}}
+  <ul class="left">
+    <li class='bell-o'>
+      {{#link-to 'news' class='bell-o' tagName='button' title='hírek' }} Hírek {{/link-to}}
+    </li>
+  </ul>
   <ul class="right">
     <li>
-      {{#link-to 'login' class='sign-in' tagName='button' title='bejelentkezés' }} bejelentkezés {{/link-to}}
+      {{#link-to 'login' class='sign-in' tagName='button' title='bejelentkezés' }} Bejelentkezés {{/link-to}}
     </li>
   </ul>
   {{/if}}

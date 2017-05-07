@@ -21,6 +21,7 @@ Router.map(function() {
   this.route('logout');
   this.route('error');
   this.route('permission-denied');
+  this.route('news');
 });
 
 export default Router;

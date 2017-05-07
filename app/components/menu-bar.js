@@ -13,11 +13,17 @@ export default Ember.Component.extend(MenuHelper, {
     this.get('session').on('authenticationSucceeded', () => {
       this.loadUserData();
     });
+    this.get('session').on('invalidationSucceeded', () => {
+      this.loadUserData();
+    });
   },
   loadUserData() {
     var token = this.get('session.data.authenticated.token');
     if (!Ember.isEmpty(token)) {
       this.set('userData', jwt_decode(token));
+    }
+    else {
+      this.set('userData', undefined);
     }
   },
   actions: {
