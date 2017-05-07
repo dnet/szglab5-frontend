@@ -3,42 +3,12 @@
 <nav class="{{if isMenuNotOpen 'hidden'}}">
   {{#if session.isAuthenticated}}
   <ul class="left">
-    <!-- USER ROLE CHOOSER-->
-    <li title='felhasználó modul váltása' class="wide">
-      {{#power-select options=userRightLabels selected=currentRight onchange=(action "changeUserRight") as |userright|}}
-        {{userright.value}}
-      {{/power-select}}
-    </li>
-
     <!-- LEFT MENU ITEMS-->
-    {{#if (eq currentRight.key 'admin')}}
-      {{#each adminMenu as |menuitem|}}
-        <li class='min-width' title= {{menuitem.value}}>
-          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-        </li>
-      {{/each}}
-    {{/if}}
-    {{#if (eq currentRight.key 'evaluator')}}
-      {{#each evaluatorMenu as |menuitem|}}
-        <li class='min-width' title= {{menuitem.value}}>
-          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-        </li>
-      {{/each}}
-    {{/if}}
-    {{#if (eq currentRight.key 'demonstrator')}}
-      {{#each demonstratorMenu as |menuitem|}}
-        <li class='min-width' title= {{menuitem.value}}>
-          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-        </li>
-      {{/each}}
-    {{/if}}
-    {{#if (eq currentRight.key 'student')}}
-      {{#each studentMenu as |menuitem|}}
-        <li class='min-width' title= {{menuitem.value}}>
-          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-        </li>
-      {{/each}}
-    {{/if}}
+    {{#each (get-array-element menu userData.role) as |menuitem|}}
+      <li class='min-width' title= {{menuitem.value}}>
+        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+      </li>
+    {{/each}}
   </ul>
   <ul class="right">
     <li class='cogs'>
