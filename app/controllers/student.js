@@ -5,8 +5,8 @@ export default Ember.Controller.extend({
   subMenu: Ember.computed('model.studentEvents', function () {
     return this.get('model.studentEvents').then((studentEvents) => {
       var subMenuKeys = [];
-      for (var i = 0; i < studentEvents.length; i++) {
-        studentEvents[i].forEach((studentEvent, index) => {
+      studentEvents.forEach((array) => {
+        array.forEach((studentEvent, index) => {
           subMenuKeys.push({
             key: studentEvent.get('id'),
             description: (index + 1) + '. labor',
@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
           });
           studentEvent.get('Demonstrator');
         });
-      }
+      });
       return subMenuKeys;
     });
   }),
