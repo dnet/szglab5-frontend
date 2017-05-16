@@ -7,6 +7,11 @@ export default Ember.Mixin.create({
         key: 'student',
         value: 'Laborok',
         icon: 'graduation-cap'
+      },
+      {
+        key: 'news',
+        value: 'Hírek',
+        icon: 'bell-o'
       }
     ],
     ADMIN: [

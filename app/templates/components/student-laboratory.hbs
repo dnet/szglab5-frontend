@@ -4,7 +4,7 @@
   <h4>Időpont</h4>
   <p>{{result.date}}</p>
   <h4>Laborvezető</h4>
-  <p>{{await result.Demonstrator.displayName}}</p>
+  <p>{{await result.Demonstrator.displayName}} ({{await result.Demonstrator.email}})</p>
   {{#each result.Deliverables as |Deliverable number|}}
     <h3 class="text label">{{Deliverable.DeliverableTemplate.description}}</h3>
     <p><strong>Határidő:</strong> {{Deliverable.deadline}}</p>
