@@ -218,3 +218,11 @@ html {
 	padding: 0.4em;
 	margin: 0.6em 0;
 }
+
+.success-box {
+	color: $success-color;
+	background-color: $success-background;
+	border: $success-color solid 1px;
+	padding: 0.4em;
+	margin: 0.6em 0;
+}
