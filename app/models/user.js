@@ -25,7 +25,7 @@ export default DS.Model.extend({
   updatedAt: DS.attr('date'),
   StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'UserId'}),
   Deliverables: DS.hasMany('deliverable', {inverse: 'Users'}),
-  Event: DS.belongsTo('event', {inverse: 'Demonstrator'}), // TODO: maybe useless
+  Event: DS.hasMany('event', {inverse: 'Demonstrator'}), // TODO: maybe useless
 
   studentEvents: Ember.computed('StudentRegistrations', 'StudentRegistrations.[]', function() {
     return this.get('StudentRegistrations').then(function(studentRegs) {
