@@ -210,3 +210,11 @@ html {
 	font-family: 'Roboto Slab', sans-serif;
 	background: $background-color;
 }
+
+.error-box {
+	color: $error-color;
+	background-color: $error-background;
+	border: $error-color solid 1px;
+	padding: 0.4em;
+	margin: 0.6em 0;
+}
