@@ -6,17 +6,37 @@
   <h4>Laborvezető</h4>
   <p>{{await result.Demonstrator.displayName}} ({{await result.Demonstrator.email}})</p>
   {{#each result.Deliverables as |Deliverable number|}}
-    <h3 class="text label">{{Deliverable.DeliverableTemplate.description}}</h3>
-    <p><strong>Határidő:</strong> {{Deliverable.deadline}}</p>
-    <p><strong>Feltöltve:</strong> {{Deliverable.submitteddate}}</p>
-    <p><strong>Jegy:</strong> {{Deliverable.grade}}</p>
-    <p><strong>Megjegyzés:</strong> {{Deliverable.comment}}</p>
-    <p><strong>Git:</strong> {{Deliverable.url}} {{Deliverable.commit}}</p>
-    <div class="tagSelector">
-      {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
-      {{commit}}
-      {{/power-select}}
-    </div>
+    {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
+    <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+    <p>{{Deliverable.grade}}</p>
+    {{/if}}
+    {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
+      {{#if Deliverable.isOver}}
+      <h4>{{Deliverable.DeliverableTemplate.description}} feltöltve:</h4>
+      <p>{{Deliverable.submittedDate}}</p>
+      <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+      <p>{{Deliverable.grade or 'Még nincs értékelve.'}}</p>
+      <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
+      <p>{{Deliverable.comment}}</p>
+      {{else}}
+      <h4>{{Deliverable.DeliverableTemplate.description}} határidő:</h4>
+      <p>{{Deliverable.deadline}}</p>
+      {{/if}}
+      <p><strong>Git:</strong> {{Deliverable.url}} {{Deliverable.commit}}</p>
+      <div class="tagSelector">
+        {{#power-select options=result.commits selected=result.finalcommit onchange=(action "selectCommit") as |commit|}}
+        {{commit}}
+        {{/power-select}}
+      </div>
+    {{/if}}
+    {{#if (eq Deliverable.DeliverableTemplate.type 'LABOR')}}
+      {{#if Deliverable.isOver}}
+      <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+      <p>{{Deliverable.grade or 'Még nincs értékelve.'}}</p>
+      <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
+      <p>{{Deliverable.comment}}</p>
+      {{/if}}
+    {{/if}}
   {{/each}}
 
   {{#if (eq result.statusCode 'after')}}
