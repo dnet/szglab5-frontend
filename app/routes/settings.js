@@ -13,5 +13,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, {
     var token = this.get('session.data.authenticated.token');
     var userData = jwt_decode(token);
     return this.get('store').find('user', userData.userId);
+  },
+  actions: {
+    willTransition() {
+      this.controller.resetFields();
+    }
   }
 });

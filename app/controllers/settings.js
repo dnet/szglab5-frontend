@@ -17,6 +17,8 @@ export default Ember.Controller.extend({
   notification: false,
   styles: null,
   selectedStyle: null,
+  error: null,
+  message: null,
   init() {
     this._super(...arguments);
     var convert = (v) => ({ key: v, value: v });
@@ -26,6 +28,12 @@ export default Ember.Controller.extend({
     this.set('error', null);
     this.set('message', null);
   },
+  resetFields() {
+    this.set('error', null);
+    this.set('message', null);
+    this.set('currentView', 'email');
+    this.resetPWFields();
+  },
   resetPWFields() {
     this.set('model.oldpwd', null);
     this.set('model.newpwd', null);
@@ -33,14 +41,11 @@ export default Ember.Controller.extend({
   },
   actions: {
     goToView: function (key) {
-      var cw = this.get('currentView');
-      if (cw === 'password') {
-        this.resetPWFields();
-      }
+      this.get("model").rollbackAttributes();
+      this.resetPWFields();
       this.set('currentView', key);
       this.set('error', null);
       this.set('message', null);
-      this.get("model").rollbackAttributes();
       return false;
     },
     toggleMailList: function () {
