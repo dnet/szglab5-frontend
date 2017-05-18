@@ -19,6 +19,8 @@ export default DS.Model.extend({
   spec: DS.attr('string'),
   sshPublicKey: DS.attr('string'),
   studentgroup_id: DS.attr('string'),
+  subscribedToEmailNotify: DS.attr('boolean'),
+  subscribedToMailList: DS.attr('boolean'),
   title: DS.attr('string'),
   university: DS.attr('string'),
   createdAt: DS.attr('date'),

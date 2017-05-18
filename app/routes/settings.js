@@ -5,6 +5,10 @@ import jwt_decode from 'npm:jwt-decode';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, {
   session: Ember.inject.service('session'),
+  afterModel() {
+    this.set('model.oldpwd', null);
+    this.set('model.newpwd', null);
+  },
   model() {
     var token = this.get('session.data.authenticated.token');
     var userData = jwt_decode(token);

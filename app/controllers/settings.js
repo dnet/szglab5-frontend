@@ -23,47 +23,56 @@ export default Ember.Controller.extend({
     var styles = this.get('style.selectable').map(convert);
     this.set('styles', styles);
     this.set('selectedStyle', convert(this.get('style.selected')));
+    this.set('error', null);
+    this.set('message', null);
   },
   actions: {
     goToView: function (key) {
       var cw = this.get('currentView');
       if (cw === 'password') {
-        this.set('model.oldpwd', undefined);
-        this.set('model.newpwd', undefined);
-        this.set('model.newpwdagain', undefined);
+        this.set('model.oldpwd', null);
+        this.set('model.newpwd', null);
+        this.set('model.newpwdagain', null);
       }
       this.set('currentView', key);
+      this.set('error', null);
+      this.set('message', null);
       this.get("model").rollbackAttributes();
       return false;
     },
     toggleMailList: function () {
-      this.toggleProperty('mailList');
+      this.toggleProperty('model.subscribedToMailList');
       return false;
     },
     toggleNotifications: function () {
-      this.toggleProperty('notification');
+      this.toggleProperty('model.subscribedToEmailNotify');
       return false;
     },
     save: function () {
       var cw = this.get('currentView');
-      if (cw === 'email') {
-        this.get('model').save();
-        //TODO: save subscription
-      }
-      else if (cw === 'password') {
-        if (this.get('model.newpwd') === this.get('model.newpwdagain')) {
-          this.get('model').save();
-        }
-        else {
-          //TODO: error handling
+      this.set('error', null);
+      this.set('message', null);
+      if (cw === 'password') {
+        if (this.get('model.newpwd') !== this.get('model.newpwdagain')) {
+          this.set('error', 'A két jelszó nem egyezik.');
+          return false;
         }
       }
       else if (cw === 'style') {
         var newStyle = this.get('selectedStyle.key');
         this.set('model.colorTheme', newStyle);
-        this.get('model').save();
         this.get('style').changeStyle(newStyle);
       }
+      this.get('model').save().then(() => {
+        this.set('message', 'Sikeres mentés!');
+      }).catch((res) => {
+        if (res && res.errors && res.errors[0] && res.errors[0].title) {
+          this.set('error', res.errors[0].title);
+        }
+        else {
+          this.set('error', "Ismeretlen hiba.");
+        }
+      });
       return false;
     },
     changeStyle(style) {

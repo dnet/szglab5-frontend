@@ -8,10 +8,10 @@
       {{input type="email" value=model.email placeholder='e-mail' id='email'}}
 
       <h4><label for="mailinglist">mailing list</label></h4>
-      <button type="button" class="btn--toggle {{if mailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">subscribe</button>
+      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">subscribe</button>
 
       <h4><label for="emailnotifications">e-mail notifications</label></h4>
-      <button type="button" class="btn--toggle {{if notification 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">subscribe</button>
+      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">subscribe</button>
       {{/if}}
       {{#if (eq currentView 'password')}}
 
@@ -37,7 +37,10 @@
         <button type="submit" {{action 'save'}}>Mentés</button>
       </div>
       {{#if error}}
-        <div class="error-box">{{error}} asd</div>
+        <div class="error-box">{{error}}</div>
+      {{/if}}
+      {{#if message}}
+        <div class="success-box">{{message}}</div>
       {{/if}}
     </form>
   </div>
