@@ -6,9 +6,11 @@
     {{input type="text" value=username placeholder="username" enter='removeError' }}
     {{input type="password" value=password placeholder="password" }}
     <button type="submit" name="button" {{action 'login'}}>Login</button>
+    {{#if error}}
     <div class="error-box">
       {{error}}
     </div>
+    {{/if}}
   </form>
 
 </div>

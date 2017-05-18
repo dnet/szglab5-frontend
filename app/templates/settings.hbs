@@ -33,8 +33,12 @@
         {{style.value}}
       {{/power-select}}
       {{/if}}
-
-      <button type="submit" {{action 'save'}}>Mentés</button>
+      <div>
+        <button type="submit" {{action 'save'}}>Mentés</button>
+      </div>
+      {{#if error}}
+        <div class="error-box">{{error}} asd</div>
+      {{/if}}
     </form>
   </div>
 </div>
