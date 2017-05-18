@@ -12,34 +12,34 @@
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
       {{#if Deliverable.isOver}}
-      <h4>{{Deliverable.DeliverableTemplate.description}} feltöltve:</h4>
-      <p>{{dateformat Deliverable.submittedDate}}</p>
-      <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
-      <p>{{Deliverable.grade or 'Még nincs értékelve.'}}</p>
-      <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
-      <p>{{Deliverable.comment}}</p>
+        <h4>{{Deliverable.DeliverableTemplate.description}} feltöltve:</h4>
+        <p>{{dateformat Deliverable.submitteddate}}</p>
+        <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+        <p>{{Deliverable.grade}}</p>
+        <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
+        <p>{{Deliverable.comment}}</p>
       {{else}}
-      <h4>{{Deliverable.DeliverableTemplate.description}} határidő:</h4>
-      <p>{{dateformat Deliverable.deadline}}</p>
-      {{/if}}
-      <h4>Git:</h4>
-      <p>{{Deliverable.url}}</p>
-      <div class="tagSelector">
-        {{#power-select options=Deliverable.commits selected=Deliverable.commit onchange=(action "selectCommit" Deliverable) as |commit|}}
-        {{commit}}
-        {{/power-select}}
-      </div>
-      {{#if Deliverable.success}}
-        <div class="success-box">Sikeres mentés.</div>
-      {{/if}}
-      {{#if Deliverable.fail}}
-        <div class="error-box">Sikertelen mentés.</div>
+        <h4>{{Deliverable.DeliverableTemplate.description}} határidő:</h4>
+        <p>{{dateformat Deliverable.deadline}}</p>
+        <h4>Git:</h4>
+        <p>{{Deliverable.url}}</p>
+        <div class="tagSelector">
+          {{#power-select options=Deliverable.commits selected=Deliverable.commit onchange=(action "selectCommit" Deliverable) as |commit|}}
+          {{commit}}
+          {{/power-select}}
+        </div>
+        {{#if Deliverable.success}}
+          <div class="success-box">Sikeres mentés.</div>
+        {{/if}}
+        {{#if Deliverable.fail}}
+          <div class="error-box">Sikertelen mentés.</div>
+        {{/if}}
       {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'LABOR')}}
       {{#if Deliverable.isOver}}
       <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
-      <p>{{Deliverable.grade or 'Még nincs értékelve.'}}</p>
+      <p>{{Deliverable.grade}}</p>
       <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
       <p>{{Deliverable.comment}}</p>
       {{/if}}
