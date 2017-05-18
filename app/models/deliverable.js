@@ -14,5 +14,6 @@ export default DS.Model.extend({
   Users: DS.hasMany('deliverableTemplate', {inverse: 'Deliverables'}),
   isOver: Ember.computed('deadline', function() {
     return (this.get('deadline') - (new Date())) < 0;
-  })
+  }),
+  commits: ['commit1', 'commit4']
 });

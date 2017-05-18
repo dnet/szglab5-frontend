@@ -28,9 +28,16 @@ export default Ember.Component.extend({
     return diff + " óra";
   }),
   actions: {
-    selectCommit: function(newcommit) {
-      this.set('result.finalcommit', newcommit);
-      return this.sendAction('selectCommit', newcommit);
+    selectCommit: function(Deliverable, newcommit) {
+      Deliverable.set('success', null);
+      Deliverable.set('fail', null);
+      Deliverable.set('commit', newcommit);
+      Deliverable.save().then(() => {
+        Deliverable.set('success', true);
+      }).catch(() => {
+        Deliverable.set('fail', true);
+      });
+      return false;
     }
   }
 });
