@@ -1,10 +1,10 @@
 <div class="content sql">
   {{left-menu title="SQL" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
-    <div class="sql">
+    <form class="sql">
       <div class="text label">SQL query</div>
-      {{textarea cols="9" rows="9" placeholder="SQL query"}}
-      <button type="button">Run</button>
-    </div>
+      {{textarea cols="9" rows="9" placeholder="SQL query" value=sqlText}}
+      <button type="submit" {{action "runQuery"}}>Run</button>
+    </form>
   </div>
 </div>
