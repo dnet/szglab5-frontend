@@ -6,5 +6,18 @@
       {{textarea cols="9" rows="9" placeholder="SQL query" value=sqlText}}
       <button type="submit" {{action "runQuery"}}>Run</button>
     </form>
+    {{#unless (or (eq error '') (eq error undefined))}}
+      <div class="error-box">
+        {{error}}
+      </div>
+    {{/unless}}
+    {{#each data as |row num|}}
+      <p>
+        {{#each-in row as |key value|}}
+          <div>{{key}}: {{value}}</div>
+        {{/each-in}}
+      </p>
+      <hr/>
+    {{/each}}
   </div>
 </div>
