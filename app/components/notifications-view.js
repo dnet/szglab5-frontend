@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   header: ['Published', 'Publisher', 'Title'],
   rowIndecies: ['published', 'publisher', 'title'],
   showSettings: false,
-  getBody: Ember.computed('model.[]', 'model.@each.{}', function () {
+  getBody: Ember.computed('model', 'model.@each', 'model.@each.title', function () {
     return new RSVP.Promise((resolve, reject) => {
       const loading = [];
       this.get('model').forEach(x => {
