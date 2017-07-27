@@ -2,44 +2,47 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  exerciseCategory: null,
+  question: null,
   init() {
     this._super(...arguments);
     this.set('body', []);
   },
-  header: ['Cím', 'Típus', 'Kérdések száma'],
-  rowIndecies: ['title', 'languagename', 'questionsNumber'],
+  header: ['Text', 'Language'],
+  rowIndecies: ['text', 'language'],
   showSettings: false,
-  getBody: Ember.computed('model.tests.[]', 'model.tests.@each.title', 'model.tests.@each.questions.[]', function() {
-    var body = [];
-    this.get('model.tests').map(
-      x => {
-        body.push({
-          id: x.get('id'),
-          title: x.get('title'),
-          questionsNumber: x.get('questions.length'),
-          languagename: x.get('language.name'),
-          test: x
-        });
-      }
+  getBody: Ember.computed('exerciseCategory', 'exerciseCategory.Questions.@each.text', function () {
+    return this.get('exerciseCategory.Questions').map(
+      x => ({
+        text: x.get('text'),
+        language: 'TODO',
+        // TODO: language: x.get('language.name'),
+        meta: x
+      })
     );
-    return body;
   }),
   actions: {
-    openSettings: function(entry) {
-      var entryTest = entry.test;
-      if (entryTest) {
-        this.set('entryTest', entryTest);
-        this.toggleProperty('showSettings');
+    openSettings(question) {
+      var editQuestion = question.meta;
+      if (editQuestion) {
+        this.set('question', editQuestion);
       }
       return false;
     },
-    closeSettings: function() {
-      this.set('entryTest', {});
-      this.toggleProperty('showSettings');
+    closeSettings() {
+      this.get('question').rollbackAttributes();
+      this.set('question', null);
       return false;
     },
-    delete: function(entry) {
-      entry.test.destroyRecord();
+    delete(question) {
+      question.meta.destroyRecord();
+      return false;
+    },
+    newQuestion() {
+      this.set('question', this.get('store').createRecord('question', {
+        ExerciseCategories: this.get('exerciseCategory'),
+        text: ''
+      }));
       return false;
     }
   }

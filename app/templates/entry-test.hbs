@@ -2,11 +2,7 @@
   {{left-menu title="Beugrók" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="entry-test">
-      {{#if (eq currentView 'creator')}}
-        {{entry-test-creator model=model goToView=(action 'goToView')}}
-      {{else}}
-        {{entry-test-view model=model}}
-      {{/if}}
+      {{entry-test-view model=model exerciseCategory=currentView question=question}}
     </div>
   </div>
 </div>

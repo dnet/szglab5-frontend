@@ -1,12 +1,12 @@
 <div class="entry-test-list">
-  {{#unless showSettings}}
-    {{#if model.tests}}
+  {{#if (eq question null)}}
+    {{#unless (eq exerciseCategory null)}}
       {{table-component header=header body=getBody rowIndecies=rowIndecies withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
+      <button {{action 'newQuestion'}}>Add new question</button>
     {{else}}
-      Jelenleg nincs kerdescsoport az adatbazisban. Hozzon letre egyet!
-    {{/if}}
-  {{/unless}}
-  {{#if showSettings}}
-    {{entry-test-creator entryTest=entryTest edit=true closeSettings=(action "closeSettings") model=model}}
+      Choose an exercise category on the left.
+    {{/unless}}
+  {{else}}
+    {{entry-test-creator question=question edit=true closeSettings=(action "closeSettings") model=model}}
   {{/if}}
 </div>

@@ -7,8 +7,9 @@ import DemonstratorAuthenticatedRouteMixin from '../mixins/demonstrator-authenti
 export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, DemonstratorAuthenticatedRouteMixin, {
     model() {
         return RSVP.hash({
-            tests: this.get('store').findAll('test'),
-            languages: this.get('store').findAll('language')
+            exerciseCategories: this.get('store').findAll('ExerciseCategory'),
+            // TODO: languages: this.get('store').findAll('language'),
+            questions: this.get('store').findAll('question')
         });
     }
 });

@@ -14,6 +14,7 @@ export default DS.Model.extend({
   evaluators: DS.attr('boolean'),
   onLogin: DS.attr('boolean'),
   publisher: DS.belongsTo('user'),
+  Languages: DS.belongsTo('language', {inverse: 'News'}),
   // Language: DS.belongsTo('language'),
   // Semester: DS.belongsTo('semester'),
   publishedFormatted: Ember.computed('published', function () {
