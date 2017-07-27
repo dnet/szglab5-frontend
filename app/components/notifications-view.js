@@ -1,30 +1,48 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  header: ['Date', 'Sender', 'Title', 'Deadline', 'Where', 'Message'],
-  body: [
-    ['2016-11-23', 'User1', 'Title1', '2016-11-27', 'A', 'Message1'],
-    ['2016-11-22', 'User3', 'Title2', '2016-12-13', 'AS', 'Message2'],
-    ['2016-11-24', 'User2342', 'Title3', '2016-12-23', 'ASD', 'Message3']
-  ],
+  store: Ember.inject.service(),
+  init() {
+    this._super(...arguments);
+    this.set('body', []);
+  },
+  header: ['Published', 'Publisher', 'Title'],
+  rowIndecies: ['published', 'publisher', 'title'],
   showSettings: false,
+  getBody: Ember.computed('model.[]', 'model.@each.{}', function () {
+    return new Promise((resolve, reject) => {
+      const loading = [];
+      this.get('model').forEach(x => {
+        loading.push(x.get('publisherName'));
+      })
+      Promise.all(loading).then(data => {
+        resolve(
+          this.get('model').map((x,i) => ({
+            published: x.get('publishedFormatted'),
+            publisher: data[i],
+            title: x.get('title'),
+            notification: x
+          })))
+      }, () => reject());
+    });
+  }),
   actions: {
-    openSettings: function(notif) {
-      var notification;
-      notification = {};
-      notification.date = notif[0];
-      notification.user = notif[1];
-      notification.title = notif[2];
-      notification.deadline = notif[3];
-      notification.where = notif[4];
-      notification.message = notif[5];
-      this.set('notification', notification);
+    openSettings: function (tableElement) {
+      let notification = tableElement.notification;
+      if (notification) {
+        this.set('notification', notification);
+        this.toggleProperty('showSettings');
+      }
+      return false;
+    },
+    closeSettings: function () {
+      this.set('notification', {});
       this.toggleProperty('showSettings');
       return false;
     },
-    closeSettings: function() {
-      this.set('notification', {});
-      this.toggleProperty('showSettings');
+    delete: function (tableElement) {
+      let notification = tableElement.notification;
+      notification.destroyRecord();
       return false;
     }
   }

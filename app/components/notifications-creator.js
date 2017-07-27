@@ -1,74 +1,60 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  startingDate: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.date');
+  store: Ember.inject.service(),
+  init() {
+    this._super(...arguments);
+    this.set('new', false);
+    if (!(this.get('notification'))) {
+      this.set('notification', this.get('store').createRecord('news', {
+        admins: false,
+        students: false,
+        demonstators: false,
+        evaluators: false,
+        onLogin: false,
+      }));
+      this.set('new', true);
     }
-    return this.get('minDate').toISOString().slice(0, 10);
-  }),
-  sender: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.user');
-    }
-    return 'Teszt Felhasznalo';
-  }),
-  admins: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.where').indexOf('A') >= 0;
-    }
-    return false;
-  }),
-  students: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.where').indexOf('S') >= 0;
-    }
-    return false;
-  }),
-  demonstators: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.where').indexOf('D') >= 0;
-    }
-    return false;
-  }),
-  evaluators: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.where').indexOf('E') >= 0;
-    }
-    return false;
-  }),
-  onLogin: Ember.computed(function() {
-    if (this.get('notification')) {
-      return this.get('notification.where').indexOf('L') >= 0;
-    }
-    return false;
-  }),
-  didReceiveAttrs: function() {
-    return this.set('minDate', new Date(Date.now()));
   },
   actions: {
-    toggleAdmins: function() {
-      this.toggleProperty('admins');
+    toggleAdmins: function () {
+      this.toggleProperty('notification.admins');
       return false;
     },
-    toggleStudents: function() {
-      this.toggleProperty('students');
+    toggleStudents: function () {
+      this.toggleProperty('notification.students');
       return false;
     },
-    toggleDemonstrators: function() {
-      this.toggleProperty('demonstators');
+    toggleDemonstrators: function () {
+      this.toggleProperty('notification.demonstators');
       return false;
     },
-    toggleEvaluators: function() {
-      this.toggleProperty('evaluators');
+    toggleEvaluators: function () {
+      this.toggleProperty('notification.evaluators');
       return false;
     },
-    toggleLogin: function() {
-      this.toggleProperty('onLogin');
+    toggleLogin: function () {
+      this.toggleProperty('notification.onLogin');
       return false;
     },
-    closeSettings: function() {
+    saveSettings() {
+      var savePromises = [];
+      this.get('notification').save().then(() => {
+        if (this.get('goToView')) {
+          return this.sendAction('goToView', 'list');
+        }
+        else {
+          return this.sendAction('closeSettings');
+        }
+      });
+      return false;
+    },
+    closeSettings: function () {
       return this.sendAction('closeSettings');
     }
+  },
+  willDestroyElement() {
+    this._super(...arguments);
+    this.get('notification').rollbackAttributes();
   }
 });

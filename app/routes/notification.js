@@ -4,4 +4,7 @@ import ErrorRouteMixin from '../mixins/error-route';
 import AdminAuthenticatedRouteMixin from '../mixins/admin-authenticated-route';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, AdminAuthenticatedRouteMixin, {
+  model() {
+    return this.get('store').findAll('news');
+  }
 });

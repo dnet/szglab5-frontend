@@ -1,6 +1,6 @@
 <div class="notification-list">
   {{#unless showSettings}}
-    {{table-component header=header body=body withDelete=true withSettings=true openSettings=(action 'openSettings')}}
+    {{table-component header=header body=(await getBody) rowIndecies=rowIndecies withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
   {{/unless}}
   {{#if showSettings}}
     {{notifications-creator notification=notification edit=true closeSettings=(action "closeSettings")}}

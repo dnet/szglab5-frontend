@@ -1,29 +1,31 @@
 <div class="notification-creator">
-  <div class="text label">Sender</div>
-  <div class="text">{{sender}}</div>
+  {{#unless new}}
+    <div class="text label">Publisher</div>
+    <div class="text">{{await notification.publisherName}}</div>
+    <div class="text label">Published</div>
+    <div class="text">{{notification.publishedFormatted}}</div>
+  {{/unless}}
 
   <div class="text label">Title</div>
-  {{input type="type" value=notification.title placeholder='example title'}}
+  {{input type="type" value=notification.title placeholder='title'}}
 
-  <div class="text label">Dátum</div>
-  <div class="text">{{startingDate}}</div>
-
-  <div class="text label">Deadline</div>
-  {{pikaday-input format="YYYY-MM-DD" placeholder="Select a date" minDate=minDate value=notification.deadline}}
+  <div class="text label">Shown from-to</div>
+  {{pikaday-input format="YYYY-MM-DD" placeholder="From" maxDate=notification.to value=notification.from}}
+  {{pikaday-input format="YYYY-MM-DD" placeholder="Until" minDate=notification.from value=notification.until}}
 
   <div class="text label">Who can see it</div>
   <div class="toggle-buttons">
-    <button type="button" class="btn--toggle {{if admins 'active'}}" {{action 'toggleAdmins'}}>Admins</button>
-    <button type="button" class="btn--toggle {{if students 'active'}}" {{action 'toggleStudents'}}>Students</button>
-    <button type="button" class="btn--toggle {{if demonstators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrators</button>
-    <button type="button" class="btn--toggle {{if evaluators 'active'}}" {{action 'toggleEvaluators'}}>Evaluators</button>
-    <button type="button" class="btn--toggle {{if onLogin 'active'}}" {{action 'toggleLogin'}}>On Login</button>
+    <button type="button" class="btn--toggle {{if notification.admins 'active'}}" {{action 'toggleAdmins'}}>Admins</button>
+    <button type="button" class="btn--toggle {{if notification.students 'active'}}" {{action 'toggleStudents'}}>Students</button>
+    <button type="button" class="btn--toggle {{if notification.demonstators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrators</button>
+    <button type="button" class="btn--toggle {{if notification.evaluators 'active'}}" {{action 'toggleEvaluators'}}>Evaluators</button>
+    <button type="button" class="btn--toggle {{if notification.onLogin 'active'}}" {{action 'toggleLogin'}}>On Login</button>
   </div>
 
   <div class="text label">Message</div>
-  {{textarea value=notification.message cols="9" rows="9" placeholder='example message'}}
+  {{textarea value=notification.message cols="9" rows="9" placeholder='message'}}
 
-  <button type="button">Mentés</button>
+  <button type="button" {{action 'saveSettings'}}>Mentés</button>
   {{#if edit}}
     <button type="button" class="cancel" {{action 'closeSettings'}}>Cancel</button>
   {{/if}}

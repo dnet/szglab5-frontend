@@ -1,12 +1,12 @@
 <div class="content notification">
   {{left-menu title="Hírek"}}
   <div class="right">
-    {{#each model.news as news}}
-      <div class="small">{{moment news.published 'YYYY.MM.DD.'}}</div>
+    {{#each model as |news id|}}
+      <div class="small">{{news.publishedFormatted}}</div>
       <h1>{{news.title}}</h1>
       <p>{{news.text}}</p>
     {{/each}}
-    {{#if model.news.lenght eq 0}}
+    {{#if model.lenght eq 0}}
       <h1>Jelenleg nincsenek hírek</h1>
     {{/if}}
   </div>
