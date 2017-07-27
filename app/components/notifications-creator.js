@@ -38,7 +38,6 @@ export default Ember.Component.extend({
       return false;
     },
     saveSettings() {
-      var savePromises = [];
       this.get('notification').save().then(() => {
         if (this.get('goToView')) {
           return this.sendAction('goToView', 'list');

@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
   showNextPage: true,
   search: '',
   users: [],
+  user: {},
   page: 0,
   actions: {
     goToView(key) {
@@ -16,13 +17,14 @@ export default Ember.Controller.extend({
       return false;
     },
     openSettings(user) {
-      this.set('model.userDetails', user);
+      this.set('user', user);
       this.toggleProperty('showSettings');
       return false;
     },
     closeSettings() {
-      this.set('model.userDetails', {});
+      this.set('user', {});
       this.toggleProperty('showSettings');
+      this.set('showTable', false);
       return false;
     },
     showTable() {
@@ -36,6 +38,11 @@ export default Ember.Controller.extend({
     nextPage() {
       this.set('page', this.get('page') + 1);
       this.loadUsers();
+      return false;
+    },
+    impersonateUser(user) {
+      // TODO: impersonate
+      user.meta.get('id')
       return false;
     }
   },

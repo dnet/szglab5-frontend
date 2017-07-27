@@ -12,7 +12,7 @@
         </div>
         {{#if showTable}}
           <div class="directory-table">
-            {{table-component header=header body=users rowIndecies=rowIndecies addClass='user-table' openSettings=(action "openSettings") withSettings=true withImpersonate=true}}
+            {{table-component header=header body=users rowIndecies=rowIndecies addClass='user-table' openSettings=(action "openSettings") withSettings=true impersonate=(action 'impersonateUser') withImpersonate=true}}
           </div>
           {{#if showNextPage}}
             <button {{action 'nextPage'}}>További betöltése</button>
@@ -20,7 +20,7 @@
         {{/if}}
       {{/unless}}
       {{#if showSettings}}
-        {{directory-settings header=model.header userDetails=model.userDetails homeworkTypes=model.homeworkTypes closeSettings=(action "closeSettings")}}
+        {{directory-settings user=user.meta closeSettings=(action "closeSettings") impersonateUser=(action 'impersonateUser' user)}}
       {{/if}}
     </div>
   </div>

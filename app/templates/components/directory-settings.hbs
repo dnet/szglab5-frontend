@@ -1,16 +1,21 @@
 <div class='directory-settings'>
-  {{table-component header=header body=body clickable=false withoutNumber=true addClass='directory-table'}}
   <div class="directory-fields">
     <div class="directory-field">
       <div class="text label">Új jelszó</div>
       {{input type="text" value=newPwd placeholder='új jelszó'}}
       <button {{action 'setNewPwd'}}>Új jelszó beállítása</button>
+      {{#if successfullPwd}}
+        <div class="success-box">Sikeres mentés.</div>
+      {{/if}}
     </div>
 
     <div class="directory-field">
       <div class="text label">Új e-mail</div>
-      {{input type="text" value=newEmail placeholder='új e-mail'}}
+      {{input type="email" value=newEmail placeholder='új e-mail'}}
       <button {{action 'setNewEmail'}}>Új e-mail beállítása</button>
+      {{#if successfullEmail}}
+        <div class="success-box">Sikeres mentés.</div>
+      {{/if}}
     </div>
     <div class="directory-field">
       <div class="text label">Megszemélyesítés</div>
@@ -30,5 +35,5 @@
       {{/each-in}}
     </div>
   {{/if}}
-  <button type="button" class="cancel" {{action 'closeSettings'}}>Cancel</button>
+  <button type="button" class="cancel" {{action 'closeSettings'}}>Mégse</button>
 </div>

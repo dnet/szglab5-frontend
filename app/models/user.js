@@ -16,6 +16,7 @@ export default DS.Model.extend({
   oldpwd: DS.attr('string'),
   ownedExerciseID: DS.attr('string'),
   printSupport: DS.attr('string'),
+  role: DS.attr('string'),
   spec: DS.attr('string'),
   sshPublicKey: DS.attr('string'),
   studentgroup_id: DS.attr('string'),

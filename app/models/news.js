@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 import moment from 'moment';
 
 export default DS.Model.extend({
@@ -20,8 +21,9 @@ export default DS.Model.extend({
   }),
   publisherName: Ember.computed('publisher', function () {
     return this.get('publisher').then(user => {
-      if (user === null)
+      if (user === null) {
         return '';
+      }
       return user.get('displayName');
     });
   })

@@ -1,23 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  body: Ember.computed(function() {
-    return [this.get('userDetails')];
+  isEvaluator: Ember.computed(function () {
+    return this.get('user.role') === 'CORRECTOR';
   }),
-  isEvaluator: Ember.computed(function() {
-    if ((this.get('userDetails')[0] % 3) === 0) {
-      return true;
-    } else {
-      return false;
-    }
+  isStudent: Ember.computed(function () {
+    return this.get('user.role') === 'STUDENT';
   }),
-  isStudent: Ember.computed(function() {
-    if ((this.get('userDetails')[0] % 3) === 1) {
-      return true;
-    } else {
-      return false;
-    }
-  }),
+  successfullPwd: false,
+  successfullEmail: false,
   studentLabs: {
     lab1: {
       description: '1. Labor',
@@ -39,8 +30,27 @@ export default Ember.Component.extend({
     }
   },
   actions: {
-    closeSettings: function() {
+    setNewPwd() {
+      this.set('successfullPwd', false);
+      this.get('user').set('newpwd', this.get('newPwd'));
+      this.get('user').save().then(() => {
+        this.set('successfullPwd', true);
+      });
+      return false;
+    },
+    setNewEmail() {
+      this.set('successfullEmail', false);
+      this.get('user').set('email', this.get('newEmail'));
+      this.get('user').save().then(() => {
+        this.set('successfullEmail', true);
+      });
+      return false;
+    },
+    closeSettings() {
       return this.sendAction('closeSettings');
+    },
+    impersonateUser() {
+      return this.sendAction('impersonateUser');
     }
   }
 });
