@@ -1,7 +1,9 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
+  session: Ember.inject.service('session'),
   header: ['ID', 'Név', 'Login', 'Neptun', 'E-mail'],
   rowIndecies: ['id', 'displayName', 'loginName', 'neptun', 'email'],
   showTable: false,
@@ -41,8 +43,29 @@ export default Ember.Controller.extend({
       return false;
     },
     impersonateUser(user) {
-      // TODO: impersonate
-      user.meta.get('id')
+      const errorMessage = error => {
+        alert(error);
+      };
+      Ember.$.ajax({
+        type: "POST",
+        url: config.backendUrl + "/impersonate",
+        data: JSON.stringify({ userid: user.meta.get('id') }),
+        contentType: "application/json; charset=utf-8",
+        crossDomain: true,
+        dataType: "json",
+        success: (data) => {
+          if (data.token) {
+            this.set('session.data.authenticated.token', data.token);
+            this.get('session').trigger('authenticationSucceeded');
+          }
+        },
+        failure: errorMessage,
+        statusCode: {
+          500: errorMessage,
+          404: errorMessage,
+          403: errorMessage,
+        }
+      });
       return false;
     }
   },
