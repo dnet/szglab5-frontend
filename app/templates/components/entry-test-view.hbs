@@ -1,9 +1,9 @@
 <div class="entry-test-list">
   {{#if (eq question null)}}
     {{#unless (eq exerciseCategory null)}}
-      {{table-component header=header body=getBody rowIndecies=rowIndecies withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
+      {{table-component header=header body=getBody rowIndecies=rowIndecies withoutNumber=true withCheckbox=true withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
       <button {{action 'newQuestion'}}>Add new question</button>
-      <a class="button">Print</a>
+      <a class="button" {{action 'print'}}>Print</a>
     {{else}}
       Choose an exercise category on the left.
     {{/unless}}

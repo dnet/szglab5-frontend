@@ -4,6 +4,10 @@
       {{#unless withoutNumber}}
         <th>#</th>
       {{/unless}}
+      {{#if withCheckbox}}
+        <th>
+        </th>
+      {{/if}}
       {{#each header as |head|}}
         <th>{{head}}</th>
       {{/each}}
@@ -26,6 +30,19 @@
           {{#unless withoutNumber}}
             <th scope='row'>{{add number 1}}</th>
           {{/unless}}
+          {{#if withCheckbox}}
+            <td>
+              {{#if row.checked}}
+                <button type="button" {{action 'check' row}} title="check">
+                  <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                </button>
+              {{else}}
+                <button type="button" {{action 'check' row}} title="check">
+                  <i class="fa fa-square-o" aria-hidden="true"></i>
+                </button>
+              {{/if}}
+            </td>
+          {{/if}}
           {{#if rowIndecies}}
             {{#each rowIndecies as |cellIndex|}}
               <td>{{get-array-element row cellIndex}}</td>
