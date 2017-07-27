@@ -5,21 +5,18 @@
     <div class="directory">
       {{#unless showSettings}}
         <div class="directory-search-fields">
-          <div class="text label">Név</div>
-          {{input type="text" value=searchName placeholder="Kereses nevvel"}}
-
-          <div class="text label">Login</div>
-          {{input type="text" value=searchLogin placeholder="Kereses loginnal"}}
-
-          <div class="text label">Azonosító</div>
-          {{input type="text" value=searchId placeholder="Kereses azonositoval" }}
+          <div class="text label">Keresés</div>
+          {{input type="text" value=search placeholder="Keresés"}}
 
           <button {{action 'showTable'}}>Keresés</button>
         </div>
         {{#if showTable}}
           <div class="directory-table">
-            {{table-component header=model.header body=model.body addClass='user-table' openSettings=(action "openSettings") withSettings=true withImpersonate=true}}
+            {{table-component header=header body=users rowIndecies=rowIndecies addClass='user-table' openSettings=(action "openSettings") withSettings=true withImpersonate=true}}
           </div>
+          {{#if showNextPage}}
+            <button {{action 'nextPage'}}>További betöltése</button>
+          {{/if}}
         {{/if}}
       {{/unless}}
       {{#if showSettings}}
