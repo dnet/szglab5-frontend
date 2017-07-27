@@ -164,9 +164,9 @@ label {
 input {
 	font-family: 'Roboto Slab', sans-serif;
 	display: block;
-	width: 45%;
+	min-width: 45%;
+	max-width: calc(100% - 1.5rem);
 	padding: 0.5rem 0.75rem;
-	margin-left: -1%;
 	font-size: 16px;
 	line-height: 1.25;
 	color: #000;
@@ -225,4 +225,9 @@ html {
 	border: $success-color solid 1px;
 	padding: 0.4em;
 	margin: 0.6em 0;
+}
+
+.small {
+	color: gray;
+	font-size: 0.7em;
 }

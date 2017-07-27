@@ -1,10 +1,13 @@
 <div class="content notification">
   {{left-menu title="Hírek"}}
   <div class="right">
-    <h1>Pót leadási határidők</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur, est quis pretium consequat, leo velit lacinia tellus, sed vestibulum nulla enim posuere odio. Phasellus aliquet porta quam, sed sodales ex aliquet nec. Maecenas lobortis, mi eget ultricies molestie, nunc quam rutrum est, eu tincidunt tellus enim sed odio. Mauris justo urna, malesuada vel neque vel, faucibus pharetra nulla. Sed felis massa, egestas interdum volutpat nec, scelerisque at felis. Donec scelerisque in ipsum sed interdum. Maecenas ac urna magna. Ut malesuada gravida sodales.</p>
-    <h1>3. HF</h1>
-    <p>Suspendisse hendrerit, odio sed egestas auctor, libero ex imperdiet odio, sed rutrum mauris arcu et mauris. Nam a ultricies augue. Aenean lobortis, erat sed blandit dictum, quam sapien laoreet turpis, id dapibus urna ante ac libero. Etiam pellentesque tempor blandit. Pellentesque ut maximus orci, sit amet facilisis justo. Aliquam iaculis lacinia ipsum eget pulvinar. Cras nisi dui, pretium eget metus vel, porta ultrices diam.</p>
-    <p>Mauris sit amet risus elementum nulla tempus sollicitudin. Cras ut massa lacinia, consequat mi non, cursus justo. Pellentesque sagittis congue leo, eget suscipit velit pellentesque non. Donec luctus lacinia faucibus. Morbi velit purus, pellentesque ut porta ut, vulputate sed nisl. Pellentesque ultrices dapibus ornare. Ut imperdiet commodo leo et sollicitudin. Mauris quis nibh non nunc blandit congue. Duis semper diam ac imperdiet auctor. Pellentesque sagittis tincidunt lorem ac tincidunt. Proin eu leo pharetra, vestibulum augue vel, facilisis diam. Vestibulum vitae dui in elit tristique molestie vel in justo. Duis et venenatis nisi.</p>
+    {{#each model.news as news}}
+      <div class="small">{{moment news.published 'YYYY.MM.DD.'}}</div>
+      <h1>{{news.title}}</h1>
+      <p>{{news.text}}</p>
+    {{/each}}
+    {{#if model.news.lenght eq 0}}
+      <h1>Jelenleg nincsenek hírek</h1>
+    {{/if}}
   </div>
 </div>
