@@ -3,10 +3,12 @@
 <nav class="{{if isMenuNotOpen 'hidden'}}">
   {{#if session.isAuthenticated}}
   <ul class="left">
-    {{#each (get-array-element menu userData.role) as |menuitem|}}
-      <li class='min-width' title= {{menuitem.value}}>
-        {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
-      </li>
+    {{#each userData.roles as |role|}}
+      {{#each (get-array-element menu role) as |menuitem|}}
+        <li class='min-width' title= {{menuitem.value}}>
+          {{#link-to menuitem.key tagName='button' class=menuitem.icon }} {{menuitem.value}}{{/link-to}}
+        </li>
+      {{/each}}
     {{/each}}
   </ul>
   <ul class="right">

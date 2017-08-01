@@ -7,7 +7,7 @@ export default Ember.Mixin.create({
       var token = this.get('session.data.authenticated.token');
       if (!Ember.isEmpty(token)) {
         var decoded = jwt_decode(token);
-        if (!decoded.role || (decoded.role !== "CORRECTOR" && decoded.role !== "ADMIN")) {
+        if (!decoded.roles || decoded.roles.indexOf("CORRECTOR") === -1) {
           return this.transitionTo('permission-denied');
         }
       }
