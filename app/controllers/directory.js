@@ -101,7 +101,7 @@ export default Ember.Controller.extend({
         }))
       ]);
       this.set('showTable', true);
-      this.set('showNextPage', users.length !== 0);
+      this.set('showNextPage', users.content.length !== 0);
     });
   }
 });
