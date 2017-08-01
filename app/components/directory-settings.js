@@ -1,10 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  isEvaluator: Ember.computed(function () {
+  checkRoles: false,
+  isEvaluator: Ember.computed('checkRoles', function () {
     return this.get('user.Roles').filter(x => x.get('name') === 'CORRECTOR').length !== 0;
   }),
-  isStudent: Ember.computed(function () {
+  isStudent: Ember.computed('checkRoles', function () {
     return this.get('user.Roles').filter(x => x.get('name') === 'STUDENT').length !== 0;
   }),
   currentRoles: Ember.computed('user.Roles', 'user.Roles.[]', 'user.Roles.@each', function () {
@@ -73,9 +74,13 @@ export default Ember.Component.extend({
       this.set('successfullRoles', false);
       this.get('user').save().then(() => {
         this.set('successfullRoles', true);
-        this.sendAction('closeSettings');
+        this.toggleProperty('checkRoles');
       });
       return false;
     }
+  },
+  willDestroyElement() {
+    this._super(...arguments);
+    this.get('user').rollbackAttributes();
   }
 });
