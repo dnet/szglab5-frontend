@@ -73,6 +73,7 @@ export default Ember.Component.extend({
       this.set('successfullRoles', false);
       this.get('user').save().then(() => {
         this.set('successfullRoles', true);
+        this.sendAction('closeSettings');
       });
       return false;
     }
