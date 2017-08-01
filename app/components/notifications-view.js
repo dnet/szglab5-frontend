@@ -16,7 +16,7 @@ export default Ember.Component.extend({
       this.get('model').forEach(x => {
         loading.push(x.get('publisherName'));
       });
-      Promise.all(loading).then(data =>
+      RSVP.Promise.all(loading).then(data =>
         resolve(
           this.get('model').map((x, i) => ({
             published: x.get('publishedFormatted'),
