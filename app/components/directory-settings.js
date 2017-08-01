@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   isEvaluator: Ember.computed(function () {
-    return this.get('user.role') === 'CORRECTOR';
+    return this.get('user.roles') .indexOf('CORRECTOR') !== -1;
   }),
   isStudent: Ember.computed(function () {
-    return this.get('user.role') === 'STUDENT';
+    return this.get('user.roles').indexOf('STUDENT') !== -1;
   }),
   successfullPwd: false,
   successfullEmail: false,
