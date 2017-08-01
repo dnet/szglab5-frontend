@@ -60,7 +60,7 @@ export default Ember.Controller.extend({
       Ember.$.ajax({
         type: "POST",
         url: config.backendUrl + "/auth/impersonate",
-        data: JSON.stringify({ userid: user.meta.get('id') }),
+        data: JSON.stringify({ userId: +user.meta.get('id') }),
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
         dataType: "json",
