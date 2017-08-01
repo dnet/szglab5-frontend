@@ -2,10 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   isEvaluator: Ember.computed(function () {
-    return this.get('user.roles') .indexOf('CORRECTOR') !== -1;
+    return this.get('user.Roles').filter(x => x.get('name') === 'CORRECTOR').length !== 0;
   }),
   isStudent: Ember.computed(function () {
-    return this.get('user.roles').indexOf('STUDENT') !== -1;
+    return this.get('user.Roles').filter(x => x.get('name') === 'STUDENT').length !== 0;
+  }),
+  currentRoles: Ember.computed('user.Roles', 'user.Roles.[]', 'user.Roles.@each', function () {
+    return this.get('user.Roles').map(x => x.get('name'));
   }),
   successfullPwd: false,
   successfullEmail: false,
@@ -54,6 +57,24 @@ export default Ember.Component.extend({
     },
     impersonateUser() {
       return this.sendAction('impersonateUser');
+    },
+    toggleRole(role) {
+      const roles = this.get('user.Roles');
+      if (roles.indexOf(role) === -1) {
+        roles.pushObject(role);
+      }
+      else {
+        roles.removeObject(role);
+      }
+      console.log(roles.map(x => x.name));
+      return false;
+    },
+    saveRoles() {
+      this.set('successfullRoles', false);
+      this.get('user').save().then(() => {
+        this.set('successfullRoles', true);
+      });
+      return false;
     }
   }
 });

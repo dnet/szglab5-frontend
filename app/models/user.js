@@ -16,7 +16,6 @@ export default DS.Model.extend({
   oldpwd: DS.attr('string'),
   ownedExerciseID: DS.attr('string'),
   printSupport: DS.attr('string'),
-  role: DS.attr('string'),
   spec: DS.attr('string'),
   sshPublicKey: DS.attr('string'),
   studentgroup_id: DS.attr('string'),
@@ -28,6 +27,7 @@ export default DS.Model.extend({
   updatedAt: DS.attr('date'),
   StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'UserId'}),
   Deliverables: DS.hasMany('deliverable', {inverse: 'Users'}),
+  Roles: DS.hasMany('role'),
   Event: DS.hasMany('event', {inverse: 'Demonstrator'}), // TODO: maybe useless
 
   studentEvents: Ember.computed('StudentRegistrations', 'StudentRegistrations.[]', function() {
