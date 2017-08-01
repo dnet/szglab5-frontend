@@ -22,8 +22,8 @@
     <button type="button" class="btn--toggle {{if notification.onLogin 'active'}}" {{action 'toggleLogin'}}>On Login</button>
   </div>
 
-  <div class="text label">Message</div>
-  {{textarea value=notification.text cols="9" rows="9" placeholder='message'}}
+  <div class="text label">Text</div>
+  {{textarea value=notification.text cols="9" rows="9" placeholder='Text'}}
 
   <button type="button" {{action 'saveSettings'}}>Mentés</button>
   {{#if edit}}
