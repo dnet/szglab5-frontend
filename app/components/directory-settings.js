@@ -35,6 +35,8 @@ export default Ember.Component.extend({
       this.get('user').set('newpwd', this.get('newPwd'));
       this.get('user').save().then(() => {
         this.set('successfullPwd', true);
+        this.set('newPwd', undefined);
+        this.get('user').set('newpwd', undefined);
       });
       return false;
     },
@@ -43,6 +45,7 @@ export default Ember.Component.extend({
       this.get('user').set('email', this.get('newEmail'));
       this.get('user').save().then(() => {
         this.set('successfullEmail', true);
+        this.set('newEmail', undefined);
       });
       return false;
     },
