@@ -6,6 +6,17 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   header: ['ID', 'Név', 'Login', 'Neptun', 'E-mail'],
   rowIndecies: ['id', 'displayName', 'loginName', 'neptun', 'email'],
+  subMenu: [
+    {
+      key: 'list',
+      description: 'List'
+    },
+    {
+      key: 'new',
+      description: 'New'
+    }
+  ],
+  currentView: 'list',
   showTable: false,
   showSettings: false,
   showNextPage: true,

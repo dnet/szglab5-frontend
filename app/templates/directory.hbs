@@ -3,24 +3,28 @@
 
   <div class="right">
     <div class="directory">
-      {{#unless showSettings}}
-        <div class="directory-search-fields">
-          <div class="text label">Keresés</div>
-          {{input type="text" value=search placeholder="Keresés"}}
+      {{#if (eq currentView 'list')}}
+        {{#unless showSettings}}
+          <div class="directory-search-fields">
+            <div class="text label">Keresés</div>
+            {{input type="text" value=search placeholder="Keresés"}}
 
-          <button {{action 'showTable'}}>Keresés</button>
-        </div>
-        {{#if showTable}}
-          <div class="directory-table">
-            {{table-component header=header body=users rowIndecies=rowIndecies addClass='user-table' openSettings=(action "openSettings") withSettings=true impersonate=(action 'impersonateUser') withImpersonate=true}}
+            <button {{action 'showTable'}}>Keresés</button>
           </div>
-          {{#if showNextPage}}
-            <button {{action 'nextPage'}}>További betöltése</button>
+          {{#if showTable}}
+            <div class="directory-table">
+              {{table-component header=header body=users rowIndecies=rowIndecies addClass='user-table' openSettings=(action "openSettings") withSettings=true impersonate=(action 'impersonateUser') withImpersonate=true}}
+            </div>
+            {{#if showNextPage}}
+              <button {{action 'nextPage'}}>További betöltése</button>
+            {{/if}}
           {{/if}}
+        {{/unless}}
+        {{#if showSettings}}
+          {{directory-settings user=user.meta closeSettings=(action "closeSettings") impersonateUser=(action 'impersonateUser' user)}}
         {{/if}}
-      {{/unless}}
-      {{#if showSettings}}
-        {{directory-settings user=user.meta closeSettings=(action "closeSettings") impersonateUser=(action 'impersonateUser' user)}}
+      {{else}}
+        {{new-user model=model}}
       {{/if}}
     </div>
   </div>
