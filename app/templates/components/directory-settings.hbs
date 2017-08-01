@@ -5,7 +5,7 @@
       {{input type="text" value=newPwd placeholder='new password'}}
       <button {{action 'setNewPwd'}}>Set new password</button>
       {{#if successfullPwd}}
-        <div class="success-box">Set successfully</div>
+        <div class="success-box">Successfully set.</div>
       {{/if}}
     </div>
 
@@ -14,29 +14,24 @@
       {{input type="email" value=newEmail placeholder='new e-mail'}}
       <button {{action 'setNewEmail'}}>Set new e-mail</button>
       {{#if successfullEmail}}
-        <div class="success-box">Set successfully.</div>
+        <div class="success-box">Successfully set.</div>
       {{/if}}
     </div>
     <div class="directory-field">
-      <div class="text label">Megszemélyesítés</div>
-      <button class="directory-form-button" {{action 'impersonateUser'}}>Felhasználó megszemélyesítése</button>
+      <div class="text label">Impersonate</div>
+      <button class="directory-form-button" {{action 'impersonateUser'}}>Impersonate user</button>
     </div>
   </div>
   <div class="text label">Roles</div>
   <div class="toggle-buttons">
     {{#each model.roles as |role|}}
       <button type="button" class="btn--toggle {{if (has-key currentRoles role.name) 'active'}}" {{action 'toggleRole' role}}>{{role.name}}</button>
-      {{log currentRoles role.name}}
     {{/each}}
   </div>
-  <button type="button" class="save" {{action 'saveRoles'}}>Save roles</button>
-      {{#if successfullRoles}}
-        <div class="success-box">Sikeres mentés.</div>
-      {{/if}}
 
   {{#if isEvaluator}}
     <div class="directory-settings-evaluator">
-      {{directory-settings-evaluator}}
+      {{directory-settings-evaluator user=user model=model}}
     </div>
   {{/if}}
   {{#if isStudent}}
@@ -46,5 +41,9 @@
       {{/each-in}}
     </div>
   {{/if}}
-  <button type="button" class="cancel" {{action 'closeSettings'}}>Mégse</button>
+  <button type="button" class="save" {{action 'saveRoles'}}>Save</button>
+      {{#if successfullRoles}}
+        <div class="success-box">Successfully saved.</div>
+      {{/if}}
+  <button type="button" class="cancel" {{action 'closeSettings'}}>Back</button>
 </div>

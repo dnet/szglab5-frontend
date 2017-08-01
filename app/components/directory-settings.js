@@ -67,7 +67,6 @@ export default Ember.Component.extend({
       else {
         roles.removeObject(role);
       }
-      console.log(roles.map(x => x.name));
       return false;
     },
     saveRoles() {

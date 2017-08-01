@@ -29,6 +29,7 @@ export default DS.Model.extend({
   Deliverables: DS.hasMany('deliverable', {inverse: 'Users'}),
   Roles: DS.hasMany('role'),
   Event: DS.hasMany('event', {inverse: 'Demonstrator'}), // TODO: maybe useless
+  ExerciseTypes: DS.hasMany('exerciseType', {inverse: 'Users'}),
 
   studentEvents: Ember.computed('StudentRegistrations', 'StudentRegistrations.[]', function() {
     return this.get('StudentRegistrations').then(function(studentRegs) {

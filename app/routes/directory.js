@@ -7,7 +7,8 @@ import AdminAuthenticatedRouteMixin from '../mixins/admin-authenticated-route';
 export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, AdminAuthenticatedRouteMixin, {
   model() {
     return RSVP.hash({
-        roles: this.get('store').findAll('role')
+        roles: this.get('store').findAll('role'),
+        exerciseTypes: this.get('store').findAll('exerciseType'),
     });
   }
 });

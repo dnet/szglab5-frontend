@@ -1,9 +1,6 @@
 <div class="text label">Feladattípusok</div>
 <div class="button-toggles">
-  {{#each-in homeworkTypes as |key type|}}
-    <button type="button" class="btn--toggle {{if type.checked 'active'}}" {{action 'checkType' key}}>
-    {{type.name}}
-  </button>
-  {{/each-in}}
+  {{#each model.exerciseTypes as |exerciseType|}}
+    <button type="button" class="btn--toggle {{if (has-key currentTypes exerciseType.name) 'active'}}" {{action 'toggleType' exerciseType}}>{{exerciseType.name}}</button>
+  {{/each}}
 </div>
-<button type="button" disabled= {{buttonDisabled}}>Feladattípus módosítása</button>

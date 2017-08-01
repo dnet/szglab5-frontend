@@ -5,5 +5,5 @@ export default DS.Model.extend({
   shortName: DS.attr('string'),
   language: DS.attr('string'),
   ExerciseSheets: DS.hasMany('exerciseSheet', {inverse: 'ExerciseTypes'}),
-  OwnedExerciseId: DS.belongsTo('user')
+  Users: DS.hasMany('user', {inverse: 'ExerciseTypes'}),
 });
