@@ -68,6 +68,7 @@ export default Ember.Controller.extend({
           if (data.token) {
             this.set('session.data.authenticated.token', data.token);
             this.get('session').trigger('authenticationSucceeded');
+            this.transitionToRoute('settings');
           }
         },
         failure: errorMessage,
