@@ -1,5 +1,5 @@
 <div class="content notification">
-  {{left-menu title="Hírek"}}
+  {{left-menu title="News"}}
   <div class="right">
     {{#each model as |news id|}}
       <div class="small">{{news.publishedFormatted}}</div>
@@ -7,7 +7,7 @@
       <p>{{news.text}}</p>
     {{/each}}
     {{#if model.lenght eq 0}}
-      <h1>Jelenleg nincsenek hírek</h1>
+      <h1>Currently there is no news.</h1>
     {{/if}}
   </div>
 </div>

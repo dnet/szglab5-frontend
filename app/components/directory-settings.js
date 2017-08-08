@@ -11,6 +11,10 @@ export default Ember.Component.extend({
   currentRoles: Ember.computed('user.Roles', 'user.Roles.[]', 'user.Roles.@each', function () {
     return this.get('user.Roles').map(x => x.get('name'));
   }),
+  init() {
+    this._super(...arguments);
+    this.set('newEmail', this.get('user.email'));
+  },
   successfullPwd: false,
   successfullEmail: false,
   studentLabs: {

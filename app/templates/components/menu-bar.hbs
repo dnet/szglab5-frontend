@@ -1,5 +1,5 @@
 <div class="logo" title="laboradmin"><img src="assets/images/logo.svg"></div>
-<button type="button" class="menu-button" {{action 'toggleMenu'}}>Menü</button>
+<button type="button" class="menu-button" {{action 'toggleMenu'}}>Menu</button>
 <nav class="{{if isMenuNotOpen 'hidden'}}">
   {{#if session.isAuthenticated}}
   <ul class="left">
@@ -13,10 +13,10 @@
   </ul>
   <ul class="right">
     <li class='cogs'>
-      {{#link-to 'settings' class='cogs' tagName='button' title='beállítások' }} <span class="mobile-only">Beállítások</span> {{/link-to}}
+      {{#link-to 'settings' class='cogs' tagName='button' title='settings' }} <span class="mobile-only">Settings</span> {{/link-to}}
     </li>
     <li>
-      {{#link-to 'logout' class='sign-out' tagName='button' title='kijelentkezés' }} <span class="mobile-only">Kijelentkezés</span> {{/link-to}}
+      {{#link-to 'logout' class='sign-out' tagName='button' title='log out' }} <span class="mobile-only">Log out</span> {{/link-to}}
     </li>
     <li class="username">
       <div class="menu-text user">{{userData.displayName}} {{#if userData.neptun}}({{userData.neptun}}){{/if}}</div>
