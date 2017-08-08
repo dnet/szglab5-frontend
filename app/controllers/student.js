@@ -1,25 +1,30 @@
 import Ember from 'ember';
+import Promise from 'rsvp';
 
 export default Ember.Controller.extend({
   currentView: '',
   subMenu: Ember.computed('model.studentEvents', function () {
     return this.get('model.studentEvents').then((studentEvents) => {
-      var subMenuKeys = [];
-      studentEvents.forEach((array) => {
-        array.forEach((studentEvent, index) => {
-          subMenuKeys.push({
-            key: studentEvent.get('id'),
-            description: (index + 1) + '. labor',
-            event: studentEvent
+      let subMenuKeys = [];
+      let promises = [];
+      studentEvents.forEach((array) => { // as of mapBy
+        array.forEach((studentEvent) => {
+          const promise = studentEvent.get('EventTemplate').then((EventTemplate) => {
+            subMenuKeys.push({
+              key: studentEvent.get('id'),
+              description: EventTemplate.get('number') + ". " + EventTemplate.get('title'),
+              event: studentEvent
+            });
           });
-          studentEvent.get('Demonstrator');
+          promises.push(promise);
+          studentEvent.get('Demonstrator'); // preload Demonstrator for better UX
         });
       });
-      return subMenuKeys;
+      return Promise.all(promises).then(() => subMenuKeys);
     });
   }),
   actions: {
-    goToView: function (key) {
+    goToView(key) {
       this.get('subMenu').then((subMenu) => {
         subMenu.forEach((se) => {
           if (key === se.key) {
@@ -30,7 +35,7 @@ export default Ember.Controller.extend({
       });
       return false;
     },
-    selectCommit: function (newcommit) {
+    selectCommit(newcommit) {
       console.log("Todo save new commit: " + newcommit);
       return false;
     }

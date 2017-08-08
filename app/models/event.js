@@ -8,6 +8,8 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   Deliverables: DS.hasMany('deliverable', {inverse: 'Events'}),
+  EventTemplate: DS.belongsTo('eventTemplate', {inverse: 'Events'}),
+  ExerciseSheets: DS.hasMany('exerciseSheet', {inverse: 'Events'}),
   StudentRegistrations: DS.belongsTo('studentRegistration', {inverse: 'Events'}),
   Demonstrator: DS.belongsTo('user', {inverse: 'Event'})
 });
