@@ -1,0 +1,11 @@
+<h3>{{await semesterName}}</h3>
+<div style="margin-left:2em;">
+{{#each (await StudentRegistration.Events) as |event|}}
+  <div class="text label">{{dateformat event.date}} @ {{event.location}}</div>
+  <div>
+    <button type="button" disabled= {{not lab.isEntrytestFinal}}>Beugrójegy törlése</button>
+    <button type="button" disabled= {{not lab.isReportFinal}}>Jegyzőkönyvjegy törlése</button>
+    <button type="button" disabled= {{not lab.isLaboratoryFinal}}>Laborjegy törlése</button>
+  </div>
+{{/each}}
+</div>

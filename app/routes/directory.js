@@ -9,6 +9,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, Admi
     return RSVP.hash({
         roles: this.get('store').findAll('role'),
         exerciseTypes: this.get('store').findAll('exerciseType'),
+        semesters: this.get('store').findAll('semester'),
     });
   }
 });

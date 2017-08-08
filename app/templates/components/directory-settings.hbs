@@ -36,9 +36,7 @@
   {{/if}}
   {{#if isStudent}}
     <div class="directory-settings-student">
-      {{#each-in studentLabs as |labkey labvalue|}}
-        {{directory-settings-student lab=labvalue key=labkey}}
-      {{/each-in}}
+      {{directory-settings-student user=user model=model}}
     </div>
   {{/if}}
   <button type="button" class="save" {{action 'saveRoles'}}>Save</button>

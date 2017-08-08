@@ -1,4 +1,4 @@
-<div class="text label">{{lab.description}}</div>
-<button type="button" disabled= {{not lab.isEntrytestFinal}}>Beugrójegy törlése</button>
-<button type="button" disabled= {{not lab.isReportFinal}}>Jegyzőkönyvjegy törlése</button>
-<button type="button" disabled= {{not lab.isLaboratoryFinal}}>Laborjegy törlése</button>
+<div class="text label">Semesters</div>
+{{#each user.StudentRegistrations as |studentReg|}}
+  {{directory-settings-student-registration StudentRegistration=studentReg}}
+{{/each}}
