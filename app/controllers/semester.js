@@ -1,16 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  currentView: 'list',
-  subMenu: [{
-    key: 'creator',
-    description: 'Létrehozás'
-  }, {
-    key: 'list',
-    description: 'Lista nézet'
-  }],
+  subMenu: Ember.computed('model.semesters', function () {
+    return this.get('model.semesters').map(semester => ({key: semester, description: `${semester.get('academicyear')}/${semester.get('academicterm')}`}));
+  }),
   actions: {
-    goToView: function(key) {
+    goToView(key) {
       this.set('currentView', key);
       return false;
     }

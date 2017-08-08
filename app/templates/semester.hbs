@@ -3,10 +3,10 @@
 
   <div class="right">
     <div class="dashboard">
-      {{#if (eq currentView 'creator')}}
-        {{dashboard-creator}}
+      {{#if (eq currentView undefined)}}
+        Choose one semester from left.
       {{else}}
-        {{dashboard-view}}
+        Selected semester:
       {{/if}}
     </div>
   </div>
