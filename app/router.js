@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('entry-test');
   this.route('directory');
   this.route('demonstrator');
-  this.route('dashboard');
+  this.route('semester');
   this.route('login');
   this.route('notification');
   this.route('settings');

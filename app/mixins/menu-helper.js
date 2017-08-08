@@ -28,7 +28,7 @@ export default Ember.Mixin.create({
         value: "News",
         icon: 'bell-o'
       }, {
-        key: 'dashboard',
+        key: 'semester',
         value: "Semesters",
         icon: 'dashboard'
       }, {
