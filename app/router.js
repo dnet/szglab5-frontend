@@ -22,6 +22,7 @@ Router.map(function() {
   this.route('error');
   this.route('permission-denied');
   this.route('news');
+  this.route('event-templates');
 });
 
 export default Router;
