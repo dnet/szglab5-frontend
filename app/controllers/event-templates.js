@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
         dataType: "json",
-        success: (data) => {
+        success: () => {
           this.set('success', true);
         },
         failure: errorMessage,
