@@ -6,7 +6,17 @@
       {{#if (eq currentView undefined)}}
         Choose one semester from left.
       {{else}}
-        Selected semester:
+        <h2>Selected semester: {{currentView.academicyear}}/{{currentView.academicterm}}</h2>
+        <h4>Description:</h4>
+        <p>{{currentView.description}}</p>
+        <h4>Activate semester</h4>
+        <p>
+          {{#if currentView.active}}
+            Activated
+          {{else}}
+            Not activated.
+          {{/if}}
+        </p>
       {{/if}}
     </div>
   </div>
