@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
       this.set('success', false);
       Ember.$.ajax({
         type: "GET",
-        url: `${config.backendUrl}/event-templates/${this.get('selectedEventTemplate.id')}/generate`,
+        url: `${config.backendUrl}/event-templates/${this.get('selectedEventTemplate.id')}/generate-deliverables`,
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
         dataType: "json",
