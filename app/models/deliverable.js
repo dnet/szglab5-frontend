@@ -11,7 +11,7 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   Events: DS.hasMany('event', {inverse: 'Deliverables'}),
-  DeliverableTemplate: DS.belongsTo('deliverableTemplate', {inverse: 'Deliverables'}),
+  DeliverableTemplate: DS.belongsTo('deliverableTemplate', { async: false, inverse: 'Deliverables'}),
   Users: DS.hasMany('deliverableTemplate', {inverse: 'Deliverables'}),
   isOver: Ember.computed('deadline', function() {
     return (this.get('deadline') - (new Date())) < 0;

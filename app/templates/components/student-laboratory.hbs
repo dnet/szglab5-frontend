@@ -7,8 +7,19 @@
   <p>{{await result.Demonstrator.displayName}} ({{await result.Demonstrator.email}})</p>
   {{#each result.Deliverables as |Deliverable number|}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
-    <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
-    <p>{{Deliverable.grade}}</p>
+      <h4>Beugró érdemjegye:</h4>
+      <p>{{Deliverable.grade}}</p>
+    {{/if}}
+    {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
+      {{#if Deliverable.isOver}}
+        <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+        <p>{{Deliverable.grade}}</p>
+        <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
+        <p>{{Deliverable.comment}}</p>
+      {{else}}
+        <h4>{{Deliverable.DeliverableTemplate.description}} Feltöltése:</h4>
+        {{student-laboratory-upload}}
+      {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
       {{#if Deliverable.isOver}}
@@ -34,14 +45,6 @@
         {{#if Deliverable.fail}}
           <div class="error-box">Sikertelen mentés.</div>
         {{/if}}
-      {{/if}}
-    {{/if}}
-    {{#if (eq Deliverable.DeliverableTemplate.type 'LABOR')}}
-      {{#if Deliverable.isOver}}
-      <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
-      <p>{{Deliverable.grade}}</p>
-      <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
-      <p>{{Deliverable.comment}}</p>
       {{/if}}
     {{/if}}
   {{/each}}
