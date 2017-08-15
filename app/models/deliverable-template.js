@@ -5,5 +5,6 @@ export default DS.Model.extend({
   type: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  Deliverables: DS.hasMany('deliverable', {inverse: 'DeliverableTemplate'})
+  Deliverables: DS.hasMany('deliverable', { inverse: 'DeliverableTemplate' }),
+  EventTemplate: DS.belongsTo('eventTemplate', { inverse: 'DeliverableTemplates' }),
 });

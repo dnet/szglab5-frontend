@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
           let promises = [];
           StudentRegistrations.forEach((studentRegistration) => { // as of mapBy
             const promise = studentRegistration.get('Events').then((events) => {
+              console.log('asd');
               events.forEach((event) => {
                 subMenuKeys.push({
                   key: event.get('id'),

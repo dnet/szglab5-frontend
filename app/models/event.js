@@ -10,5 +10,6 @@ export default DS.Model.extend({
   Deliverables: DS.hasMany('deliverable', { async: false, inverse: 'Events' }),
   ExerciseSheet: DS.belongsTo('exerciseSheet', { async: false, inverse: 'Events' }),
   StudentRegistrations: DS.belongsTo('studentRegistration', { inverse: 'Events' }),
+  EventTemplate: DS.belongsTo('eventTemplate', { async: false, inverse: 'Events' }),
   Demonstrator: DS.belongsTo('user', { async: false, inverse: 'Event' })
 });

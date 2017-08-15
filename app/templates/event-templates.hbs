@@ -1,1 +1,17 @@
-{{outlet}}
+<div class="content entry-test">
+  {{left-menu title="Event templates" currentView=selectedEventTemplate goToView=(action 'selectEventTemplate') subMenu=subMenu}}
+  <div class="right">
+    <div class="entry-test">
+      {{#if selectedEventTemplate}}
+        <h1>{{selectedEventTemplate.name}}</h1>
+        <h4>Generate deliverables:</h4>
+        <button {{action 'generateDeliverables'}}>Generate</button>
+        {{#unless (or (eq error '') (eq error undefined))}}
+          <div class="error-box">
+            {{error}}
+          </div>
+        {{/unless}}
+      {{/if}}
+    </div>
+  </div>
+</div>
