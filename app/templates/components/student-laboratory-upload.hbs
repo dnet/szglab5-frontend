@@ -21,3 +21,15 @@
     </p>
   {{/if}}
 {{/file-dropzone}}
+
+{{#if success}}
+  <div class="success-box">
+    Sikeres feltöltés.
+  </div>
+{{else}}
+  {{#unless (eq error '')}}
+    <div class="error-box">
+      {{error}}
+    </div>
+  {{/unless}}
+{{/if}}
