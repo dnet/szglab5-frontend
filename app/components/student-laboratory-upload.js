@@ -11,7 +11,7 @@ export default Ember.Component.extend({
       file.upload(`${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/upload`).then(() => {
         this.set('success', true);
       }, data => {
-        if (data && data.errors && data.errors[0]) {
+        if (data && data.body && data.body.errors && data.body.errors[0]) {
           this.set('error', data.errors[0]);
         }
         else {
