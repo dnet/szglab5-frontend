@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
               events.forEach((event) => {
                 subMenuKeys.push({
                   key: event.get('id'),
-                  description: event.get('ExerciseSheet.id') + ". " + event.get('Demonstrator.displayName'),
+                  description: event.get('EventTemplate.name'),
                   event: event
                 });
               });

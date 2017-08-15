@@ -18,6 +18,9 @@ export default Ember.Component.extend({
           this.set('error', 'Unknown error.');
         }
       });
+    },
+    ondrop(event) {
+      alert("A drop meg nem mukodik.");
     }
   }
 });
