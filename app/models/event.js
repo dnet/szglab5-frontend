@@ -7,9 +7,8 @@ export default DS.Model.extend({
   comment: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  Deliverables: DS.hasMany('deliverable', {inverse: 'Events'}),
-  EventTemplate: DS.belongsTo('eventTemplate', {inverse: 'Events'}),
-  ExerciseSheets: DS.hasMany('exerciseSheet', {inverse: 'Events'}),
-  StudentRegistrations: DS.belongsTo('studentRegistration', {inverse: 'Events'}),
-  Demonstrator: DS.belongsTo('user', {inverse: 'Event'})
+  Deliverables: DS.hasMany('deliverable', { async: false, inverse: 'Events' }),
+  ExerciseSheet: DS.belongsTo('exerciseSheet', { async: false, inverse: 'Events' }),
+  StudentRegistrations: DS.belongsTo('studentRegistration', { inverse: 'Events' }),
+  Demonstrator: DS.belongsTo('user', { async: false, inverse: 'Event' })
 });

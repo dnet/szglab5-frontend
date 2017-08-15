@@ -30,10 +30,4 @@ export default DS.Model.extend({
   Roles: DS.hasMany('role'),
   Event: DS.hasMany('event', {inverse: 'Demonstrator'}), // TODO: maybe useless
   ExerciseTypes: DS.hasMany('exerciseType', {inverse: 'Users'}),
-
-  studentEvents: Ember.computed('StudentRegistrations', 'StudentRegistrations.[]', function() {
-    return this.get('StudentRegistrations').then(function(studentRegs) {
-      return studentRegs.mapBy('Events');
-    });
-  })
 });

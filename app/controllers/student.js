@@ -1,26 +1,28 @@
 import Ember from 'ember';
-import Promise from 'rsvp';
+import RSVP from 'rsvp';
 
 export default Ember.Controller.extend({
   currentView: '',
-  subMenu: Ember.computed('model.studentEvents', function () {
-    return this.get('model.studentEvents').then((studentEvents) => {
-      let subMenuKeys = [];
-      let promises = [];
-      studentEvents.forEach((array) => { // as of mapBy
-        array.forEach((studentEvent) => {
-          const promise = studentEvent.get('EventTemplate').then((EventTemplate) => {
-            subMenuKeys.push({
-              key: studentEvent.get('id'),
-              description: EventTemplate.get('number') + ". " + EventTemplate.get('title'),
-              event: studentEvent
-            });
+  subMenu: Ember.computed('model.StudentRegistrations', function () {
+    return new RSVP.Promise((resolve, reject) => {
+      this.get('model.StudentRegistrations')
+        .then((StudentRegistrations) => {
+          let subMenuKeys = [];
+          let promises = [];
+          StudentRegistrations.forEach((studentRegistration) => { // as of mapBy
+            const promise = studentRegistration.get('Events').then((events) => {
+              events.forEach((event) => {
+                subMenuKeys.push({
+                  key: event.get('id'),
+                  description: event.get('ExerciseSheet.id') + ". " + event.get('Demonstrator.displayName'),
+                  event: event
+                });
+              });
+            }, err => reject(err));
+            promises.push(promise);
           });
-          promises.push(promise);
-          studentEvent.get('Demonstrator'); // preload Demonstrator for better UX
-        });
-      });
-      return Promise.all(promises).then(() => subMenuKeys);
+          RSVP.Promise.all(promises).then(() => resolve(subMenuKeys), err => reject(err));
+        }, err => reject(err));
     });
   }),
   actions: {
