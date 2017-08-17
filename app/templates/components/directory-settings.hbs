@@ -40,8 +40,8 @@
     </div>
   {{/if}}
   <button type="button" class="save" {{action 'saveRoles'}}>Save</button>
-      {{#if successfullRoles}}
-        <div class="success-box">Successfully saved.</div>
-      {{/if}}
   <button type="button" class="cancel" {{action 'closeSettings'}}>Back</button>
+  {{#if successfullRoles}}
+    <div class="success-box">Successfully saved.</div>
+  {{/if}}
 </div>
