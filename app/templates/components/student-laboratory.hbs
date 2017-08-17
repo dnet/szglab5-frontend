@@ -4,13 +4,15 @@
   <h4>Időpont</h4>
   <p>{{dateformat result.date}}</p>
   <h4>Laborvezető</h4>
-  <p>{{await result.Demonstrator.displayName}} ({{await result.Demonstrator.email}})</p>
+  <p>{{result.Demonstrator.displayName}} ({{result.Demonstrator.email}})</p>
   {{#each result.Deliverables as |Deliverable number|}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
       <h4>Beugró érdemjegye:</h4>
       <p>{{Deliverable.grade}}</p>
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
+      <h4>{{Deliverable.DeliverableTemplate.description}} határideje:</h4>
+      <p>{{dateformat Deliverable.deadline}}</p>
       {{#if Deliverable.isOver}}
         <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
         <p>{{Deliverable.grade}}</p>

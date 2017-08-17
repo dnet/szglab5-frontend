@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default DS.Model.extend({
   deadline: DS.attr('date'),
-  submitteddate: DS.attr('date'),
+  submittedDate: DS.attr('date'),
   grade: DS.attr('number'),
   comment: DS.attr('string'),
   url: DS.attr('string'),
