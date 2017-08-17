@@ -12,7 +12,11 @@
   {{#each result.Deliverables as |Deliverable number|}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
       <h4>Beugró érdemjegye:</h4>
-      <p>{{Deliverable.grade}}</p>
+      {{#if Deliverable.finalized}}
+        <p>{{Deliverable.grade}}</p>
+      {{else}}
+        <p>Még nincs értékelve.</p>
+      {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
       <h4>{{Deliverable.DeliverableTemplate.description}} határideje:</h4>
@@ -30,13 +34,23 @@
         <h4>{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</h4>
         <p>{{dateformat Deliverable.lastSubmittedDate}}</p>
       {{/if}}
+      <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+      {{#if Deliverable.finalized}}
+        <p>{{Deliverable.grade}}</p>
+      {{else}}
+        <p>Még nincs értékelve.</p>
+      {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
       {{#if Deliverable.isOver}}
         <h4>{{Deliverable.DeliverableTemplate.description}} feltöltve:</h4>
         <p>{{dateformat Deliverable.submitteddate}}</p>
         <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
-        <p>{{Deliverable.grade}}</p>
+        {{#if Deliverable.finalized}}
+          <p>{{Deliverable.grade}}</p>
+        {{else}}
+          <p>Még nincs értékelve.</p>
+        {{/if}}
         <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
         <p>{{Deliverable.comment}}</p>
       {{else}}
