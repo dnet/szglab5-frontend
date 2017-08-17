@@ -25,14 +25,24 @@ export default Ember.Controller.extend({
     {
       filter: {
         isCorrector: true,
-        finalized: false
+        finalized: false,
+        hasGrade: false
       },
-      value: 'Not finalized'
+      value: 'Does not started'
     },
     {
       filter: {
         isCorrector: true,
-        finalized: true
+        finalized: false,
+        hasGrade: true
+      },
+      value: 'Has grade'
+    },
+    {
+      filter: {
+        isCorrector: true,
+        finalized: true,
+        hasGrade: true
       },
       value: 'Finalized'
     }
@@ -169,7 +179,7 @@ export default Ember.Controller.extend({
       return false;
     },
     download() {
-      window.open(this.get('selectedDeliverable.link'), '_blank');
+      window.open(this.get('selectedDeliverable.donwloadLink'), '_blank');
       return false;
     }
   }
