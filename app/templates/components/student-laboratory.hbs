@@ -19,8 +19,12 @@
         <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
         <p>{{Deliverable.comment}}</p>
       {{else}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} Feltöltése:</h4>
+        <h4>{{Deliverable.DeliverableTemplate.description}} feltöltése:</h4>
         {{student-laboratory-upload Deliverable=Deliverable}}
+      {{/if}}
+      {{#if Deliverable.uploaded}}
+        <h4>{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</h4>
+        <p>{{Deliverable.lastSubmittedDate}}</p>
       {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}

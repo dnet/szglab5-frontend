@@ -3,7 +3,8 @@ import Ember from 'ember';
 
 export default DS.Model.extend({
   deadline: DS.attr('date'),
-  submittedDate: DS.attr('date'),
+  lastSubmittedDate: DS.attr('date'),
+  uploaded: DS.attr('boolean'),
   grade: DS.attr('number'),
   comment: DS.attr('string'),
   url: DS.attr('string'),
