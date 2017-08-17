@@ -6,6 +6,8 @@ export default DS.Model.extend({
   attempt: DS.attr('number'),
   comment: DS.attr('string'),
   createdAt: DS.attr('date'),
+  finalized: DS.attr('boolean'),
+  grade: DS.attr('number'),
   updatedAt: DS.attr('date'),
   Deliverables: DS.hasMany('deliverable', { async: false, inverse: 'Events' }),
   ExerciseSheet: DS.belongsTo('exerciseSheet', { async: false, inverse: 'Events' }),

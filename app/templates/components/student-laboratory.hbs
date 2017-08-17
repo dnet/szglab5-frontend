@@ -5,6 +5,10 @@
   <p>{{dateformat result.date}}</p>
   <h4>Laborvezető</h4>
   <p>{{result.Demonstrator.displayName}} ({{result.Demonstrator.email}})</p>
+  {{#if result.comment}}
+    <h4>Laborvezetői megjegyzés</h4>
+    <p>{{result.comment}}</p>
+  {{/if}}
   {{#each result.Deliverables as |Deliverable number|}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
       <h4>Beugró érdemjegye:</h4>
@@ -54,4 +58,8 @@
       {{/if}}
     {{/if}}
   {{/each}}
+  {{#if result.finalized}}
+    <h4>Végleses jegy</h4>
+    <p>{{result.grade}}</p>
+  {{/if}}
 </div>
