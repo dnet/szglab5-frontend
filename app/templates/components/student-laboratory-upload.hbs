@@ -1,4 +1,4 @@
-{{#file-dropzone ondrop=(action 'ondrop')name="file" as |dropzone queue|}}
+{{#file-dropzone ondrop=(action 'ondrop') name="file" as |dropzone queue|}}
   {{#if dropzone.active}}
     {{#if dropzone.valid}}
       Drop a feltöltéshez.
@@ -13,7 +13,7 @@
         Drag and drop a feltöltéshez vagy
       {{/if}}
       {{#file-upload name="file"
-                     accept=".*"
+                     accept="*"
                      onfileadd=(action 'upload')}}
         <a id="upload" tabindex=0>Kattints ide.</a>
       {{/file-upload}}
