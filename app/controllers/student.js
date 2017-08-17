@@ -21,7 +21,9 @@ export default Ember.Controller.extend({
             }, err => reject(err));
             promises.push(promise);
           });
-          RSVP.Promise.all(promises).then(() => resolve(subMenuKeys), err => reject(err));
+          RSVP.Promise.all(promises).then(() => resolve(subMenuKeys.sort((lhs, rhs) => {
+            return lhs.event.get('date') - rhs.event.get('date');
+          })), err => reject(err));
         }, err => reject(err));
     });
   }),
