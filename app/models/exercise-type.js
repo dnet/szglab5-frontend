@@ -6,4 +6,5 @@ export default DS.Model.extend({
   language: DS.attr('string'),
   ExerciseSheets: DS.hasMany('exerciseSheet', {inverse: 'ExerciseTypes'}),
   Users: DS.hasMany('user', {inverse: 'ExerciseTypes'}),
+  Guru: DS.belongsTo('user'),
 });

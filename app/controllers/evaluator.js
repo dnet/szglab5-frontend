@@ -1,39 +1,34 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  currentView: 'lab1',
-  evaluate: '',
-  didReceiveAttrs: function() {
-    this.set('evaluate', '');
-    return this.set('currentView', 'lab1');
+  currentView: null,
+  evaluate: null,
+  didReceiveAttrs() {
+    this.set('evaluate', null);
+    return this.set('currentView', null);
   },
-  subMenu: [{
-    key: 'lab1',
-    description: 'Oracle labor'
-  }, {
-    key: 'lab2',
-    description: 'SQL labor'
-  }, {
-    key: 'lab3',
-    description: 'Java labor'
-  }, {
-    key: 'lab4',
-    description: 'XSQL labor'
-  }, {
-    key: 'lab5',
-    description: 'SOA labor'
-  }],
+  subMenu: Ember.computed('model.user', 'model.user.ExerciseTypes.[]', 'model.exerciseTypes', function () {
+    return this.get('model.user.ExerciseTypes').reduce((olds, n) => {
+      if (olds.indexOf(n) === -1) {
+        return [...olds, n];
+      }
+      return olds;
+    }, []).map(exerciseType => ({
+      key: exerciseType,
+      description: exerciseType.get('name')
+    }));
+  }),
   actions: {
-    goToView: function(key) {
-      this.set('evaluate', '');
+    goToView(key) {
+      this.set('evaluate', null);
       this.set('currentView', key);
       return false;
     },
-    cancel: function() {
-      this.set('evaluate', '');
+    cancel() {
+      this.set('evaluate', null);
       return false;
     },
-    evaluateStudent: function(student) {
+    evaluateStudent(student) {
       this.set('evaluate', student);
       return false;
     }
