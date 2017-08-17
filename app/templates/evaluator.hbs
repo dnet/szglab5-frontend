@@ -100,7 +100,7 @@
             <h4>Delayed</h4>
             <p>{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</p>
             <h4>File</h4>
-            <p>{{#if selectedDeliverable.uploaded}}<a href="{{selectedDeliverable.link}}" target="_blank">Download</a>{{else}}Not uploaded.{{/if}}</p>
+            <p>{{#if selectedDeliverable.uploaded}}<a class="button" {{action 'download'}}>Download</a>{{else}}Not uploaded.{{/if}}</p>
             <h4>Grade</h4>
             {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
             <h4>Comment</h4>

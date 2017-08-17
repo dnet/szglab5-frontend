@@ -166,6 +166,11 @@ export default Ember.Controller.extend({
       this.set('selectedEvent', null);
       this.set('selectedEventUser', null);
       this.set('selectedDeliverable', null);
+      return false;
+    },
+    download() {
+      window.open(this.get('selectedDeliverable.link'), '_blank');
+      return false;
     }
   }
 });
