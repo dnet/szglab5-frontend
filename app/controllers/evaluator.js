@@ -138,6 +138,9 @@ export default Ember.Controller.extend({
       if (this.get('selectedDeliverable.comment') === '') {
         this.set('selectedDeliverable.comment', null);
       }
+      if (this.get('selectedDeliverable.grade') === '') {
+        this.set('selectedDeliverable.grade', null);
+      }
       this.get('selectedDeliverable').save().then(() => {
         this.set('success', true);
       }, (t) => {
