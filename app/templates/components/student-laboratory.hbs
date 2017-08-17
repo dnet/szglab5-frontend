@@ -24,7 +24,7 @@
       {{/if}}
       {{#if Deliverable.uploaded}}
         <h4>{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</h4>
-        <p>{{Deliverable.lastSubmittedDate}}</p>
+        <p>{{dateformat Deliverable.lastSubmittedDate}}</p>
       {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
