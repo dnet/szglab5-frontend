@@ -80,6 +80,9 @@ export default Ember.Controller.extend({
     save() {
       this.set('success', false);
       this.set('error', '');
+      if (this.get('selectedDeliverable.comment') === '') {
+        this.set('selectedDeliverable.comment', null);
+      }
       this.get('selectedDeliverable').save().then(() => {
         this.set('success', true);
       }, (t) => {
