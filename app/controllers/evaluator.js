@@ -68,6 +68,8 @@ export default Ember.Controller.extend({
       return false;
     },
     changeDeliverable(deliverable) {
+      this.set('success', false);
+      this.set('error', '');
       this.set('selectedDeliverable', deliverable);
       return false;
     },
