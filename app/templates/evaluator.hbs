@@ -2,12 +2,61 @@
   {{left-menu title="Corrector" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="evaluator">
-      {{#unless evaluate}}
-        {{evaluation-group currentLab=lab1 evaluateStudent=(action 'evaluateStudent')}}
+      {{#unless currentView}}
+        <p>Choose a type in the left.</p>
+      {{else}}
+        {{#unless selectedSheet}}
+          <div class="breadcrumb">
+            {{currentView.name}}
+          </div>
+          <h4>Exercise category:</h4>
+          {{#power-select options=currentView.ExerciseCategoriesSelect selected=selectedSheet onchange=(action "changeSheet") as |sheet|}}
+            {{sheet.value}}
+          {{/power-select}}
+        {{else}}
+          {{#unless selectedEvent}}
+            <div class="breadcrumb">
+              <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+              {{currentView.name}} / {{selectedSheet.ExerciseCategory.type}}
+            </div>
+            {{table-component withoutNumber=true header=header body=events rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeEvent') onClickRowAction='changeEvent'}}
+          {{else}}
+            {{#unless selectedDeliverable}}
+              <div class="breadcrumb">
+                <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                {{currentView.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})
+              </div>
+              {{#power-select options=selectedEvent.correctableDeliverables selected=selectedDeliverable onchange=(action "changeDeliverable") as |Deliverable|}}
+                {{Deliverable.DeliverableTemplate.description}}
+              {{/power-select}}
+            {{else}}
+              <div class="breadcrumb">
+                <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                {{currentView.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedDeliverable.DeliverableTemplate.description}}
+              </div>
+              <h4>Deadline</h4>
+              <p>{{dateformat selectedDeliverable.deadline}}</p>
+              <h4>Grade</h4>
+              {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
+              <h4>Comment</h4>
+              {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" }}
+              <button type="button" class="btn--toggle {{if selectedDeliverable.finalized 'active'}}" {{action 'toggleFinalized'}}>finalized</button><br/>
+              <button type="button" {{action 'save'}}>Save</button>
+              {{#if success}}
+                <div class="success-box">
+                  Saved successfully.
+                </div>
+              {{else}}
+                {{#unless (or (eq error '') (eq error undefined))}}
+                  <div class="error-box">
+                    {{error}}
+                  </div>
+                {{/unless}}
+              {{/if}}
+            {{/unless}}
+          {{/unless}}
+        {{/unless}}
       {{/unless}}
-      {{#if evaluate}}
-        {{evaluation-student student=evaluate mode='evaluator' cancel=(action 'cancel')}}
-      {{/if}}
     </div>
   </div>
 </div>

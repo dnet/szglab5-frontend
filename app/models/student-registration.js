@@ -5,8 +5,8 @@ export default DS.Model.extend({
   neptunCourseCode: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  Events: DS.hasMany('event', {inverse: 'StudentRegistrations'}),
-  UserId: DS.belongsTo('user', {inverse: 'StudentRegistrations'}),
+  Events: DS.hasMany('event', {inverse: 'StudentRegistration'}),
+  User: DS.belongsTo('user', {inverse: 'StudentRegistrations'}),
   StudentGroup: DS.belongsTo('studentGroup', {inverse: 'StudentRegistrations'}),
   Semester: DS.belongsTo('semester', {inverse: 'StudentRegistrations'}),
 });

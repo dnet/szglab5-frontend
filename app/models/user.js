@@ -24,7 +24,7 @@ export default DS.Model.extend({
   university: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'UserId'}),
+  StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'User'}),
   Deliverables: DS.hasMany('deliverable', {inverse: 'Users'}),
   Roles: DS.hasMany('role'),
   Event: DS.hasMany('event', {inverse: 'Demonstrator'}), // TODO: maybe useless

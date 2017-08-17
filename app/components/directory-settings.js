@@ -17,26 +17,6 @@ export default Ember.Component.extend({
   },
   successfullPwd: false,
   successfullEmail: false,
-  studentLabs: {
-    lab1: {
-      description: '1. Labor',
-      isReportFinal: true,
-      isEntrytestFinal: true,
-      isLaboratoryFinal: true
-    },
-    lab2: {
-      description: '2. Labor',
-      isReportFinal: false,
-      isEntrytestFinal: true,
-      isLaboratoryFinal: false
-    },
-    lab3: {
-      description: '3. Labor',
-      isReportFinal: false,
-      isEntrytestFinal: false,
-      isLaboratoryFinal: false
-    }
-  },
   actions: {
     setNewPwd() {
       this.set('successfullPwd', false);
