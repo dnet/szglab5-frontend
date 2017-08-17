@@ -11,7 +11,7 @@ export default DS.Model.extend({
   finalized: DS.attr('boolean'),
   grade: DS.attr('number'),
   updatedAt: DS.attr('date'),
-  Deliverables: DS.hasMany('deliverable', { async: false, inverse: 'Events' }),
+  Deliverables: DS.hasMany('deliverable', { async: false, inverse: 'Event' }),
   ExerciseSheet: DS.belongsTo('exerciseSheet', { async: false, inverse: 'Events' }),
   StudentRegistration: DS.belongsTo('studentRegistration', { inverse: 'Events' }),
   EventTemplate: DS.belongsTo('eventTemplate', { async: false, inverse: 'Events' }),

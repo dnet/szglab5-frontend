@@ -3,60 +3,124 @@
   <div class="right">
     <div class="evaluator">
       {{#unless currentView}}
-        <p>Choose a type in the left.</p>
-      {{else}}
-        {{#unless selectedSheet}}
-          <div class="breadcrumb">
-            {{currentView.name}}
-          </div>
-          <h4>Exercise category:</h4>
-          {{#power-select options=currentView.ExerciseCategoriesSelect selected=selectedSheet onchange=(action "changeSheet") as |sheet|}}
-            {{sheet.value}}
-          {{/power-select}}
+        <h4>Help</h4>
+        <p>First select a deliverable for grading. If you are accepted then you can correct it from the grading menu.</p>
+      {{/unless}}
+      {{#if (eq currentView 'select')}}
+        {{#unless selectedType}}
+            <h4>Exercise type:</h4>
+            {{#power-select options=ExerciseTypes selected=selectedType onchange=(action "changeType") as |type|}}
+              {{type.name}}
+            {{/power-select}}
         {{else}}
-          {{#unless selectedEvent}}
+          {{#unless selectedSheet}}
             <div class="breadcrumb">
-              <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-              {{currentView.name}} / {{selectedSheet.ExerciseCategory.type}}
+                <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+              {{selectedType.name}}
             </div>
-            {{table-component withoutNumber=true header=header body=events rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeEvent') onClickRowAction='changeEvent'}}
+            <h4>Exercise category:</h4>
+            {{#power-select options=selectedType.ExerciseCategoriesSelect selected=selectedSheet onchange=(action "changeSheet") as |sheet|}}
+              {{sheet.value}}
+            {{/power-select}}
           {{else}}
-            {{#unless selectedDeliverable}}
+            {{#unless selectedEvent}}
               <div class="breadcrumb">
                 <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-                {{currentView.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})
+                {{selectedType.name}} / {{selectedSheet.ExerciseCategory.type}}
               </div>
-              {{#power-select options=selectedEvent.correctableDeliverables selected=selectedDeliverable onchange=(action "changeDeliverable") as |Deliverable|}}
-                {{Deliverable.DeliverableTemplate.description}}
-              {{/power-select}}
+              {{table-component withoutNumber=true header=header body=events rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeEvent') onClickRowAction='changeEvent'}}
             {{else}}
-              <div class="breadcrumb">
-                <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-                {{currentView.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedDeliverable.DeliverableTemplate.description}}
-              </div>
-              <h4>Deadline</h4>
-              <p>{{dateformat selectedDeliverable.deadline}}</p>
-              <h4>Grade</h4>
-              {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
-              <h4>Comment</h4>
-              {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" }}
-              <button type="button" class="btn--toggle {{if selectedDeliverable.finalized 'active'}}" {{action 'toggleFinalized'}}>finalized</button><br/>
-              <button type="button" {{action 'save'}}>Save</button>
-              {{#if success}}
-                <div class="success-box">
-                  Saved successfully.
+              {{#unless selectedDeliverable}}
+                <div class="breadcrumb">
+                  <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                  {{selectedType.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})
                 </div>
+                <h4>Deliverable:</h4>
+                {{#power-select options=selectedEvent.correctableDeliverables selected=selectedDeliverable onchange=(action "changeDeliverable") as |Deliverable|}}
+                  {{Deliverable.DeliverableTemplate.description}}
+                {{/power-select}}
               {{else}}
-                {{#unless (or (eq error '') (eq error undefined))}}
-                  <div class="error-box">
-                    {{error}}
-                  </div>
-                {{/unless}}
-              {{/if}}
+                <div class="breadcrumb">
+                  <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                  {{selectedType.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedDeliverable.DeliverableTemplate.description}}
+                </div>
+                <h4>Deadline</h4>
+                <p>{{dateformat selectedDeliverable.deadline}}</p>
+                {{#if selectedDeliverable.isOver}}
+                  {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
+                    <h4>Select for grading</h4>
+                    <p>Sorry, someone else have chosen this for grading.</p>
+                  {{else}}
+                    <h4>Select for grading</h4>
+                    <p>You are selected for grading. Go to the grading menu to start grading.</p>
+                  {{/unless}}
+                  <h4>Select for grading</h4>
+                  <button type="button" class="btn--toggle {{if selectedDeliverable.grading 'active'}}" {{action 'toggleGrading'}}>grading</button><br/>
+                  <button type="button" {{action 'save'}}>Save</button>
+                  {{#if success}}
+                    <div class="success-box">
+                      Saved successfully.
+                    </div>
+                  {{else}}
+                    {{#unless (or (eq error '') (eq error undefined))}}
+                      <div class="error-box">
+                        {{error}}
+                      </div>
+                    {{/unless}}
+                  {{/if}}
+                {{else}}
+                  <p>This event has not reached its deadline.</p>
+                {{/if}}
+              {{/unless}}
             {{/unless}}
           {{/unless}}
         {{/unless}}
-      {{/unless}}
+      {{/if}}
+      {{#if (eq currentView 'grading')}}
+        {{#unless selectedDeliverable}}
+          {{#power-select options=deliverableFilters selected=selectedDeliverableFilter onchange=(action "changeDeliverableFilter") as |filter|}}
+            {{filter.value}}
+          {{/power-select}}
+          {{#if filteredDeliverables}}
+            {{table-component withoutNumber=true header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverableFromGrading') onClickRowAction='changeEvent'}}
+          {{/if}}
+        {{else}}
+          <div class="breadcrumb">
+            <button {{action 'backFromGrading'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+          </div>
+          {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
+            <p>Sorry, you have not been chosen this for grading. First select this for grading.</p>
+          {{else}}
+            <h4>Event name and deliverable description:</h4>
+            <p>{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</p>
+            <h4>Student</h4>
+            <p>{{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})</p>
+            <h4>Deadline</h4>
+            <p>{{dateformat selectedDeliverable.deadline}}</p>
+            <h4>Delayed</h4>
+            <p>{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</p>
+            <h4>File</h4>
+            <p>{{#if selectedDeliverable.uploaded}}<a href="{{selectedDeliverable.link}}" target="_blank">Download</a>{{else}}Not uploaded.{{/if}}</p>
+            <h4>Grade</h4>
+            {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
+            <h4>Comment</h4>
+            {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" }}
+            <button type="button" class="btn--toggle {{if selectedDeliverable.finalized 'active'}}" {{action 'toggleFinalized'}}>finalized</button><br/>
+            <button type="button" {{action 'save'}}>Save</button>
+            {{#if success}}
+              <div class="success-box">
+                Saved successfully.
+              </div>
+            {{else}}
+              {{#unless (or (eq error '') (eq error undefined))}}
+                <div class="error-box">
+                  {{error}}
+                </div>
+              {{/unless}}
+            {{/if}}
+          {{/unless}}
+        {{/unless}}
+      {{/if}}
     </div>
   </div>
 </div>

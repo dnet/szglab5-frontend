@@ -5,25 +5,53 @@ export default Ember.Controller.extend({
   store: Ember.inject.service(),
   header: ['Neptun', 'Name', 'Finalized', 'Grade'],
   rowIndecies: ['neptun', 'name', 'finalized', 'grade'],
+  headerGrading: ['Type', 'Neptun', 'Name', 'Finalized', 'Grade'],
+  rowIndeciesGrading: ['DeliverableTemplate.description', 'Student.neptun', 'Student.displayName', 'finalized', 'grade'],
   didReceiveAttrs() {
     this.set('selectedSheet', null);
     this.set('selectedEvent', null);
     return this.set('currentView', null);
   },
-  subMenu: Ember.computed('model.user', 'model.user.ExerciseTypes.[]', 'model.exerciseTypes', function () {
+  subMenu: [
+    {
+      key: 'select',
+      description: 'Select for grading'
+    }, {
+      key: 'grading',
+      description: 'Grading'
+    }
+  ],
+  deliverableFilters: [
+    {
+      filter: {
+        isCorrector: true,
+        finalized: false
+      },
+      value: 'Not finalized'
+    },
+    {
+      filter: {
+        isCorrector: true,
+        finalized: true
+      },
+      value: 'Finalized'
+    }
+  ],
+  ExerciseTypes: Ember.computed('model.user', 'model.user.ExerciseTypes.[]', 'model.exerciseTypes', function () {
     return this.get('model.user.ExerciseTypes').reduce((olds, n) => {
       if (olds.indexOf(n) === -1) {
         return [...olds, n];
       }
       return olds;
-    }, []).map(exerciseType => ({
-      key: exerciseType,
-      description: exerciseType.get('name')
-    }));
+    }, []);
   }),
   actions: {
     goToView(key) {
       this.set('currentView', key);
+      return false;
+    },
+    changeType(type) {
+      this.set('selectedType', type);
       this.set('selectedSheet', null);
       this.set('selectedEvent', null);
       this.set('events', null);
@@ -73,8 +101,25 @@ export default Ember.Controller.extend({
       this.set('selectedDeliverable', deliverable);
       return false;
     },
+    changeDeliverableFromGrading(deliverable) {
+      deliverable.get('Event').then(event => {
+        this.set('selectedEvent', event);
+        this.set('selectedEventUser', deliverable.get('Student'));
+        this.actions.changeDeliverable.apply(this, [deliverable]);
+      });
+      return false;
+    },
     toggleFinalized() {
       this.toggleProperty('selectedDeliverable.finalized');
+      return false;
+    },
+    toggleGrading() {
+      this.toggleProperty('selectedDeliverable.grading');
+      if (this.get('selectedDeliverable.grading')) {
+        this.set('selectedDeliverable.Corrector', this.get('model.user'));
+      } else {
+        this.set('selectedDeliverable.Corrector', null);
+      }
       return false;
     },
     save() {
@@ -104,6 +149,23 @@ export default Ember.Controller.extend({
         this.set('events', null);
         return this.set('selectedSheet', null);
       }
+      if (this.get('selectedType')) {
+        return this.set('selectedType', null);
+      }
+    },
+    changeDeliverableFilter(selected) {
+      this.set('selectedDeliverableFilter', selected);
+      this.get('store').query('deliverable', {
+        filter: selected.filter
+      }).then(deliverables => {
+        this.set('filteredDeliverables', deliverables);
+      });
+      return false;
+    },
+    backFromGrading() {
+      this.set('selectedEvent', null);
+      this.set('selectedEventUser', null);
+      this.set('selectedDeliverable', null);
     }
   }
 });

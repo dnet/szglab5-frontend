@@ -7,7 +7,6 @@ export default DS.Model.extend({
   displayName: DS.attr('string'),
   email: DS.attr('string'),
   email_official: DS.attr('string'),
-  excercises: DS.attr('string'), //TODO: valszeg nem kell
   loginName: DS.attr('string'),
   mobile: DS.attr('string'),
   neptun: DS.attr('string'),
@@ -25,7 +24,7 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   StudentRegistrations: DS.hasMany('studentRegistration', {inverse: 'User'}),
-  Deliverables: DS.hasMany('deliverable', {inverse: 'Users'}),
+  Deliverables: DS.hasMany('deliverable', {inverse: 'Corrector'}),
   Roles: DS.hasMany('role'),
   Event: DS.hasMany('event', {inverse: 'Demonstrator'}), // TODO: maybe useless
   ExerciseTypes: DS.hasMany('exerciseType', {inverse: 'Users'}),
