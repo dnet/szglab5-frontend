@@ -10,6 +10,7 @@ export default Ember.Service.extend({
     this.set('selectable', []);
     this.get('selectable').push('blue-gray');
     this.get('selectable').push('blue');
+    this.get('selectable').push('colorful');
     this.get('selectable').push('pink');
     this.get('selectable').push('pink-gray');
     this.get('selectable').push('gray');
