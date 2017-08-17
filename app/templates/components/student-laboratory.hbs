@@ -14,6 +14,10 @@
       <h4>Beugró érdemjegye:</h4>
       {{#if Deliverable.finalized}}
         <p>{{Deliverable.grade}}</p>
+        {{#if Deliverable.comment}}
+          <h4>Beugró megjegyzés:</h4>
+          <p>{{Deliverable.comment}}</p>
+        {{/if}}
       {{else}}
         <p>Még nincs értékelve.</p>
       {{/if}}
@@ -21,15 +25,10 @@
     {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
       <h4>{{Deliverable.DeliverableTemplate.description}} határideje:</h4>
       <p>{{dateformat Deliverable.deadline}}</p>
-      {{#if Deliverable.isOver}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
-        <p>{{Deliverable.grade}}</p>
-        <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
-        <p>{{Deliverable.comment}}</p>
-      {{else}}
+      {{#unless Deliverable.isOver}}
         <h4>{{Deliverable.DeliverableTemplate.description}} feltöltése:</h4>
         {{student-laboratory-upload Deliverable=Deliverable}}
-      {{/if}}
+      {{/unless}}
       {{#if Deliverable.uploaded}}
         <h4>{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</h4>
         <p>{{dateformat Deliverable.lastSubmittedDate}}</p>
@@ -37,6 +36,10 @@
       <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
       {{#if Deliverable.finalized}}
         <p>{{Deliverable.grade}}</p>
+        {{#if Deliverable.comment}}
+          <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
+          <p>{{Deliverable.comment}}</p>
+        {{/if}}
       {{else}}
         <p>Még nincs értékelve.</p>
       {{/if}}
