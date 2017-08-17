@@ -6,6 +6,11 @@
         <h1>{{selectedEventTemplate.name}}</h1>
         <h4>Generate deliverables:</h4>
         <button {{action 'generateDeliverables'}}>Generate</button>
+        {{#if success}}
+          <div class="success-box">
+            Successfully generated.
+          </div>
+        {{/if}}
         {{#unless (or (eq error '') (eq error undefined))}}
           <div class="error-box">
             {{error}}

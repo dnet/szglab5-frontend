@@ -4,7 +4,6 @@ import config from '../config/environment';
 export default Ember.Controller.extend({
   selectedEventTemplate: null,
   subMenu: Ember.computed('model.eventTemplates', 'model.eventTemplates.[]', function () {
-    this.get('model.eventTemplates').forEach(x => console.log(x));
     return this.get('model.eventTemplates').map(x => ({
       key: x,
       description: x.get('name')
@@ -29,6 +28,7 @@ export default Ember.Controller.extend({
         dataType: "json",
         success: () => {
           this.set('success', true);
+          console.log('success');
         },
         failure: errorMessage,
         statusCode: {
