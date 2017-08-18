@@ -5,12 +5,11 @@
       {{#unless currentView}}
         <p>Select an event on the left.</p>
       {{else}}
-        {{#unless evaluate}}
+        {{#unless selectedEvent}}
           {{demonstrator-group currentEventTemplate=currentView evaluateEvent=(action 'evaluateEvent')}}
-        {{/unless}}
-        {{#if evaluate}}
+        {{else}}
           {{evaluation-student student=evaluate mode='demonstrator' cancel=(action 'cancel')}}
-        {{/if}}
+        {{/unless}}
       {{/unless}}
     </div>
   </div>

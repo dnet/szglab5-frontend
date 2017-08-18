@@ -27,7 +27,6 @@ export default Ember.Component.extend({
             }, reject)
           );
         });
-        console.log(promises);
         RSVP.Promise.all(promises).then(() => resolve(body), reject);
       }, reject);
     });
