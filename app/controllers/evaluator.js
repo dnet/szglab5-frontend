@@ -48,12 +48,16 @@ export default Ember.Controller.extend({
     }
   ],
   ExerciseTypes: Ember.computed('model.user', 'model.user.ExerciseTypes.[]', 'model.exerciseTypes', function () {
-    return this.get('model.user.ExerciseTypes').reduce((olds, n) => {
+    const r = this.get('model.user.ExerciseTypes').reduce((olds, n) => {
       if (olds.indexOf(n) === -1) {
         return [...olds, n];
       }
       return olds;
     }, []);
+    if (r.length === 1) {
+      this.actions.changeType.apply(this, [r[0]]);
+    }
+    return r;
   }),
   actions: {
     goToView(key) {
@@ -101,6 +105,10 @@ export default Ember.Controller.extend({
         event.get('User').then(user => {
           this.set('selectedEventUser', user);
           this.set('selectedEvent', event);
+          const deliverables = this.get('selectedEvent.correctableDeliverables');
+          if (deliverables.length === 1) {
+            this.actions.changeDeliverable.apply(this, [deliverables[0]]);
+          }
         });
       });
       return false;
@@ -109,6 +117,7 @@ export default Ember.Controller.extend({
       this.set('success', false);
       this.set('error', '');
       this.set('selectedDeliverable', deliverable);
+      this.set('selectedDeliverable.gradingCache', this.get('selectedDeliverable.grading'));
       return false;
     },
     changeDeliverableFromGrading(deliverable) {
@@ -124,17 +133,17 @@ export default Ember.Controller.extend({
       return false;
     },
     toggleGrading() {
-      this.toggleProperty('selectedDeliverable.grading');
-      if (this.get('selectedDeliverable.grading')) {
-        this.set('selectedDeliverable.Corrector', this.get('model.user'));
-      } else {
-        this.set('selectedDeliverable.Corrector', null);
-      }
+      this.toggleProperty('selectedDeliverable.gradingCache');
       return false;
     },
     save() {
       this.set('success', false);
       this.set('error', '');
+      if (this.get('selectedDeliverable.gradingCache')) {
+        this.set('selectedDeliverable.Corrector', this.get('model.user'));
+      } else {
+        this.set('selectedDeliverable.Corrector', null);
+      }
       if (this.get('selectedDeliverable.comment') === '') {
         this.set('selectedDeliverable.comment', null);
       }

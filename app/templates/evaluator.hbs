@@ -47,15 +47,18 @@
                 <h4>Deadline</h4>
                 <p>{{dateformat selectedDeliverable.deadline}}</p>
                 {{#if selectedDeliverable.isOver}}
+                  <h4>Select for grading</h4>
                   {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
-                    <h4>Select for grading</h4>
-                    <p>Sorry, someone else have chosen this for grading.</p>
+                    {{#if selectedDeliverable.Corrector.id}}
+                      <p>Sorry, someone else have chosen this for grading.</p>
+                    {{else}}
+                      <p>Noone is selected.</p>
+                    {{/if}}
                   {{else}}
-                    <h4>Select for grading</h4>
                     <p>You are selected for grading. Go to the grading menu to start grading.</p>
                   {{/unless}}
                   <h4>Select for grading</h4>
-                  <button type="button" class="btn--toggle {{if selectedDeliverable.grading 'active'}}" {{action 'toggleGrading'}}>grading</button><br/>
+                  <button type="button" class="btn--toggle {{if selectedDeliverable.gradingCache 'active'}}" {{action 'toggleGrading'}}>grading</button><br/>
                   <button type="button" {{action 'save'}}>Save</button>
                   {{#if success}}
                     <div class="success-box">
