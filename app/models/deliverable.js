@@ -9,6 +9,7 @@ export default DS.Model.extend({
   grading: DS.attr('boolean'),
   comment: DS.attr('string'),
   finalized: DS.attr('boolean'),
+  imsc: DS.attr('number'),
   url: DS.attr('string'),
   commit: DS.attr('string'),
   createdAt: DS.attr('date'),

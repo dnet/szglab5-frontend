@@ -1,33 +1,53 @@
 <div class="evaluation-student">
-  <div class="text label">Name</div>
-  <div class="text">{{event.userName}}</div>
+  <h4>Name</h4>
+  <p>{{event.userName}}</p>
 
-  <div class="text label">Neptun</div>
-  <div class="text">{{event.userNeptun}}</div>
+  <h4>Neptun</h4>
+  <p>{{event.userNeptun}}</p>
 
-  <div class="text label">Exercise type</div>
-  <div class="text">{{event.exerciseShortName}}</div>
+  <h4>Exercise type</h4>
+  <p>{{event.exerciseShortName}}</p>
 
-  <div class="text label">Deadline</div>
-  <div class="text">{{event.formattedDate}}</div>
+  <h4>Deadline</h4>
+  <p>{{event.formattedDate}}</p>
 
-  <div class="text label">Entry test grade</div>
+  <h4>Entry test grade</h4>
   {{input type=text value=event.firstEntryTest.grade placeholder="grade" }}
 
-  <div class="text label">Exercise grade</div>
+  <h4>Entry test imsc</h4>
+  {{input type=text value=event.firstEntryTest.imsc placeholder="imsc" }}
+  
+  <h4>Entry test finalized</h4>
+  <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>finalized</button>
+
+  <h4>Exercise grade</h4>
   <div class="text" id="afterreportgrade">{{event.firstCorrectableDeliverable.grade}} ({{await event.firstCorrectableDeliverable.CorrectorName}})</div>
 
-  <div class="text label">Exercise comment</div>
+  <h4>Exercise comment</h4>
   <div class="text long">
     {{event.firstCorrectableDeliverable.comment}}
   </div>
 
-  <div class="text label">{{event.EventTemplate.name}} grade</div>
+  <h4>{{event.EventTemplate.name}} grade</h4>
   {{input type=text value=event.grade placeholder="grade" }}
 
-  <div class="text label">{{event.EventTemplate.name}} comment</div>
+  <h4>{{event.EventTemplate.name}} comment</h4>
   {{textarea value=event.comment cols="9" rows="9" placeholder="comment" }}
+
+  <h4>{{event.EventTemplate.name}} finalized</h4>
+  <button type="button" class="btn--toggle {{if event.finalized 'active'}}" {{action 'toggleFinalized' event}}>finalized</button>
 
   <button type="button" {{action 'save'}}>Save</button>
   <button type="button" class="cancel" {{action 'cancel'}}>Cancel</button>
+  {{#if success}}
+    <div class="success-box">
+      Saved successfully.
+    </div>
+  {{else}}
+    {{#unless (or (eq error '') (eq error undefined))}}
+      <div class="error-box">
+        {{error}}
+      </div>
+    {{/unless}}
+  {{/if}}
 </div>
