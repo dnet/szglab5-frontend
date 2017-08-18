@@ -5,7 +5,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   shortName: DS.attr('string'),
   language: DS.attr('string'),
-  ExerciseSheets: DS.hasMany('exerciseSheet', {inverse: 'ExerciseTypes'}),
+  ExerciseSheets: DS.hasMany('exerciseSheet', {inverse: 'ExerciseType'}),
   Users: DS.hasMany('user', {inverse: 'ExerciseTypes'}),
   Guru: DS.belongsTo('user'),
   ExerciseCategoriesSelect: Ember.computed('ExerciseSheets.[]', function() {

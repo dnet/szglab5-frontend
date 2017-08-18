@@ -1,17 +1,40 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
+import { dateformat } from '../helpers/dateformat';
 
 export default Ember.Component.extend({
   header: ['Név', 'Neptun', 'Feladat', 'Mérés ideje', 'Mérés helye', 'Beugró', 'Jk. jegy', 'Labor jegy'],
-  body: [
-    ['Hallg1', 'Neptun1', '22-AUTO', '2016. okt. 8. 16:45', 'L', '5', '4', ''],
-    ['Hallg2', 'Neptun2', '22-AUTO', '2016. okt. 8. 16:45', 'L', '5', '4', ''],
-    ['Hallg3', 'Neptun3', '22-AUTO', '2016. okt. 8. 16:45', 'L', '5', '4', ''],
-    ['Hallg4', 'Neptun4', '22-AUTO', '2016. okt. 8. 16:45', 'L', '5', '4', ''],
-    ['Hallg5', 'Neptun5', '22-AUTO', '2016. okt. 8. 16:45', 'L', '5', '4', '']
-  ],
+  rowIndecies: ['userName', 'userNeptun', 'exerciseShortName', 'formattedDate', 'location', 'entryTestGrade', 'correctorGrade', 'grade'],
+  body: Ember.computed('currentEventTemplate', function () {
+    return new RSVP.Promise((resolve, reject) => {
+      this.get('currentEventTemplate.Events').then(events => {
+        const body = [];
+        const promises = [];
+        events.forEach(event => {
+          promises.push(
+            RSVP.Promise.all(
+              [
+                event.get('ExerciseSheet.ExerciseType'),
+                event.get('User')
+              ]
+            ).then(([exerciseType, user]) => {
+              event.set('exerciseShortName', exerciseType.get('shortName'));
+              event.set('userNeptun', user.get('neptun'));
+              event.set('userName', user.get('displayName'));
+              event.set('formattedDate', dateformat([event.get('date')]));
+              body.push(event);
+              return true;
+            }, reject)
+          );
+        });
+        console.log(promises);
+        RSVP.Promise.all(promises).then(() => resolve(body), reject);
+      }, reject);
+    });
+  }),
   actions: {
-    evaluateStudent: function(student) {
-      return this.sendAction('evaluateStudent', student);
+    evaluateEvent(event) {
+      return this.sendAction('evaluateEvent', event);
     }
   }
 });

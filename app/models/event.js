@@ -25,5 +25,19 @@ export default DS.Model.extend({
   }),
   correctableDeliverables: Ember.computed('Deliverables', 'Deliverables.[]', function() {
     return this.get('Deliverables').filter(x => x.get('DeliverableTemplate.type') === 'FILE');
-  })
+  }),
+  entryTestGrade: Ember.computed('Deliverables', 'Deliverables.[]', function() {
+    const entryTests = this.get('Deliverables').filter(x => x.get('DeliverableTemplate.type') === 'BEUGRO');
+    if (entryTests.length === 0) {
+      return 0;
+    }
+    return entryTests[0].get('grade');
+  }),
+  correctorGrade: Ember.computed('Deliverables', 'Deliverables.[]', function() {
+    const correctableDeliverables = this.get('correctableDeliverables');
+    if (correctableDeliverables.length === 0) {
+      return 0;
+    }
+    return correctableDeliverables[0].get('grade');
+  }),
 });

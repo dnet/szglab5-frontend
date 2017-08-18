@@ -1,28 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  currentView: 'lab1',
   evaluate: '',
   didReceiveAttrs: function() {
     this.set('evaluate', '');
-    return this.set('currentView', 'lab1');
+    return this.set('currentView', null);
   },
-  subMenu: [{
-    key: 'lab1',
-    description: 'Oracle labor'
-  }, {
-    key: 'lab2',
-    description: 'SQL labor'
-  }, {
-    key: 'lab3',
-    description: 'Java labor'
-  }, {
-    key: 'lab4',
-    description: 'XSQL labor'
-  }, {
-    key: 'lab5',
-    description: 'SOA labor'
-  }],
+  subMenu: Ember.computed('model.eventTemplates', 'model.eventTemplates.[]', function() {
+    return this.get('model.eventTemplates').map(eventTemplate => ({
+      key: eventTemplate,
+      description: eventTemplate.get('name')
+    }));
+  }),
   actions: {
     goToView: function(key) {
       this.set('evaluate', '');
@@ -33,8 +22,8 @@ export default Ember.Controller.extend({
       this.set('evaluate', '');
       return false;
     },
-    evaluateStudent: function(student) {
-      this.set('evaluate', student);
+    evaluateEvent: function(event) {
+      this.set('selectedEvent', event);
       return false;
     }
   }
