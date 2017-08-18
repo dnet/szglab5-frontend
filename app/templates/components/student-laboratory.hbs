@@ -18,6 +18,8 @@
           <h4>Beugró megjegyzés:</h4>
           <p>{{Deliverable.comment}}</p>
         {{/if}}
+        <h4>Beugró IMSC:</h4>
+        <p>{{Deliverable.imsc}}</p>
       {{else}}
         <p>Még nincs értékelve.</p>
       {{/if}}
@@ -40,6 +42,8 @@
           <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
           <p>{{Deliverable.comment}}</p>
         {{/if}}
+        <h4>{{Deliverable.DeliverableTemplate.description}} IMSC:</h4>
+        <p>{{Deliverable.imsc}}</p>
       {{else}}
         <p>Még nincs értékelve.</p>
       {{/if}}
@@ -47,15 +51,19 @@
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
       {{#if Deliverable.isOver}}
         <h4>{{Deliverable.DeliverableTemplate.description}} feltöltve:</h4>
-        <p>{{dateformat Deliverable.submitteddate}}</p>
+        <p>{{dateformat Deliverable.lastSubmittedDate}}</p>
         <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
         {{#if Deliverable.finalized}}
           <p>{{Deliverable.grade}}</p>
+          {{#if Deliverable.comment}}
+            <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
+            <p>{{Deliverable.comment}}</p>
+          {{/if}}
+          <h4>{{Deliverable.DeliverableTemplate.description}} IMSC:</h4>
+          <p>{{Deliverable.imsc}}</p>
         {{else}}
           <p>Még nincs értékelve.</p>
         {{/if}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
-        <p>{{Deliverable.comment}}</p>
       {{else}}
         <h4>{{Deliverable.DeliverableTemplate.description}} határidő:</h4>
         <p>{{dateformat Deliverable.deadline}}</p>
@@ -76,7 +84,7 @@
     {{/if}}
   {{/each}}
   {{#if result.finalized}}
-    <h4>Végleses jegy</h4>
+    <h4>Végleges jegy</h4>
     <p>{{result.grade}}</p>
   {{/if}}
 </div>

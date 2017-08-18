@@ -108,6 +108,8 @@
             {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
             <h4>Comment</h4>
             {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" }}
+            <h4>IMSC</h4>
+            {{input type=nubmer value=selectedDeliverable.imsc placeholder="imsc"}}
             <button type="button" class="btn--toggle {{if selectedDeliverable.finalized 'active'}}" {{action 'toggleFinalized'}}>finalized</button><br/>
             <button type="button" {{action 'save'}}>Save</button>
             {{#if success}}
