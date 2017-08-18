@@ -1,9 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  evaluate: '',
   didReceiveAttrs: function() {
-    this.set('evaluate', '');
+    this.set('selectedEvent', null);
     return this.set('currentView', null);
   },
   subMenu: Ember.computed('model.eventTemplates', 'model.eventTemplates.[]', function() {
@@ -14,12 +13,12 @@ export default Ember.Controller.extend({
   }),
   actions: {
     goToView: function(key) {
-      this.set('evaluate', '');
+      this.set('selectedEvent', null);
       this.set('currentView', key);
       return false;
     },
     cancel: function() {
-      this.set('evaluate', '');
+      this.set('selectedEvent', null);
       return false;
     },
     evaluateEvent: function(event) {

@@ -3,8 +3,8 @@ import RSVP from 'rsvp';
 import { dateformat } from '../helpers/dateformat';
 
 export default Ember.Component.extend({
-  header: ['Név', 'Neptun', 'Feladat', 'Mérés ideje', 'Mérés helye', 'Beugró', 'Jk. jegy', 'Labor jegy'],
-  rowIndecies: ['userName', 'userNeptun', 'exerciseShortName', 'formattedDate', 'location', 'entryTestGrade', 'correctorGrade', 'grade'],
+  header: ['Name', 'Neptun', 'Exercise', 'Date', 'Place', 'Entry grade', 'Exercise Grade', 'Event grade'],
+  rowIndecies: ['userName', 'userNeptun', 'exerciseShortName', 'formattedDate', 'location', 'firstEntryTest.grade', 'firstCorrectableDeliverable.grade', 'grade'],
   body: Ember.computed('currentEventTemplate', function () {
     return new RSVP.Promise((resolve, reject) => {
       this.get('currentEventTemplate.Events').then(events => {

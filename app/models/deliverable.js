@@ -28,5 +28,12 @@ export default DS.Model.extend({
   donwloadLink: Ember.computed('id', function() {
     return `${config.backendUrl}/deliverables/${this.get('id')}/download`;
   }),
+  CorrectorName: Ember.computed('Corrector', 'Corrector.name', function() {
+    console.log(this.get('Corrector'));
+    return this.get('Corrector').then(corrector => {
+      console.log(corrector);
+      return corrector.get('displayName');
+    });
+  }),
   commits: ['commit1', 'commit4']
 });
