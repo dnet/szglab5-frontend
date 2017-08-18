@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   body: Ember.computed('currentEventTemplate', function () {
     return new RSVP.Promise((resolve, reject) => {
       this.get('currentEventTemplate.Events').then(events => {
+        console.log('asd');
         const body = [];
         const promises = [];
         events.forEach(event => {
@@ -24,11 +25,20 @@ export default Ember.Component.extend({
               event.set('formattedDate', dateformat([event.get('date')]));
               body.push(event);
               return true;
-            }, reject)
+            }, err => {
+              console.error(err);
+              reject(err);
+            })
           );
         });
-        RSVP.Promise.all(promises).then(() => resolve(body), reject);
-      }, reject);
+        RSVP.Promise.all(promises).then(() => resolve(body), err => {
+          console.error(err);
+          reject(err);
+        });
+      }, err => {
+        console.error(err);
+        reject(err);
+      });
     });
   }),
   actions: {
