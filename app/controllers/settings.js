@@ -57,7 +57,7 @@ export default Ember.Controller.extend({
       return false;
     },
     save: function () {
-      var cw = this.get('currentView');
+      const cw = this.get('currentView');
       this.set('error', null);
       this.set('message', null);
       if (cw === 'password') {
@@ -71,9 +71,16 @@ export default Ember.Controller.extend({
         }
       }
       else if (cw === 'style') {
-        var newStyle = this.get('selectedStyle.key');
+        const newStyle = this.get('selectedStyle.key');
         this.set('model.colorTheme', newStyle);
         this.get('style').changeStyle(newStyle);
+      }
+      else if (cw === 'email') {
+        const re =/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (!re.test(this.get('model.email'))) {
+          this.set('error', 'Az email hibás.');
+          return false;
+        }
       }
       this.get('model').save().then(() => {
         this.set('message', 'Sikeres mentés!');
