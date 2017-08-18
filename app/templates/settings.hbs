@@ -7,11 +7,11 @@
       <h4><label for="email">e-mail</label></h4>
       {{input type="email" value=model.email placeholder='e-mail' id='email'}}
 
-      <h4><label for="mailinglist">mailing list</label></h4>
-      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">subscribe</button>
+      <h4><label for="mailinglist">Levelezési lista</label></h4>
+      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">feliratkozás</button>
 
-      <h4><label for="emailnotifications">e-mail notifications</label></h4>
-      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">subscribe</button>
+      <h4><label for="emailnotifications">E-mail értesítések</label></h4>
+      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">feliratkozás</button>
       {{/if}}
       {{#if (eq currentView 'password')}}
 
