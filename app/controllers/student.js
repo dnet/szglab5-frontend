@@ -18,13 +18,22 @@ export default Ember.Controller.extend({
                   event: event
                 });
               });
-            }, err => reject(err));
+            }, err => {
+              console.error(err);
+              reject(err);
+            });
             promises.push(promise);
           });
           RSVP.Promise.all(promises).then(() => resolve(subMenuKeys.sort((lhs, rhs) => {
             return lhs.event.get('date') - rhs.event.get('date');
-          })), err => reject(err));
-        }, err => reject(err));
+          })), err => {
+            console.error(err);
+            reject(err);
+          });
+        }, err => {
+          console.error(err);
+          reject(err);
+        });
     });
   }),
   actions: {
