@@ -3,8 +3,11 @@ import config from '../config/environment';
 
 export default Ember.Component.extend({
   success: false,
-  url: Ember.computed('Deliverable', function () {
+  uploadUrl: Ember.computed('Deliverable', function () {
     return `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/upload`;
+  }),
+  downloadUrl: Ember.computed('Deliverable', function () {
+    return `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/download`;
   }),
   error: '',
   actions: {

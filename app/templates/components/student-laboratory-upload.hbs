@@ -1,4 +1,4 @@
-{{student-file-uploader-box url=url started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
+{{student-file-uploader-box url=uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
 
 {{#if success}}
   <div class="success-box">
@@ -10,4 +10,8 @@
       {{error}}
     </div>
   {{/unless}}
+{{/if}}
+
+{{#if Deliverable.uploaded}}
+  <a href="{{downloadUrl}}">Letöltés</a>
 {{/if}}
