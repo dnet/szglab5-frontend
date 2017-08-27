@@ -1,21 +1,35 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  action: {
-    filesDidChange(files) {
-      // TODO: upload
-      /*const uploader = EmberUploader.Uploader.create({
-        url: this.get('url')
-      });
-
+  actions: {
+    upload(event) {
+      const files = event.target.files;
       if (!Ember.isEmpty(files)) {
-        this.sendAction('started');
-        uploader.upload(files[0]).then(() => {
-          this.sendAction('success');
-        }, data => {
+        const formData = new FormData();
+        const errorMessage = data => {
           this.sendAction('falied', data);
+        };
+        formData.append('file', files[0]);
+        this.sendAction('started');
+        Ember.$.ajax({
+          type: "POST",
+          url: this.get('url'),
+          data: formData,
+          contentType: false,
+          processData: false,
+          crossDomain: true,
+          success: () => {
+            this.sendAction('success');
+          },
+          failure: errorMessage,
+          statusCode: {
+            500: errorMessage,
+            404: errorMessage,
+            403: errorMessage,
+          }
         });
-      }*/
+      }
+      return false;
     }
   }
 });
