@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
               events.forEach((event) => {
                 subMenuKeys.push({
                   key: event.get('id'),
-                  description: event.get('EventTemplate.name') + (event.get('finalized')) ?  `(${event.get('grade')})` : '',
+                  description: event.get('EventTemplate.name') + ((event.get('finalized')) ? `(${event.get('grade')})` : ''),
                   event: event
                 });
               });
