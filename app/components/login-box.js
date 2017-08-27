@@ -36,7 +36,7 @@ export default Ember.Component.extend({
       return false;
     },
     loginBMERedirect() {
-      // TODO: redirect to BME login
+      alert('This has not been implemented yet.');
       return false;
     }
   }
