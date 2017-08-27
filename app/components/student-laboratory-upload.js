@@ -3,25 +3,29 @@ import config from '../config/environment';
 
 export default Ember.Component.extend({
   success: false,
+  url: Ember.computed('Deliverable', function () {
+    return `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/upload`;
+  }),
   error: '',
   actions: {
-    upload(file) {
+    uploadStarted() {
       this.set('success', false);
       this.set('error', '');
-      file.upload(`${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/upload`).then(() => {
-        this.set('success', true);
-        this.get('Deliverable').reload();
-      }, data => {
-        if (data && data.body && data.body.errors && data.body.errors[0]) {
-          this.set('error', data.errors[0]);
-        }
-        else {
-          this.set('error', 'Unknown error.');
-        }
-      });
+      return false;
     },
-    ondrop(event) {
-      alert("A drop meg nem mukodik.");
+    uploadSuccess() {
+      this.set('success', true);
+      this.get('Deliverable').reload();
+      return false;
+    },
+    uploadFailed(data) {
+      if (data && data.body && data.body.errors && data.body.errors[0]) {
+        this.set('error', data.errors[0]);
+      }
+      else {
+        this.set('error', 'Unknown error.');
+      }
+      return false;
     }
   }
 });

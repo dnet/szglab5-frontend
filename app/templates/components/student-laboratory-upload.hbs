@@ -1,25 +1,4 @@
-{{#file-dropzone ondrop=(action 'ondrop') name="file" as |dropzone queue|}}
-  {{#if dropzone.active}}
-    {{#if dropzone.valid}}
-      Drop a feltöltéshez.
-    {{else}}
-      Invalid
-    {{/if}}
-  {{else if queue.files.length}}
-    Feltöltés alatt {{queue.files.length}} fájl. ({{queue.progress}}%)
-  {{else}}
-    <p>
-      {{#if dropzone.supported}}
-        Drag and drop a feltöltéshez vagy
-      {{/if}}
-      {{#file-upload name="file"
-                     accept="*"
-                     onfileadd=(action 'upload')}}
-        <a id="upload" tabindex=0>Kattints ide.</a>
-      {{/file-upload}}
-    </p>
-  {{/if}}
-{{/file-dropzone}}
+{{student-file-uploader-box url=url started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
 
 {{#if success}}
   <div class="success-box">
