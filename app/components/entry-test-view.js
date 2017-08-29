@@ -42,7 +42,7 @@ export default Ember.Component.extend({
     },
     newQuestion() {
       this.set('question', this.get('store').createRecord('question', {
-        ExerciseCategories: this.get('exerciseCategory'),
+        ExerciseCategory: this.get('exerciseCategory'),
         text: ''
       }));
       return false;
