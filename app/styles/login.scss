@@ -1,5 +1,6 @@
 .login {
   background: white;
+  @include box-shadow(0 0 25px #999);
   margin: 0 auto;
   width: 30%;
   min-width: 290px;
@@ -34,7 +35,7 @@
       input {
         border-color: $error-color;
         color: $error-color;
-        background-color: $error-background;
+        // background-color: $error-background;
       }
     }
   }
