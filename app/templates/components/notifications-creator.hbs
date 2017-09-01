@@ -11,8 +11,8 @@
 
   <div class="text label">Shown from-to</div>
 
-  {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="From" minDate=notification.currentDate maxDate=notification.to value=notification.from}}
-  {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="Until" minDate=notification.from value=notification.until}}
+  {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="From" minDate=notification.currentDate maxDate=notification.until value=notification.from onSelection=(action (mut notification.from))}}
+  {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="Until" minDate=notification.from value=notification.until onSelection=(action (mut notification.until))}}
 
   <div class="text label">Who can see it</div>
   <div class="toggle-buttons">
