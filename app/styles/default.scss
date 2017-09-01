@@ -6,6 +6,7 @@
 a {
 	font-family: 'Roboto Slab', sans-serif;
 	text-decoration: none;
+	outline: none;
 
 	&:hover {
 		text-decoration: none;
@@ -182,6 +183,7 @@ input {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 0.25rem;
 	resize: none;
+	outline: none;
 }
 
 textarea {
@@ -199,6 +201,7 @@ textarea {
 	border-radius: 0.25rem;
 	width: 90%;
 	resize: vertical;
+	outline: none;
 
 	&:focus {
 		border-color: $buttonOkActive;
