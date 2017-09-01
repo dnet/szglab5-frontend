@@ -4,19 +4,22 @@
   <div class="right">
     <div class="dashboard">
       {{#if (eq currentView undefined)}}
-        Choose one semester from left.
+        <div class="text">
+          Choose one semester from left.
+        </div>
       {{else}}
-        <h2>Selected semester: {{currentView.academicyear}}/{{currentView.academicterm}}</h2>
-        <h4>Description:</h4>
+        <div class="text label">Description</div>
         <p>{{currentView.description}}</p>
-        <h4>Activate semester</h4>
-        <p>
-          {{#if currentView.active}}
+        <div class='text label'>Activate semester</div>
+        {{#if currentView.active}}
+          <div class="text">
             Activated
-          {{else}}
+          </div>
+        {{else}}
+          <div class="text">
             Not activated.
-          {{/if}}
-        </p>
+          </div>
+        {{/if}}
       {{/if}}
     </div>
   </div>
