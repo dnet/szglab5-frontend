@@ -5,7 +5,9 @@
       <button {{action 'newQuestion'}}>Add new question</button>
       <a class="button" {{action 'print'}}>Print</a>
     {{else}}
-      Choose an exercise category on the left.
+      <div class="text">
+        Choose an exercise category on the left.
+      </div>
     {{/unless}}
   {{else}}
     {{entry-test-creator question=question edit=true closeSettings=(action "closeSettings") model=model}}
