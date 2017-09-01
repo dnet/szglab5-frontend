@@ -3,12 +3,12 @@
   <div class="right">
     <div class="evaluator">
       {{#unless currentView}}
-        <h4>Help</h4>
-        <p>First select a deliverable for grading. If you are accepted then you can correct it from the grading menu.</p>
+        <div class="text label">Help</div>
+        <div class="text">First select a deliverable for grading. If you are accepted then you can correct it from the grading menu.</div>
       {{/unless}}
       {{#if (eq currentView 'select')}}
         {{#unless selectedType}}
-            <h4>Exercise type:</h4>
+            <div class="text label">Exercise type:</div>
             {{#power-select options=ExerciseTypes selected=selectedType onchange=(action "changeType") as |type|}}
               {{type.name}}
             {{/power-select}}
@@ -18,7 +18,7 @@
                 <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
               {{selectedType.name}}
             </div>
-            <h4>Exercise category:</h4>
+            <div class="text label">Exercise category:</div>
             {{#power-select options=selectedType.ExerciseCategoriesSelect selected=selectedSheet onchange=(action "changeSheet") as |sheet|}}
               {{sheet.value}}
             {{/power-select}}
@@ -35,7 +35,7 @@
                   <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                   {{selectedType.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})
                 </div>
-                <h4>Deliverable:</h4>
+                <div class="text label">Deliverable:</div>
                 {{#power-select options=selectedEvent.correctableDeliverables selected=selectedDeliverable onchange=(action "changeDeliverable") as |Deliverable|}}
                   {{Deliverable.DeliverableTemplate.description}}
                 {{/power-select}}
@@ -44,20 +44,20 @@
                   <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                   {{selectedType.name}} / {{selectedSheet.ExerciseCategory.type}} / {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedDeliverable.DeliverableTemplate.description}}
                 </div>
-                <h4>Deadline</h4>
-                <p>{{dateformat selectedDeliverable.deadline}}</p>
+                <div class="text label">Deadline</div>
+                <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
                 {{#if selectedDeliverable.isOver}}
-                  <h4>Select for grading</h4>
+                  <div class="text label">Select for grading</div>
                   {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
                     {{#if selectedDeliverable.Corrector.id}}
-                      <p>Sorry, someone else have chosen this for grading.</p>
+                      <div class="text">Sorry, someone else have chosen this for grading.</div>
                     {{else}}
-                      <p>Noone is selected.</p>
+                      <div class="text">Noone is selected.</div>
                     {{/if}}
                   {{else}}
-                    <p>You are selected for grading. Go to the grading menu to start grading.</p>
+                    <div class="text">You are selected for grading. Go to the grading menu to start grading.</div>
                   {{/unless}}
-                  <h4>Select for grading</h4>
+                  <div class="text label">Select for grading</div>
                   <button type="button" class="btn--toggle {{if selectedDeliverable.gradingCache 'active'}}" {{action 'toggleGrading'}}>grading</button><br/>
                   <button type="button" {{action 'save'}}>Save</button>
                   {{#if success}}
@@ -72,7 +72,7 @@
                     {{/unless}}
                   {{/if}}
                 {{else}}
-                  <p>This event has not reached its deadline.</p>
+                  <div class="text">This event has not reached its deadline.</div>
                 {{/if}}
               {{/unless}}
             {{/unless}}
@@ -92,23 +92,23 @@
             <button {{action 'backFromGrading'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
           </div>
           {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
-            <p>Sorry, you have not been chosen this for grading. First select this for grading.</p>
+            <div class="text">Sorry, you have not been chosen this for grading. First select this for grading.</div>
           {{else}}
-            <h4>Event name and deliverable description:</h4>
-            <p>{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</p>
-            <h4>Student</h4>
-            <p>{{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})</p>
-            <h4>Deadline</h4>
-            <p>{{dateformat selectedDeliverable.deadline}}</p>
-            <h4>Delayed</h4>
-            <p>{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</p>
-            <h4>File</h4>
-            <p>{{#if selectedDeliverable.uploaded}}<a class="button" {{action 'download'}}>Download</a>{{else}}Not uploaded.{{/if}}</p>
-            <h4>Grade</h4>
+            <div class="text label">Event name and deliverable description:</div>
+            <div class="text">{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</div>
+            <div class="text label">Student</div>
+            <div class="text">{{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})</div>
+            <div class="text label">Deadline</div>
+            <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
+            <div class="text label">Delayed</div>
+            <div class="text">{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
+            <div class="text label">File</div>
+            <div class="text">{{#if selectedDeliverable.uploaded}}<a class="button" {{action 'download'}}>Download</a>{{else}}Not uploaded.{{/if}}</div>
+            <div class="text label">Grade</div>
             {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
-            <h4>Comment</h4>
+            <div class="text label">Comment</div>
             {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" }}
-            <h4>IMSC</h4>
+            <div class="text label">IMSC</div>
             {{input type=nubmer value=selectedDeliverable.imsc placeholder="imsc"}}
             <button type="button" class="btn--toggle {{if selectedDeliverable.finalized 'active'}}" {{action 'toggleFinalized'}}>finalized</button><br/>
             <button type="button" {{action 'save'}}>Save</button>
