@@ -10,22 +10,51 @@
       box-sizing: border-box;
 
       .directory {
+        button {
+          &.btn--toggle {
+            margin-left: -1%;
+            display: block;
+          }
+        }
+        input, button {
+          margin-left: -1%;
+
+          &.cancel {
+            margin-left: 1%;
+          }
+        }
+        .directory-settings-student {
+          .student-registration {
+            margin-left: -1%;
+            .text {
+              &.label {
+                margin-left: 1%;
+                color: black;
+              }
+            }
+            .actions {
+              button {
+                margin-left: 1%;
+              }
+            }
+          }
+        }
+        .directory-settings-evaluator {
+          .button-toggles {
+            display: inline-block;
+          }
+
+          button {
+            display: block;
+          }
+
+        }
         .directory-fields {
           margin-top: 1%;
 
           .directory-field {
             input {
               margin-top: 1%;
-            }
-          }
-
-          .directory-settings-evaluator {
-            .button-toggles {
-              display: inline-block;
-            }
-
-            button {
-              display: block;
             }
           }
         }
@@ -37,11 +66,8 @@
             margin-left: -1%;
           }
         }
-        input {
+        input, button {
           margin-left: -1%;
-        }
-        label {
-          display: block;
         }
       }
 
