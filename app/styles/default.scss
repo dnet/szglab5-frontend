@@ -41,7 +41,7 @@ div {
 	&.title {
 		font-weight: 200;
 		font-size: 54px;
-		color: #000;
+		color: black;
 		text-align: left;
 	}
 
@@ -55,9 +55,11 @@ div {
 		font-weight: 300;
 
 		&.label {
+			font-weight: 300;
 			padding-top: 2%;
 			color: #666;
-			font-weight: 300;
+			color: rgb(102,102,102);
+			text-transform: lowercase;
 		}
 
 		&.long {
@@ -83,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
 		font-weight: 200;
-		color: #000;
+		color: black;
 		text-align: left;
 }
 h4, h5, h6 {
@@ -139,13 +141,14 @@ button, .button {
 
 	&.btn--toggle {
 		background: transparent;
-		border-color: black;
+		border-color: rgba(0, 0, 0, 0.15);
 		min-width: 165px;
 		margin: 1% 1% 0 0;
 		width: 20%;
 		text-align: left;
 		color: black;
 		box-shadow: none;
+		font-weight: normal;
 
 		&:before {
 			font-family: 'FontAwesome';
@@ -165,8 +168,10 @@ button, .button {
 
 label {
 	font-family: 'Roboto Slab', sans-serif;
-	font-weight: bold;
-	color: #666;
+	font-weight: 300;
+	font-size: 16px;
+	color: rgb(102,102,102);
+	text-transform: lowercase;
 }
 
 input {
@@ -177,7 +182,7 @@ input {
 	padding: 0.5rem 0.75rem;
 	font-size: 16px;
 	line-height: 1.25;
-	color: #000;
+	color: black;
 	background-color: transparent;
 	background-image: none;
 	border: 1px solid rgba(0, 0, 0, 0.15);
@@ -193,7 +198,7 @@ textarea {
 	padding: 0.5rem 0.75rem;
 	font-size: 16px;
 	line-height: 1.25;
-	color: #000;
+	color: black;
 	background-color: white;
 	background-image: none;
 	background-clip: padding-box;
