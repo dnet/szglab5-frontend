@@ -116,6 +116,9 @@
 
       .notification {
         .notification-creator {
+          input {
+            margin-left: -1%;
+          }
           .toggle-buttons {
             button {
               &.btn--toggle {

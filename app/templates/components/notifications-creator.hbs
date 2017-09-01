@@ -10,8 +10,9 @@
   {{input type="type" value=notification.title placeholder='title'}}
 
   <div class="text label">Shown from-to</div>
-  {{pikaday-input format="YYYY-MM-DD" placeholder="From" maxDate=notification.to value=notification.from}}
-  {{pikaday-input format="YYYY-MM-DD" placeholder="Until" minDate=notification.from value=notification.until}}
+
+  {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="From" minDate=notification.currentDate maxDate=notification.to value=notification.from}}
+  {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="Until" minDate=notification.from value=notification.until}}
 
   <div class="text label">Who can see it</div>
   <div class="toggle-buttons">

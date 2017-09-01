@@ -27,5 +27,9 @@ export default DS.Model.extend({
       }
       return user.get('displayName');
     });
+  }),
+
+  currentDate: Ember.computed(function () {
+    return new Date();
   })
 });

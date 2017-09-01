@@ -5,9 +5,8 @@
       <div class="small">{{news.publishedFormatted}}</div>
       <h1>{{news.title}}</h1>
       <p>{{news.text}}</p>
+      {{else}}
+        <div class="text">Currently there are no news.</div>
     {{/each}}
-    {{#if model.lenght eq 0}}
-      <h1>Currently there is no news.</h1>
-    {{/if}}
   </div>
 </div>
