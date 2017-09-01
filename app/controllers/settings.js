@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  style: Ember.inject.service(),
   currentView: 'email',
   subMenu: [{
     key: 'email',
@@ -9,22 +8,13 @@ export default Ember.Controller.extend({
   }, {
     key: 'password',
     description: 'Hozzáférés'
-  }, {
-    key: 'style',
-    description: 'Stílus'
   }],
   mailList: true,
   notification: false,
-  styles: null,
-  selectedStyle: null,
   error: null,
   message: null,
   init() {
     this._super(...arguments);
-    var convert = (v) => ({ key: v, value: v });
-    var styles = this.get('style.selectable').map(convert);
-    this.set('styles', styles);
-    this.set('selectedStyle', convert(this.get('style.selected')));
     this.set('error', null);
     this.set('message', null);
   },
@@ -70,11 +60,6 @@ export default Ember.Controller.extend({
           return false;
         }
       }
-      else if (cw === 'style') {
-        const newStyle = this.get('selectedStyle.key');
-        this.set('model.colorTheme', newStyle);
-        this.get('style').changeStyle(newStyle);
-      }
       else if (cw === 'email') {
         const re =/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (!re.test(this.get('model.email'))) {
@@ -93,10 +78,6 @@ export default Ember.Controller.extend({
           this.set('error', "Ismeretlen hiba.");
         }
       });
-      return false;
-    },
-    changeStyle(style) {
-      this.set('selectedStyle', style);
       return false;
     }
   }

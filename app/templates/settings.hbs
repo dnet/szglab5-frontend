@@ -27,12 +27,6 @@
       <h4><label for="sshkey">ssh publikus kulcs</label></h4>
       {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs" id='sshkey'}}
       {{/if}}
-      {{#if (eq currentView 'style')}}
-      <h4>Stílus</h4>
-      {{#power-select options=styles selected=selectedStyle onchange=(action "changeStyle") as |style|}}
-        {{style.value}}
-      {{/power-select}}
-      {{/if}}
       <div>
         <button type="submit" {{action 'save'}}>Mentés</button>
       </div>

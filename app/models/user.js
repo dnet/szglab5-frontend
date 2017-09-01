@@ -3,7 +3,6 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   date: DS.attr('date'),
   classroom: DS.attr('string'),
-  colorTheme: DS.attr('string'),
   displayName: DS.attr('string'),
   email: DS.attr('string'),
   email_official: DS.attr('string'),
