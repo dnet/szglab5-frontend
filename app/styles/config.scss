@@ -1,16 +1,24 @@
 $mobile-width: 600px; /* TODO: change if app is ready */
 $medium-desktop-width: 1180px; /* TODO: change if app is ready */
 $small-desktop-width: 1000px;
+
 // default coloring:
-$leftBackground: #052a4b;
-$background-color: #666;
+$leftBackground: #7d8e90;
+$background-color: white;
+
 $error-color: red;
 $error-background: lighten($error-color, 40);
 $success-color: green;
 $success-background: lighten($success-color, 60);
-$darkgray: #A0A0A0;
-$buttonOkActive: lighten($leftBackground, 30);
-$buttonOkHover: lighten($buttonOkActive, 10);
+$darkgray: #748486;
+
+
+$buttonOkActive: #52c16d;
+$buttonOkHover: #229f3a;
 $buttonCancelActive: #808080;
 $buttonCancelHover: #585858;
 $buttonDisaled: #dddddd;
+
+
+$menuBackgroundBlue: #12C8E3;
+$menuBackgroundGreen: #8DBB00;

@@ -1,9 +1,22 @@
 .menu-content > * { /* > * because of ember view */
+  $menuBackgroundColor: $menuBackgroundBlue;
+  /* For browsers that do not support gradients */
+  $menuBackgroundColor: -webkit-linear-gradient(left, $menuBackgroundBlue , $menuBackgroundGreen);
+  /* For Safari 5.1 to 6.0 */
+  $menuBackgroundColor: -o-linear-gradient(right, $menuBackgroundBlue, $menuBackgroundGreen);
+  /* For Opera 11.1 to 12.0 */
+  $menuBackgroundColor: -moz-linear-gradient(right, $menuBackgroundBlue, $menuBackgroundGreen);
+  /* For Firefox 3.6 to 15 */
+  $menuBackgroundColor: linear-gradient(to right, $menuBackgroundBlue , $menuBackgroundGreen);
+  /* Standard syntax */
+
+  background: ghostwhite;
   padding: 1em 2em 0;
   display: -webkit-flex;
   display: flex;
   width: 100%;
   box-sizing: border-box;
+  @include box-shadow(0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12));
   @media (max-width: $mobile-width) {
     -ms-flex-direction: column;
     flex-direction: column;
@@ -24,7 +37,7 @@
   .menu-button {
     border: 1px solid white;
     background-color: transparent !important;
-    color: white;
+    color: black;
     margin-bottom: 0.5em;
     display: none;
     @media (max-width: $mobile-width) {
@@ -33,7 +46,7 @@
   }
 
   .menu-text {
-    color: white;
+    color: black;
     font-size: 16px;
     font-weight: 400;
     white-space: nowrap;
@@ -98,14 +111,14 @@
 
           .ember-power-select-status-icon {
             &:after {
-              color: white;
+              color: black;
             }
           }
 
           .ember-power-select-trigger {
             border: 1px solid white;
             border-radius: 0;
-            color: white;
+            color: black;
           }
         }
 
@@ -113,7 +126,7 @@
           padding-top: 1%;
           font-weight: 400;
         }
-        
+
         .mobile-only {
           display:none;
           @media (max-width: $mobile-width) {
@@ -135,14 +148,14 @@
           padding-left: 10px;
           padding-right: 10px;
           margin: 0;
-          color: white;
+          color: black;
           text-decoration: none;
 
           &.bar-chart {
             &:before {
               content: '\f080';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -151,7 +164,7 @@
             &:before {
               content: '\f0c0';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -160,7 +173,7 @@
             &:before {
               content: '\f0ae';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -169,7 +182,7 @@
             &:before {
               content: '\f0e4';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -178,7 +191,7 @@
             &:before {
               content: '\f15b';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -187,7 +200,7 @@
             &:before {
               content: '\f02d';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -196,7 +209,7 @@
             &:before {
               content: '\f19d';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -205,7 +218,7 @@
             &:before {
               content: '\f120';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -214,7 +227,7 @@
             &:before {
               content: '\f08b';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -223,7 +236,7 @@
             &:before {
               content: '\f090';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -232,7 +245,7 @@
             &:before {
               content: '\f0a2';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -241,7 +254,7 @@
             &:before {
               content: '\f040';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
               padding-right: 5px;
             }
           }
@@ -250,7 +263,7 @@
             &:before {
               content: '\f085';
               font-family: 'FontAwesome';
-              color: white;
+              color: black;
             }
           }
         }

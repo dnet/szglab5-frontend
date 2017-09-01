@@ -1,6 +1,6 @@
 .main-content {
   width: 100%;
-  padding: 0.5em 2em;
+  padding: 2em 2em;
   box-sizing: border-box;
   .content {
     display: -webkit-flex;
@@ -10,13 +10,13 @@
       -ms-flex-direction: column;
       flex-direction: column;
     }
-    
+
     > :first-child { // ember adds div without selector
       width: 29%;
       display: -webkit-flex;
       display: flex;
       align-items: stretch;
-      
+
       @media (max-width: $small-desktop-width) {
         width: 100%;
       }
