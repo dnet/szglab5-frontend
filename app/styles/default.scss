@@ -106,6 +106,7 @@ button, .button {
 	margin-top: 15px;
 	box-shadow: none;
 	background: $buttonOkActive;
+	outline: none;
 
 	&:active {
 		box-shadow: none;
