@@ -44,6 +44,10 @@ div {
 		color: black;
 		text-align: left;
 		cursor: default;
+
+		&.news{
+			font-size: 20px;
+		}
 	}
 
 	&.text {

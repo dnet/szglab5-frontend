@@ -20,6 +20,12 @@ export default DS.Model.extend({
   publishedFormatted: Ember.computed('published', function () {
     return moment(this.get('published')).format('YYYY.MM.DD. HH:mm');
   }),
+  fromFormatted: Ember.computed('from', function () {
+    return moment(this.get('from')).format('YYYY.MM.DD. HH:mm');
+  }),
+  untilFormatted: Ember.computed('until', function () {
+    return moment(this.get('until')).format('YYYY.MM.DD. HH:mm');
+  }),
   publisherName: Ember.computed('publisher', function () {
     return this.get('publisher').then(user => {
       if (user === null) {
