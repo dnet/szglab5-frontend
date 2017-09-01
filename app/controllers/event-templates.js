@@ -3,7 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Controller.extend({
   selectedEventTemplate: null,
-  subMenu: Ember.computed('model.eventTemplates', 'model.eventTemplates.[]', function () {
+  subMenu: Ember.computed('model.eventTemplates', 'model.eventTemplates.[]', function() {
     return this.get('model.eventTemplates').map(x => ({
       key: x,
       description: x.get('name')
@@ -12,6 +12,8 @@ export default Ember.Controller.extend({
   actions: {
     selectEventTemplate(key) {
       this.set('selectedEventTemplate', key);
+      this.set('success', false);
+      this.set('error', '');
       return false;
     },
     generateDeliverables() {

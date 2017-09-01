@@ -1,10 +1,10 @@
 <div class="content entry-test">
   {{left-menu title="Event templates" currentView=selectedEventTemplate goToView=(action 'selectEventTemplate') subMenu=subMenu}}
   <div class="right">
-    <div class="entry-test">
+    <div class="event-template">
       {{#if selectedEventTemplate}}
-        <h1>{{selectedEventTemplate.name}}</h1>
-        <h4>Generate deliverables:</h4>
+        <div class="title">{{selectedEventTemplate.name}}</div>
+        <div class="text label">To generate deliverables press the button below</div>
         <button {{action 'generateDeliverables'}}>Generate</button>
         {{#if success}}
           <div class="success-box">
@@ -16,6 +16,9 @@
             {{error}}
           </div>
         {{/unless}}
+      {{else}}
+        <div class="text"> Choose an event template on the left.
+        </div>
       {{/if}}
     </div>
   </div>
