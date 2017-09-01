@@ -1,40 +1,44 @@
 <div class="evaluation-student">
-  <h4>Name</h4>
+  <div class='text label'>Name</div>
   <p>{{event.userName}}</p>
 
-  <h4>Neptun</h4>
+  <div class='text label'>Neptun</div>
   <p>{{event.userNeptun}}</p>
 
-  <h4>Exercise type</h4>
+  <div class='text label'>Exercise type</div>
   <p>{{event.exerciseShortName}}</p>
 
-  <h4>Deadline</h4>
+  <div class='text label'>Deadline</div>
   <p>{{event.formattedDate}}</p>
 
-  <h4>Entry test grade</h4>
+  <div class='text label'>Entry test grade</div>
   {{input type=text value=event.firstEntryTest.grade placeholder="grade" }}
 
-  <h4>Entry test imsc</h4>
+  <div class='text label'>Entry test imsc</div>
   {{input type=text value=event.firstEntryTest.imsc placeholder="imsc" }}
-  
-  <h4>Entry test finalized</h4>
+
+  <div class='text label'>Entry test finalized</div>
   <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>finalized</button>
 
-  <h4>Exercise grade</h4>
-  <div class="text" id="afterreportgrade">{{event.firstCorrectableDeliverable.grade}} ({{await event.firstCorrectableDeliverable.CorrectorName}})</div>
+  <div class='text label'>Exercise grade</div>
+  <div class="text" id="afterreportgrade">
+    {{#if event.firstCorrectableDeliverable.grade}}
+    {{event.firstCorrectableDeliverable.grade}} ({{await event.firstCorrectableDeliverable.CorrectorName}})
+    {{/if}}
+  </div>
 
-  <h4>Exercise comment</h4>
+  <div class='text label'>Exercise comment</div>
   <div class="text long">
     {{event.firstCorrectableDeliverable.comment}}
   </div>
 
-  <h4>{{event.EventTemplate.name}} grade</h4>
+  <div class='text label'>{{event.EventTemplate.name}} grade</div>
   {{input type=text value=event.grade placeholder="grade" }}
 
-  <h4>{{event.EventTemplate.name}} comment</h4>
+  <div class='text label'>{{event.EventTemplate.name}} comment</div>
   {{textarea value=event.comment cols="9" rows="9" placeholder="comment" }}
 
-  <h4>{{event.EventTemplate.name}} finalized</h4>
+  <div class='text label'>{{event.EventTemplate.name}} finalized</div>
   <button type="button" class="btn--toggle {{if event.finalized 'active'}}" {{action 'toggleFinalized' event}}>finalized</button>
 
   <button type="button" {{action 'save'}}>Save</button>

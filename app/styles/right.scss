@@ -9,6 +9,23 @@
       padding: 2em;
       box-sizing: border-box;
 
+      .demonstrator {
+        .evaluation-student {
+          input, button {
+            margin-left: -1%;
+          }
+
+          button {
+            &.btn--toggle {
+              display: block;
+            }
+            &.cancel {
+              margin-left: 1%;
+            }
+          }
+        }
+      }
+
       .directory {
         button {
           &.btn--toggle {
