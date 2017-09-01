@@ -57,13 +57,19 @@ div {
 		&.label {
 			font-weight: 300;
 			padding-top: 2%;
-			color: #666;
 			color: rgb(102,102,102);
 			text-transform: lowercase;
 		}
 
 		&.long {
 			text-align: justify;
+		}
+	}
+
+	&.file-upload {
+		input {
+			color: black;
+			font-weight: 300;
 		}
 	}
 }

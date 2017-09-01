@@ -3,6 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Component.extend({
   success: false,
+  classNames: ['file-upload'],
   uploadUrl: Ember.computed('Deliverable', function () {
     return `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/upload`;
   }),

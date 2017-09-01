@@ -1,74 +1,74 @@
 <div class='student-laboratory'>
-  <h4>Helyszín</h4>
-  <p>{{result.location}}</p>
-  <h4>Időpont</h4>
-  <p>{{dateformat result.date}}</p>
-  <h4>Laborvezető</h4>
-  <p>{{result.Demonstrator.displayName}} ({{result.Demonstrator.email}})</p>
+  <div class="text label">Helyszín</div>
+  <div class="text">{{result.location}}</div>
+  <div class="text label">Időpont</div>
+  <div class="text">{{dateformat result.date}}</div>
+  <div class="text label">Laborvezető</div>
+  <div class="text">{{result.Demonstrator.displayName}} ({{result.Demonstrator.email}})</div>
   {{#if result.comment}}
-    <h4>Laborvezetői megjegyzés</h4>
-    <p>{{result.comment}}</p>
+    <div class="text label">Laborvezetői megjegyzés</div>
+    <div class="text">{{result.comment}}</div>
   {{/if}}
   {{#each result.Deliverables as |Deliverable number|}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
-      <h4>Beugró érdemjegye:</h4>
+      <div class="text label">Beugró érdemjegye:</div>
       {{#if Deliverable.finalized}}
-        <p>{{Deliverable.grade}}</p>
+        <div class="text">{{Deliverable.grade}}</div>
         {{#if Deliverable.comment}}
-          <h4>Beugró megjegyzés:</h4>
-          <p>{{Deliverable.comment}}</p>
+          <div class="text label">Beugró megjegyzés:</div>
+          <div class="text">{{Deliverable.comment}}</div>
         {{/if}}
-        <h4>Beugró IMSC:</h4>
-        <p>{{Deliverable.imsc}}</p>
+        <div class="text label">Beugró IMSC:</div>
+        <div class="text">{{Deliverable.imsc}}</div>
       {{else}}
-        <p>Még nincs értékelve.</p>
+        <div class="text">Még nincs értékelve.</div>
       {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
-      <h4>{{Deliverable.DeliverableTemplate.description}} határideje:</h4>
-      <p>{{dateformat Deliverable.deadline}}</p>
+      <div class="text label">{{Deliverable.DeliverableTemplate.description}} határideje:</div>
+      <div class="text">{{dateformat Deliverable.deadline}}</div>
       {{#unless Deliverable.isOver}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} feltöltése:</h4>
+        <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltése:</div>
         {{student-laboratory-upload Deliverable=Deliverable}}
       {{/unless}}
       {{#if Deliverable.uploaded}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</h4>
-        <p>{{dateformat Deliverable.lastSubmittedDate}}</p>
+        <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</div>
+        <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
       {{/if}}
-      <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+      <div class="text label">{{Deliverable.DeliverableTemplate.description}} érdemjegye:</div>
       {{#if Deliverable.finalized}}
-        <p>{{Deliverable.grade}}</p>
+        <div class="text">{{Deliverable.grade}}</div>
         {{#if Deliverable.comment}}
-          <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
-          <p>{{Deliverable.comment}}</p>
+          <div class="text label">{{Deliverable.DeliverableTemplate.description}} megjegyzés:</div>
+          <div class="text">{{Deliverable.comment}}</div>
         {{/if}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} IMSC:</h4>
-        <p>{{Deliverable.imsc}}</p>
+        <div class="text label">{{Deliverable.DeliverableTemplate.description}} IMSC:</div>
+        <div class="text">{{Deliverable.imsc}}</div>
       {{else}}
-        <p>Még nincs értékelve.</p>
+        <div class="text">Még nincs értékelve.</div>
       {{/if}}
     {{/if}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'GIT_REPO')}}
       {{#if Deliverable.isOver}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} feltöltve:</h4>
-        <p>{{dateformat Deliverable.lastSubmittedDate}}</p>
-        <h4>{{Deliverable.DeliverableTemplate.description}} érdemjegye:</h4>
+        <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltve:</div>
+        <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
+        <div class="text label">{{Deliverable.DeliverableTemplate.description}} érdemjegye:</div>
         {{#if Deliverable.finalized}}
-          <p>{{Deliverable.grade}}</p>
+          <div class="text">{{Deliverable.grade}}</div>
           {{#if Deliverable.comment}}
-            <h4>{{Deliverable.DeliverableTemplate.description}} megjegyzés:</h4>
-            <p>{{Deliverable.comment}}</p>
+            <div class="text label">{{Deliverable.DeliverableTemplate.description}} megjegyzés:</div>
+            <div class="text">{{Deliverable.comment}}</div>
           {{/if}}
-          <h4>{{Deliverable.DeliverableTemplate.description}} IMSC:</h4>
-          <p>{{Deliverable.imsc}}</p>
+          <div class="text label">{{Deliverable.DeliverableTemplate.description}} IMSC:</div>
+          <div class="text">{{Deliverable.imsc}}</div>
         {{else}}
-          <p>Még nincs értékelve.</p>
+          <div class="text">Még nincs értékelve.</div>
         {{/if}}
       {{else}}
-        <h4>{{Deliverable.DeliverableTemplate.description}} határidő:</h4>
-        <p>{{dateformat Deliverable.deadline}}</p>
-        <h4>Git:</h4>
-        <p>{{Deliverable.url}}</p>
+        <div class="text label">{{Deliverable.DeliverableTemplate.description}} határidő:</div>
+        <div class="text">{{dateformat Deliverable.deadline}}</div>
+        <div class="text label">Git:</div>
+        <div class="text">{{Deliverable.url}}</div>
         <div class="tagSelector">
           {{#power-select options=Deliverable.commits selected=Deliverable.commit onchange=(action "selectCommit" Deliverable) as |commit|}}
           {{commit}}
@@ -84,7 +84,7 @@
     {{/if}}
   {{/each}}
   {{#if result.finalized}}
-    <h4>Végleges jegy</h4>
-    <p>{{result.grade}}</p>
+    <div class="text label">Végleges jegy</div>
+    <div class="text">{{result.grade}}</div>
   {{/if}}
 </div>
