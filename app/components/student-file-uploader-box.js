@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  session: Ember.inject.service('session'),
   actions: {
     upload(event) {
       const files = event.target.files;
@@ -15,6 +16,7 @@ export default Ember.Component.extend({
           type: "POST",
           url: this.get('url'),
           data: formData,
+          beforeSend: (xhr) => { xhr.setRequestHeader('Authorization', `Bearer ${this.get('session.data.authenticated.token')}`); },
           contentType: false,
           processData: false,
           crossDomain: true,

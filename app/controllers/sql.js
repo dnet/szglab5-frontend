@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
   sqlText: '',
   error: '',
   data: [],
@@ -20,6 +21,7 @@ export default Ember.Controller.extend({
         type: "POST",
         url: config.backendUrl + "/sql",
         data: JSON.stringify({ sqlText: this.get('sqlText') }),
+        beforeSend: (xhr) => { xhr.setRequestHeader('Authorization', `Bearer ${this.get('session.data.authenticated.token')}`); },
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
         dataType: "json",

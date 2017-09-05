@@ -61,6 +61,7 @@ export default Ember.Controller.extend({
         type: "POST",
         url: config.backendUrl + "/auth/impersonate",
         data: JSON.stringify({ userId: +user.meta.get('id') }),
+        beforeSend: (xhr) => { xhr.setRequestHeader('Authorization', `Bearer ${this.get('session.data.authenticated.token')}`); },
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
         dataType: "json",
