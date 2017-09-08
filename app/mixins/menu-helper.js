@@ -15,11 +15,11 @@ export default Ember.Mixin.create({
       }
     ],
     ADMIN: [
-      {
+      /*{
         key: 'statistics',
         value: "Stats",
         icon: 'bar-chart'
-      }, {
+      },*/ {
         key: 'directory',
         value: "Users",
         icon: 'users'
@@ -27,11 +27,11 @@ export default Ember.Mixin.create({
         key: 'notification',
         value: "News",
         icon: 'bell-o'
-      }, {
+      }, /*{
         key: 'semester',
         value: "Semesters",
         icon: 'dashboard'
-      }, {
+      },*/ {
         key: 'entry-test',
         value: "Entry Questions",
         icon: 'pencil'
