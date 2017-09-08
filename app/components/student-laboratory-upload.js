@@ -7,9 +7,6 @@ export default Ember.Component.extend({
   uploadUrl: Ember.computed('Deliverable', function () {
     return `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/upload`;
   }),
-  downloadUrl: Ember.computed('Deliverable', function () {
-    return `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/download`;
-  }),
   error: '',
   actions: {
     uploadStarted() {
@@ -30,6 +27,20 @@ export default Ember.Component.extend({
         this.set('error', 'Unknown error.');
       }
       return false;
+    },
+    download() {
+      const form = document.createElement('form');
+      form.setAttribute('target', '_blank');
+      form.setAttribute('method', 'post');
+      form.setAttribute('action', `${config.backendUrl}/deliverables/${this.get('Deliverable.id')}/download`);
+      const hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'token');
+      hiddenInput.setAttribute('value', this.get('session.data.authenticated.token'));
+      form.appendChild(hiddenInput);
+      document.body.appendChild(form);
+      form.submit();
+      form.remove();
     }
   }
 });

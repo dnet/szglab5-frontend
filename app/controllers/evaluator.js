@@ -3,6 +3,7 @@ import RSVP from 'rsvp';
 
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
+  session: Ember.inject.service('session'),
   header: ['Neptun', 'Name', 'Finalized', 'Grade'],
   rowIndecies: ['neptun', 'name', 'finalized', 'grade'],
   headerGrading: ['Type', 'Neptun', 'Name', 'Finalized', 'Grade'],
@@ -194,7 +195,18 @@ export default Ember.Controller.extend({
       return false;
     },
     download() {
-      window.open(this.get('selectedDeliverable.donwloadLink'), '_blank');
+      const form = document.createElement('form');
+      form.setAttribute('target', '_blank');
+      form.setAttribute('method', 'post');
+      form.setAttribute('action', this.get('selectedDeliverable.donwloadLink'));
+      const hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'token');
+      hiddenInput.setAttribute('value', this.get('session.data.authenticated.token'));
+      form.appendChild(hiddenInput);
+      document.body.appendChild(form);
+      form.submit();
+      form.remove();
       return false;
     }
   }

@@ -3,6 +3,7 @@ import config from '../config/environment';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  session: Ember.inject.service('session'),
   exerciseCategory: null,
   question: null,
   init() {
@@ -51,7 +52,18 @@ export default Ember.Component.extend({
       const ids = this.get('exerciseCategory.Questions').filter(x => x.get('checked')).map(
         x => x.get('id')
       );
-      window.open(config.backendUrl + '/generatePDF?' + Ember.$.param({questionId: ids}), '_blank');
+      const form = document.createElement('form');
+      form.setAttribute('target', '_blank');
+      form.setAttribute('method', 'post');
+      form.setAttribute('action', config.backendUrl + '/generatePDF?' + Ember.$.param({ questionId: ids }));
+      const hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'token');
+      hiddenInput.setAttribute('value', this.get('session.data.authenticated.token'));
+      form.appendChild(hiddenInput);
+      document.body.appendChild(form);
+      form.submit();
+      form.remove();
       return false;
     }
   }
