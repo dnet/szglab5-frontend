@@ -55,9 +55,6 @@ export default Ember.Controller.extend({
       }
       return olds;
     }, []);
-    if (r.length === 1) {
-      this.actions.changeType.apply(this, [r[0]]);
-    }
     return r;
   }),
   actions: {
