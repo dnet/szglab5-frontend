@@ -22,6 +22,7 @@ export default Ember.Component.extend({
           crossDomain: true,
           success: () => {
             this.sendAction('success');
+            event.target.value = '';
           },
           failure: errorMessage,
           statusCode: {
