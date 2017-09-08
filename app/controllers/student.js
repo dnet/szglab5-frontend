@@ -24,9 +24,24 @@ export default Ember.Controller.extend({
             });
             promises.push(promise);
           });
-          RSVP.Promise.all(promises).then(() => resolve(subMenuKeys.sort((lhs, rhs) => {
-            return lhs.event.get('date') - rhs.event.get('date');
-          })), err => {
+          RSVP.Promise.all(promises).then(() => {
+            // sort menupoints by key
+            const sorted = subMenuKeys.sort((lhs, rhs) => {
+              return lhs.event.get('date') - rhs.event.get('date');
+            });
+            // select the first menu that has not been graded yet.
+            this.set('currentView', null);
+            sorted.forEach(m => {
+              if (this.get('currentView') === null && Ember.isEmpty(m.event.get('grade'))) {
+                this.set('currentView', m);
+              }
+            });
+            // select the last if there's no not graded menupoint
+            if (this.get('currentView') === null) {
+              this.set('currentView', sorted.lastObject);
+            }
+            resolve(sorted);
+          }, err => {
             console.error(err);
             reject(err);
           });
