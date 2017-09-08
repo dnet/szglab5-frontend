@@ -8,7 +8,6 @@ export default Ember.Component.extend({
   body: Ember.computed('currentEventTemplate', function () {
     return new RSVP.Promise((resolve, reject) => {
       this.get('currentEventTemplate.Events').then(events => {
-        console.log('asd');
         const body = [];
         const promises = [];
         events.forEach(event => {

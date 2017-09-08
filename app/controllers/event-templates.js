@@ -32,7 +32,6 @@ export default Ember.Controller.extend({
         dataType: "json",
         success: () => {
           this.set('success', true);
-          console.log('success');
         },
         failure: errorMessage,
         statusCode: {

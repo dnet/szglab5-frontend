@@ -30,9 +30,7 @@ export default DS.Model.extend({
     return `${config.backendUrl}/deliverables/${this.get('id')}/download`;
   }),
   CorrectorName: Ember.computed('Corrector', 'Corrector.name', function() {
-    console.log(this.get('Corrector'));
     return this.get('Corrector').then(corrector => {
-      console.log(corrector);
       return corrector.get('displayName');
     });
   }),
