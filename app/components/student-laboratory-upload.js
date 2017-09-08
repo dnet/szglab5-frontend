@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Component.extend({
+  session: Ember.inject.service('session'),
   success: false,
   classNames: ['file-upload'],
   uploadUrl: Ember.computed('Deliverable', function () {
