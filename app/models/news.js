@@ -18,13 +18,13 @@ export default DS.Model.extend({
   // Language: DS.belongsTo('language'),
   // Semester: DS.belongsTo('semester'),
   publishedFormatted: Ember.computed('published', function () {
-    return moment(this.get('published')).format('YYYY.MM.DD. HH:mm');
+    return moment(this.get('published')).format('YYYY.MM.DD.');
   }),
   fromFormatted: Ember.computed('from', function () {
-    return moment(this.get('from')).format('YYYY.MM.DD. HH:mm');
+    return moment(this.get('from')).format('YYYY.MM.DD.');
   }),
   untilFormatted: Ember.computed('until', function () {
-    return moment(this.get('until')).format('YYYY.MM.DD. HH:mm');
+    return moment(this.get('until')).format('YYYY.MM.DD.');
   }),
   publisherName: Ember.computed('publisher', function () {
     return this.get('publisher').then(user => {
