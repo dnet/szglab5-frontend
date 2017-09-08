@@ -198,7 +198,7 @@ export default Ember.Controller.extend({
       const form = document.createElement('form');
       form.setAttribute('target', '_blank');
       form.setAttribute('method', 'post');
-      form.setAttribute('action', this.get('selectedDeliverable.donwloadLink'));
+      form.setAttribute('action', this.get('selectedDeliverable.downloadLink'));
       const hiddenInput = document.createElement('input');
       hiddenInput.setAttribute('type', 'hidden');
       hiddenInput.setAttribute('name', 'token');

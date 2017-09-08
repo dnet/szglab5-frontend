@@ -26,7 +26,7 @@ export default DS.Model.extend({
     return !(this.get('lastSubmittedDate') &&
       ((this.get('deadline') - this.get('lastSubmittedDate')) > 0));
   }),
-  donwloadLink: Ember.computed('id', function() {
+  downloadLink: Ember.computed('id', function() {
     return `${config.backendUrl}/deliverables/${this.get('id')}/download`;
   }),
   CorrectorName: Ember.computed('Corrector', 'Corrector.name', function() {
