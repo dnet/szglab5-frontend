@@ -4,7 +4,7 @@
   margin: 0 auto;
   width: 30%;
   min-width: 290px;
-  padding: 1.5em 1.5em 0;
+  padding: 0.5em 1.5em;
   box-sizing: border-box;
   @media (max-width: $mobile-width) {
     width: 100%;
@@ -14,18 +14,17 @@
     padding: 0.5em;
   }
   .top {
-    margin: 0.5em 0 1em;
+    margin-bottom: 1em;
     button {
       margin: 0;
     }
   }
   .bottom {
     input {
-      margin: 0 auto;
-      margin-top: 1em;
+      margin: 0.5em auto;
       min-width: 200px;
     }
-    border-top: 1px solid black;
+    // border-top: 1px solid black;
     .error-box {
       min-height: 1em;
       padding: 0.25em;
@@ -37,6 +36,9 @@
         color: $error-color;
         // background-color: $error-background;
       }
+    }
+    button {
+      margin: 0;
     }
   }
 }
