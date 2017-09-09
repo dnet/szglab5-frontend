@@ -85,7 +85,11 @@
             <div class="text label">Delayed</div>
             <div class="text">{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
             <div class="text label">File</div>
-            <div class="text">{{#if selectedDeliverable.uploaded}}<a class="button" {{action 'download'}}>Download</a>{{else}}Not uploaded.{{/if}}</div>
+            {{#if selectedDeliverable.uploaded}}
+            <div class="text"><a class="button" {{action 'download'}}>Download</a> <a class="button" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">Akep</a></div>
+            {{else}}
+            <div class="text">Not uploaded.</div>
+            {{/if}}
             <div class="text label">Grade</div>
             {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
             <div class="text label">Comment</div>
