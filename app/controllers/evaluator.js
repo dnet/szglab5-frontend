@@ -113,9 +113,9 @@ export default Ember.Controller.extend({
       return false;
     },
     changeDeliverableFromGrading({ meta: deliverable }) {
-      console.log(deliverable.get('Event')); 
+      this.set('success', false);
+      this.set('error', '');
       deliverable.get('Event').then(event => {
-        console.log(event);
         this.set('selectedEvent', event);
         this.set('selectedEventUser', deliverable.get('Student'));
         this.set('success', false);
@@ -164,6 +164,9 @@ export default Ember.Controller.extend({
         this.get('selectedDeliverable').rollbackAttributes();
         return this.set('selectedDeliverable', null);
       }
+      this.set('success', false);
+      this.set('error', '');
+      return false;
     },
     changeDeliverableFilter(selected) {
       this.set('selectedDeliverableFilter', selected);
@@ -178,6 +181,8 @@ export default Ember.Controller.extend({
       this.set('selectedEvent', null);
       this.set('selectedEventUser', null);
       this.set('selectedDeliverable', null);
+      this.set('success', false);
+      this.set('error', '');
       return false;
     },
     download() {
