@@ -4,13 +4,14 @@ import RSVP from 'rsvp';
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
-  header: ['Neptun', 'Name', 'Finalized', 'Grade'],
-  rowIndecies: ['neptun', 'name', 'finalized', 'grade'],
+  header: ['Neptun', 'Category', 'Deliverable'],
+  rowIndecies: ['neptun', 'exerciseCategoryName', 'deliverableTemplateName'],
+  filteredDeliverablesSelect: [],
   headerGrading: ['Type', 'Neptun', 'Name', 'Finalized', 'Grade'],
   rowIndeciesGrading: ['DeliverableTemplate.description', 'Student.neptun', 'Student.displayName', 'finalized', 'grade'],
   didReceiveAttrs() {
-    this.set('selectedSheet', null);
-    this.set('selectedEvent', null);
+    this.set('selectedEventTemplate', null);
+    this.set('selectedDeliverableTemplate', null);
     return this.set('currentView', null);
   },
   subMenu: [
@@ -29,7 +30,7 @@ export default Ember.Controller.extend({
         finalized: false,
         hasGrade: false
       },
-      value: 'Does not started'
+      value: 'Does not started to correct'
     },
     {
       filter: {
@@ -37,7 +38,7 @@ export default Ember.Controller.extend({
         finalized: false,
         hasGrade: true
       },
-      value: 'Has grade'
+      value: 'Has grade but not finalized'
     },
     {
       filter: {
@@ -45,84 +46,82 @@ export default Ember.Controller.extend({
         finalized: true,
         hasGrade: true
       },
-      value: 'Finalized'
+      value: 'Has grade and finalized'
     }
   ],
-  ExerciseTypes: Ember.computed('model.user', 'model.user.ExerciseTypes.[]', 'model.exerciseTypes', function () {
-    const r = this.get('model.user.ExerciseTypes').reduce((olds, n) => {
-      if (olds.indexOf(n) === -1) {
-        return [...olds, n];
-      }
-      return olds;
-    }, []);
-    return r;
-  }),
+  page: 0,
   actions: {
+    // changes view
     goToView(key) {
       this.set('currentView', key);
       return false;
     },
-    changeType(type) {
-      this.set('selectedType', type);
-      this.set('selectedSheet', null);
-      this.set('selectedEvent', null);
-      this.set('events', null);
-      this.set('selectedDeliverable', null);
+    // changes event template in the filter
+    changeEventTemplate(eT) {
+      this.set('selectedEventTemplate', eT);
+      this.set('selectedDeliverableTemplate', '');
+      this.actions.resetPage.apply(this);
       return false;
     },
-    changeSheet(sheet) {
-      this.set('selectedSheet', sheet.key);
-      this.set('selectedEvent', null);
-      this.set('events', null);
-      this.set('selectedDeliverable', null);
-      this.get('store').query('event', {
-        filter: {
-          exerciseSheetId: this.get('selectedSheet.id')
-        }
-      }).then(events => {
-        const promises = events.map(event => event.get('User'));
-        RSVP.all(promises).then(([...users]) => {
-          this.set('events', events.map((event, index) => {
-            return {
-              neptun: users[index].get('neptun'),
-              name: users[index].get('displayName'),
-              finalized: (event.get('finalized')) ? 'Yes' : 'No',
-              grade: event.get('grade'),
-              meta: event
-            };
-          }));
-        });
+    // changes deliverable template in the filter
+    changeDeliverableTemplate(dT) {
+      this.set('selectedDeliverableTemplate', dT);
+      this.actions.resetPage.apply(this);
+      return false;
+    },
+    // load deliverables by filter
+    loadFilteredDeliverablesForSelect() {
+      const filter = {
+        isFree: true,
+        isAttached: true,
+        isOver: true,
+        isFile: true
+      };
+      if (this.get('selectedEventTemplate')) {
+        filter.eventTemplateId = this.get('selectedEventTemplate.id');
+      }
+      if (this.get('selectedDeliverableTemplate')) {
+        filter.deliverableTemplateId = this.get('selectedDeliverableTemplate.id');
+      }
+      const pageSize = 10;
+      this.get('store').query('deliverable', {
+        filter: filter,
+        offset: pageSize * this.get('page'),
+        limit: pageSize
+      }).then(deliverables => {
+        this.set('filteredDeliverablesSelect', [
+          ...this.get('filteredDeliverablesSelect'),
+          ...deliverables.map(x => {
+            return ({
+              id: x.get('id'),
+              exerciseCategoryName: x.get('DeliverableTemplate.EventTemplate.ExerciseCategory.type'),
+              deliverableTemplateName: x.get('DeliverableTemplate.description'),
+              neptun: x.get('Student.neptun'),
+              meta: x
+            });
+          })
+        ]);
+        this.set('page', this.get('page') + 1);
       });
       return false;
     },
-    changeEvent(row) {
-      const id = row.meta.get('id');
-      row.meta.unloadRecord();
-      this.set('selectedDeliverable', null);
-      this.get('store').findRecord('event', id).then(event => {
-        event.get('User').then(user => {
-          this.set('selectedEventUser', user);
-          this.set('selectedEvent', event);
-          const deliverables = this.get('selectedEvent.correctableDeliverables');
-          if (deliverables.length === 1) {
-            this.actions.changeDeliverable.apply(this, [deliverables[0]]);
-          }
-        });
-      });
+    // resetPage
+    resetPage() {
+      this.set('page', 0);
+      this.set('filteredDeliverablesSelect', []);
+      this.actions.loadFilteredDeliverablesForSelect.apply(this);
       return false;
     },
-    changeDeliverable(deliverable) {
-      this.set('success', false);
-      this.set('error', '');
-      this.set('selectedDeliverable', deliverable);
-      this.set('selectedDeliverable.gradingCache', this.get('selectedDeliverable.grading'));
-      return false;
-    },
-    changeDeliverableFromGrading(deliverable) {
+    changeDeliverableFromGrading({ meta: deliverable }) {
+      console.log(deliverable.get('Event')); 
       deliverable.get('Event').then(event => {
+        console.log(event);
         this.set('selectedEvent', event);
         this.set('selectedEventUser', deliverable.get('Student'));
-        this.actions.changeDeliverable.apply(this, [deliverable]);
+        this.set('success', false);
+        this.set('error', '');
+        this.set('selectedDeliverable', deliverable);
+        this.set('selectedDeliverable.gradingCache', this.get('selectedDeliverable.grading'));
       });
       return false;
     },
@@ -164,16 +163,6 @@ export default Ember.Controller.extend({
       if (this.get('selectedDeliverable')) {
         this.get('selectedDeliverable').rollbackAttributes();
         return this.set('selectedDeliverable', null);
-      }
-      if (this.get('selectedEvent')) {
-        return this.set('selectedEvent', null);
-      }
-      if (this.get('selectedSheet')) {
-        this.set('events', null);
-        return this.set('selectedSheet', null);
-      }
-      if (this.get('selectedType')) {
-        return this.set('selectedType', null);
       }
     },
     changeDeliverableFilter(selected) {
