@@ -11,7 +11,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, Corr
     var userData = jwt_decode(token);
     return RSVP.hash({
       user: this.get('store').find('user', userData.userId),
-      eventTemplates: this.get('store').findAll('eventTemplate')
+      eventTemplates: this.get('store').query('eventTemplate', {
+        filter: {
+          asCorrector: true
+        }
+      })
     });
   }
 });
