@@ -127,7 +127,7 @@ export default Ember.Controller.extend({
       }
       return false;
     },
-    changeDeliverableFromGrading({ meta: deliverable }) {
+    changeDeliverable({ meta: deliverable }) {
       this.set('success', false);
       this.set('error', '');
       deliverable.get('Event').then(event => {
@@ -138,6 +138,10 @@ export default Ember.Controller.extend({
         this.set('selectedDeliverable', deliverable);
         this.set('selectedDeliverable.gradingCache', this.get('selectedDeliverable.grading'));
       });
+      return false;
+    },
+    changeDeliverableFromGrading(deliverable) {
+      this.actions.changeDeliverable.apply(this, [{ meta: deliverable }]);
       return false;
     },
     toggleFinalized() {
@@ -151,10 +155,13 @@ export default Ember.Controller.extend({
     save() {
       this.set('success', false);
       this.set('error', '');
+      console.log(this.get('selectedDeliverable.gradingCache'));
       if (this.get('selectedDeliverable.gradingCache')) {
         this.set('selectedDeliverable.Corrector', this.get('model.user'));
+        this.set('selectedDeliverable.grading', true);
       } else {
         this.set('selectedDeliverable.Corrector', null);
+        this.set('selectedDeliverable.grading', false);
       }
       if (this.get('selectedDeliverable.comment') === '') {
         this.set('selectedDeliverable.comment', null);
