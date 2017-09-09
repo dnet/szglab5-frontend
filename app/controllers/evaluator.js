@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   rowIndecies: ['neptun', 'exerciseCategoryName', 'deliverableTemplateName'],
   filteredDeliverablesSelect: [],
   headerGrading: ['Type', 'Neptun', 'Name', 'Finalized', 'Grade'],
-  rowIndeciesGrading: ['DeliverableTemplate.description', 'Student.neptun', 'Student.displayName', 'finalized', 'grade'],
+  rowIndeciesGrading: ['DeliverableTemplate.description', 'Event.StudentRegistration.User.neptun', 'Event.StudentRegistration.User.displayName', 'finalized', 'grade'],
   didReceiveAttrs() {
     this.set('selectedEventTemplate', null);
     this.set('selectedDeliverableTemplate', null);
@@ -50,10 +50,15 @@ export default Ember.Controller.extend({
     }
   ],
   page: 0,
+  filteredDeliverables: [],
   actions: {
     // changes view
     goToView(key) {
       this.set('currentView', key);
+      this.set('selectedEventTemplate', null);
+      this.set('selectedDeliverableTemplate', null);
+      this.set('selectedDeliverableFilter', this.deliverableFilters[0]);
+      this.actions.resetPage.apply(this);
       return false;
     },
     // changes event template in the filter
@@ -96,7 +101,7 @@ export default Ember.Controller.extend({
               id: x.get('id'),
               exerciseCategoryName: x.get('DeliverableTemplate.EventTemplate.ExerciseCategory.type'),
               deliverableTemplateName: x.get('DeliverableTemplate.description'),
-              neptun: x.get('Student.neptun'),
+              neptun: x.get('Event.StudentRegistration.User.neptun'),
               meta: x
             });
           })
@@ -106,10 +111,20 @@ export default Ember.Controller.extend({
       return false;
     },
     // resetPage
-    resetPage() {
+    resetPage(noNeedReload) {
       this.set('page', 0);
       this.set('filteredDeliverablesSelect', []);
-      this.actions.loadFilteredDeliverablesForSelect.apply(this);
+      this.set('filteredDeliverables', []);
+      if (!noNeedReload) {
+        switch (this.get('currentView')) {
+          case 'select':
+            this.actions.loadFilteredDeliverablesForSelect.apply(this);
+            break;
+          case 'grading':
+            this.actions.changeDeliverableFilter.apply(this);
+            break;
+        }
+      }
       return false;
     },
     changeDeliverableFromGrading({ meta: deliverable }) {
@@ -117,7 +132,7 @@ export default Ember.Controller.extend({
       this.set('error', '');
       deliverable.get('Event').then(event => {
         this.set('selectedEvent', event);
-        this.set('selectedEventUser', deliverable.get('Student'));
+        this.set('selectedEventUser', deliverable.get('Event.StudentRegistration.User'));
         this.set('success', false);
         this.set('error', '');
         this.set('selectedDeliverable', deliverable);
@@ -169,11 +184,26 @@ export default Ember.Controller.extend({
       return false;
     },
     changeDeliverableFilter(selected) {
-      this.set('selectedDeliverableFilter', selected);
+      let filter = {};
+      if (selected) {
+        this.set('selectedDeliverableFilter', selected);
+        filter = selected.filter;
+        this.actions.resetPage.apply(this, [true]);
+      }
+      else {
+        filter = this.get('selectedDeliverableFilter.filter');
+      }
+      const pageSize = 10;
       this.get('store').query('deliverable', {
-        filter: selected.filter
+        filter: filter,
+        offset: pageSize * this.get('page'),
+        limit: pageSize
       }).then(deliverables => {
-        this.set('filteredDeliverables', deliverables);
+        this.set('filteredDeliverables', [
+          ...this.get('filteredDeliverables'),
+          ...deliverables.map(x => x)
+        ]);
+        this.set('page', this.get('page') + 1);
       });
       return false;
     },

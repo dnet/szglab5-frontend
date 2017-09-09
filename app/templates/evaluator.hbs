@@ -65,7 +65,10 @@
           {{/power-select}}
           {{#if filteredDeliverables}}
             {{table-component withoutNumber=true header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverableFromGrading') onClickRowAction='changeEvent'}}
+          {{else}}
+            <div class="text">Nothing to show.</div>
           {{/if}}
+          <a class="button" {{action 'changeDeliverableFilter'}}>Load more</a>
         {{else}}
           <div class="breadcrumb">
             <button {{action 'backFromGrading'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
