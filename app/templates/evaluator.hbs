@@ -19,7 +19,7 @@
               {{/power-select}}
             {{/if}}
           <div class="text label">Deliverables:</div>
-          {{table-component withoutNumber=true header=header body=filteredDeliverablesSelect rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeDeliverableFromGrading') onClickRowAction='changeEvent'}}
+          {{table-component withoutNumber=true header=header body=filteredDeliverablesSelect rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
           <a class="button" {{action 'loadFilteredDeliverablesForSelect'}}>Load more</a>
         {{else}}
           <div class="breadcrumb">

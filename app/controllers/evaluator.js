@@ -155,7 +155,6 @@ export default Ember.Controller.extend({
     save() {
       this.set('success', false);
       this.set('error', '');
-      console.log(this.get('selectedDeliverable.gradingCache'));
       if (this.get('selectedDeliverable.gradingCache')) {
         this.set('selectedDeliverable.Corrector', this.get('model.user'));
         this.set('selectedDeliverable.grading', true);
@@ -217,6 +216,7 @@ export default Ember.Controller.extend({
     backFromGrading() {
       this.set('selectedEvent', null);
       this.set('selectedEventUser', null);
+      this.get('selectedDeliverable').rollbackAttributes();
       this.set('selectedDeliverable', null);
       this.set('success', false);
       this.set('error', '');
