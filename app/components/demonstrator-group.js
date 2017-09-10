@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
   header: ['Name', 'Neptun', 'Exercise', 'Date', 'Place', 'Entry grade', 'Exercise Grade', 'Event grade'],
-  rowIndecies: ['StudentRegistration.displayName', 'StudentRegistration.User.neptun', 'ExerciseSheet.ExerciseType.shortName', 'formattedDate', 'location', 'firstEntryTest.grade', 'firstCorrectableDeliverable.grade', 'grade'],
+  rowIndecies: ['StudentRegistration.User.displayName', 'StudentRegistration.User.neptun', 'ExerciseSheet.ExerciseType.shortName', 'formattedDate', 'location', 'firstEntryTest.grade', 'firstCorrectableDeliverable.grade', 'grade'],
   body: Ember.computed('currentEventTemplate', function () {
     return new RSVP.Promise((resolve, reject) => {
       if (this.get('currentEventTemplate.id')) {
