@@ -23,7 +23,7 @@
   <div class='text label'>Exercise grade</div>
   <div class="text" id="afterreportgrade">
     {{#if event.firstCorrectableDeliverable.grade}}
-    {{event.firstCorrectableDeliverable.grade}} ({{await event.firstCorrectableDeliverable.CorrectorName}})
+      {{event.firstCorrectableDeliverable.grade}} ({{await event.firstCorrectableDeliverable.CorrectorName}})
     {{/if}}
   </div>
 
@@ -31,6 +31,15 @@
   <div class="text long">
     {{event.firstCorrectableDeliverable.comment}}
   </div>
+
+  <div class="text label">Exercise file</div>
+  {{#if selectedDeliverable.uploaded}}
+    <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
+    <div class="text label">Exercise delayed</div>
+    <div class="text">{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
+  {{else}}
+    <div class="text">Not uploaded.</div>
+  {{/if}}
 
   <div class='text label'>{{event.EventTemplate.name}} grade</div>
   {{input type=text value=event.grade placeholder="grade" }}
