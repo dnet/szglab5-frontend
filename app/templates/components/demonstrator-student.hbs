@@ -33,10 +33,10 @@
   </div>
 
   <div class="text label">Exercise file</div>
-  {{#if selectedDeliverable.uploaded}}
+  {{#if event.firstCorrectableDeliverable.uploaded}}
     <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
     <div class="text label">Exercise delayed</div>
-    <div class="text">{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
+    <div class="text">{{#if event.firstCorrectableDeliverable.isDelayed}}Yes, {{dateformat event.firstCorrectableDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
   {{else}}
     <div class="text">Not uploaded.</div>
   {{/if}}

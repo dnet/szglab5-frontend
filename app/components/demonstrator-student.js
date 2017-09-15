@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  session: Ember.inject.service('session'),
   actions: {
     toggleFinalized(obj) {
       obj.toggleProperty('finalized');
@@ -37,6 +38,21 @@ export default Ember.Component.extend({
     cancel() {
       this.get('event').rollbackAttributes();
       return this.sendAction('cancel');
+    },
+    download() {
+      const form = document.createElement('form');
+      form.setAttribute('target', '_blank');
+      form.setAttribute('method', 'post');
+      form.setAttribute('action', this.get('event.firstCorrectableDeliverable.downloadLink'));
+      const hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'token');
+      hiddenInput.setAttribute('value', this.get('session.data.authenticated.token'));
+      form.appendChild(hiddenInput);
+      document.body.appendChild(form);
+      form.submit();
+      form.remove();
+      return false;
     }
   }
 });
