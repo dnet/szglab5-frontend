@@ -9,6 +9,7 @@ export default DS.Model.extend({
   comment: DS.attr('string'),
   createdAt: DS.attr('date'),
   finalized: DS.attr('boolean'),
+  imsc: DS.attr('number'),
   grade: DS.attr('number'),
   updatedAt: DS.attr('date'),
   Deliverables: DS.hasMany('deliverable', { async: false, inverse: 'Event' }),

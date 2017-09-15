@@ -16,8 +16,8 @@ export default Ember.Component.extend({
       if (this.get('event.firstEntryTest.grade') === '') {
         this.set('event.firstEntryTest.grade', null);
       }
-      if (this.get('event.firstEntryTest.imsc') === '') {
-        this.set('event.firstEntryTest.imsc', 0);
+      if (this.get('event.imsc') === '') {
+        this.set('event.imsc', 0);
       }
       // TODO: Show messagebox
       const errorHandler = t => {

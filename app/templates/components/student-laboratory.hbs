@@ -20,8 +20,6 @@
           <div class="text label">Beugró megjegyzés:</div>
           <div class="text">{{Deliverable.comment}}</div>
         {{/if}}
-        <div class="text label">Beugró IMSC:</div>
-        <div class="text">{{Deliverable.imsc}}</div>
       {{else}}
         <div class="text">Még nincs értékelve.</div>
       {{/if}}
@@ -44,8 +42,6 @@
           <div class="text label">{{Deliverable.DeliverableTemplate.description}} megjegyzés:</div>
           <div class="text">{{Deliverable.comment}}</div>
         {{/if}}
-        <div class="text label">{{Deliverable.DeliverableTemplate.description}} IMSC:</div>
-        <div class="text">{{Deliverable.imsc}}</div>
       {{else}}
         <div class="text">Még nincs értékelve.</div>
       {{/if}}
@@ -61,8 +57,6 @@
             <div class="text label">{{Deliverable.DeliverableTemplate.description}} megjegyzés:</div>
             <div class="text">{{Deliverable.comment}}</div>
           {{/if}}
-          <div class="text label">{{Deliverable.DeliverableTemplate.description}} IMSC:</div>
-          <div class="text">{{Deliverable.imsc}}</div>
         {{else}}
           <div class="text">Még nincs értékelve.</div>
         {{/if}}
@@ -88,5 +82,7 @@
   {{#if result.finalized}}
     <div class="text label">Végleges jegy</div>
     <div class="text">{{result.grade}}</div>
+    <div class="text label">Imsc pontok</div>
+    <div class="text">{{result.imsc}}</div>
   {{/if}}
 </div>
