@@ -9,6 +9,8 @@
     <div class="text label">Laborvezetői megjegyzés</div>
     <div class="text">{{result.comment}}</div>
   {{/if}}
+  <div class="text label">Feladat típus</div>
+  <div class="text">{{await exerciseShortName}}</div>
   {{#each result.Deliverables as |Deliverable number|}}
     {{#if (eq Deliverable.DeliverableTemplate.type 'BEUGRO')}}
       <div class="text label">Beugró érdemjegye:</div>

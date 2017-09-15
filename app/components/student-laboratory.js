@@ -2,20 +2,27 @@ import Ember from 'ember';
 import moment from 'moment';
 
 export default Ember.Component.extend({
-  init: function() {
+  exerciseShortName: Ember.computed('result', 'result.ExerciseSheet', function () {
+    if (this.get('result') && this.get('result.ExerciseSheet')) {
+      return this.get('result.ExerciseSheet.ExerciseType').then(exerciseType => {
+        return exerciseType.get('shortName');
+      });
+    }
+  }),
+  init: function () {
     this._super();
     return this.tick();
   },
-  tick: function() {
+  tick: function () {
     this.toggleProperty("toggleTime");
-    return setTimeout(((function(_this) {
-      return function() {
+    return setTimeout(((function (_this) {
+      return function () {
         return _this.tick();
       };
     })(this)), 1000 * 60 * 15);
   },
   toggleTime: true,
-  timeLeft: Ember.computed('toggleTime', function() {
+  timeLeft: Ember.computed('toggleTime', function () {
     var deadline, diff;
     deadline = this.get('result.deadline');
     diff = moment(deadline).diff(moment(), 'hours');
@@ -29,7 +36,7 @@ export default Ember.Component.extend({
     return diff + " óra";
   }),
   actions: {
-    selectCommit: function(Deliverable, newcommit) {
+    selectCommit(Deliverable, newcommit) {
       Deliverable.set('success', null);
       Deliverable.set('fail', null);
       Deliverable.set('commit', newcommit);
