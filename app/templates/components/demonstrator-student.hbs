@@ -1,0 +1,57 @@
+<div class="evaluation-student">
+  <div class='text label'>Name</div>
+  <p>{{event.StudentRegistration.User.displayName}}</p>
+
+  <div class='text label'>Neptun</div>
+  <p>{{event.StudentRegistration.User.neptun}}</p>
+
+  <div class='text label'>Exercise type</div>
+  <p>{{event.ExerciseSheet.ExerciseType.shortName}}</p>
+
+  <div class='text label'>Deadline</div>
+  <p>{{event.formattedDate}}</p>
+
+  <div class='text label'>Entry test grade</div>
+  {{input type=text value=event.firstEntryTest.grade placeholder="grade" }}
+
+  <div class='text label'>Entry test imsc</div>
+  {{input type=text value=event.firstEntryTest.imsc placeholder="imsc" }}
+
+  <div class='text label'>Entry test finalized</div>
+  <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>finalized</button>
+
+  <div class='text label'>Exercise grade</div>
+  <div class="text" id="afterreportgrade">
+    {{#if event.firstCorrectableDeliverable.grade}}
+    {{event.firstCorrectableDeliverable.grade}} ({{await event.firstCorrectableDeliverable.CorrectorName}})
+    {{/if}}
+  </div>
+
+  <div class='text label'>Exercise comment</div>
+  <div class="text long">
+    {{event.firstCorrectableDeliverable.comment}}
+  </div>
+
+  <div class='text label'>{{event.EventTemplate.name}} grade</div>
+  {{input type=text value=event.grade placeholder="grade" }}
+
+  <div class='text label'>{{event.EventTemplate.name}} comment</div>
+  {{textarea value=event.comment cols="9" rows="9" placeholder="comment" }}
+
+  <div class='text label'>{{event.EventTemplate.name}} finalized</div>
+  <button type="button" class="btn--toggle {{if event.finalized 'active'}}" {{action 'toggleFinalized' event}}>finalized</button>
+
+  <button type="button" {{action 'save'}}>Save</button>
+  <button type="button" class="cancel" {{action 'cancel'}}>Cancel</button>
+  {{#if success}}
+    <div class="success-box">
+      Saved successfully.
+    </div>
+  {{else}}
+    {{#unless (or (eq error '') (eq error undefined))}}
+      <div class="error-box">
+        {{error}}
+      </div>
+    {{/unless}}
+  {{/if}}
+</div>

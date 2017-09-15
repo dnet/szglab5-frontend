@@ -8,7 +8,7 @@
         {{#unless selectedEvent}}
           {{demonstrator-group currentEventTemplate=currentView evaluateEvent=(action 'evaluateEvent')}}
         {{else}}
-          {{evaluation-student event=selectedEvent mode='demonstrator' cancel=(action 'cancel')}}
+          {{demonstrator-student event=selectedEvent mode='demonstrator' cancel=(action 'cancel')}}
         {{/unless}}
       {{/unless}}
     </div>
