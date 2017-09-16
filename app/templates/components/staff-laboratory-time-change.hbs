@@ -1,0 +1,24 @@
+<div class="text label">Submitted date</div>
+<div class="text">
+  {{dateformat lastSubmittedDate}}
+</div>
+<div class="text label">Change submitted date</div>
+<div class="dateChooser">
+  {{pikaday-input format="YYYY-MM-DD" placeholder="Select a date" value=date onSelection=(action (mut date))}}
+  <div class="time-input">
+    {{input type=number value=hours placeholder="hours" }} :
+    {{input type=number value=minutes placeholder="minutes" }}
+  </div>
+</div>
+<button type="button" {{action 'save'}}>Save</button>
+{{#if success}}
+  <div class="success-box">
+    Saved successfully.
+  </div>
+{{else}}
+  {{#unless (or (eq error '') (eq error undefined))}}
+    <div class="error-box">
+      {{error}}
+    </div>
+  {{/unless}}
+{{/if}}

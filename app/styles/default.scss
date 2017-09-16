@@ -286,3 +286,12 @@ html {
 	}
 
 }
+
+.time-input {
+	input {
+		display: inline;
+		width: 3em;
+    min-width: auto;
+    margin-left: 0 !important;
+	}
+}
