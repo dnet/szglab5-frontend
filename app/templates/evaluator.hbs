@@ -29,6 +29,12 @@
           <div class="text label">Deadline</div>
           <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
           {{#if selectedDeliverable.isOver}}
+            <div class="text label">File</div>
+            {{#if selectedDeliverable.uploaded}}
+              <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
+            {{else}}
+              <div class="text">Not uploaded.</div>
+            {{/if}}
             <div class="text label">Select for grading</div>
             {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
               {{#if selectedDeliverable.Corrector.id}}
