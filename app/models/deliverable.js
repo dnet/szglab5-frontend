@@ -7,6 +7,7 @@ export default DS.Model.extend({
   lastSubmittedDate: DS.attr('date'),
   grade: DS.attr('number'),
   grading: DS.attr('boolean'),
+  imsc: DS.attr('number'),
   comment: DS.attr('string'),
   finalized: DS.attr('boolean'),
   url: DS.attr('string'),

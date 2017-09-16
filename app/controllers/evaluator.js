@@ -203,6 +203,9 @@ export default Ember.Controller.extend({
       if (this.get('selectedDeliverable.grade') === '') {
         this.set('selectedDeliverable.grade', null);
       }
+      if (this.get('selectedDeliverable.imsc') === '') {
+        this.set('selectedDeliverable.imsc', null);
+      }
       this.get('selectedDeliverable').save().then(() => {
         this.set('success', true);
       }, (t) => {

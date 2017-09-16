@@ -29,6 +29,15 @@
     {{event.firstCorrectableDeliverable.comment}}
   </div>
 
+  <div class='text label'>Exercise imsc</div>
+  <div class="text">
+    {{#if event.firstCorrectableDeliverable.imsc}}
+      {{event.firstCorrectableDeliverable.imsc}} point
+    {{else}}
+      No
+    {{/if}}
+  </div>
+
   <div class="text label">Exercise file</div>
   {{#if event.firstCorrectableDeliverable.uploaded}}
     <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
