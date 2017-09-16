@@ -1,17 +1,23 @@
-{{student-file-uploader-box url=uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
+{{#if Deliverable.isUploadable}}
+  <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltése:</div>
+  {{student-file-uploader-box url=uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
 
-{{#if success}}
-  <div class="success-box">
-    Sikeres feltöltés.
-  </div>
-{{else}}
-  {{#unless (eq error '')}}
-    <div class="error-box">
-      {{error}}
+  {{#if success}}
+    <div class="success-box">
+      Sikeres feltöltés.
     </div>
-  {{/unless}}
+  {{else}}
+    {{#unless (eq error '')}}
+      <div class="error-box">
+        {{error}}
+      </div>
+    {{/unless}}
+  {{/if}}
 {{/if}}
 
 {{#if Deliverable.uploaded}}
+  <div class="text label">{{Deliverable.DeliverableTemplate.description}} letöltése:</div>
   <a class="button" {{action 'download'}}>Letöltés</a>
+  <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</div>
+  <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
 {{/if}}

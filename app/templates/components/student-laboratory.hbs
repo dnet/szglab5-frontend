@@ -27,14 +27,7 @@
     {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
       <div class="text label">{{Deliverable.DeliverableTemplate.description}} határideje:</div>
       <div class="text">{{dateformat Deliverable.deadline}}</div>
-      {{#unless Deliverable.isOver}}
-        <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltése:</div>
-        {{student-laboratory-upload Deliverable=Deliverable}}
-      {{/unless}}
-      {{#if Deliverable.uploaded}}
-        <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</div>
-        <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
-      {{/if}}
+      {{student-laboratory-upload Deliverable=Deliverable}}
       <div class="text label">{{Deliverable.DeliverableTemplate.description}} érdemjegye:</div>
       {{#if Deliverable.finalized}}
         <div class="text">{{Deliverable.grade}}</div>
