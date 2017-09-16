@@ -1,6 +1,6 @@
 {{#if Deliverable.isUploadable}}
   <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltése:</div>
-  {{student-file-uploader-box url=uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
+  {{file-uploader-box url=Deliverable.uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
 
   {{#if success}}
     <div class="success-box">

@@ -33,6 +33,9 @@ export default DS.Model.extend({
   downloadLink: Ember.computed('id', function () {
     return `${config.backendUrl}/deliverables/${this.get('id')}/download`;
   }),
+  uploadUrl: Ember.computed('id', function () {
+    return `${config.backendUrl}/deliverables/${this.get('id')}/upload`;
+  }),
   CorrectorName: Ember.computed('Corrector', 'Corrector.name', function () {
     return this.get('Corrector').then(corrector => {
       return corrector.get('displayName');

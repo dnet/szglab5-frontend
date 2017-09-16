@@ -2,8 +2,14 @@
 {{#each (await StudentRegistration.Events) as |event|}}
   <div class="text label">{{dateformat event.date}} @ {{event.location}}</div>
   <div class="actions">
-    <button type="button" disabled= {{not lab.isEntrytestFinal}}>Beugrójegy törlése</button>
+    {{#each event.Deliverables as |Deliverable|}}
+      {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
+        {{Deliverable.DeliverableTemplate.description}}
+        {{staff-laboratory-upload Deliverable=Deliverable}}
+      {{/if}}
+    {{/each}}
+    <!--<button type="button" disabled= {{not lab.isEntrytestFinal}}>Beugrójegy törlése</button>
     <button type="button" disabled= {{not lab.isReportFinal}}>Jegyzőkönyvjegy törlése</button>
-    <button type="button" disabled= {{not lab.isLaboratoryFinal}}>Laborjegy törlése</button>
+    <button type="button" disabled= {{not lab.isLaboratoryFinal}}>Laborjegy törlése</button>-->
   </div>
 {{/each}}

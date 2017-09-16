@@ -2,9 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   session: Ember.inject.service('session'),
-  success: false,
-  classNames: ['file-upload'],
   error: '',
+  success: false,
   actions: {
     uploadStarted() {
       this.set('success', false);

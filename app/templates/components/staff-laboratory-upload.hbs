@@ -1,0 +1,17 @@
+{{file-uploader-box url=Deliverable.uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
+
+{{#if success}}
+  <div class="success-box">
+    Sikeres feltöltés.
+  </div>
+{{else}}
+  {{#unless (eq error '')}}
+    <div class="error-box">
+      {{error}}
+    </div>
+  {{/unless}}
+{{/if}}
+
+{{#if Deliverable.uploaded}}
+  <a class="button" {{action 'download'}}>Letöltés</a>
+{{/if}}
