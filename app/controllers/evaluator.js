@@ -107,7 +107,7 @@ export default Ember.Controller.extend({
               neptun: x.get('Event.StudentRegistration.User.neptun'),
               displayName: x.get('Event.StudentRegistration.User.displayName'),
               typeShortName: x.get('Event.ExerciseSheet.ExerciseType.shortName'),
-              uploadedAt: x.get('uploaded') ? dateformat([x.get('updatedAt')]) : 'No',
+              uploadedAt: x.get('uploaded') ? dateformat([x.get('lastSubmittedDate')]) : 'No',
               deadline: dateformat([x.get('deadline')]),
               meta: x
             });
