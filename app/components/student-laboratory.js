@@ -9,31 +9,20 @@ export default Ember.Component.extend({
       });
     }
   }),
-  init: function () {
+  init() {
     this._super();
     return this.tick();
   },
-  tick: function () {
+  tick() {
     this.toggleProperty("toggleTime");
-    return setTimeout(((function (_this) {
-      return function () {
-        return _this.tick();
-      };
-    })(this)), 1000 * 60 * 15);
+    return setTimeout(() => {
+      this.tick();
+    }, 1000 * 60 * 15);
   },
   toggleTime: true,
   timeLeft: Ember.computed('toggleTime', function () {
-    var deadline, diff;
-    deadline = this.get('result.deadline');
-    diff = moment(deadline).diff(moment(), 'hours');
-    if ((diff <= 0)) {
-      diff = moment(deadline).diff(moment(), 'minutes');
-      if ((diff <= 0)) {
-        diff = 0;
-      }
-      return diff + " perc";
-    }
-    return diff + " óra";
+    const deadline = this.get('result.firstCorrectableDeliverable.deadline'); // TODO: do for each deliverable, maybe with different components
+    return moment(deadline).fromNow();
   }),
   actions: {
     selectCommit(Deliverable, newcommit) {
