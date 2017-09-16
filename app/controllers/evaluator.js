@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
+import { dateformat } from '../helpers/dateformat';
 
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
-  header: ['Neptun', 'Category', 'Deliverable'],
-  rowIndecies: ['neptun', 'exerciseCategoryName', 'deliverableTemplateName'],
+  header: ['Neptun', 'Name', 'Uploaded at', 'Deadline', 'Exercise type', 'Category', 'Deliverable'],
+  rowIndecies: ['neptun', 'displayName', 'uploadedAt', 'deadline', 'typeShortName', 'exerciseCategoryName', 'deliverableTemplateName'],
   filteredDeliverablesSelect: [],
   headerGrading: ['Type', 'Neptun', 'Name', 'Finalized', 'Grade'],
   rowIndeciesGrading: ['DeliverableTemplate.description', 'Event.StudentRegistration.User.neptun', 'Event.StudentRegistration.User.displayName', 'finalized', 'grade'],
@@ -58,6 +59,8 @@ export default Ember.Controller.extend({
       this.set('selectedEventTemplate', null);
       this.set('selectedDeliverableTemplate', null);
       this.set('selectedDeliverableFilter', this.deliverableFilters[0]);
+      this.set('success', false);
+      this.set('error', '');
       this.actions.resetPage.apply(this);
       return false;
     },
@@ -102,6 +105,10 @@ export default Ember.Controller.extend({
               exerciseCategoryName: x.get('DeliverableTemplate.EventTemplate.ExerciseCategory.type'),
               deliverableTemplateName: x.get('DeliverableTemplate.description'),
               neptun: x.get('Event.StudentRegistration.User.neptun'),
+              displayName: x.get('Event.StudentRegistration.User.displayName'),
+              typeShortName: x.get('Event.ExerciseSheet.ExerciseType.shortName'),
+              uploadedAt: x.get('uploaded') ? dateformat([x.get('updatedAt')]) : 'No',
+              deadline: dateformat([x.get('deadline')]),
               meta: x
             });
           })
@@ -150,6 +157,34 @@ export default Ember.Controller.extend({
     },
     toggleGrading() {
       this.toggleProperty('selectedDeliverable.gradingCache');
+      return false;
+    },
+    book() {
+      this.set('success', false);
+      this.set('error', '');
+      this.set('selectedDeliverable.Corrector', this.get('model.user'));
+      this.set('selectedDeliverable.grading', true);
+      this.get('selectedDeliverable').save().then(() => {
+        this.set('success', true);
+      }, (t) => {
+        if (t.errors && t.errors.length > 0 && t.errors[0].title) {
+          this.set('error', t.errors[0].title);
+        }
+      });
+      return false;
+    },
+    unbook() {
+      this.set('success', false);
+      this.set('error', '');
+      this.set('selectedDeliverable.Corrector', null);
+      this.set('selectedDeliverable.grading', false);
+      this.get('selectedDeliverable').save().then(() => {
+        this.set('success', true);
+      }, (t) => {
+        if (t.errors && t.errors.length > 0 && t.errors[0].title) {
+          this.set('error', t.errors[0].title);
+        }
+      });
       return false;
     },
     save() {

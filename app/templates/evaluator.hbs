@@ -35,13 +35,11 @@
                 <div class="text">Sorry, someone else have chosen this for grading.</div>
               {{else}}
                 <div class="text">Noone is selected.</div>
+                <button type="button" {{action 'book'}}>Book</button>
               {{/if}}
             {{else}}
               <div class="text">You are selected for grading. Go to the grading menu to start grading.</div>
             {{/unless}}
-            <div class="text label">Select for grading</div>
-            <button type="button" class="btn--toggle {{if selectedDeliverable.gradingCache 'active'}}" {{action 'toggleGrading'}}>grading</button><br/>
-            <button type="button" {{action 'save'}}>Save</button>
             {{#if success}}
               <div class="success-box">
                 Saved successfully.
@@ -74,8 +72,9 @@
             <button {{action 'backFromGrading'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
           </div>
           {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
-            <div class="text">Sorry, you have not been chosen this for grading. First select this for grading.</div>
+            <div class="text">Sorry, you have not been chosen for grading this. First select this for grading, go to the 'Select for grading' menu.</div>
           {{else}}
+            <button type="button" {{action 'unbook'}}>Unbook</button>
             <div class="text label">Event name and deliverable description:</div>
             <div class="text">{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</div>
             <div class="text label">Student</div>
