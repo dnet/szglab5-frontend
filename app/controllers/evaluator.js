@@ -190,13 +190,6 @@ export default Ember.Controller.extend({
     save() {
       this.set('success', false);
       this.set('error', '');
-      if (this.get('selectedDeliverable.gradingCache')) {
-        this.set('selectedDeliverable.Corrector', this.get('model.user'));
-        this.set('selectedDeliverable.grading', true);
-      } else {
-        this.set('selectedDeliverable.Corrector', null);
-        this.set('selectedDeliverable.grading', false);
-      }
       if (this.get('selectedDeliverable.comment') === '') {
         this.set('selectedDeliverable.comment', null);
       }
