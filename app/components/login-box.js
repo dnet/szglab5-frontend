@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   password: '',
   error: '',
   hasError: false,
+  redirect: null,
   session: Ember.inject.service('session'),
   currentUser: Ember.inject.service('session'),
   actions: {
@@ -23,11 +24,14 @@ export default Ember.Component.extend({
       }
       credentials.identification = credentials.username;
       credentials.username = undefined;
-      this.get('session').authenticate(authenticator, credentials).then(
-        () => {
+      this.get('session').authenticate(authenticator, credentials).then(() => {
+        if (this.get('redirect') === null) {
           this.sendAction('goToSettings');
         }
-      ).catch((t) => {
+        else {
+          window.location.replace(`${this.get('redirect')}?token=${this.get('session.data.authenticated.token')}`);
+        }
+      }).catch((t) => {
         if (t.errors && t.errors.length > 0 && t.errors[0].title) {
           this.set('error', t.errors[0].title);
           this.set('hasError', true);
