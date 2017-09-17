@@ -7,7 +7,7 @@
   <div class="text">{{result.Demonstrator.displayName}} ({{result.Demonstrator.email_official}})</div>
   {{#if result.comment}}
     <div class="text label">Laborvezetői megjegyzés</div>
-    <div class="text">{{result.comment}}</div>
+    <div class="text long">{{result.comment}}</div>
   {{/if}}
   <div class="text label">Feladat típus</div>
   <div class="text">{{await exerciseShortName}}</div>
@@ -18,7 +18,7 @@
         <div class="text">{{Deliverable.grade}}</div>
         {{#if Deliverable.comment}}
           <div class="text label">Beugró megjegyzés:</div>
-          <div class="text">{{Deliverable.comment}}</div>
+          <div class="text long">{{Deliverable.comment}}</div>
         {{/if}}
       {{else}}
         <div class="text">Még nincs értékelve.</div>
@@ -33,7 +33,7 @@
         <div class="text">{{Deliverable.grade}}</div>
         {{#if Deliverable.comment}}
           <div class="text label">{{Deliverable.DeliverableTemplate.description}} megjegyzés:</div>
-          <div class="text">{{Deliverable.comment}}</div>
+          <div class="text long">{{Deliverable.comment}}</div>
         {{/if}}
       {{else}}
         <div class="text">Még nincs értékelve.</div>
@@ -48,7 +48,7 @@
           <div class="text">{{Deliverable.grade}}</div>
           {{#if Deliverable.comment}}
             <div class="text label">{{Deliverable.DeliverableTemplate.description}} megjegyzés:</div>
-            <div class="text">{{Deliverable.comment}}</div>
+            <div class="text long">{{Deliverable.comment}}</div>
           {{/if}}
         {{else}}
           <div class="text">Még nincs értékelve.</div>
