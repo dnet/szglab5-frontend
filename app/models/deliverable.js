@@ -23,8 +23,11 @@ export default DS.Model.extend({
     return (this.get('deadline') - (new Date())) < 0;
   }),
   isUploadable: Ember.computed(function () {
-    return !this.get('isOver') || // this deadline is not over
-      (this.get('isOver') && (this.get('lastSubmittedDate') < this.get('deadline'))); // the deadline is over, but the last upload time is before the deadline
+    return !this.get('isOver') || // this deadline is not over OR
+      (this.get('isOver') && // the deadline is over, 
+        (this.get('lastSubmittedDate') < this.get('deadline')) && // but the last upload time is before the deadline and
+        !this.get('uploaded') // hasn't been uploaded yet
+      );
   }),
   isDelayed: Ember.computed('deadline', 'uploaded', function () {
     return !(this.get('lastSubmittedDate') &&
