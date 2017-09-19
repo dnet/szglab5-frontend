@@ -35,11 +35,11 @@ export default Ember.Mixin.create({
         key: 'entry-test',
         value: "Entry Questions",
         icon: 'pencil'
-      }, {
+      }, /*{
         key: 'event-templates',
         value: "Event Templates",
         icon: 'pencil'
-      }, {
+      },*/ {
         key: 'sql',
         value: "SQL",
         icon: 'terminal'
