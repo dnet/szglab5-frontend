@@ -1,10 +1,10 @@
 {{#if Deliverable.isUploadable}}
-  <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltése:</div>
+  <div class="text label">Upload {{Deliverable.DeliverableTemplate.description}}:</div>
   {{file-uploader-box url=Deliverable.uploadUrl started=(action 'uploadStarted') success=(action 'uploadSuccess') failed=(action 'uploadFailed')}}
 
   {{#if success}}
     <div class="success-box">
-      Sikeres feltöltés.
+      The uploading was successful.
     </div>
   {{else}}
     {{#unless (eq error '')}}
@@ -16,8 +16,8 @@
 {{/if}}
 
 {{#if Deliverable.uploaded}}
-  <div class="text label">{{Deliverable.DeliverableTemplate.description}} letöltése:</div>
-  <a class="button" {{action 'download'}}>Letöltés</a>
-  <div class="text label">{{Deliverable.DeliverableTemplate.description}} feltöltés ideje:</div>
+  <div class="text label">Download {{Deliverable.DeliverableTemplate.description}}:</div>
+  <a class="button" {{action 'download'}}>Download</a>
+  <div class="text label">{{Deliverable.DeliverableTemplate.description}} uploaded at:</div>
   <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
 {{/if}}

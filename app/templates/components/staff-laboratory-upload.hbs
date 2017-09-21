@@ -2,7 +2,7 @@
 
 {{#if success}}
   <div class="success-box">
-    Sikeres feltöltés.
+    Uploaded successfully.
   </div>
 {{else}}
   {{#unless (eq error '')}}
@@ -13,5 +13,5 @@
 {{/if}}
 
 {{#if Deliverable.uploaded}}
-  <a class="button" {{action 'download'}}>Letöltés</a>
+  <a class="button" {{action 'download'}}>Download</a>
 {{/if}}

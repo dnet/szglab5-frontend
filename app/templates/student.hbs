@@ -1,12 +1,12 @@
 <div class="content student">
-  {{left-menu title="Laborok" currentView=currentView.key goToView=(action 'goToView') subMenu=(await subMenu)}}
+  {{left-menu title="Laboratories" currentView=currentView.key goToView=(action 'goToView') subMenu=(await subMenu)}}
   <div class="right">
     <div class="student">
       <div class="student-lab-content">
         {{#if currentView}}
           {{student-laboratory result=currentView.event selectCommit=(action "selectCommit")}}
         {{else}}
-          <h1>Válassz egy labort!</h1>
+          <h1>Choose one!</h1>
         {{/if}}
       </div>
     </div>
