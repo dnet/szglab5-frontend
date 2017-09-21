@@ -31,6 +31,7 @@ export default Ember.Component.extend({
       this.get('event.firstEntryTest').save().then(() => {
         this.get('event').save().then(() => {
           this.set('success', true);
+          this.sendAction('cancel'); // go back to the settings of all the students in the group
         }, err => errorHandler(err));
       }, err => errorHandler(err));
       return false;
