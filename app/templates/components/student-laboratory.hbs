@@ -27,6 +27,8 @@
     {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
       <div class="text label">{{Deliverable.DeliverableTemplate.description}} deadline:</div>
       <div class="text">{{dateformat Deliverable.deadline}} ({{timeLeft}})</div>
+      <div class="text label">{{Deliverable.DeliverableTemplate.description}} evaluator:</div>
+      <div class="text">{{Deliverable.CorrectorName}} ({{Deliverable.CorrectorEmail}})</div>
       {{student-laboratory-upload Deliverable=Deliverable}}
       <div class="text label">{{Deliverable.DeliverableTemplate.description}} grade:</div>
       {{#if Deliverable.finalized}}

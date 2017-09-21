@@ -17,7 +17,7 @@ export default DS.Model.extend({
   uploaded: DS.attr('boolean'),
   Event: DS.belongsTo('event', { inverse: 'Deliverables' }),
   DeliverableTemplate: DS.belongsTo('deliverableTemplate', { async: false, inverse: 'Deliverables' }),
-  Corrector: DS.belongsTo('user', { inverse: 'Deliverables' }),
+  Corrector: DS.belongsTo('user', { async: false, inverse: 'Deliverables' }),
   Student: DS.belongsTo('user', { async: false }),
   isOver: Ember.computed('deadline', function () {
     return (this.get('deadline') - (new Date())) < 0;
@@ -39,10 +39,11 @@ export default DS.Model.extend({
   uploadUrl: Ember.computed('id', function () {
     return `${config.backendUrl}/deliverables/${this.get('id')}/upload`;
   }),
-  CorrectorName: Ember.computed('Corrector', 'Corrector.name', function () {
-    return this.get('Corrector').then(corrector => {
-      return corrector.get('displayName');
-    });
+  CorrectorName: Ember.computed('Corrector', 'Corrector.displayName', function () {
+    return this.get('Corrector.displayName');
+  }),
+  CorrectorEmail: Ember.computed('Corrector', 'Corrector.displayName', function () {
+    return this.get('Corrector.email_official');
   }),
   commits: ['commit1', 'commit4']
 });
