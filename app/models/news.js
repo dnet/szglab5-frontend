@@ -35,11 +35,7 @@ export default DS.Model.extend({
     });
   }),
   publisherNameIncluded: Ember.computed('publisher', function () {
-    const user = this.get('publisher');
-    if (user === null) {
-      return '';
-    }
-    return user.get('displayName');
+    return this.get('publisher.displayName');
   }),
 
   currentDate: Ember.computed(function () {
