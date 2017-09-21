@@ -9,6 +9,18 @@
           <div style="margin-left: 1em;">
             {{staff-laboratory-upload Deliverable=Deliverable}}
             {{staff-laboratory-time-change Deliverable=Deliverable}}
+            <button type="button" disabled={{not Deliverable.finalized}} {{action 'definalize' Deliverable}}>Definalize</button>
+            {{#if Deliverable.success}}
+              <div class="success-box">
+                Saved successfully.
+              </div>
+            {{else}}
+              {{#unless (or (eq Deliverable.error '') (eq Deliverable.error undefined))}}
+                <div class="error-box">
+                  {{Deliverable.error}}
+                </div>
+              {{/unless}}
+            {{/if}}
           </div>
         {{/if}}
       {{/each}}
