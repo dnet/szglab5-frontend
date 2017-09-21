@@ -16,12 +16,22 @@ export default Ember.Component.extend({
             eventTemplateId: this.get('currentEventTemplate.id')
           }
         }).then(events => {
-          const body = [];
-          events.forEach(event => {
-            event.set('formattedDate', dateformat([event.get('date')]));
-            body.push(event);
-          });
-          resolve(body);
+          let body = [];
+          resolve(events
+            .map(event => {
+              event.set('formattedDate', dateformat([event.get('date')]));
+              return event;
+            })
+            .sort((lhs, rhs) => {
+              if (lhs.get('displayName') < rhs.get('displayName')) {
+                return -1;
+              }
+              if (lhs.get('displayName') > rhs.get('displayName')) {
+                return 1;
+              }
+              return 0;
+            })
+          );
         }, err => {
           console.error(err);
           reject(err);
