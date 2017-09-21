@@ -1,6 +1,9 @@
 <div class="text label">Feladattípusok</div>
 <div class="button-toggles">
   {{#each model.exerciseTypes as |exerciseType|}}
-    <button type="button" class="btn--toggle {{if (has-key currentTypes exerciseType.name) 'active'}}" {{action 'toggleType' exerciseType}}>{{exerciseType.name}}</button>
+    <button type="button" class="btn--toggle {{if (has-key currentTypes exerciseType.name) 'active'}}" {{action 'toggleType' exerciseType}}>
+      {{exerciseType.shortName}}
+      - ({{exerciseType.name}})
+    </button>
   {{/each}}
 </div>
