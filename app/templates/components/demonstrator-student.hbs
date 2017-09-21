@@ -44,7 +44,7 @@
     <div class="text label">Exercise delayed</div>
     <div class="text">{{#if event.firstCorrectableDeliverable.isDelayed}}Yes, {{dateformat event.firstCorrectableDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
   {{else}}
-    <div class="text">Not uploaded.</div>
+    <div class="text">Not uploaded{{#if event.firstCorrectableDeliverable.isUploadable}}, but still can upload{{/if}}.</div>
   {{/if}}
 
   <div class='text label'>{{event.EventTemplate.name}} grade</div>
