@@ -176,6 +176,11 @@ button, .button {
 			}
 		}
 	}
+
+	&.btn-auto-width {
+		width: auto;
+		box-sizing: content-box;
+	}
 }
 
 label {

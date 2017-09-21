@@ -25,7 +25,7 @@
   <div class="text label">Roles</div>
   <div class="toggle-buttons">
     {{#each model.roles as |role|}}
-      <button type="button" class="btn--toggle {{if (has-key currentRoles role.name) 'active'}}" {{action 'toggleRole' role}}>{{role.name}}</button>
+      <button type="button" class="btn--toggle btn-auto-width {{if (has-key currentRoles role.name) 'active'}}" {{action 'toggleRole' role}}>{{role.name}}</button>
     {{/each}}
   </div>
 
