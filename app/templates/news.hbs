@@ -4,7 +4,7 @@
     <div class="news">
         {{#each model as |news id|}}
         <div class="show-news-message">
-          <div class="title news">{{news.title}} - {{await news.publisherName}}</div>
+          <div class="title news">{{news.title}} - {{news.publisherNameIncluded}}</div>
           <div class="text long">{{news.fromFormatted}} - {{news.untilFormatted}}</div>
           <div class="text long">{{news.text}}</div>
         </div>
