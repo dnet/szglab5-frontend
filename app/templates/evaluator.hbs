@@ -80,7 +80,9 @@
           {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
             <div class="text">Sorry, you have not been chosen for grading this. First select this for grading, go to the 'Select for grading' menu.</div>
           {{else}}
-            <button type="button" {{action 'unbook'}}>Unbook</button>
+            {{#unless selectedDeliverable.finalized}}
+              <button type="button" {{action 'unbook'}}>Unbook</button>
+            {{/unless}}
             <div class="text label">Event name and deliverable description:</div>
             <div class="text">{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</div>
             <div class="text label">Student</div>
@@ -96,13 +98,16 @@
             <div class="text">Not uploaded.</div>
             {{/if}}
             <div class="text label">Grade</div>
-            {{input type=nubmer value=selectedDeliverable.grade placeholder="grade"}}
+            {{input type=nubmer value=selectedDeliverable.grade placeholder="grade" disabled=selectedDeliverable.finalized}}
             <div class="text label">Comment</div>
-            {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" }}
+            {{textarea value=selectedDeliverable.comment cols="9" rows="9" placeholder="comment" disabled=selectedDeliverable.finalized}}
             <div class="text label">Imsc</div>
-            {{input type=nubmer value=selectedDeliverable.imsc placeholder="imsc"}}
-            <button type="button" class="btn--toggle {{if selectedDeliverable.finalized 'active'}}" {{action 'toggleFinalized'}}>finalized</button><br/>
-            <button type="button" {{action 'save'}}>Save</button>
+            {{input type=nubmer value=selectedDeliverable.imsc placeholder="imsc" disabled=selectedDeliverable.finalized}}
+            {{#if selectedDeliverable.finalized}}
+              <div class="text">Finalized. If you want to change ask the administrator.</div>
+            {{else}}
+              <button type="button" {{action 'save'}}>Finalize</button>
+            {{/if}}
             {{#if success}}
               <div class="success-box">
                 Saved successfully.

@@ -151,14 +151,6 @@ export default Ember.Controller.extend({
       this.actions.changeDeliverable.apply(this, [{ meta: deliverable }]);
       return false;
     },
-    toggleFinalized() {
-      this.toggleProperty('selectedDeliverable.finalized');
-      return false;
-    },
-    toggleGrading() {
-      this.toggleProperty('selectedDeliverable.gradingCache');
-      return false;
-    },
     book() {
       this.set('success', false);
       this.set('error', '');
@@ -199,6 +191,15 @@ export default Ember.Controller.extend({
       if (this.get('selectedDeliverable.imsc') === '') {
         this.set('selectedDeliverable.imsc', null);
       }
+      if (this.get('selectedDeliverable.grade') === null) {
+        this.set('error', 'No grade provided.');
+        return;
+      }
+      if (this.get('selectedDeliverable.comment') === null) {
+        this.set('error', 'No comment provided.');
+        return;
+      }
+      this.set('selectedDeliverable.finalized', true);
       this.get('selectedDeliverable').save().then(() => {
         this.set('success', true);
       }, (t) => {
