@@ -46,9 +46,7 @@ export default Ember.Controller.extend({
       return false;
     },
     closeSettings() {
-      this.set('user', {});
-      this.toggleProperty('showSettings');
-      this.set('showTable', false);
+      this.set('showSettings', false);
       return false;
     },
     showTable() {
@@ -71,7 +69,7 @@ export default Ember.Controller.extend({
       Ember.$.ajax({
         type: "POST",
         url: config.backendUrl + "/auth/impersonate",
-        data: JSON.stringify({ userId: +user.meta.get('id') }),
+        data: JSON.stringify({ userId: +user.get('id') }),
         beforeSend: (xhr) => { xhr.setRequestHeader('Authorization', `Bearer ${this.get('session.data.authenticated.token')}`); },
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
@@ -104,14 +102,7 @@ export default Ember.Controller.extend({
     }).then(users => {
       this.set('users', [
         ...this.get('users'),
-        ...users.map(x => ({
-          id: x.get('id'),
-          displayName: x.get('displayName'),
-          loginName: x.get('loginName'),
-          neptun: x.get('neptun'),
-          email: x.get('email'),
-          meta: x
-        }))
+        ...users.map(x => x)
       ]);
       this.set('showTable', true);
       this.set('showNextPage', users.content.length !== 0);

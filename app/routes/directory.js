@@ -14,6 +14,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, Admi
   },
   setupController(controller) {
     this._super(...arguments);
-    controller.actions.goToView.apply(controller, null);
+    controller.actions.goToView.apply(controller, ['list']);
   }
 });
