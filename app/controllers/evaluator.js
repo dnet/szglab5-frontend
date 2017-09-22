@@ -264,7 +264,7 @@ export default Ember.Controller.extend({
     changeDeliverableFilter(selected) {
       // reset page if the filter is changed
       this.set('selectedDeliverableFilter', selected);
-      this.actions.resetPage.apply(this, [true]);
+      this.actions.resetPage.apply(this);
     },
     loadFilteredDeliverablesForGrading() {
       const filter = this.get('selectedDeliverableFilter.filter');
