@@ -3,7 +3,7 @@
   <div class="right">
     <div class="notification">
       {{#if (eq currentView 'creator')}}
-        {{notifications-creator model=model}}
+        {{notifications-creator model=model goToView=(action 'goToView')}}
       {{else}}
         {{notifications-view model=model}}
       {{/if}}
