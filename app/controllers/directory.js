@@ -47,6 +47,8 @@ export default Ember.Controller.extend({
     },
     closeSettings() {
       this.set('showSettings', false);
+      const userId = this.get('user.id');
+      this.set('users', this.get('users').map(user => (user.get('id') === userId) ? this.get('user') : user));
       return false;
     },
     showTable() {
