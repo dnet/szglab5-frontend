@@ -11,5 +11,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, Demo
             // TODO: languages: this.get('store').findAll('language'),
             questions: this.get('store').findAll('question')
         });
+    },
+    setupController(controller) {
+      this._super(...arguments);
+      controller.actions.goToView.apply(controller, null);
     }
 });

@@ -9,5 +9,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, Demo
     return RSVP.hash({
         eventTemplates: this.get('store').findAll('eventTemplate'),
     });
+  },
+  setupController(controller) {
+    this._super(...arguments);
+    controller.actions.goToView.apply(controller, null);
   }
 });

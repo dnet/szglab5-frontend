@@ -23,9 +23,20 @@ export default Ember.Controller.extend({
   search: '',
   users: [],
   user: {},
+  newUser: null,
   page: 0,
   actions: {
     goToView(key) {
+      if (this.get('currentView') === key) {
+        switch (key) {
+          case 'list':
+            this.actions.closeSettings.apply(this);
+            break;
+          case 'new':
+            this.set('newUser', this.get('store').createRecord('user', {}));
+            break;
+        }
+      }
       this.set('currentView', key);
       return false;
     },

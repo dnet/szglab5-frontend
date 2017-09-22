@@ -42,11 +42,6 @@ export default Ember.Controller.extend({
     'finalized',
     'grade'
   ],
-  didReceiveAttrs() {
-    this.set('selectedEventTemplate', null);
-    this.set('selectedDeliverableTemplate', null);
-    return this.set('currentView', null);
-  },
   subMenu: [
     {
       key: 'select',
@@ -80,6 +75,17 @@ export default Ember.Controller.extend({
   actions: {
     // changes view
     goToView(key) {
+      // if stayed in the same menu
+      if (this.get('currentView') === key) {
+        switch (key) {
+          case 'select':
+            this.actions.back.apply(this);
+            break;
+          case 'grading':
+            this.actions.backFromGrading.apply(this);
+            break;
+        }
+      }
       this.set('currentView', key);
       this.set('selectedExerciseType', null);
       this.set('selectedEventTemplate', null);

@@ -11,5 +11,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ErrorRouteMixin, Admi
         exerciseTypes: this.get('store').findAll('exerciseType'),
         semesters: this.get('store').findAll('semester'),
     });
+  },
+  setupController(controller) {
+    this._super(...arguments);
+    controller.actions.goToView.apply(controller, null);
   }
 });

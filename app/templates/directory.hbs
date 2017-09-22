@@ -24,7 +24,7 @@
           {{directory-settings user=user.meta closeSettings=(action "closeSettings") impersonateUser=(action 'impersonateUser' user) model=model}}
         {{/if}}
       {{else}}
-        {{new-user model=model}}
+        {{new-user model=model user=newUser}}
       {{/if}}
     </div>
   </div>
