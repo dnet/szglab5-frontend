@@ -275,7 +275,14 @@ export default Ember.Controller.extend({
     backFromGrading() {
       this.set('selectedEvent', null);
       this.set('selectedEventUser', null);
-      this.get('selectedDeliverable').rollbackAttributes();
+      const selectedDeliverable = this.get('selectedDeliverable');
+      if (selectedDeliverable) {
+        const selectedDeliverableId = selectedDeliverable.get('id');
+        this.set('filteredDeliverablesSelect', this.get('filteredDeliverablesSelect').map(x => (
+          (x.get('id') === selectedDeliverableId) ? selectedDeliverable : x
+        )));
+        selectedDeliverable.rollbackAttributes();
+      }
       this.set('selectedDeliverable', null);
       this.set('success', false);
       this.set('error', '');
