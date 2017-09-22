@@ -83,7 +83,8 @@ export default Ember.Controller.extend({
         isFree: true,
         isAttached: true,
         isOver: true,
-        isFile: true
+        isFile: true,
+        isUploaded: true
       };
       if (this.get('selectedEventTemplate')) {
         filter.eventTemplateId = this.get('selectedEventTemplate.id');
