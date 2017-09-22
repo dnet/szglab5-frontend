@@ -25,20 +25,26 @@ export default Ember.Controller.extend({
   ],
   filteredDeliverablesSelect: [],
   headerGrading: [
-    'Type',
     'Neptun',
     'Name',
+    'Uploaded at',
+    'Deadline',
     'Evaluator',
+    'Type',
+    'Category',
     'Type',
     'Finalized',
     'Grade'
   ],
   rowIndeciesGrading: [
-    'DeliverableTemplate.description',
     'Event.StudentRegistration.User.neptun',
     'Event.StudentRegistration.User.displayName',
+    'uploadedAt',
+    'deadlineFormatted',
     'CorrectorName',
     'Event.ExerciseSheet.ExerciseType.shortName',
+    'DeliverableTemplate.EventTemplate.ExerciseCategory.type',
+    'DeliverableTemplate.description',
     'finalized',
     'grade'
   ],
@@ -270,6 +276,10 @@ export default Ember.Controller.extend({
         offset: pageSize * this.get('page'),
         limit: pageSize
       }).then(deliverables => {
+        deliverables.forEach(x => {
+          x.set('uploadedAt', x.get('uploaded') ? dateformat([x.get('lastSubmittedDate')]) : 'No');
+          x.set('deadlineFormatted', dateformat([x.get('deadline')]));
+        });
         this.set('filteredDeliverables', [
           ...this.get('filteredDeliverables'),
           ...deliverables.map(x => x)
