@@ -8,8 +8,24 @@ export default Ember.Controller.extend({
   header: ['Neptun', 'Name', 'Uploaded at', 'Deadline', 'Exercise type', 'Category', 'Deliverable'],
   rowIndecies: ['neptun', 'displayName', 'uploadedAt', 'deadline', 'typeShortName', 'exerciseCategoryName', 'deliverableTemplateName'],
   filteredDeliverablesSelect: [],
-  headerGrading: ['Type', 'Neptun', 'Name', 'Finalized', 'Grade'],
-  rowIndeciesGrading: ['DeliverableTemplate.description', 'Event.StudentRegistration.User.neptun', 'Event.StudentRegistration.User.displayName', 'finalized', 'grade'],
+  headerGrading: [
+    'Type',
+    'Neptun',
+    'Name',
+    'Evaluator',
+    'Type',
+    'Finalized',
+    'Grade'
+  ],
+  rowIndeciesGrading: [
+    'DeliverableTemplate.description',
+    'Event.StudentRegistration.User.neptun',
+    'Event.StudentRegistration.User.displayName',
+    'CorrectorName',
+    'Event.ExerciseSheet.ExerciseType.shortName',
+    'finalized',
+    'grade'
+  ],
   didReceiveAttrs() {
     this.set('selectedEventTemplate', null);
     this.set('selectedDeliverableTemplate', null);
@@ -28,26 +44,16 @@ export default Ember.Controller.extend({
     {
       filter: {
         isCorrector: true,
-        finalized: false,
-        hasGrade: false
+        finalized: false
       },
-      value: 'Does not started to correct'
+      value: 'Evaluation needed'
     },
     {
       filter: {
-        isCorrector: true,
-        finalized: false,
-        hasGrade: true
+        isAttached: true,
+        finalized: true
       },
-      value: 'Has grade but not finalized'
-    },
-    {
-      filter: {
-        isCorrector: true,
-        finalized: true,
-        hasGrade: true
-      },
-      value: 'Has grade and finalized'
+      value: 'All finalized with my types'
     }
   ],
   page: 0,
