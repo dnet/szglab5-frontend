@@ -72,7 +72,7 @@
             {{filter.value}}
           {{/power-select}}
           {{#if filteredDeliverables}}
-            {{table-component withoutNumber=true header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverableFromGrading') onClickRowAction='changeEvent'}}
+            {{table-component withoutNumber=true header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
           {{else}}
             <div class="text">Nothing to show.</div>
           {{/if}}
@@ -81,8 +81,11 @@
           <div class="breadcrumb">
             <button {{action 'backFromGrading'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
           </div>
-          {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
-            <div class="text">Sorry, you have not been chosen for grading this. First select this for grading, go to the 'Select for grading' menu.</div>
+          {{#unless (or (eq selectedDeliverable.Corrector.id model.user.id) selectedDeliverable.finalized)}}
+            <div class="text">
+              Sorry, you have not been chosen for grading this. First select this for grading, go to the 'Select for grading' menu.
+              Maybe the finalization has not been ended by other user. (BTW you should never see this message)
+            </div>
           {{else}}
             {{#unless selectedDeliverable.finalized}}
               <button type="button" {{action 'unbook'}}>Unbook</button>

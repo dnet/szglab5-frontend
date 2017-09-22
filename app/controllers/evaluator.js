@@ -15,13 +15,13 @@ export default Ember.Controller.extend({
     'Deliverable'
   ],
   rowIndecies: [
-    'neptun',
+    'Event.StudentRegistration.User.neptun',
     'displayName',
     'uploadedAt',
-    'deadline',
-    'typeShortName',
-    'exerciseCategoryName',
-    'deliverableTemplateName'
+    'deadlineFormatted',
+    'Event.ExerciseSheet.ExerciseType.shortName',
+    'DeliverableTemplate.EventTemplate.ExerciseCategory.type',
+    'DeliverableTemplate.description'
   ],
   filteredDeliverablesSelect: [],
   headerGrading: [
@@ -133,21 +133,13 @@ export default Ember.Controller.extend({
         offset: pageSize * this.get('page'),
         limit: pageSize
       }).then(deliverables => {
+        deliverables.forEach(x => {
+          x.set('uploadedAt', x.get('uploaded') ? dateformat([x.get('lastSubmittedDate')]) : 'No');
+          x.set('deadlineFormatted', dateformat([x.get('deadline')]));
+        });
         this.set('filteredDeliverablesSelect', [
           ...this.get('filteredDeliverablesSelect'),
-          ...deliverables.map(x => {
-            return ({
-              id: x.get('id'),
-              exerciseCategoryName: x.get('DeliverableTemplate.EventTemplate.ExerciseCategory.type'),
-              deliverableTemplateName: x.get('DeliverableTemplate.description'),
-              neptun: x.get('Event.StudentRegistration.User.neptun'),
-              displayName: x.get('Event.StudentRegistration.User.displayName'),
-              typeShortName: x.get('Event.ExerciseSheet.ExerciseType.shortName'),
-              uploadedAt: x.get('uploaded') ? dateformat([x.get('lastSubmittedDate')]) : 'No',
-              deadline: dateformat([x.get('deadline')]),
-              meta: x
-            });
-          })
+          ...deliverables.map(x => x)
         ]);
         this.set('page', this.get('page') + 1);
       });
@@ -170,7 +162,7 @@ export default Ember.Controller.extend({
       }
       return false;
     },
-    changeDeliverable({ meta: deliverable }) {
+    changeDeliverable(deliverable) {
       this.set('success', false);
       this.set('error', '');
       deliverable.get('Event').then(event => {
@@ -181,10 +173,6 @@ export default Ember.Controller.extend({
         this.set('selectedDeliverable', deliverable);
         this.set('selectedDeliverable.gradingCache', this.get('selectedDeliverable.grading'));
       });
-      return false;
-    },
-    changeDeliverableFromGrading(deliverable) {
-      this.actions.changeDeliverable.apply(this, [{ meta: deliverable }]);
       return false;
     },
     book() {
