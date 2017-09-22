@@ -52,15 +52,25 @@ export default Ember.Controller.extend({
   ],
   page: 0,
   filteredDeliverables: [],
+  myExerciseTypes: Ember.computed('model.user.ExerciseTypes', 'model.user.ExerciseTypes.[]', 'model.user.ExerciseTypes.@each', function () {
+    return this.get('model.user.ExerciseTypes');
+  }),
   actions: {
     // changes view
     goToView(key) {
       this.set('currentView', key);
+      this.set('selectedExerciseType', null);
       this.set('selectedEventTemplate', null);
       this.set('selectedDeliverableTemplate', null);
       this.set('selectedDeliverableFilter', this.deliverableFilters[0]);
       this.set('success', false);
       this.set('error', '');
+      this.actions.resetPage.apply(this);
+      return false;
+    },
+    // changes deliverable template in the filter
+    changeExerciseType(eT) {
+      this.set('selectedExerciseType', eT);
       this.actions.resetPage.apply(this);
       return false;
     },
@@ -86,6 +96,9 @@ export default Ember.Controller.extend({
         isFile: true,
         isUploaded: true
       };
+      if (this.get('selectedExerciseType')) {
+        filter.exerciseTypeId = this.get('selectedExerciseType.id');
+      }
       if (this.get('selectedEventTemplate')) {
         filter.eventTemplateId = this.get('selectedEventTemplate.id');
       }

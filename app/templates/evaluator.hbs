@@ -8,6 +8,10 @@
       {{/unless}}
       {{#if (eq currentView 'select')}}
         {{#unless selectedDeliverable}}
+            <div class="text label">Exercise type:</div>
+            {{#power-select options=myExerciseTypes selected=selectedExerciseType onchange=(action "changeExerciseType") as |eT|}}
+              {{eT.shortName}}
+            {{/power-select}}
             <div class="text label">Exercise category:</div>
             {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
               {{eT.ExerciseCategory.type}}
