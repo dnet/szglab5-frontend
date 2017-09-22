@@ -241,7 +241,12 @@ export default Ember.Controller.extend({
     },
     back() {
       if (this.get('selectedDeliverable')) {
-        this.get('selectedDeliverable').rollbackAttributes();
+        const selectedDeliverable = this.get('selectedDeliverable');
+        selectedDeliverable.rollbackAttributes();
+        const selectedDeliverableId = selectedDeliverable.get('id');
+        if (selectedDeliverable.get('grading')) {
+          this.set('filteredDeliverablesSelect', this.get('filteredDeliverablesSelect').filter(x => (x.get('id') !== selectedDeliverableId)));
+        }
         return this.set('selectedDeliverable', null);
       }
       this.set('success', false);
