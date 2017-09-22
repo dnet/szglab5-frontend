@@ -34,7 +34,8 @@ export default Ember.Controller.extend({
     'Category',
     'Type',
     'Finalized',
-    'Grade'
+    'Grade',
+    'imsc'
   ],
   rowIndeciesGrading: [
     'Event.StudentRegistration.User.neptun',
@@ -46,7 +47,8 @@ export default Ember.Controller.extend({
     'DeliverableTemplate.EventTemplate.ExerciseCategory.type',
     'DeliverableTemplate.description',
     'finalized',
-    'grade'
+    'grade',
+    'imsc'
   ],
   subMenu: [
     {
