@@ -5,8 +5,24 @@ import { dateformat } from '../helpers/dateformat';
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
-  header: ['Neptun', 'Name', 'Uploaded at', 'Deadline', 'Exercise type', 'Category', 'Deliverable'],
-  rowIndecies: ['neptun', 'displayName', 'uploadedAt', 'deadline', 'typeShortName', 'exerciseCategoryName', 'deliverableTemplateName'],
+  header: [
+    'Neptun',
+    'Name',
+    'Uploaded at',
+    'Deadline',
+    'Exercise type',
+    'Category',
+    'Deliverable'
+  ],
+  rowIndecies: [
+    'neptun',
+    'displayName',
+    'uploadedAt',
+    'deadline',
+    'typeShortName',
+    'exerciseCategoryName',
+    'deliverableTemplateName'
+  ],
   filteredDeliverablesSelect: [],
   headerGrading: [
     'Type',
