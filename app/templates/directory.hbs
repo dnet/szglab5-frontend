@@ -7,7 +7,7 @@
         {{#unless showSettings}}
           <div class="directory-search-fields">
             <div class="text label">Search</div>
-            {{input type="text" value=search placeholder="Name or email or id"}}
+            {{input type="text" value=search placeholder="Name or email or id" enter="showTable"}}
 
             <button {{action 'showTable'}}>Search</button>
           </div>
