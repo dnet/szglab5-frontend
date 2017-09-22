@@ -162,7 +162,7 @@ export default Ember.Controller.extend({
             this.actions.loadFilteredDeliverablesForSelect.apply(this);
             break;
           case 'grading':
-            this.actions.changeDeliverableFilter.apply(this);
+            this.actions.loadFilteredDeliverablesForGrading.apply(this);
             break;
         }
       }
@@ -254,14 +254,15 @@ export default Ember.Controller.extend({
       return false;
     },
     changeDeliverableFilter(selected) {
-      let filter = {};
-      if (selected) {
-        this.set('selectedDeliverableFilter', selected);
-        filter = selected.filter;
-        this.actions.resetPage.apply(this, [true]);
-      }
-      else {
-        filter = this.get('selectedDeliverableFilter.filter');
+      // reset page if the filter is changed
+      this.set('selectedDeliverableFilter', selected);
+      this.actions.resetPage.apply(this, [true]);
+    },
+    loadFilteredDeliverablesForGrading() {
+      const filter = this.get('selectedDeliverableFilter.filter');
+      // filter for event template
+      if (this.get('selectedEventTemplate')) {
+        filter.eventTemplateId = this.get('selectedEventTemplate.id');
       }
       const pageSize = 10;
       this.get('store').query('deliverable', {

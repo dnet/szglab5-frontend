@@ -68,6 +68,11 @@
       {{/if}}
       {{#if (eq currentView 'grading')}}
         {{#unless selectedDeliverable}}
+            <div class="text label">Exercise category:</div>
+            {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
+              {{eT.ExerciseCategory.type}}
+            {{/power-select}}
+            <div class="text label">Filter:</div>
           {{#power-select options=deliverableFilters selected=selectedDeliverableFilter onchange=(action "changeDeliverableFilter") as |filter|}}
             {{filter.value}}
           {{/power-select}}
