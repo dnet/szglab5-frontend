@@ -1,28 +1,30 @@
 <div class="content settings">
-  {{left-menu title="Beállítások" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Settings" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
 
   <div class='right'>
     <form class='settings'>
+      <div class="text label">username</div>
+      <div class="text">{{model.loginName}}</div>
       {{#if (eq currentView 'email')}}
       <div class="text label" for="email">e-mail</div>
       {{input type="email" value=model.email placeholder='e-mail' id='email'}}
 
-      <div class="text label" for="mailinglist">Levelezési lista</div>
-      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">feliratkozás</button>
+      <div class="text label" for="mailinglist">Mailing list</div>
+      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">subscribe</button>
 
-      <div class="text label" for="emailnotifications">E-mail értesítések</div>
-      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">feliratkozás</button>
+      <div class="text label" for="emailnotifications">E-mail notifications</div>
+      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">subscribe</button>
       {{/if}}
       {{#if (eq currentView 'password')}}
 
-      <div class="text label" for="oldpassword">jelenlegi jelszó</div>
-      {{input type="password" value=model.oldpwd placeholder='jelenlegi jelszó' id='oldpassword'}}
+      <div class="text label" for="oldpassword">current password</div>
+      {{input type="password" value=model.oldpwd placeholder='current password' id='oldpassword'}}
 
-      <div class="text label" for="newpassword">új jelszó</div>
-      {{input type="password" value=model.newpwd placeholder='új jelszó újra' id='newpassword'}}
+      <div class="text label" for="newpassword">new password</div>
+      {{input type="password" value=model.newpwd placeholder='new password' id='newpassword'}}
 
-      <div class="text label" for="newpassword2">új jelszó újra</div>
-      {{input type="password" value=model.newpwdagain placeholder='új jelszó' id="newpassword2"}}
+      <div class="text label" for="newpassword2">new password again</div>
+      {{input type="password" value=model.newpwdagain placeholder='new password again' id="newpassword2"}}
 
       <!--<div class="text label" for="sshkey">ssh publikus kulcs</div>
       {{textarea value=model.sshPublicKey class="ssh" cols="9" rows="9" placeholder="ssh publikus kulcs" id='sshkey'}}-->

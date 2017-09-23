@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     description: 'E-mail'
   }, {
     key: 'password',
-    description: 'Hozzáférés'
+    description: 'Password'
   }],
   mailList: true,
   notification: false,
