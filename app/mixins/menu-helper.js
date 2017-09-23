@@ -5,12 +5,12 @@ export default Ember.Mixin.create({
     STUDENT: [
       {
         key: 'student',
-        value: 'Laborok',
+        value: 'Laboratories',
         icon: 'graduation-cap'
       },
       {
         key: 'news',
-        value: 'Hírek',
+        value: 'News',
         icon: 'bell-o'
       }
     ],
@@ -59,7 +59,7 @@ export default Ember.Mixin.create({
     CORRECTOR: [
       {
         key: 'evaluator',
-        value: "Corrector",
+        value: "Evaluator",
         icon: 'book'
       }
     ]
