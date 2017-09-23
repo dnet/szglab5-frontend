@@ -182,7 +182,7 @@ export default Ember.Controller.extend({
       deliverable.get('Event').then(event => {
         this.set('selectedEvent', event);
         this.set('selectedEventUser', deliverable.get('Event.StudentRegistration.User'));
-        this.set('selectedEventDemonstrator', deliverable.get('Event.StudentRegistration.Demonstrator'));
+        this.set('selectedEventDemonstrator', deliverable.get('Event.Demonstrator'));
         this.set('success', false);
         this.set('error', '');
         this.set('selectedDeliverable', deliverable);

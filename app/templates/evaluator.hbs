@@ -29,6 +29,16 @@
             <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
             {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedEvent.EventTemplate.ExerciseCategory.type}} / {{selectedDeliverable.DeliverableTemplate.description}}
           </div>
+              {{#if selectedEventUser.email}}
+          <div class="text label">Student e-mail</div>
+            <div class="text">
+                {{selectedEventUser.email}}
+            </div>
+              {{/if}}
+
+            <div class="text label">Demonstrator</div>
+            <div class="text">{{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
+
           <div class="text label">Deadline</div>
           <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
           {{#if selectedDeliverable.isOver}}
@@ -104,7 +114,7 @@
               {{/if}}
             </div>
             <div class="text label">Demonstrator</div>
-            <div class="text">{{selectedEventUser.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
+            <div class="text">{{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
             <div class="text label">Deadline</div>
             <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
             <div class="text label">Delayed</div>
