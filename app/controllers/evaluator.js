@@ -182,6 +182,7 @@ export default Ember.Controller.extend({
       deliverable.get('Event').then(event => {
         this.set('selectedEvent', event);
         this.set('selectedEventUser', deliverable.get('Event.StudentRegistration.User'));
+        this.set('selectedEventDemonstrator', deliverable.get('Event.StudentRegistration.Demonstrator'));
         this.set('success', false);
         this.set('error', '');
         this.set('selectedDeliverable', deliverable);
@@ -293,6 +294,7 @@ export default Ember.Controller.extend({
     backFromGrading() {
       this.set('selectedEvent', null);
       this.set('selectedEventUser', null);
+      this.set('selectedEventDemonstrator', null);
       const selectedDeliverable = this.get('selectedDeliverable');
       if (selectedDeliverable) {
         selectedDeliverable.rollbackAttributes();

@@ -1,5 +1,5 @@
 <div class="content evaluator">
-  {{left-menu title="Corrector" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Evaluator" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="evaluator">
       {{#unless currentView}}
@@ -98,7 +98,13 @@
             <div class="text label">Event name and deliverable description:</div>
             <div class="text">{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</div>
             <div class="text label">Student</div>
-            <div class="text">{{selectedEventUser.displayName}} ({{selectedEventUser.neptun}})</div>
+            <div class="text">{{selectedEventUser.displayName}} - {{selectedEventUser.neptun}} 
+              {{#if selectedEventUser.email}}
+                ({{selectedEventUser.email}})
+              {{/if}}
+            </div>
+            <div class="text label">Demonstrator</div>
+            <div class="text">{{selectedEventUser.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
             <div class="text label">Deadline</div>
             <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
             <div class="text label">Delayed</div>
