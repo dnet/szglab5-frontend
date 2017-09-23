@@ -20,7 +20,8 @@ export default Ember.Component.extend({
     }, 1000 * 60 * 15);
   },
   toggleTime: true,
-  timeLeft: Ember.computed('toggleTime', function () {
+  timeLeft: Ember.computed('toggleTime', 'result', function () {
+    this.get('toggleTime'); // this is needed, otherwise the toggletime change won't trigger it.
     const deadline = this.get('result.firstCorrectableDeliverable.deadline'); // TODO: do for each deliverable, maybe with different components
     return moment(deadline).fromNow();
   }),
