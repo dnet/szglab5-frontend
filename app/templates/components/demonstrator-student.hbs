@@ -1,15 +1,18 @@
 <div class="evaluation-student">
   <div class='text label'>Name</div>
-  <p>{{event.StudentRegistration.User.displayName}}</p>
+  <div class="text">{{event.StudentRegistration.User.displayName}}</div>
 
   <div class='text label'>Neptun</div>
-  <p>{{event.StudentRegistration.User.neptun}}</p>
+  <div class="text">{{event.StudentRegistration.User.neptun}}</div>
+
+  <div class='text label'>e-mail</div>
+  <div class="text">{{event.StudentRegistration.User.email}}</div>
 
   <div class='text label'>Exercise type</div>
-  <p>{{event.ExerciseSheet.ExerciseType.shortName}}</p>
+  <div class="text">{{event.ExerciseSheet.ExerciseType.shortName}}</div>
 
   <div class='text label'>Deadline</div>
-  <p>{{event.formattedDate}}</p>
+  <div class="text">{{event.formattedDate}}</div>
 
   <div class='text label'>Entry test grade</div>
   {{input type=text value=event.firstEntryTest.grade placeholder="grade" }}

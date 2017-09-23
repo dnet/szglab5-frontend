@@ -12,11 +12,11 @@
       </div>
     {{/unless}}
     {{#each data as |row num|}}
-      <p>
+      <div class="text">
         {{#each-in row as |key value|}}
           <div>{{key}}: {{value}}</div>
         {{/each-in}}
-      </p>
+      </div>
       <hr/>
     {{/each}}
   </div>
