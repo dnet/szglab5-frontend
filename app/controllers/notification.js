@@ -4,10 +4,10 @@ export default Ember.Controller.extend({
   currentView: 'list',
   subMenu: [{
     key: 'creator',
-    description: 'Létrehozás'
+    description: 'Create'
   }, {
     key: 'list',
-    description: 'Lista nézet'
+    description: 'List'
   }],
   actions: {
     goToView: function(key) {

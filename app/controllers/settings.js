@@ -68,7 +68,7 @@ export default Ember.Controller.extend({
         }
       }
       this.get('model').save().then(() => {
-        this.set('message', 'Sikeres mentés!');
+        this.set('message', 'Saved succesfully!');
         this.resetPWFields();
       }).catch((res) => {
         if (res && res.errors && res.errors[0] && res.errors[0].title) {
