@@ -17,34 +17,44 @@
   <div class='text label'>Entry test finalized</div>
   <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>finalized</button>
 
-  <div class='text label'>Exercise grade</div>
-  <div class="text" id="afterreportgrade">
-    {{#if event.firstCorrectableDeliverable.grade}}
+  {{#if event.firstCorrectableDeliverable.grade}}
+    <div class='text label'>Exercise grade</div>
+    <div class="text" id="afterreportgrade">
       {{event.firstCorrectableDeliverable.grade}} ({{event.firstCorrectableDeliverable.CorrectorName}})
-    {{/if}}
-  </div>
+    </div>
 
-  <div class='text label'>Exercise comment</div>
-  <div class="text long">
-    {{event.firstCorrectableDeliverable.comment}}
-  </div>
-
-  <div class='text label'>Exercise imsc</div>
-  <div class="text">
-    {{#if event.firstCorrectableDeliverable.imsc}}
-      {{event.firstCorrectableDeliverable.imsc}} point
+    <div class='text label'>Exercise comment</div>
+    {{#if event.firstCorrectableDeliverable.comment}}
+      <div class="text long">
+        {{event.firstCorrectableDeliverable.comment}}
+      </div>
     {{else}}
-      No
+      <div class="text">No comment added.</div>
     {{/if}}
-  </div>
+
+    <div class='text label'>Exercise imsc</div>
+    <div class="text">
+      {{#if event.firstCorrectableDeliverable.imsc}}
+        {{event.firstCorrectableDeliverable.imsc}} point
+      {{else}}
+        No imsc point added.
+      {{/if}}
+    </div>
+  {{else}}
+    <div class='text label'>Exercise result</div>
+    <div class="text">It has not been graded yet.</div>
+  {{/if}}
 
   <div class="text label">Exercise file</div>
   {{#if event.firstCorrectableDeliverable.uploaded}}
     <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
     <div class="text label">Exercise delayed</div>
-    <div class="text">{{#if event.firstCorrectableDeliverable.isDelayed}}Yes, {{dateformat event.firstCorrectableDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
+    <div class="text">
+      {{#if event.firstCorrectableDeliverable.isDelayed}}Yes, {{dateformat event.firstCorrectableDeliverable.lastSubmittedDate}}. {{else}}No. {{/if}}
+    </div>
   {{else}}
-    <div class="text">Not uploaded{{#if event.firstCorrectableDeliverable.isUploadable}}, but still can upload{{/if}}.</div>
+    <div class="text">Not uploaded
+      {{#if event.firstCorrectableDeliverable.isUploadable}}, but still can upload{{/if}}.</div>
   {{/if}}
 
   <div class='text label'>{{event.EventTemplate.name}} grade</div>
