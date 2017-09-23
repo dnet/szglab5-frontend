@@ -6,7 +6,13 @@
   <div class="text">{{event.StudentRegistration.User.neptun}}</div>
 
   <div class='text label'>e-mail</div>
-  <div class="text">{{event.StudentRegistration.User.email}}</div>
+  <div class="text">
+    {{#if event.StudentRegistration.User.email}}
+      {{event.StudentRegistration.User.email}}
+    {{else}}
+      No e-mail added.
+    {{/if}}
+  </div>
 
   <div class='text label'>Exercise type</div>
   <div class="text">{{event.ExerciseSheet.ExerciseType.shortName}}</div>
