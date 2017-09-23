@@ -19,7 +19,7 @@
       {{#link-to 'logout' class='sign-out' tagName='button' title='log out' }} <span class="mobile-only">Log out</span> {{/link-to}}
     </li>
     <li class="username">
-      <div class="menu-text user">{{userData.displayName}} {{#if userData.neptun}}({{userData.neptun}}){{/if}}</div>
+      <div class="menu-text user">{{userData.displayName}} ({{userData.loginName}})</div>
     </li>
   </ul>
   {{else}}
