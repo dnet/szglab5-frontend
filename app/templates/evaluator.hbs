@@ -90,7 +90,7 @@
             <a class="button" {{action 'loadFilteredDeliverablesForGrading'}}>Load more</a>
           {{else}}
             <div class="text">Nothing to show.</div>
-            <a class="button" {{action 'changeDeliverableFilter'}}>Refresh</a>
+            <a class="button" {{action 'changeDeliverableFilter' selectedDeliverableFilter}}>Refresh</a>
           {{/if}}
         {{else}}
           <div class="breadcrumb">
