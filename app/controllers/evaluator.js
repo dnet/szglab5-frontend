@@ -63,6 +63,7 @@ export default Ember.Controller.extend({
     {
       filter: {
         isCorrector: true,
+        isFile: true,
         finalized: false
       },
       value: 'Evaluation needed'
@@ -70,6 +71,7 @@ export default Ember.Controller.extend({
     {
       filter: {
         isAttached: true,
+        isFile: true,
         finalized: true
       },
       value: 'All finalized with my types'
