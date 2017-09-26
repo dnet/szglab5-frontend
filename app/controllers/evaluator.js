@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
   ],
   rowIndecies: [
     'Event.StudentRegistration.User.neptun',
-    'displayName',
+    'Event.StudentRegistration.User.displayName',
     'uploadedAt',
     'deadlineFormatted',
     'Event.ExerciseSheet.ExerciseType.shortName',
