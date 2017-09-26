@@ -14,8 +14,16 @@
           margin-left: -1%;
         }
 
-        a, button {
+        button {  
           margin-left: -1%;
+        }
+
+        a:not(.akep) {
+          margin-left: -1%;
+        }
+
+        a.akep {
+          margin-left: 1%;
         }
 
         .btn--toggle {
