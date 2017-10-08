@@ -3,19 +3,26 @@
   <div class='right'>
     <div class='statistics'>
       <div class="statistics-content">
-        <div class='text label'>azok az értékelők, akiknél vannak szabad jegyzőkönyvek</div>
-        {{table-component header=model.header2 body=model.body2 addClass='statistics-table' }}
-      </div>
-      <div class="statistics-content">
-        <div class='text label'>azok az értékelők, akiknél vannak lefoglalt, de nem végleges jegyzőkönyvek</div>
-        {{table-component header=model.header2 body=model.body2 addClass='statistics-table' }}
-      </div>
-      <div class="statistics-content">
-        <div class='text label'>azok a mérésvezetők, akiknél már van kijavított jegyzőkönyv, de még nem véglegesítették a jegyeket (tehát a diák nem látja)</div>
-        {{table-component header=model.header1 body=model.body1 addClass='statistics-table' }}
+        <div class='text label'>{{selectedMenu.description}}</div>
+        {{#if selectedMenu.eventTemplateNeeded}}
+          <div class="text label">Exercise category:</div>
+          {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
+            {{eT.ExerciseCategory.type}}
+          {{/power-select}}
+        {{/if}}
+        {{#if selectedMenu.exerciseTypeNeeded}}
+          <div class="text label">Exercise type:</div>
+          {{#power-select options=model.exerciseTypes selected=selectedExerciseType onchange=(action "changeExerciseType") as |eT|}}
+            {{eT.shortName}}
+          {{/power-select}}
+        {{/if}}
+        {{table-component header=data.headers rowIndecies=data.headers body=data.data addClass='statistics-table' }}
+        {{#unless (or (eq error '') (eq error undefined))}}
+          <div class="error-box">
+            {{error}}
+          </div>
+        {{/unless}}
       </div>
     </div>
   </div>
 </div>
-
-{{!-- # TODO sorra kattintas eseten lehetne mailto vagy vagolapra az illeto email cime --}}

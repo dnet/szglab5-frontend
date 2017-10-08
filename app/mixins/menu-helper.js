@@ -15,11 +15,11 @@ export default Ember.Mixin.create({
       }
     ],
     ADMIN: [
-      /*{
+      {
         key: 'statistics',
         value: "Stats",
         icon: 'bar-chart'
-      },*/ {
+      }, {
         key: 'directory',
         value: "Users",
         icon: 'users'
