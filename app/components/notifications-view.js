@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.set('body', []);
   },
-  header: ['Published', 'Publisher', 'Title'],
+  header: ['Publikálva', 'Író', 'Cím'],
   rowIndecies: ['published', 'publisher', 'title'],
   showSettings: false,
   getBody: Ember.computed('model', 'model.@each', 'model.@each.title', function () {

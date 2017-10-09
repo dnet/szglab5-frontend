@@ -1,33 +1,35 @@
 <div class="notification-creator">
   {{#unless new}}
-    <div class="text label">Publisher</div>
+    <div class="text label">Író</div>
     <div class="text">{{await notification.publisherName}}</div>
-    <div class="text label">Published</div>
+    <div class="text label">Publikálás dátuma</div>
     <div class="text">{{notification.publishedFormatted}}</div>
   {{/unless}}
 
-  <div class="text label">Title</div>
+  <div class="text label">Cím</div>
   {{input type="type" value=notification.title placeholder='title'}}
 
-  <div class="text label">Shown from-to</div>
+  <div class="text label">Megjelenés kezdete</div>
 
   {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="From" minDate=notification.currentDate maxDate=notification.until value=notification.from onSelection=(action (mut notification.from))}}
+
+  <div class="text label">Megjelenítés vége</div>
   {{pikaday-input class="pikaday-input" theme="light-theme" format="YYYY-MM-DD" placeholder="Until" minDate=notification.from value=notification.until onSelection=(action (mut notification.until))}}
 
-  <div class="text label">Who can see it</div>
+  <div class="text label">Hol jelenjen meg?</div>
   <div class="toggle-buttons">
-    <button type="button" class="btn--toggle {{if notification.admins 'active'}}" {{action 'toggleAdmins'}}>Admins</button>
-    <button type="button" class="btn--toggle {{if notification.students 'active'}}" {{action 'toggleStudents'}}>Students</button>
-    <button type="button" class="btn--toggle {{if notification.demonstators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrators</button>
-    <button type="button" class="btn--toggle {{if notification.evaluators 'active'}}" {{action 'toggleEvaluators'}}>Evaluators</button>
-    <button type="button" class="btn--toggle {{if notification.onLogin 'active'}}" {{action 'toggleLogin'}}>On Login</button>
+    <button type="button" class="btn--toggle {{if notification.admins 'active'}}" {{action 'toggleAdmins'}}>Admin modulban</button>
+    <button type="button" class="btn--toggle {{if notification.students 'active'}}" {{action 'toggleStudents'}}>Hallgató modulban</button>
+    <button type="button" class="btn--toggle {{if notification.demonstators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrátor modulban</button>
+    <button type="button" class="btn--toggle {{if notification.evaluators 'active'}}" {{action 'toggleEvaluators'}}>Értékelő modulban</button>
+    <button type="button" class="btn--toggle {{if notification.onLogin 'active'}}" {{action 'toggleLogin'}}>Bejelentkezési képernyőn</button>
   </div>
 
-  <div class="text label">Text</div>
+  <div class="text label">Tartalom</div>
   {{textarea value=notification.text cols="9" rows="9" placeholder='Text'}}
 
-  <button type="button" {{action 'saveSettings'}}>Save</button>
+  <button type="button" {{action 'saveSettings'}}>Mentés</button>
   {{#if edit}}
-    <button type="button" class="cancel" {{action 'closeSettings'}}>Cancel</button>
+    <button type="button" class="cancel" {{action 'closeSettings'}}>Mégse</button>
   {{/if}}
 </div>
