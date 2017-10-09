@@ -6,16 +6,16 @@ export default Ember.Controller.extend({
   subMenu: [
     {
       key: 'correctors',
-      description: 'Corrector load'
+      description: 'Értékelők terheltsége'
     },
     {
       key: 'events',
-      description: 'Groups',
+      description: 'Csoportok',
       eventTemplateNeeded: true
     },
     {
       key: 'deliverables',
-      description: 'Deliverables',
+      description: 'Beadandók',
       eventTemplateNeeded: true,
       exerciseTypeNeeded: true
     }

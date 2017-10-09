@@ -1,17 +1,16 @@
 <div class="content statistics">
-  {{left-menu title="Statistics" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Statisztikák" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class='right'>
     <div class='statistics'>
       <div class="statistics-content">
-        <div class='text label'>{{selectedMenu.description}}</div>
         {{#if selectedMenu.eventTemplateNeeded}}
-          <div class="text label">Exercise category:</div>
+          <div class="text label">Labortípus:</div>
           {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
             {{eT.ExerciseCategory.type}}
           {{/power-select}}
         {{/if}}
         {{#if selectedMenu.exerciseTypeNeeded}}
-          <div class="text label">Exercise type:</div>
+          <div class="text label">Feladattípus:</div>
           {{#power-select options=model.exerciseTypes selected=selectedExerciseType onchange=(action "changeExerciseType") as |eT|}}
             {{eT.shortName}}
           {{/power-select}}
