@@ -4,7 +4,7 @@
     <form class="sql">
       <div class="text label">SQL query</div>
       {{textarea cols="9" rows="9" placeholder="SQL query" value=sqlText}}
-      <button type="submit" {{action "runQuery"}}>Run</button>
+      <button type="submit" {{action "runQuery"}}>Futtatás</button>
     </form>
     {{#unless (or (eq error '') (eq error undefined))}}
       <div class="error-box">
