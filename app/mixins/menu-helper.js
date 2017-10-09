@@ -17,15 +17,15 @@ export default Ember.Mixin.create({
     ADMIN: [
       {
         key: 'statistics',
-        value: "Stats",
+        value: "Statisztikák",
         icon: 'bar-chart'
       }, {
         key: 'directory',
-        value: "Users",
+        value: "Felhasználók",
         icon: 'users'
       }, {
         key: 'notification',
-        value: "News",
+        value: "Hírek szerkesztése",
         icon: 'bell-o'
       }, /*{
         key: 'semester',
@@ -33,7 +33,7 @@ export default Ember.Mixin.create({
         icon: 'dashboard'
       },*/ {
         key: 'entry-test',
-        value: "Entry Questions",
+        value: "Beugró kérdések",
         icon: 'pencil'
       }, /*{
         key: 'event-templates',
@@ -48,18 +48,18 @@ export default Ember.Mixin.create({
     DEMONSTRATOR: [
       {
         key: 'demonstrator',
-        value: "Demonstrator",
+        value: "Demonstrátor",
         icon: 'tasks'
       }, {
         key: 'entry-test',
-        value: "Entry Questions",
+        value: "Beugró kérdések",
         icon: 'pencil'
       }
     ],
     CORRECTOR: [
       {
         key: 'evaluator',
-        value: "Evaluator",
+        value: "Értékelő",
         icon: 'book'
       }
     ]
