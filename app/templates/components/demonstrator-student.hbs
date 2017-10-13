@@ -74,6 +74,7 @@
     <div class="text label">Fájl</div>
     {{#if deliverable.uploaded}}
       <a class="button" {{action 'download'}}>Letöltés</a>
+      <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{event.StudentRegistration.User.neptun}}/{{event.EventTemplate.ExerciseCategory.type}}">AKÉP</a>
       <div class="text">
         <span class='label'>Feltöltés ideje</span>
         {{dateformat deliverable.lastSubmittedDate}}
