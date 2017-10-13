@@ -33,7 +33,7 @@ export default Ember.Mixin.create({
         icon: 'dashboard'
       },*/ {
         key: 'entry-test',
-        value: "Beugró kérdések",
+        value: "Beugrókérdések",
         icon: 'pencil'
       }, /*{
         key: 'event-templates',
@@ -52,7 +52,7 @@ export default Ember.Mixin.create({
         icon: 'tasks'
       }, {
         key: 'entry-test',
-        value: "Beugró kérdések",
+        value: "Beugrókérdések",
         icon: 'pencil'
       }
     ],

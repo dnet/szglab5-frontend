@@ -10,7 +10,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.set('body', []);
   },
-  header: ['Text', 'Language'],
+  header: ['Szöveg', 'Nyelv'],
   rowIndecies: ['text', 'language'],
   showSettings: false,
   getBody: Ember.computed('exerciseCategory', 'exerciseCategory.Questions.@each.text', 'exerciseCategory.Questions.@each.checked', function () {

@@ -1,12 +1,12 @@
 <div class="entry-test-list">
   {{#if (eq question null)}}
     {{#unless (eq exerciseCategory null)}}
-      {{table-component header=header body=getBody rowIndecies=rowIndecies withoutNumber=true withCheckbox=true withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
-      <button {{action 'newQuestion'}}>Add new question</button>
-      <a class="button" {{action 'print'}}>Print</a>
+      {{table-component header=header body=getBody rowIndecies=rowIndecies withCheckbox=true withDelete=true withSettings=true openSettings=(action 'openSettings') delete=(action 'delete')}}
+      <button {{action 'newQuestion'}}>Új kérdés hozzáadása</button>
+      <a class="button" {{action 'print'}}>Nyomtatás</a>
     {{else}}
       <div class="text">
-        Choose an exercise category on the left.
+        Válassz egy labor kódot a bal oldali menüből!
       </div>
     {{/unless}}
   {{else}}
