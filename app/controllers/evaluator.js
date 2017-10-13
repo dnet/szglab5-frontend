@@ -7,12 +7,12 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   header: [
     'Neptun',
-    'Name',
-    'Uploaded at',
-    'Deadline',
-    'Exercise type',
-    'Category',
-    'Deliverable'
+    'Név',
+    'Feltöltés ideje',
+    'Határidő',
+    'Feladattípus',
+    'Labor kód',
+    'Beadandó'
   ],
   rowIndecies: [
     'Event.StudentRegistration.User.neptun',
@@ -26,16 +26,16 @@ export default Ember.Controller.extend({
   filteredDeliverablesSelect: [],
   headerGrading: [
     'Neptun',
-    'Name',
-    'Uploaded at',
-    'Deadline',
-    'Evaluator',
-    'Type',
-    'Category',
-    'Type',
-    'Finalized',
-    'Grade',
-    'imsc'
+    'Név',
+    'Feltöltés ideje',
+    'Határidő',
+    'Javító',
+    'Feladatkód',
+    'Labor kód',
+    'Beadandó típusa',
+    'Kijavítva',
+    'Érdemjegy',
+    'IMSc'
   ],
   rowIndeciesGrading: [
     'Event.StudentRegistration.User.neptun',
@@ -53,10 +53,10 @@ export default Ember.Controller.extend({
   subMenu: [
     {
       key: 'select',
-      description: 'Select for grading'
+      description: 'Javítandó kiválasztása'
     }, {
       key: 'grading',
-      description: 'Grading'
+      description: 'Javítás és kijavított feladatok'
     }
   ],
   deliverableFilters: [
@@ -66,7 +66,7 @@ export default Ember.Controller.extend({
         isFile: true,
         finalized: false
       },
-      value: 'Evaluation needed'
+      value: 'Javításra vár'
     },
     {
       filter: {
@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
         isFile: true,
         finalized: true
       },
-      value: 'All finalized with my types'
+      value: 'Feladattípusaimhoz tartozó kijavított feladatok'
     }
   ],
   page: 0,
