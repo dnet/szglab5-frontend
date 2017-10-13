@@ -40,6 +40,10 @@
             <div class="text">
                 <span class="label">Demonstrátor</span>
               {{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
+            <div class="text">
+              <span class="label">Feladattípus</span>
+              {{selectedEvent.ExerciseSheet.ExerciseType.shortName}}
+            </div>
 
           <div class="text">
             <span class="label">Határidő</span>
@@ -119,7 +123,12 @@
             {{/unless}}
             <div class="text">
               <span class="label">Labor kódja és beadandó típusa</span>
-              {{selectedEvent.EventTemplate.name}};  {{selectedDeliverable.DeliverableTemplate.description}}</div>
+              {{selectedEvent.EventTemplate.name}};  {{selectedDeliverable.DeliverableTemplate.description}}
+            </div>
+            <div class="text">
+              <span class="label">Feladattípus</span>
+              {{selectedEvent.ExerciseSheet.ExerciseType.shortName}}
+            </div>
             <div class="text">
               <span class="label">Hallgató</span>
 
