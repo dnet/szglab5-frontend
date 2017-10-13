@@ -1,9 +1,9 @@
 <div class="content demonstrator">
-  {{left-menu title="Demonstrator" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Demonstrátor" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="demonstrator">
       {{#unless currentView}}
-        <div class='text'>Select an event on the left.</div>
+        <div class='text'>Válassz egy laborfoglalkozást a bal oldali menüből!</div>
       {{else}}
         {{#unless selectedEvent}}
           {{demonstrator-group currentEventTemplate=currentView evaluateEvent=(action 'evaluateEvent')}}

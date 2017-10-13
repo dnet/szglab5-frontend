@@ -1,4 +1,10 @@
-<div class="demonstrator-group">
-  <a class="button" {{action 'generateSheet'}}>Generate sheets</a>
-  {{table-component rowIndecies=rowIndecies header=header body=(await body) addClass='demonstrator-table' onClickRowAction='evaluateEvent' clickable=true evaluateEvent=(action "evaluateEvent")}}
+<div class="text">
+  <span class="label">Labor időpontja</span> {{await currentEventTemplate.eventPlace}}
 </div>
+<div class="text">
+  <span class="label">Labor helyszíne</span> {{dateformat (await currentEventTemplate.eventDate)}}
+</div>
+<div class="text label">
+  Feladatsor
+</div>
+<a class="button" {{action 'generateSheet'}}>generálása</a> {{table-component rowIndecies=rowIndecies header=header body=(await body) addClass='demonstrator-table' onClickRowAction='evaluateEvent' clickable=true evaluateEvent=(action "evaluateEvent")}}

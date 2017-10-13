@@ -6,8 +6,9 @@ import { dateformat } from '../helpers/dateformat';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
-  header: ['Name', 'Neptun', 'Exercise', 'Date', 'Place', 'Entry grade', 'Exercise Grade', 'Event grade'],
-  rowIndecies: ['StudentRegistration.User.displayName', 'StudentRegistration.User.neptun', 'ExerciseSheet.ExerciseType.shortName', 'formattedDate', 'location', 'firstEntryTest.grade', 'firstCorrectableDeliverable.grade', 'grade'],
+  classNames: ['demonstrator-group'],
+  header: ['Név', 'Neptun', 'Feladattípus', 'Beugró érdemjegy', 'Beadandó érdemjegy', 'Labor érdemjegy'],
+  rowIndecies: ['StudentRegistration.User.displayName', 'StudentRegistration.User.neptun', 'ExerciseSheet.ExerciseType.shortName', 'firstEntryTest.grade', 'firstCorrectableDeliverable.grade', 'grade'],
   body: Ember.computed('currentEventTemplate', function () {
     return new RSVP.Promise((resolve, reject) => {
       if (this.get('currentEventTemplate.id')) {
