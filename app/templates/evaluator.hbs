@@ -1,5 +1,5 @@
 <div class="content evaluator">
-  {{left-menu title="Értékelő" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Javító" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="evaluator">
       {{#unless currentView}}
@@ -23,7 +23,7 @@
               {{/power-select}}
             {{/if}}
           {{!-- <div class="text label">Beadandók:</div> --}}
-          {{table-component withoutNumber=true header=header body=filteredDeliverablesSelect rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
+          {{table-component header=header body=filteredDeliverablesSelect rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
           <a class="button" {{action 'loadFilteredDeliverablesForSelect'}}>Továbbiak betöltése</a>
         {{else}}
           <div class="breadcrumb">
@@ -96,7 +96,7 @@
             {{filter.value}}
           {{/power-select}}
           {{#if filteredDeliverables}}
-            {{table-component withoutNumber=true header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
+            {{table-component header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
             <a class="button" {{action 'loadFilteredDeliverablesForGrading'}}>Továbbiak betöltése</a>
           {{else}}
             <div class="text">Nincs megjeleníthető beadandó.</div>

@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   subMenu: [
     {
       key: 'correctors',
-      description: 'Értékelők terheltsége'
+      description: 'Javítók terheltsége'
     },
     {
       key: 'events',

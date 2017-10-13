@@ -59,7 +59,7 @@ export default Ember.Mixin.create({
     CORRECTOR: [
       {
         key: 'evaluator',
-        value: "Értékelő",
+        value: "Javító",
         icon: 'book'
       }
     ]
