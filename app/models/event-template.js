@@ -22,4 +22,10 @@ export default DS.Model.extend({
       return date;
     });
   }),
+  eventDeadline: Ember.computed('Events', function(){
+    return this.get('Events').then (function(events){
+      var date = events.get('firstObject.eventDeadline');
+      return date;
+    });
+  })
 });

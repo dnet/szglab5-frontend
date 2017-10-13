@@ -41,4 +41,7 @@ export default DS.Model.extend({
     }
     return entryTests[0];
   }),
+  eventDeadline: Ember.computed('firstCorrectableDeliverable', function(){
+    return this.get('firstCorrectableDeliverable.deadline');
+  })
 });
