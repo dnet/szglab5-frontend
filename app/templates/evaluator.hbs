@@ -1,67 +1,68 @@
 <div class="content evaluator">
-  {{left-menu title="Evaluator" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Értékelő" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
   <div class="right">
     <div class="evaluator">
       {{#unless currentView}}
-        <div class="text">First select a deliverable for grading. If you are accepted then you can correct it from the grading menu.</div>
+        <div class="text">Egy beadandó kiválasztása a <em>Javítandó kiválasztása</em> menüpontban lehetséges. <br> A javítás megkezdése illetve a kijavított beadandók megtekintése a <em>Javítás és kijavított feladatok</em> menüpontból érhető el.
+        </div>
       {{/unless}}
       {{#if (eq currentView 'select')}}
         {{#unless selectedDeliverable}}
-            <div class="text label">Exercise type:</div>
+            <div class="text label">Feladattípus:</div>
             {{#power-select options=myExerciseTypes selected=selectedExerciseType onchange=(action "changeExerciseType") as |eT|}}
               {{eT.shortName}}
             {{/power-select}}
-            <div class="text label">Exercise category:</div>
+            <div class="text label">Labor kód:</div>
             {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
               {{eT.ExerciseCategory.type}}
             {{/power-select}}
             {{#if selectedEventTemplate}}
-              <div class="text label">Deliverable template:</div>
+              <div class="text label">Beadandó típusa:</div>
               {{#power-select options=(filter-deliverable-templates selectedEventTemplate.DeliverableTemplates) selected=selectedDeliverableTemplate onchange=(action "changeDeliverableTemplate") as |dT|}}
                 {{dT.description}}
               {{/power-select}}
             {{/if}}
-          <div class="text label">Deliverables:</div>
+          {{!-- <div class="text label">Beadandók:</div> --}}
           {{table-component withoutNumber=true header=header body=filteredDeliverablesSelect rowIndecies=rowIndecies clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
-          <a class="button" {{action 'loadFilteredDeliverablesForSelect'}}>Load more</a>
+          <a class="button" {{action 'loadFilteredDeliverablesForSelect'}}>Továbbiak betöltése</a>
         {{else}}
           <div class="breadcrumb">
             <button {{action 'back'}}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
             {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedEvent.EventTemplate.ExerciseCategory.type}} / {{selectedDeliverable.DeliverableTemplate.description}}
           </div>
               {{#if selectedEventUser.email}}
-          <div class="text label">Student e-mail</div>
+          <div class="text label">Hallgató e-mail címe</div>
             <div class="text">
                 {{selectedEventUser.email}}
             </div>
               {{/if}}
 
-            <div class="text label">Demonstrator</div>
+            <div class="text label">Demonstrátor</div>
             <div class="text">{{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
 
-          <div class="text label">Deadline</div>
+          <div class="text label">Határidő</div>
           <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
           {{#if selectedDeliverable.isOver}}
-            <div class="text label">File</div>
+            <div class="text label">Fájl</div>
             {{#if selectedDeliverable.uploaded}}
-              <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
+              <div class="text"><a class="button" {{action 'download'}}>Letöltés</a></div>
             {{else}}
-              <div class="text">Not uploaded.</div>
+              <div class="text">Nincs feltölve.</div>
             {{/if}}
-            <div class="text label">Select for grading</div>
+            <div class="text label">Javítandó kiválasztása</div>
             {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
               {{#if selectedDeliverable.Corrector.id}}
-                <div class="text">Sorry, someone else have chosen this for grading.</div>
+                <div class="text">Ezt a beadandót valaki más már lefoglalta.</div>
               {{else}}
-                <div class="text">No one selected this for grading.</div>
-                <button type="button" {{action 'book'}}>Book</button>
+                <div class="text">Ezt a beadandót még nem foglalták le.</div>
+                <button type="button" {{action 'book'}}>Foglalás</button>
               {{/if}}
             {{else}}
-              <div class="text">You are selected for grading. Go to the grading menu to start grading.</div>
+              <div class="text">Eyt a beadandót sikeresen lefoglaltad. A javítást a <em>Javítás és kijavított feladatok</em> menüponton keresztül kezdheted meg.</div>
             {{/unless}}
             {{#if success}}
               <div class="success-box">
-                Saved successfully.
+                Sikeres mentés.
               </div>
             {{else}}
               {{#unless (or (eq error '') (eq error undefined))}}
@@ -71,26 +72,26 @@
               {{/unless}}
             {{/if}}
           {{else}}
-            <div class="text">This event has not reached its deadline.</div>
+            <div class="text">Még nem járt le a határidő.</div>
           {{/if}}
         {{/unless}}
       {{/if}}
       {{#if (eq currentView 'grading')}}
         {{#unless selectedDeliverable}}
-            <div class="text label">Exercise category:</div>
+            <div class="text label">Labor kód:</div>
             {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
               {{eT.ExerciseCategory.type}}
             {{/power-select}}
-            <div class="text label">Filter:</div>
+            <div class="text label">Szűrés:</div>
           {{#power-select options=deliverableFilters selected=selectedDeliverableFilter onchange=(action "changeDeliverableFilter") as |filter|}}
             {{filter.value}}
           {{/power-select}}
           {{#if filteredDeliverables}}
             {{table-component withoutNumber=true header=headerGrading body=filteredDeliverables rowIndecies=rowIndeciesGrading clickable=true changeEvent=(action 'changeDeliverable') onClickRowAction='changeEvent'}}
-            <a class="button" {{action 'loadFilteredDeliverablesForGrading'}}>Load more</a>
+            <a class="button" {{action 'loadFilteredDeliverablesForGrading'}}>Továbbiak betöltése</a>
           {{else}}
-            <div class="text">Nothing to show.</div>
-            <a class="button" {{action 'changeDeliverableFilter' selectedDeliverableFilter}}>Refresh</a>
+            <div class="text">Nincs megjeleníthető beadandó.</div>
+            <a class="button" {{action 'changeDeliverableFilter' selectedDeliverableFilter}}>Frissítés</a>
           {{/if}}
         {{else}}
           <div class="breadcrumb">
@@ -98,17 +99,16 @@
           </div>
           {{#unless (or (eq selectedDeliverable.Corrector.id model.user.id) selectedDeliverable.finalized)}}
             <div class="text">
-              Sorry, you have not been chosen for grading this. First select this for grading, go to the 'Select for grading' menu.
-              Maybe the finalization has not been ended by other user. (BTW you should never see this message)
+              Egy beadandó kiválasztása a <em>Javítandó kiválasztása</em> menüpontban lehetséges. <br> A javítás megkezdése illetve a kijavított beadandók megtekintése a <em>Javítás és kijavított feladatok</em> menüpontból érhető el.
             </div>
           {{else}}
             {{#unless selectedDeliverable.finalized}}
-              <button type="button" {{action 'unbook'}}>Unbook</button>
+              <button type="button" {{action 'unbook'}}>Foglalás feloldása</button>
             {{/unless}}
             <div class="text label">Event name and deliverable description:</div>
             <div class="text">{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</div>
             <div class="text label">Student</div>
-            <div class="text">{{selectedEventUser.displayName}} - {{selectedEventUser.neptun}} 
+            <div class="text">{{selectedEventUser.displayName}} - {{selectedEventUser.neptun}}
               {{#if selectedEventUser.email}}
                 ({{selectedEventUser.email}})
               {{/if}}
