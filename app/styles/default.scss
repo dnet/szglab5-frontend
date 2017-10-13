@@ -188,27 +188,21 @@ button, .button {
 	}
 
 	&.btn--toggle {
-		background: transparent;
+		background: none;
 		border: none;
-		min-width: 300px;
 		margin: 1% 1% 0 0;
 		text-align: left;
 		color: black;
 		box-shadow: none;
 		font-weight: normal;
+		padding-left: 0;
+		padding-right: 0;
 
-		&:before {
-			font-family: 'FontAwesome';
-			color: black;
-			padding-right: 10%;
-			content: '\f10c';
+		i {
+			width: 20px;
 		}
-
-		&.active,
-		&:active {
-			&:before {
-				content: '\f05d';
-			}
+		&:before {
+			display: none;
 		}
 	}
 }

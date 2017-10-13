@@ -24,7 +24,14 @@
   {{input type=text value=event.firstEntryTest.grade placeholder="grade" }}
 
   <div class='text label'>Entry test finalized</div>
-  <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>finalized</button>
+  <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>
+    {{#if event.firstEntryTest.finalized}}
+      <i class="fa fa-check-square-o" aria-hidden="true"></i>
+      {{else}}
+      <i class="fa fa-square-o" aria-hidden="true"></i>
+    {{/if}}
+    finalized
+  </button>
 
   {{#if event.firstCorrectableDeliverable.grade}}
     <div class='text label'>Exercise grade</div>
@@ -76,7 +83,14 @@
   {{input type=text value=event.imsc placeholder="imsc" }}
 
   <div class='text label'>{{event.EventTemplate.name}} finalized</div>
-  <button type="button" class="btn--toggle {{if event.finalized 'active'}}" {{action 'toggleFinalized' event}}>finalized</button>
+  <button type="button" class="btn--toggle {{if event.finalized 'active'}}" {{action 'toggleFinalized' event}}>
+    {{#if event.finalized}}
+      <i class="fa fa-check-square-o" aria-hidden="true"></i>
+      {{else}}
+      <i class="fa fa-square-o" aria-hidden="true"></i>
+    {{/if}}
+    finalized
+  </button>
 
   <button type="button" {{action 'save'}}>Save</button>
   <button type="button" class="cancel" {{action 'cancel'}}>Cancel</button>

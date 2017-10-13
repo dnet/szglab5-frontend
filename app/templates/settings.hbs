@@ -10,10 +10,24 @@
       {{input type="email" value=model.email placeholder='e-mail' id='email'}}
 
       <div class="text label" for="mailinglist">Mailing list</div>
-      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">subscribe</button>
+      <button type="button" class="btn--toggle {{if model.subscribedToMailList 'active'}}" {{action 'toggleMailList'}} id="mailinglist">
+        {{#if model.subscribedToMailList}}
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-square-o" aria-hidden="true"></i>
+        {{/if}}
+        subscribe
+      </button>
 
       <div class="text label" for="emailnotifications">E-mail notifications</div>
-      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">subscribe</button>
+      <button type="button" class="btn--toggle {{if model.subscribedToEmailNotify 'active'}}" {{action 'toggleNotifications'}} id="emailnotifications">
+        {{#if model.subscribedToEmailNotify}}
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-square-o" aria-hidden="true"></i>
+        {{/if}}
+        subscribe
+      </button>
       {{/if}}
       {{#if (eq currentView 'password')}}
 

@@ -50,14 +50,19 @@
     <div class="text label">Felhasználói szerepkör</div>
     <div class="toggle-buttons">
     {{#each model.roles as |role|}}
-      <button type="button" class="btn--toggle btn-auto-width {{if (has-key currentRoles role.name) 'active'}}" {{action 'toggleRole' role}}>{{role.name}}</button>
+      <button type="button" class="btn--toggle {{if (has-key currentRoles role.name) 'active'}}" {{action 'toggleRole' role}}>
+        {{#if (has-key currentRoles role.name)}}
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-square-o" aria-hidden="true"></i>
+        {{/if}}
+        {{role.name}}
+      </button>
     {{/each}}
   </div>
   </div>
   {{#if isEvaluator}}
-    <div class="directory-settings-evaluator">
       {{directory-settings-evaluator user=user model=model}}
-    </div>
   {{/if}}
   {{#if isStudent}}
       {{directory-settings-student user=user model=model}}

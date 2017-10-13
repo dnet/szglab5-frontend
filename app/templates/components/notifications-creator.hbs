@@ -18,11 +18,45 @@
 
   <div class="text label">Hol jelenjen meg?</div>
   <div class="toggle-buttons">
-    <button type="button" class="btn--toggle {{if notification.admins 'active'}}" {{action 'toggleAdmins'}}>Admin modulban</button>
-    <button type="button" class="btn--toggle {{if notification.students 'active'}}" {{action 'toggleStudents'}}>Hallgató modulban</button>
-    <button type="button" class="btn--toggle {{if notification.demonstators 'active'}}" {{action 'toggleDemonstrators'}}>Demonstrátor modulban</button>
-    <button type="button" class="btn--toggle {{if notification.evaluators 'active'}}" {{action 'toggleEvaluators'}}>Javító modulban</button>
-    <button type="button" class="btn--toggle {{if notification.onLogin 'active'}}" {{action 'toggleLogin'}}>Bejelentkezési képernyőn</button>
+    <button type="button" class="btn--toggle {{if notification.admins 'active'}}" {{action 'toggleAdmins'}}>
+      {{#if notification.admins}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Admin modulban
+    </button>
+    <button type="button" class="btn--toggle {{if notification.students 'active'}}" {{action 'toggleStudents'}}>
+      {{#if notification.students}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Hallgató modulban
+    </button>
+    <button type="button" class="btn--toggle {{if notification.demonstators 'active'}}" {{action 'toggleDemonstrators'}}>
+      {{#if notification.demonstators}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Demonstrátor modulban
+    </button>
+    <button type="button" class="btn--toggle {{if notification.evaluators 'active'}}" {{action 'toggleEvaluators'}}>
+      {{#if notification.evaluators}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Javító modulban
+    </button>
+    <button type="button" class="btn--toggle {{if notification.onLogin 'active'}}" {{action 'toggleLogin'}}>
+      {{#if notification.onLogin}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Bejelentkezési képernyőn</button>
   </div>
 
   <div class="text label">Tartalom</div>

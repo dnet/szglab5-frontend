@@ -4,6 +4,7 @@ export default Ember.Component.extend({
   currentTypes: Ember.computed('user.ExerciseTypes', 'user.ExerciseTypes.[]', 'user.ExerciseTypes.@each', function () {
     return this.get('user.ExerciseTypes').map(x => x.get('name'));
   }),
+  classNames: ['directory-settings-evaluator'],
   actions: {
     toggleType(exerciseType) {
       const exerciseTypes = this.get('user.ExerciseTypes');

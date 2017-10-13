@@ -134,8 +134,17 @@
           }
         }
         .directory-settings-evaluator {
-          .button-toggles {
+          .toggle-buttons {
             display: block;
+
+              .btn--toggle {
+                i {
+                  width: 20px;
+                }
+                &:before {
+                  display: none;
+                }
+              }
           }
 
           button {
