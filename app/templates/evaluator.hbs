@@ -31,17 +31,21 @@
             {{selectedEventUser.displayName}} ({{selectedEventUser.neptun}}) / {{selectedEvent.EventTemplate.ExerciseCategory.type}} / {{selectedDeliverable.DeliverableTemplate.description}}
           </div>
               {{#if selectedEventUser.email}}
-          <div class="text label">Hallgató e-mail címe</div>
             <div class="text">
+              <span class="label">Hallgató e-mail címe</span>
                 {{selectedEventUser.email}}
             </div>
               {{/if}}
 
-            <div class="text label">Demonstrátor</div>
-            <div class="text">{{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
+            <div class="text">
+                <span class="label">Demonstrátor</span>
+              {{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
 
           <div class="text label">Határidő</div>
-          <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
+          <div class="text">
+            <span class="label">Határidő</span>
+            {{dateformat selectedDeliverable.deadline}}
+          </div>
           {{#if selectedDeliverable.isOver}}
             <div class="text label">Fájl</div>
             {{#if selectedDeliverable.uploaded}}
@@ -52,17 +56,19 @@
             {{else}}
               <div class="text">Nincs feltölve.</div>
             {{/if}}
-            <div class="text label">Javítandó kiválasztása</div>
-            {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
-              {{#if selectedDeliverable.Corrector.id}}
-                <div class="text">Ezt a beadandót valaki más már lefoglalta.</div>
+            <div class="text">
+              <span class="label">Javítandó kiválasztása</span>
+              {{#unless (eq selectedDeliverable.Corrector.id model.user.id)}}
+                {{#if selectedDeliverable.Corrector.id}}
+                  Ezt a beadandót valaki más már lefoglalta.
+                {{else}}
+                  Ezt a beadandót még nem foglalták le.
+                  <button type="button" {{action 'book'}}>Foglalás</button>
+                {{/if}}
               {{else}}
-                <div class="text">Ezt a beadandót még nem foglalták le.</div>
-                <button type="button" {{action 'book'}}>Foglalás</button>
-              {{/if}}
-            {{else}}
-              <div class="text">Ezt a beadandót sikeresen lefoglaltad. A javítást a <em>Javítás és kijavított feladatok</em> menüponton keresztül kezdheted meg.</div>
-            {{/unless}}
+                Ezt a beadandót sikeresen lefoglaltad. A javítást a <em>Javítás és kijavított feladatok</em> menüponton keresztül kezdheted meg.
+              {{/unless}}
+            </div>
             {{#if success}}
               <div class="success-box">
                 Sikeres mentés.
@@ -108,20 +114,26 @@
             {{#unless selectedDeliverable.finalized}}
               <button type="button" {{action 'unbook'}}>Foglalás feloldása</button>
             {{/unless}}
-            <div class="text label">Labor kódja és beadandó típusa</div>
-            <div class="text">{{selectedEvent.EventTemplate.name}} {{selectedDeliverable.DeliverableTemplate.description}}</div>
-            <div class="text label">Hallgató</div>
-            <div class="text">{{selectedEventUser.displayName}} - {{selectedEventUser.neptun}}
+            <div class="text">
+              <span class="label">Labor kódja és beadandó típusa</span>
+              {{selectedEvent.EventTemplate.name}};  {{selectedDeliverable.DeliverableTemplate.description}}</div>
+            <div class="text">
+              <span class="label">Hallgató</span>
+
+              {{selectedEventUser.displayName}} - {{selectedEventUser.neptun}}
               {{#if selectedEventUser.email}}
                 ({{selectedEventUser.email}})
               {{/if}}
             </div>
-            <div class="text label">Demonstrátor</div>
-            <div class="text">{{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
-            <div class="text label">Határidő</div>
-            <div class="text">{{dateformat selectedDeliverable.deadline}}</div>
-            <div class="text label">Késve beadott feladat</div>
-            <div class="text">{{#if selectedDeliverable.isDelayed}}Igen: {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} Nem. {{/if}}</div>
+            <div class="text">
+              <span class="label">Demonstrátor</span>
+              {{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
+            <div class="text">
+              <span class="label">Határidő</span>
+              {{dateformat selectedDeliverable.deadline}}</div>
+            <div class="text">
+              <span class="label">Késve beadott feladat</span>
+              {{#if selectedDeliverable.isDelayed}}Igen: {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} Nem. {{/if}}</div>
             <div class="text label">Fájl</div>
             {{#if selectedDeliverable.uploaded}}
             <div class="text"><a class="button" {{action 'download'}}>Letöltés</a> <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">AKÉP</a></div>
@@ -135,7 +147,7 @@
             <div class="text label">IMSc</div>
             {{input type=nubmer value=selectedDeliverable.imsc placeholder="IMSc" disabled=selectedDeliverable.finalized}}
             {{#if selectedDeliverable.finalized}}
-              <div class="text">Véglegesítve. Amennyiben ezen változtatni szeretnél, kérd egz admin segítségét!</div>
+              <div class="text">Véglegesítve. Amennyiben ezen változtatni szeretnél, kérd egy admin segítségét!</div>
             {{else}}
               <button type="button" {{action 'save'}}>Javítás véglegesítése</button>
             {{/if}}

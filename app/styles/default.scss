@@ -60,12 +60,21 @@ div {
 		text-align: left;
 		line-height: 1.25;
 		font-weight: 300;
+		padding-top: 2%;
 
-		&.label {
+		span, &.label {
 			font-weight: 300;
-			padding-top: 2%;
 			color: rgb(102,102,102);
 			text-transform: lowercase;
+		}
+		span:after {
+			content: '\f105';
+			padding: 0 1%;
+			font-size: 14px;
+		}
+		button {
+			display: block;
+			padding-top: 0;
 		}
 
 		&.long {
