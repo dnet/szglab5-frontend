@@ -3,8 +3,10 @@
 
   <div class='right'>
     <form class='settings'>
-      <div class="text label">username</div>
-      <div class="text">{{model.loginName}}</div>
+      <div class="text">
+        <span class="label">username</span>
+        {{model.loginName}}
+      </div>
       {{#if (eq currentView 'email')}}
       <div class="text label" for="email">e-mail</div>
       {{input type="email" value=model.email placeholder='e-mail' id='email'}}
