@@ -1,108 +1,124 @@
-<div class="evaluation-student">
-  <div class='text label'>Name</div>
-  <div class="text">{{event.StudentRegistration.User.displayName}}</div>
+<div class='text'>
+  <span class='label'>Név</span> {{event.StudentRegistration.User.displayName}}
+</div>
 
-  <div class='text label'>Neptun</div>
-  <div class="text">{{event.StudentRegistration.User.neptun}}</div>
+<div class="text">
+  <span class='label'>Neptun</span> {{event.StudentRegistration.User.neptun}}
+</div>
 
-  <div class='text label'>e-mail</div>
-  <div class="text">
-    {{#if event.StudentRegistration.User.email}}
-      {{event.StudentRegistration.User.email}}
+<div class="text">
+  <span class='label'>e-mail</span>
+  {{#if event.StudentRegistration.User.email}}
+    {{event.StudentRegistration.User.email}}
+  {{else}}
+    Nincs e-mail megadva.
+  {{/if}}
+</div>
+
+<div class="text">
+  <span class='label'>Feladattípus</span> {{event.ExerciseSheet.ExerciseType.shortName}}
+</div>
+
+<div class="text">
+  <span class='label'>Határidő</span> {{event.formattedDate}}
+</div>
+
+<div class="entry-test-evaluation">
+  <div class='text label'>Beugró érdemjegye</div>
+  {{input type=text value=event.firstEntryTest.grade placeholder="beugró érdemjegy" disabled=event.firstEntryTest.finalized}}
+
+  <div class='text label'>Beugró véglegesítése</div>
+  <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>
+      {{#if event.firstEntryTest.finalized}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Véglegesítve
+    </button>
+</div>
+
+{{#each event.correctableDeliverables as |deliverable|}}
+  <div class="deliverable">
+    {{#if deliverable.grade}}
+      <div class="text" id="afterreportgrade">
+        <span class='label'><strong>{{deliverable.description}}</strong> érdemjegy</span> {{deliverable.grade}} ({{deliverable.CorrectorName}} - {{deliverable.CorrectorEmail}})
+      </div>
+
+      {{#if deliverable.comment}}
+        <div class='text label'><strong>{{deliverable.description}}</strong> megjegyzés</div>
+        <div class="text long">
+          {{deliverable.comment}}
+        </div>
+      {{else}}
+        <div class="text">
+          <span class='label'><strong>{{deliverable.description}}</strong> megjegyzés</span> Nincs megjegyzés.
+        </div>
+      {{/if}}
+
+      <div class="text">
+        <span class='label'><strong>{{deliverable.description}}</strong> IMSc pont</span>
+        {{#if deliverable.imsc}}
+          {{deliverable.imsc}} pont
+        {{else}}
+          Nincs IMSc pont hozzáadva.
+        {{/if}}
+      </div>
     {{else}}
-      No e-mail added.
+      <div class="text">
+        <span class='label'>A <strong>{{deliverable.description}}</strong> eredménye</span> A <strong>{{deliverable.description}}</strong> még nincs értékelve.
+      </div>
+    {{/if}}
+
+
+    <div class="text label">Fájl</div>
+    {{#if deliverable.uploaded}}
+      <a class="button" {{action 'download'}}>Letöltés</a>
+      <div class="text">
+        <span class='label'>Késve beadás</span>
+        {{#if deliverable.isDelayed}}Igen, {{dateformat deliverable.lastSubmittedDate}}. {{else}}Nem. {{/if}}
+      </div>
+    {{else}}
+      <div class="text">
+        Jelenleg nincs feltöltve
+        {{#if deliverable.isUploadable}}, de a hallgató még feltölthet{{/if}}.
+      </div>
     {{/if}}
   </div>
 
-  <div class='text label'>Exercise type</div>
-  <div class="text">{{event.ExerciseSheet.ExerciseType.shortName}}</div>
+{{/each}}
 
-  <div class='text label'>Deadline</div>
-  <div class="text">{{event.formattedDate}}</div>
+<div class="laboratory-evaluation">
+  <div class='text label'>{{event.EventTemplate.name}} érdemjegy</div>
+  {{input type=text value=event.grade placeholder="érdemjegy" disabled=event.finalized }}
 
-  <div class='text label'>Entry test grade</div>
-  {{input type=text value=event.firstEntryTest.grade placeholder="grade" }}
+  <div class='text label'>{{event.EventTemplate.name}} megjegyzés</div>
+  {{textarea value=event.comment cols="9" rows="9" placeholder="megjegyzés" disabled=event.finalized }}
 
-  <div class='text label'>Entry test finalized</div>
-  <button type="button" class="btn--toggle {{if event.firstEntryTest.finalized 'active'}}" {{action 'toggleFinalized' event.firstEntryTest}}>
-    {{#if event.firstEntryTest.finalized}}
-      <i class="fa fa-check-square-o" aria-hidden="true"></i>
-      {{else}}
-      <i class="fa fa-square-o" aria-hidden="true"></i>
-    {{/if}}
-    finalized
-  </button>
+  <div class='text label'>{{event.EventTemplate.name}} IMSc</div>
+  {{input type=text value=event.imsc placeholder="IMSc" disabled=event.finalized }}
 
-  {{#if event.firstCorrectableDeliverable.grade}}
-    <div class='text label'>Exercise grade</div>
-    <div class="text" id="afterreportgrade">
-      {{event.firstCorrectableDeliverable.grade}} ({{event.firstCorrectableDeliverable.CorrectorName}})
-    </div>
-
-    <div class='text label'>Exercise comment</div>
-    {{#if event.firstCorrectableDeliverable.comment}}
-      <div class="text long">
-        {{event.firstCorrectableDeliverable.comment}}
-      </div>
-    {{else}}
-      <div class="text">No comment added.</div>
-    {{/if}}
-
-    <div class='text label'>Exercise imsc</div>
-    <div class="text">
-      {{#if event.firstCorrectableDeliverable.imsc}}
-        {{event.firstCorrectableDeliverable.imsc}} point
-      {{else}}
-        No imsc point added.
-      {{/if}}
-    </div>
-  {{else}}
-    <div class='text label'>Exercise result</div>
-    <div class="text">It has not been graded yet.</div>
-  {{/if}}
-
-  <div class="text label">Exercise file</div>
-  {{#if event.firstCorrectableDeliverable.uploaded}}
-    <div class="text"><a class="button" {{action 'download'}}>Download</a></div>
-    <div class="text label">Exercise delayed</div>
-    <div class="text">
-      {{#if event.firstCorrectableDeliverable.isDelayed}}Yes, {{dateformat event.firstCorrectableDeliverable.lastSubmittedDate}}. {{else}}No. {{/if}}
-    </div>
-  {{else}}
-    <div class="text">Not uploaded
-      {{#if event.firstCorrectableDeliverable.isUploadable}}, but still can upload{{/if}}.</div>
-  {{/if}}
-
-  <div class='text label'>{{event.EventTemplate.name}} grade</div>
-  {{input type=text value=event.grade placeholder="grade" }}
-
-  <div class='text label'>{{event.EventTemplate.name}} comment</div>
-  {{textarea value=event.comment cols="9" rows="9" placeholder="comment" }}
-
-  <div class='text label'>{{event.EventTemplate.name}} imsc</div>
-  {{input type=text value=event.imsc placeholder="imsc" }}
-
-  <div class='text label'>{{event.EventTemplate.name}} finalized</div>
+  <div class='text label'>{{event.EventTemplate.name}} véglegesítése</div>
   <button type="button" class="btn--toggle {{if event.finalized 'active'}}" {{action 'toggleFinalized' event}}>
-    {{#if event.finalized}}
-      <i class="fa fa-check-square-o" aria-hidden="true"></i>
-      {{else}}
-      <i class="fa fa-square-o" aria-hidden="true"></i>
-    {{/if}}
-    finalized
-  </button>
-
-  <button type="button" {{action 'save'}}>Save</button>
-  <button type="button" class="cancel" {{action 'cancel'}}>Cancel</button>
-  {{#if success}}
-    <div class="success-box">
-      Saved successfully.
-    </div>
-  {{else}}
-    {{#unless (or (eq error '') (eq error undefined))}}
-      <div class="error-box">
-        {{error}}
-      </div>
-    {{/unless}}
-  {{/if}}
+      {{#if event.finalized}}
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        {{else}}
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      {{/if}}
+      Véglegesítve
+    </button>
 </div>
+
+<button type="button" {{action 'save'}}>Mentés</button>
+<button type="button" class="cancel" {{action 'cancel'}}>Mégse</button>
+{{#if success}}
+  <div class="success-box">
+    Sikeres mentés
+  </div>
+{{else}}
+  {{#unless (or (eq error '') (eq error undefined))}}
+    <div class="error-box">
+      {{error}}
+    </div>
+  {{/unless}}
+{{/if}}

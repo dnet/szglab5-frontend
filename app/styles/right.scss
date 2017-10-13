@@ -34,6 +34,10 @@
 
       .demonstrator {
         .demonstrator-group, .evaluation-student {
+          .deliverable, .laboratory-evaluation, .entry-test-evaluation {
+            border-top: solid black 1px;
+          }
+
           a, input, button {
             margin-left: -1%;
           }
