@@ -143,7 +143,7 @@ export default Ember.Controller.extend({
       if (this.get('selectedDeliverableTemplate')) {
         filter.deliverableTemplateId = this.get('selectedDeliverableTemplate.id');
       }
-      const pageSize = 10;
+      const pageSize = 50;
       this.get('store').query('deliverable', {
         filter: filter,
         offset: pageSize * this.get('page'),
@@ -275,7 +275,7 @@ export default Ember.Controller.extend({
       if (this.get('selectedEventTemplate')) {
         filter.eventTemplateId = this.get('selectedEventTemplate.id');
       }
-      const pageSize = 10;
+      const pageSize = 50;
       this.get('store').query('deliverable', {
         filter: filter,
         offset: pageSize * this.get('page'),
