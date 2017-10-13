@@ -32,6 +32,11 @@ div {
 		font-size: 18px;
 		color: #333;
 	}
+	&.sub-label {
+		font-size: 18px;
+		color: rgb(102,102,102);
+		font-weight: 500;
+	}
 
 	&.popup-label {
 		font-weight: bold;
@@ -87,6 +92,16 @@ div {
 		input {
 			color: black;
 			font-weight: 300;
+			margin-right: 3%;
+			display: inline-block;
+		}
+		a, .button {
+			margin-top: 0;
+		}
+
+		.success-box {
+			display: inline-block;
+			margin: 0 0 0  2%;
 		}
 	}
 }
@@ -305,13 +320,4 @@ html {
 		}
 	}
 
-}
-
-.time-input {
-	input {
-		display: inline;
-		width: 3em;
-    min-width: auto;
-    margin-left: 0 !important;
-	}
 }

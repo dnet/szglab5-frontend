@@ -14,7 +14,7 @@
           margin-left: -1%;
         }
 
-        button {  
+        button {
           margin-left: -1%;
         }
 
@@ -29,7 +29,7 @@
         .btn--toggle {
           margin-left: -1%;
         }
-        
+
       }
 
       .demonstrator {
@@ -75,20 +75,62 @@
             margin-left: 1%;
           }
         }
+
+        .basic-settings {
+          border-bottom: solid black 1px;
+          padding-bottom: 3%;
+        }
+        .directory-actions {
+          border-top: solid black 1px;
+          padding-top: 3%;
+        }
         .directory-settings-student {
           .student-registration {
-            margin-left: -1%;
-            .text {
-              &.label {
-                margin-left: 1%;
-                color: black;
-              }
+            padding-top: 3%;
+            .sub-label {
+              padding-left: 1.5%;
+              margin-top: 1%;
             }
-            .actions {
-              button {
-                margin-left: 1%;
+            // border-top: solid black 1px;
+            .student-event {
+              padding: 0 0 2% 3%;
+              border-bottom: solid black 1px;
+
+              .change-time {
+                .time-input {
+                  margin-left: -1%;
+                  display: inline-block;
+                  width: 280px;
+                  input {
+                    display: inline-block;
+                    max-width: 80px;
+                    min-width: 20px;
+                    margin: 0 0.5%;
+
+                    &.time {
+                      max-width: 20px;
+                    }
+                  }
+                }
+
+                .button, button {
+                  display: inline-block;
+                  margin-top: 0;
+                }
+
+                .success-box {
+            			display: inline-block;
+            			margin: 0 0 0  2%;
+            		}
               }
+
+                .definalize-actions {
+                  button, .button {
+                    margin-right: 1%;
+                  }
+                }
             }
+
           }
         }
         .directory-settings-evaluator {
@@ -98,6 +140,7 @@
 
           button {
             display: block;
+            margin-top: 0;
           }
 
         }

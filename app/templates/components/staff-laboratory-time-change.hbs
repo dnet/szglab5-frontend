@@ -1,19 +1,17 @@
-<div class="text label">Submitted date</div>
 <div class="text">
+  <span class="label">Feltöltés ideje</span>
   {{dateformat lastSubmittedDate}}
 </div>
-<div class="text label">Change submitted date</div>
-<div class="dateChooser">
+<div class="text label">Feltöltés idejének megváltoztatása</div>
+<div class="time-input">
   {{pikaday-input format="YYYY-MM-DD" placeholder="Select a date" value=date onSelection=(action (mut date))}}
-  <div class="time-input">
-    {{input type=number value=hours placeholder="hours" }} :
-    {{input type=number value=minutes placeholder="minutes" }}
-  </div>
+    {{input type=number value=hours placeholder="hours" class='time'}} :
+    {{input type=number value=minutes placeholder="minutes" class='time'}}
 </div>
-<button type="button" {{action 'save'}}>Save</button>
+<button type="button" {{action 'save'}}>Mentés</button>
 {{#if success}}
   <div class="success-box">
-    Saved successfully.
+    Sikeres mentés
   </div>
 {{else}}
   {{#unless (or (eq error '') (eq error undefined))}}

@@ -1,34 +1,56 @@
-<div class="text">{{await semesterName}}</div>
+<div class="normal-label">
+  {{await StudentRegistration.Semester.academicyear}}/{{await StudentRegistration.Semester.academicterm}} szemeszter
+</div>
+
 {{#each (await StudentRegistration.Events) as |event|}}
-  <div class="text label">{{dateformat event.date}} @ {{event.location}}</div>
-  <div style="margin-left: 2em;">
+  <div class="sub-label">
+    {{event.EventTemplate.ExerciseCategory.type}}
+  </div>
+  <div class="student-event">
+    <div class="text">
+      <span class="label">Labor időpontja</span> {{dateformat event.date}}
+    </div>
+    <div class="text">
+      <span class="label">Labor helyszíne</span> {{event.location}}
+    </div>
+    <div class="text">
+      <span class="label">feladattípus</span> {{event.ExerciseSheet.ExerciseType.shortName}}
+    </div>
+
+
     <div class="actions">
       {{#each event.Deliverables as |Deliverable|}}
         {{#if (eq Deliverable.DeliverableTemplate.type 'FILE')}}
-          {{Deliverable.DeliverableTemplate.description}}
-          <div style="margin-left: 1em;">
-            {{staff-laboratory-upload Deliverable=Deliverable}}
-            {{#if Deliverable.lastSubmittedDate}}
-              {{staff-laboratory-time-change Deliverable=Deliverable}}
-            {{/if}}
-            <button type="button" disabled={{not Deliverable.finalized}} {{action 'definalize' Deliverable}}>Definalize</button>
-            {{#if Deliverable.success}}
-              <div class="success-box">
-                Saved successfully.
-              </div>
-            {{else}}
-              {{#unless (or (eq Deliverable.error '') (eq Deliverable.error undefined))}}
-                <div class="error-box">
-                  {{Deliverable.error}}
-                </div>
-              {{/unless}}
-            {{/if}}
+          <div class="text">
+            <span class="label">beadandó típusa</span>
+            <strong>{{Deliverable.DeliverableTemplate.description}}</strong>
           </div>
+          {{staff-laboratory-upload Deliverable=Deliverable}}
+          {{#if Deliverable.lastSubmittedDate}}
+            {{staff-laboratory-time-change Deliverable=Deliverable}}
+          {{/if}}
+          <div class="definalize-actions">
+            <div class="text label">Beadandó érdemjegy feloldása</div>
+            <button type="button" disabled= {{not Deliverable.finalized}} {{action 'definalize' Deliverable}}>Feloldás</button>
+          </div>
+          {{#if Deliverable.success}}
+            <div class="success-box">
+              Sikeres mentés.
+            </div>
+          {{else}}
+            {{#unless (or (eq Deliverable.error '') (eq Deliverable.error undefined))}}
+              <div class="error-box">
+                {{Deliverable.error}}
+              </div>
+            {{/unless}}
+          {{/if}}
         {{/if}}
       {{/each}}
-      <!--<button type="button" disabled= {{not lab.isEntrytestFinal}}>Beugrójegy törlése</button>
-      <button type="button" disabled= {{not lab.isReportFinal}}>Jegyzőkönyvjegy törlése</button>
-      <button type="button" disabled= {{not lab.isLaboratoryFinal}}>Laborjegy törlése</button>-->
+
+      <div class="definalize-actions">
+        <div class="text label">Labor érdemjegy feloldása</div>
+        <button type="button" disabled=true>Feloldás</button>
+      </div>
     </div>
   </div>
 {{/each}}

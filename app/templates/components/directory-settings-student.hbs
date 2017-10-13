@@ -1,9 +1,7 @@
-<div class="text label">Semesters</div>
 {{#each user.StudentRegistrations as |studentReg|}}
   {{directory-settings-student-registration StudentRegistration=studentReg}}
-
 {{else}}
 <div class="text">
-  No semesters were found for this student.
+  Ehhez a hallgatóhoz a rendszerben nincs szemeszter felvéve.
 </div>
 {{/each}}

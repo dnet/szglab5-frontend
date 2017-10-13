@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   error: '',
   success: false,
+  classNames: ['change-time'],
   hours: 0,
   minutes: 0,
   date: new Date(),
