@@ -47,5 +47,17 @@ export default DS.Model.extend({
     return this.get('Corrector.email_official');
   }),
   commits: ['commit1', 'commit4'],
-  description: Ember.computed.oneWay('DeliverableTemplate.description')
+  description: Ember.computed.oneWay('DeliverableTemplate.description'),
+
+  formattedLastSubmittedDate: Ember.computed('lastSubmittedDate', function(){
+    var date = this.get('lastSubmittedDate');
+    if (date && date.getFullYear) {
+      var r = date.getFullYear() + ". " + (date.getMonth() + 1) + ". " + date.getDate() + ". ";
+      r += (date.getHours() < 10) ? "0" + date.getHours() : date.getHours();
+      r += ":";
+      r += (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
+      return r;
+    }
+    return "";
+  })
 });
