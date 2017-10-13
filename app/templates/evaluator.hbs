@@ -41,7 +41,6 @@
                 <span class="label">Demonstrátor</span>
               {{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
 
-          <div class="text label">Határidő</div>
           <div class="text">
             <span class="label">Határidő</span>
             {{dateformat selectedDeliverable.deadline}}
@@ -52,6 +51,10 @@
               <div class="text">
                 <a class="button" {{action 'download'}}>Letöltés</a>
                 <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">AKÉP</a>
+              </div>
+              <div class="text">
+                <span class='label'>Feltöltés ideje</span>
+                {{dateformat selectedDeliverable.lastSubmittedDate}}
               </div>
             {{else}}
               <div class="text">Nincs feltölve.</div>
@@ -128,6 +131,10 @@
             <div class="text">
               <span class="label">Demonstrátor</span>
               {{selectedEventDemonstrator.displayName}} ({{selectedEventDemonstrator.email_official}})</div>
+            <div class="text">
+              <span class='label'>Feltöltés ideje</span>
+              {{dateformat selectedDeliverable.lastSubmittedDate}}
+            </div>
             <div class="text">
               <span class="label">Határidő</span>
               {{dateformat selectedDeliverable.deadline}}</div>
