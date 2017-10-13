@@ -4,7 +4,7 @@
     <div class='statistics'>
       <div class="statistics-content">
         {{#if selectedMenu.eventTemplateNeeded}}
-          <div class="text label">Labortípus:</div>
+          <div class="text label">Labor kód:</div>
           {{#power-select options=model.eventTemplates selected=selectedEventTemplate onchange=(action "changeEventTemplate") as |eT|}}
             {{eT.ExerciseCategory.type}}
           {{/power-select}}
