@@ -75,6 +75,10 @@
     {{#if deliverable.uploaded}}
       <a class="button" {{action 'download'}}>Letöltés</a>
       <div class="text">
+        <span class='label'>Feltöltés ideje</span>
+        {{dateformat deliverable.lastSubmittedDate}}
+      </div>
+      <div class="text">
         <span class='label'>Késve beadás</span>
         {{#if deliverable.isDelayed}}Igen, {{dateformat deliverable.lastSubmittedDate}}. {{else}}Nem. {{/if}}
       </div>
