@@ -186,6 +186,18 @@
       }
 
       .student {
+        .lab-finalized {
+          border-top: solid 1px black;
+        }
+
+        .deliverables {
+          border-top: solid 1px black;
+          .deliverable {
+            &:not(:last-child){
+            border-bottom: solid 1px black;
+          }
+          }
+        }
         .tagSelector{
           margin-left: -1%;
         }
