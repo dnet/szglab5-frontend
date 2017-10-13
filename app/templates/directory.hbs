@@ -1,22 +1,22 @@
 <div class="content directory">
-  {{left-menu title="Users" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
+  {{left-menu title="Fehasználók" currentView=currentView goToView=(action 'goToView') subMenu=subMenu}}
 
   <div class="right">
     <div class="directory">
       {{#if (eq currentView 'list')}}
         {{#unless showSettings}}
           <div class="directory-search-fields">
-            <div class="text label">Search</div>
-            {{input type="text" value=search placeholder="Name or email or id" enter="showTable"}}
+            <div class="text label">Keresés</div>
+            {{input type="text" value=search placeholder="név, e-mail vagy id" enter="showTable"}}
 
-            <button {{action 'showTable'}}>Search</button>
+            <button {{action 'showTable'}}>Keresés</button>
           </div>
           {{#if showTable}}
             <div class="directory-table">
               {{table-component header=header body=users rowIndecies=rowIndecies addClass='user-table' openSettings=(action "openSettings") withSettings=true impersonate=(action 'impersonateUser') withImpersonate=true clickable=true onClickRowAction="openSettings"}}
             </div>
             {{#if showNextPage}}
-              <button {{action 'nextPage'}}>Load more</button>
+              <button {{action 'nextPage'}}>Továbbiak betöltése</button>
             {{/if}}
           {{/if}}
         {{/unless}}

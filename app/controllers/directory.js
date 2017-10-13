@@ -4,16 +4,16 @@ import config from '../config/environment';
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
-  header: ['ID', 'Név', 'Login', 'Neptun', 'E-mail'],
+  header: ['ID', 'Név', 'Felhasználónév', 'Neptun', 'E-mail'],
   rowIndecies: ['id', 'displayName', 'loginName', 'neptun', 'email'],
   subMenu: [
     {
       key: 'list',
-      description: 'List'
+      description: 'Felhasználók listázása'
     },
     {
       key: 'new',
-      description: 'New'
+      description: 'Új felhasználó'
     }
   ],
   currentView: 'list',
