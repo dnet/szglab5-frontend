@@ -45,7 +45,10 @@
           {{#if selectedDeliverable.isOver}}
             <div class="text label">Fájl</div>
             {{#if selectedDeliverable.uploaded}}
-              <div class="text"><a class="button" {{action 'download'}}>Letöltés</a></div>
+              <div class="text">
+                <a class="button" {{action 'download'}}>Letöltés</a>
+                <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">AKÉP</a>
+              </div>
             {{else}}
               <div class="text">Nincs feltölve.</div>
             {{/if}}
@@ -121,7 +124,7 @@
             <div class="text">{{#if selectedDeliverable.isDelayed}}Yes, {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} No. {{/if}}</div>
             <div class="text label">File</div>
             {{#if selectedDeliverable.uploaded}}
-            <div class="text"><a class="button" {{action 'download'}}>Download</a> <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">Akep</a></div>
+            <div class="text"><a class="button" {{action 'download'}}>Download</a> <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">AKÉP</a></div>
             {{else}}
             <div class="text">Not uploaded.</div>
             {{/if}}
