@@ -1,28 +1,52 @@
 <div class='directory-settings'>
   <div class="directory-fields">
+    <div class="text">
+      <span class="label">ID</span>
+        {{user.id}}
+    </div>
+    <div class="text">
+      <span class="label">Név</span>
+        {{user.displayName}}
+    </div>
+    <div class="text">
+      <span class="label">Felhasználónév</span>
+        {{user.loginName}}
+    </div>
+    {{#if user.neptun}}
+      <div class="text">
+        <span class="label">Neptun</span>
+          {{user.neptun}}
+      </div>
+    {{/if}}
+    {{#if user.email_official}}
+      <div class="text">
+        <span class="label">Hivatalos e-mail</span>
+        {{user.email_official}}
+      </div>
+    {{/if}}
     <div class="directory-field">
-      <div class="text label">New password:</div>
-      {{input type="text" value=newPwd placeholder='new password'}}
-      <button {{action 'setNewPwd'}}>Set new password</button>
+      <div class="text label">Új jelszó</div>
+      {{input type="text" value=newPwd placeholder='új jelszó'}}
+      <button {{action 'setNewPwd'}}>Új jelszó beállítása</button>
       {{#if successfullPwd}}
-        <div class="success-box">Successfully set.</div>
+        <div class="success-box">Sikeres mentés</div>
       {{/if}}
     </div>
 
     <div class="directory-field">
-      <div class="text label">New e-mail</div>
-      {{input type="email" value=newEmail placeholder='new e-mail'}}
-      <button {{action 'setNewEmail'}}>Set new e-mail</button>
+      <div class="text label">Új e-mail</div>
+      {{input type="email" value=newEmail placeholder='új e-mail'}}
+      <button {{action 'setNewEmail'}}>Új e-mail beállítása</button>
       {{#if successfullEmail}}
-        <div class="success-box">Successfully set.</div>
+        <div class="success-box">Sikeres mentés</div>
       {{/if}}
     </div>
     <div class="directory-field">
-      <div class="text label">Impersonate</div>
-      <button class="directory-form-button" {{action 'impersonateUser'}}>Impersonate user</button>
+      <div class="text label">Megszemélyesítés</div>
+      <button class="directory-form-button" {{action 'impersonateUser'}}>Felhasználó megszemélyesítése</button>
     </div>
   </div>
-  <div class="text label">Roles</div>
+  <div class="text label">Felhasználói szerepkör</div>
   <div class="toggle-buttons">
     {{#each model.roles as |role|}}
       <button type="button" class="btn--toggle btn-auto-width {{if (has-key currentRoles role.name) 'active'}}" {{action 'toggleRole' role}}>{{role.name}}</button>
