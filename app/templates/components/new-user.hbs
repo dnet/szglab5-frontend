@@ -1,12 +1,12 @@
-<div class="text label">Name</div>
-{{input type="text" value=user.displayName placeholder="name"}}
+<div class="text label">Név</div>
+{{input type="text" value=user.displayName placeholder="név"}}
 <div class="text label">Neptun</div>
 {{input type="text" value=user.neptun placeholder="neptun"}}
-<div class="text label">username</div>
-{{input type="text" value=user.loginName placeholder="username"}}
-<div class="text label">Password</div>
-{{input type="password" value=user.newpwd placeholder="password"}}
-<button type="button" {{action 'create'}}>Create</button>
+<div class="text label">Felhasználónév</div>
+{{input type="text" value=user.loginName placeholder="felhasználónév"}}
+<div class="text label">Jelszó</div>
+{{input type="password" value=user.newpwd placeholder="jelszó"}}
+<button type="button" {{action 'create'}}>Létrehozás</button>
 
 {{#if error}}
 <div class="error-box">
@@ -15,6 +15,6 @@
 {{/if}}
 {{#if success}}
 <div class="success-box">
-  Created successfully.
+  Sikeres létrehozás.
 </div>
 {{/if}}
