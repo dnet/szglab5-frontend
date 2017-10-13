@@ -94,7 +94,7 @@ export default Ember.Controller.extend({
     }
   },
   loadUsers() {
-    const pageSize = 10;
+    const pageSize = 50;
     this.get('store').query('user', {
       filter: {
         search: this.get('search')
