@@ -14,11 +14,11 @@
         </div>
       {{/unless}}
     {{/if}}
-    <div class="text label">Download {{Deliverable.DeliverableTemplate.description}}</div>
-    <a class="button" {{action 'download'}}>Download</a>
-    <div class="text label">{{Deliverable.DeliverableTemplate.description}} Uploaded at</div>
-    <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
   {{/if}}
-
-
+{{/if}}
+{{#if Deliverable.uploaded}}
+  <div class="text label">Download {{Deliverable.DeliverableTemplate.description}}</div>
+  <a class="button" {{action 'download'}}>Download</a>
+  <div class="text label">{{Deliverable.DeliverableTemplate.description}} Uploaded at</div>
+  <div class="text">{{dateformat Deliverable.lastSubmittedDate}}</div>
 {{/if}}
