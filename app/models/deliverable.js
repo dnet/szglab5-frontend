@@ -1,6 +1,8 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 import config from '../config/environment';
+import moment from 'moment';
+
 
 export default DS.Model.extend({
   deadline: DS.attr('date'),
@@ -30,9 +32,12 @@ export default DS.Model.extend({
         ((new Date()) - this.get('deadline')) < 13 * 60 * 60 * 1000 // the deadline is over at most 13 hours
       );
   }),
-  isDelayed: Ember.computed('deadline', 'uploaded', function () {
+  isDelayed: Ember.computed('deadline', 'uploaded', 'lastSubmittedDate', function () {
     return !(this.get('lastSubmittedDate') &&
       ((this.get('deadline') - this.get('lastSubmittedDate')) > 0));
+  }),
+  delayCalculation: Ember.computed('deadline','uploaded', 'lastSubmittedDate', function(){
+    return moment(this.get('lastSubmittedDate')).diff(moment(this.get('deadline')),'hours');
   }),
   downloadLink: Ember.computed('id', function () {
     return `${config.backendUrl}/deliverables/${this.get('id')}/download`;

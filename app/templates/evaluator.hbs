@@ -146,10 +146,15 @@
             </div>
             <div class="text">
               <span class="label">Határidő</span>
-              {{dateformat selectedDeliverable.deadline}}</div>
-            <div class="text">
-              <span class="label">Késve beadott feladat</span>
-              {{#if selectedDeliverable.isDelayed}}Igen: {{dateformat selectedDeliverable.lastSubmittedDate}}. {{else}} Nem. {{/if}}</div>
+              {{dateformat selectedDeliverable.deadline}}
+            </div>
+            {{#if selectedDeliverable.isDelayed}}
+              <div class="text">
+                <span class='label'>Késés</span>
+                 {{selectedDeliverable.delayCalculation}} óra
+              </div>
+            {{/if}}
+
             <div class="text label">Fájl</div>
             {{#if selectedDeliverable.uploaded}}
             <div class="text"><a class="button" {{action 'download'}}>Letöltés</a> <a class="button akep" target="_blank" href="https://ertekelo-dev.db.bme.hu/#AKEPView/{{selectedEventUser.neptun}}/{{selectedEvent.EventTemplate.ExerciseCategory.type}}">AKÉP</a></div>
