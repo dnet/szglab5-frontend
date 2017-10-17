@@ -41,11 +41,11 @@ export default Ember.Component.extend({
       this.get('event').rollbackAttributes();
       return this.sendAction('cancel');
     },
-    download() {
+    download(downloadLink) {
       const form = document.createElement('form');
       form.setAttribute('target', '_blank');
       form.setAttribute('method', 'post');
-      form.setAttribute('action', this.get('event.firstCorrectableDeliverable.downloadLink'));
+      form.setAttribute('action', downloadLink);
       const hiddenInput = document.createElement('input');
       hiddenInput.setAttribute('type', 'hidden');
       hiddenInput.setAttribute('name', 'token');
