@@ -220,7 +220,7 @@ export default Ember.Controller.extend({
       });
       return false;
     },
-    save() {
+    save(finalized = true) {
       this.set('success', false);
       this.set('error', '');
       if (this.get('selectedDeliverable.comment') === '') {
@@ -233,14 +233,18 @@ export default Ember.Controller.extend({
         this.set('selectedDeliverable.imsc', null);
       }
       if (this.get('selectedDeliverable.grade') === null) {
-        this.set('error', 'No grade provided.');
-        return;
+        if (finalized) {
+          this.set('error', 'No grade provided.');
+          return;
+        }
       }
       if (this.get('selectedDeliverable.comment') === null) {
-        this.set('error', 'No comment provided.');
-        return;
+        if (finalized) {
+          this.set('error', 'No comment provided.');
+          return;
+        }
       }
-      this.set('selectedDeliverable.finalized', true);
+      this.set('selectedDeliverable.finalized', finalized);
       this.get('selectedDeliverable').save().then(() => {
         this.set('success', true);
       }, (t) => {
