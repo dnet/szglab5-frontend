@@ -37,7 +37,7 @@ export default DS.Model.extend({
       ((this.get('deadline') - this.get('lastSubmittedDate')) > 0));
   }),
   delayCalculation: Ember.computed('deadline','uploaded', 'lastSubmittedDate', function(){
-    return moment(this.get('lastSubmittedDate')).diff(moment(this.get('deadline')),'hours');
+    return moment(this.get('lastSubmittedDate')).diff(moment(this.get('deadline')),'hours', true);
   }),
   downloadLink: Ember.computed('id', function () {
     return `${config.backendUrl}/deliverables/${this.get('id')}/download`;
