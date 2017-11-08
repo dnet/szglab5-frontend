@@ -23,6 +23,10 @@
   <span class='label'>Időpont</span> {{event.formattedDate}}
 </div>
 
+<div class="text">
+  <span class='label'>Határidő</span> {{dateformat (await event.eventDeadline)}}
+</div>
+
 <div class="entry-test-evaluation">
   <div class='text label'>Beugró érdemjegye</div>
   {{input type=text value=event.firstEntryTest.grade placeholder="beugró érdemjegy" disabled=event.firstEntryTest.finalized}}
