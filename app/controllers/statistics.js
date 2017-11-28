@@ -27,6 +27,10 @@ export default Ember.Controller.extend({
       description: 'Beadandók',
       eventTemplateNeeded: true,
       exerciseTypeNeeded: true
+    },
+    {
+      key: 'supplementary',
+      description: 'Pótlás'
     }
   ],
 
