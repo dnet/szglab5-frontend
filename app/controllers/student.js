@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
             });
             // select the last if there's no not graded menupoint
             if (this.get('currentView') === null) {
-              this.set('currentView', sorted.lastObject);
+              this.set('currentView', sorted[sorted.length - 1]);
             }
             resolve(sorted);
           }, err => {
