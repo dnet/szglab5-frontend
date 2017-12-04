@@ -50,6 +50,12 @@ export default Ember.Controller.extend({
       dataType: "json",
       success: (data) => {
         this.set('data', data);
+        if ('header' in data && !('rowIndecies' in data)) {
+          data.rowIndecies = data.header;
+        }
+        if ('rowIndecies' in data && !('header' in data)) {
+          data.header = data.rowIndecies;
+        }
       },
       failure: errorMessage,
       statusCode: {
