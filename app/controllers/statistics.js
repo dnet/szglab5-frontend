@@ -49,13 +49,21 @@ export default Ember.Controller.extend({
       crossDomain: true,
       dataType: "json",
       success: (data) => {
+        let headerData = (data.headerData || []);
+        if (headerData.length === 0) {
+          data.rowIndecies = data.headers;
+        }
+        else {
+          data.headers = [];
+          data.rowIndecies = [];
+          data.tooltips = [];
+          for (let column of headerData) {
+            data.headers.push(column.name);
+            data.rowIndecies.push(column.row);
+            data.tooltips.push(column.tooltip);
+          }
+        }
         this.set('data', data);
-        if ('header' in data && !('rowIndecies' in data)) {
-          data.rowIndecies = data.header;
-        }
-        if ('rowIndecies' in data && !('header' in data)) {
-          data.header = data.rowIndecies;
-        }
       },
       failure: errorMessage,
       statusCode: {

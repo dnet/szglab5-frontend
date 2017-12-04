@@ -8,8 +8,8 @@
         <th>
         </th>
       {{/if}}
-      {{#each header as |head|}}
-        <th>{{head}}</th>
+      {{#each header as |head columnIndex|}}
+        <th title="{{get-array-element tooltips columnIndex}}">{{head}}</th>
       {{/each}}
       {{#if withSettings}}
         <th>

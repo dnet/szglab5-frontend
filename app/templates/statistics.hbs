@@ -15,7 +15,7 @@
             {{eT.shortName}}
           {{/power-select}}
         {{/if}}
-        {{table-component header=data.headers rowIndecies=data.rowIndecies body=data.data addClass='statistics-table' }}
+        {{table-component header=data.headers rowIndecies=data.rowIndecies tooltips=data.tooltips body=data.data addClass='statistics-table' }}
         {{#unless (or (eq error '') (eq error undefined))}}
           <div class="error-box">
             {{error}}
