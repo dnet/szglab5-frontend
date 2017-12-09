@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
     },
     {
       key: 'studentsupplementary',
-      description: 'Biztos pótlok'
+      description: 'Biztos pótlók'
     }
   ],
 
