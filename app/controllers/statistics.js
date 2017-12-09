@@ -37,6 +37,10 @@ export default Ember.Controller.extend({
       description: 'Biztos bukások'
     },
     {
+      key: 'failedpredict',
+      description: 'Biztos bukások(Jegyzőkönyv)'
+    },
+    {
       key: 'passed',
       description: 'Biztos teljesitők'
     }
