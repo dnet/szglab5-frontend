@@ -43,6 +43,10 @@ export default Ember.Controller.extend({
     {
       key: 'passed',
       description: 'Biztos teljesitők'
+    },
+    {
+      key: 'studentsupplementary',
+      description: 'Biztos pótlok'
     }
   ],
 
