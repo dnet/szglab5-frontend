@@ -25,11 +25,23 @@ export default Ember.Component.extend({
             })
             .sort((lhs, rhs) => {
               const lhsName = lhs.get('StudentRegistration.User.displayName'), rhsName = rhs.get('StudentRegistration.User.displayName');
-              if (lhsName < rhsName) {
+              const lhsAttempt = lhs.get('attempt'), rhsAttempt = rhs.get('attempt');
+
+              if (lhsAttempt > rhsAttempt) {
                 return -1;
               }
-              if (lhsName > rhsName) {
+
+              if (lhsAttempt < rhsAttempt) {
                 return 1;
+              }
+
+              if (lhsAttempt === rhsAttempt) {
+                if (lhsName < rhsName) {
+                  return -1;
+                }
+                if (lhsName > rhsName) {
+                  return 1;
+                }
               }
               return 0;
             })
