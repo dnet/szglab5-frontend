@@ -42,6 +42,7 @@ export default DS.Model.extend({
     return entryTests[0];
   }),
   supplementary: Ember.computed('attempt', function() {
+    const attempt = this.get('attempt');
     return (attempt && attempt > 1) ? 'igen' : 'nem';
   }),
   eventDeadline: Ember.computed('firstCorrectableDeliverable', function(){
