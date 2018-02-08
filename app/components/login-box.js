@@ -12,11 +12,13 @@ export default Ember.Component.extend({
   actions: {
     removeError() {
       this.set('hasError', false);
+      this.set('errorShibboleth', '');
     },
     login() {
       var credentials = this.getProperties('username', 'password'), authenticator = config['ember-simple-auth'].authenticator;
 
       this.set('hasError', false);
+      this.set('errorShibboleth', '');
       if (credentials.username.trim() === "" || credentials.password.trim() === "") {
         this.set('hasError', true);
         this.set('error', "Üres felhasználó/jelszó mező.");
@@ -40,7 +42,12 @@ export default Ember.Component.extend({
       return false;
     },
     loginBMERedirect() {
-      alert('This has not been implemented yet.');
+      var currentWebsite = window.location.origin;
+      var shibboleth = '/Shibboleth.sso/Login';
+      var target = currentWebsite + '/#/login-shibboleth';
+      var shibbolethUrl = currentWebsite + shibboleth + "?target=" + encodeURIComponent(target);
+
+      window.location.replace(shibbolethUrl);
       return false;
     }
   }

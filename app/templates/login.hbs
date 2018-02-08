@@ -1,2 +1,8 @@
-{{login-box goToSettings=(action 'goToSettings') redirect=redirect}}
+{{#if errorMessage}}
+  {{login-box goToSettings=(action 'goToSettings') redirect=redirect errorShibboleth=errorMessage}}
+{{else}}
+  {{login-box goToSettings=(action 'goToSettings') redirect=redirect }}
+{{/if}}
+
+
 {{redirectChanged}}
