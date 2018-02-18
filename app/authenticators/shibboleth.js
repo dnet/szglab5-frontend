@@ -7,5 +7,17 @@ export default Base.extend({
 
   authenticate() {
     return this.get('ajax').request(config['ember-simple-auth-token'].serverTokenShibbolethEndpoint);
+  },
+
+  restore(data) {
+    const dataObject = Ember.Object.create(data);
+
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      if (!Ember.isEmpty(dataObject.get('token'))) {
+        resolve(data);
+      } else {
+        reject();
+      }
+    });
   }
 });
